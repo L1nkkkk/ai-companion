@@ -17,7 +17,7 @@
 | Mac | 用户已确认：M4 MacBook Pro；尚未连接本任务，macOS 和 Xcode 实际版本待核实 |
 | 真机 | Android 和 iPhone 型号、系统版本待登记 |
 | 签名 | Apple 开发者与测试安装条件待确认；没有提交私钥或固定开发 Team |
-| GitHub | 已确认连接账号 L1nkkkk；本次未创建远程仓库，未上传 |
+| GitHub | 私有仓库 [L1nkkkk/ai-companion](https://github.com/L1nkkkk/ai-companion)，默认协作分支 main |
 | AI / 直播 / Live2D | 密钥、额度、平台权限、正式模型与 Cubism Core 待提供 |
 
 JDK 目前锁主版本 17；首次 Android 原生构建时还需记录发行商、补丁与 build。iOS 的 Gemfile.lock、Podfile.lock 需要在 Mac 上完成解析并提交，Windows 上没有伪造这些依赖锁。Xcode 26.3 要求 macOS 15.6 或更高的受支持版本；如手机系统要求更新 Xcode，由 A0 更新工具基线并记录验证。

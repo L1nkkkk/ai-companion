@@ -31,7 +31,7 @@
 
 - AC01：本机独立干净克隆验证通过；**第二台真实开发机仍待验证**。下一步在 M4 MacBook Pro 按 SECOND_MACHINE.md 操作并提交报告。
 - AC02：本阶段 schema、固定样例与 HTTP 健康检查契约通过；T04 继续建立客户端、服务端消费者及有状态协议行为测试。
-- GitHub Actions：已提交三系统工作流，但未上传仓库，**没有声称远程 CI 已运行**。
+- GitHub Actions：本报告记录的首次本地验收未运行远程 CI；后续同步使用 [正式仓库 Actions](https://github.com/L1nkkkk/ai-companion/actions) 记录实际结果。verification.json 保留首次本地检查时的状态。
 - 原生编译：本机尚无 JDK / Android SDK，且没有连接 Mac；未产出 APK 或 IPA，未执行原生编译及真机测试。
 - iOS 仍需在 Mac 上生成并提交 Gemfile.lock / Podfile.lock，登记 Xcode 与签名；Android 需补录 JDK 发行商与补丁。
 
@@ -41,5 +41,5 @@
 
 - M4 MacBook Pro：用户已确认持有；系统和 Xcode 版本待现场登记。
 - Android / iPhone：型号、系统、签名与实际安装尚未验证。
-- GitHub：账号连接已核实，远程仓库尚未创建或推送。
+- GitHub：后续按用户指示建立私有仓库 [L1nkkkk/ai-companion](https://github.com/L1nkkkk/ai-companion)，协作入口已更新；本报告中的初次本地检查输出保持原始范围。
 - 云端服务、直播权限、Live2D 模型：后续任务登记。

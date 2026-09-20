@@ -1,14 +1,14 @@
 # M4 MacBook Pro 接手清单
 
-从 GitHub 克隆正式私有仓库，或从 T00 的 Git bundle 恢复。不要复制 node_modules、.venv 或开发机绝对路径。
+从 GitHub 克隆正式私有仓库。不要复制 node_modules、.venv 或开发机绝对路径。
 
 ```text
-git clone ai-companion-T00.bundle ai-companion
+git clone https://github.com/L1nkkkk/ai-companion.git
 cd ai-companion
 git switch main
 ```
 
-若使用 bundle，克隆后的 origin 指向 bundle 文件；远程仓库建立后按 COLLABORATION.md 替换 origin。安装 README 中的固定 Node、Python、pnpm、uv 后执行：
+也可以先用 `git clone ai-companion-T00.bundle ai-companion` 离线恢复，再按 COLLABORATION.md 把 origin 切到正式仓库并获取最新提交。安装 README 中的固定 Node、Python、pnpm、uv 后执行：
 
 ```text
 pnpm install --frozen-lockfile --ignore-scripts

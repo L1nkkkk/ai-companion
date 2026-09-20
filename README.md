@@ -2,6 +2,8 @@
 
 桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前为 **T00 工程起点**，包含可运行的网页入口、后台存活检查、手机初始工程及冻结的接口。聊天、语音、Live2D 和后台陪伴将由后续任务实现。
 
+正式私有仓库：[L1nkkkk/ai-companion](https://github.com/L1nkkkk/ai-companion)，主分支 `main`。其他机器通过 Git 克隆后按下方步骤安装。
+
 ## 从这里开始
 
 - [总架构](docs/blueprint/ARCHITECTURE.md)、[任务卡](docs/blueprint/TASKS.md)、[任务台账](docs/blueprint/planning/tasks.json)

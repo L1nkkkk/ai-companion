@@ -1,17 +1,17 @@
 # GitHub 与多个 agent 协作
 
-本地仓库名暂定 ai-companion，主分支 main；尚未绑定 GitHub。T00 允许交付本地目录和起点提交，因此没有因远程账户操作停下本地工作。
+正式私有仓库为 [L1nkkkk/ai-companion](https://github.com/L1nkkkk/ai-companion)，主分支 main。本地 origin 使用 HTTPS 地址。
 
-## 建立远程
+## 在另一台机器克隆
 
-在项目负责人选定的 GitHub 账号下建立名为 ai-companion 的**空私有仓库**，不生成远程 README、License 或 .gitignore。确认 URL 后在本地添加 origin 并推送：
+先在该机器登录具有仓库权限的 GitHub 账号，然后：
 
 ```text
-git remote add origin <刚创建的私有仓库URL>
-git push -u origin main
+git clone https://github.com/L1nkkkk/ai-companion.git
+cd ai-companion
 ```
 
-若从 bundle 克隆，先用 `git remote set-url origin <私有仓库URL>` 替换已有 origin。身份验证由本机 Git / GitHub 登录处理，不把令牌写进 URL 或项目文件。推送会触发已准备的 Foundation 工作流；本次尚无远程运行记录。工作流包含 Windows、Linux、macOS 的静态检查、契约检查、服务测试、网页构建和手机 JS 打包，原生编译与真机行为另行验收。
+若从 bundle 克隆，先用 `git remote set-url origin https://github.com/L1nkkkk/ai-companion.git` 替换已有 origin，然后 `git fetch origin`。身份验证由本机 Git / GitHub 登录处理，不把令牌写进 URL 或项目文件。推送会触发 Foundation 工作流，实际结果见 [Actions](https://github.com/L1nkkkk/ai-companion/actions)。工作流包含 Windows、Linux、macOS 的静态检查、契约检查、服务测试、网页构建和手机 JS 打包，原生编译与真机行为另行验收。
 
 ## 分配工作目录
 
