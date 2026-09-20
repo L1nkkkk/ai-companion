@@ -142,7 +142,7 @@ def package_desktop(
         for source in (player, python_runtime, site)
     ):
         raise ValueError("Package output must not be inside its input directories")
-    archive = output.with_suffix(".zip")
+    archive = output.with_name(output.name + ".zip")
     evidence = output.with_name(output.name + "-package-manifest.json")
     if archive.exists() or evidence.exists():
         raise ValueError("Package ZIP or manifest already exists")
