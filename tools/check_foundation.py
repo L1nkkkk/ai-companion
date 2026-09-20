@@ -35,6 +35,15 @@ def main() -> None:
                         f"Direct dependency is not pinned: {name} in {package.relative_to(ROOT)}"
                     )
     frozen = json.loads((ROOT / "contracts/baseline.json").read_text(encoding="utf-8"))
+    contract_files = {
+        path.relative_to(ROOT).as_posix()
+        for path in (ROOT / "contracts").rglob("*.json")
+        if path.name != "baseline.json"
+    } | {"docs/blueprint/CONTRACTS.md"}
+    if contract_files != set(frozen["sha256"]):
+        errors.append(
+            "Frozen contract inventory changed; A0 must review the added or removed files"
+        )
     for relative, expected in frozen["sha256"].items():
         path = ROOT / relative
         if not path.is_file():

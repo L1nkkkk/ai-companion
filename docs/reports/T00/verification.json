@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-20",
+  "task": "T00",
+  "implementation_commit": "eab4a5f",
+  "platform": "Windows 11",
+  "node": "24.19.0",
+  "pnpm": "11.19.0",
+  "python": "3.12.10",
+  "uv": "0.12.17",
+  "independent_clone": true,
+  "download_cache_reused": true,
+  "second_physical_machine": false,
+  "full_check_exit_code": 0,
+  "api_route_tests": 2,
+  "http_smoke": {
+    "api": 200,
+    "web": 200,
+    "web_proxy": 200
+  },
+  "native_android_build": "not_run",
+  "native_ios_build": "not_run",
+  "real_device_validation": "not_run",
+  "remote_ci": "not_run",
+  "github_remote": "not_created",
+  "contract_version": "1.0.0"
+}

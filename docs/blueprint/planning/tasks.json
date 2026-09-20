@@ -8,7 +8,7 @@
       "title": "建立正式仓库与冻结契约",
       "owner_role": "A0",
       "gate": "G0",
-      "status": "in_progress",
+      "status": "awaiting_external",
       "depends_on": [],
       "allowed_paths": [
         "docs/",
@@ -40,7 +40,14 @@
       "external_resources": "GitHub 账号由项目负责人提供；Mac、两端真机及签名条件需要确认。",
       "dispatch_prompt": "你负责 T00 建立正式仓库与冻结契约，角色 A0。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：docs/；contracts/；tools/；root configuration；initial app scaffolds。前置任务：无。目标：让所有 agent 从同一版本和接口开始。验收：AC01、AC02。外部条件：GitHub 账号由项目负责人提供；Mac、两端真机及签名条件需要确认。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。",
       "branch": "main",
-      "report": "docs/reports/T00/README.md"
+      "report": "docs/reports/T00/README.md",
+      "start_commit": "eab4a5f",
+      "local_deliverables": "ready",
+      "pending": [
+        "AC01 second physical development machine",
+        "Mac native dependency locks and Xcode/signing record",
+        "Android JDK distribution and patch inventory"
+      ]
     },
     {
       "id": "T01",

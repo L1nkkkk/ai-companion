@@ -1,0 +1,170 @@
+
+> <clean-checkout>\.venv\Scripts\python.exe tools/check_foundation.py
+Pinned runtimes and 9 frozen contract files checked.
+
+> <clean-checkout>\.venv\Scripts\python.exe tools/validate_blueprint.py --report .tmp/blueprint-report.json
+{
+  "status": "passed",
+  "scope": "Design documents, schema, examples and dependency consistency only",
+  "not_validated": [
+    "Application implementation",
+    "Live provider performance",
+    "Mobile background audio",
+    "Streaming account permissions",
+    "Production deployment"
+  ],
+  "checks": {
+    "positive_control_examples": 27,
+    "negative_control_examples": 8,
+    "client_event_types": 11,
+    "server_event_types": 16,
+    "rest_operations": 25,
+    "rest_models": 30,
+    "rest_examples": 8,
+    "audio_header_bytes": 64,
+    "tasks": 21,
+    "roles": 9,
+    "requirements": 9,
+    "acceptance_items": 26,
+    "topological_order": [
+      "T00",
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10",
+      "T11",
+      "T12",
+      "T13",
+      "T14",
+      "T15",
+      "T16",
+      "T17",
+      "T18",
+      "T19",
+      "T20"
+    ],
+    "markdown_files": 10,
+    "local_links": 30
+  },
+  "errors": []
+}
+
+> <clean-checkout>\.venv\Scripts\python.exe -m ruff check services/api tools
+All checks passed!
+
+> <clean-checkout>\.venv\Scripts\python.exe -m ruff format --check services/api tools
+9 files already formatted
+
+> <clean-checkout>\.venv\Scripts\python.exe -m pytest
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.1.1, pluggy-1.6.0
+rootdir: <clean-checkout>
+configfile: pyproject.toml
+testpaths: services/api/tests
+plugins: anyio-4.15.1
+collected 2 items
+
+services\api\tests\test_foundation.py ..                                 [100%]
+
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  <clean-checkout>\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+.venv\Lib\site-packages\starlette\testclient.py:53
+  <clean-checkout>\.venv\Lib\site-packages\starlette\testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 2 passed, 2 warnings in 0.77s ========================
+
+> pnpm.cmd typecheck
+$ pnpm -r typecheck
+Scope: 5 of 6 workspace projects
+apps/mobile typecheck$ tsc --noEmit
+apps/web typecheck$ tsc --noEmit
+packages/client typecheck$ tsc --noEmit
+packages/avatar-viewer typecheck$ tsc --noEmit
+packages/avatar-viewer typecheck: Done
+packages/mobile-bridge typecheck$ tsc --noEmit
+packages/client typecheck: Done
+apps/mobile typecheck: Done
+apps/web typecheck: Done
+packages/mobile-bridge typecheck: Done
+
+> pnpm.cmd build:web
+$ pnpm --filter @ai-companion/web build
+$ tsc --noEmit && vite build
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 15 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.39 kB │ gzip:  0.27 kB
+dist/assets/index-Bmd3Y-E-.css    0.54 kB │ gzip:  0.35 kB
+dist/assets/index-DAvxz7LB.js   191.84 kB │ gzip: 60.86 kB
+
+✓ built in 102ms
+
+> pnpm.cmd bundle:mobile
+$ node tools/bundle-mobile.mjs
+
+                        ▒▒▓▓▓▓▒▒
+                     ▒▓▓▓▒▒░░▒▒▓▓▓▒
+                  ▒▓▓▓▓░░░▒▒▒▒░░░▓▓▓▓▒
+                 ▓▓▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▓▓
+                 ▓▓░░░░░▒▓▓▓▓▓▓▒░░░░░▓▓
+                 ▓▓░░▓▓▒░░░▒▒░░░▒▓▒░░▓▓
+                 ▓▓░░▓▓▓▓▓▒▒▒▒▓▓▓▓▒░░▓▓
+                 ▓▓░░▓▓▓▓▓▓▓▓▓▓▓▓▓▒░░▓▓
+                 ▓▓▒░░▒▒▓▓▓▓▓▓▓▓▒░░░▒▓▓
+                  ▒▓▓▓▒░░░▒▓▓▒░░░▒▓▓▓▒
+                     ▒▓▓▓▒░░░░▒▓▓▓▒
+                        ▒▒▓▓▓▓▒▒
+
+
+                Welcome to Metro v0.87.1
+              Fast - Scalable - Integrated
+
+
+transform[stderr]: (node:47436) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+transform[stderr]: (Use `node --trace-warnings ...` to show where the warning was created)
+transform[stderr]: (node:67124) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+transform[stderr]: (Use `node --trace-warnings ...` to show where the warning was created)
+ WARN  Attempted to import the module "<clean-checkout>\node_modules\react-native\src\private\featureflags\ReactNativeFeatureFlags" which is not listed in the "exports" of "<clean-checkout>\node_modules\react-native" under the requested subpath "./src/private/featureflags/ReactNativeFeatureFlags". Falling back to file-based resolution. Consider updating the call site or asking the package maintainer(s) to expose this API.
+LOG:Writing bundle output to: <clean-checkout>\.tmp\mobile-bundles\android.bundle
+LOG:Done writing bundle output
+
+                        ▒▒▓▓▓▓▒▒
+                     ▒▓▓▓▒▒░░▒▒▓▓▓▒
+                  ▒▓▓▓▓░░░▒▒▒▒░░░▓▓▓▓▒
+                 ▓▓▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▓▓
+                 ▓▓░░░░░▒▓▓▓▓▓▓▒░░░░░▓▓
+                 ▓▓░░▓▓▒░░░▒▒░░░▒▓▒░░▓▓
+                 ▓▓░░▓▓▓▓▓▒▒▒▒▓▓▓▓▒░░▓▓
+                 ▓▓░░▓▓▓▓▓▓▓▓▓▓▓▓▓▒░░▓▓
+                 ▓▓▒░░▒▒▓▓▓▓▓▓▓▓▒░░░▒▓▓
+                  ▒▓▓▓▒░░░▒▓▓▒░░░▒▓▓▓▒
+                     ▒▓▓▓▒░░░░▒▓▓▓▒
+                        ▒▒▓▓▓▓▒▒
+
+
+                Welcome to Metro v0.87.1
+              Fast - Scalable - Integrated
+
+
+transform[stderr]: (node:40112) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+transform[stderr]: (Use `node --trace-warnings ...` to show where the warning was created)
+transform[stderr]: (node:27784) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+transform[stderr]: (Use `node --trace-warnings ...` to show where the warning was created)
+ WARN  Attempted to import the module "<clean-checkout>\node_modules\react-native\src\private\featureflags\ReactNativeFeatureFlags" which is not listed in the "exports" of "<clean-checkout>\node_modules\react-native" under the requested subpath "./src/private/featureflags/ReactNativeFeatureFlags". Falling back to file-based resolution. Consider updating the call site or asking the package maintainer(s) to expose this API.
+LOG:Writing bundle output to: <clean-checkout>\.tmp\mobile-bundles\ios.bundle
+LOG:Done writing bundle output
+
+Foundation checks passed. Native builds and device behavior need separate evidence.

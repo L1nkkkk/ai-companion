@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "scope": "Design documents, schema, examples and dependency consistency only",
+  "not_validated": [
+    "Application implementation",
+    "Live provider performance",
+    "Mobile background audio",
+    "Streaming account permissions",
+    "Production deployment"
+  ],
+  "checks": {
+    "positive_control_examples": 27,
+    "negative_control_examples": 8,
+    "client_event_types": 11,
+    "server_event_types": 16,
+    "rest_operations": 25,
+    "rest_models": 30,
+    "rest_examples": 8,
+    "audio_header_bytes": 64,
+    "tasks": 21,
+    "roles": 9,
+    "requirements": 9,
+    "acceptance_items": 26,
+    "topological_order": [
+      "T00",
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10",
+      "T11",
+      "T12",
+      "T13",
+      "T14",
+      "T15",
+      "T16",
+      "T17",
+      "T18",
+      "T19",
+      "T20"
+    ],
+    "markdown_files": 10,
+    "local_links": 30
+  },
+  "errors": []
+}
