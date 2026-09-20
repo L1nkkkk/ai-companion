@@ -115,18 +115,24 @@ def prepare(frames: Path, wav: Path, output: Path) -> dict:
         packets = list(csv.DictReader(f))
     offset = 0
     last_end = None
-    for packet in packets:
+    packet_gaps = []
+    for packet_index, packet in enumerate(packets):
         count = int(packet["frames"])
         packet["time"] = int(packet["audio_qpc_100ns"])
         packet["end"] = packet["time"] + (count * TICKS + rate // 2) // rate
         packet["offset"] = offset
         offset += count * channels * 4
-        if (
-            count <= 0
-            or int(packet["flags"]) & 5
-            or (last_end is not None and abs(packet["time"] - last_end) > 20000)
-        ):
-            raise ValueError("Audio packet clock is invalid or has a gap over 2ms.")
+        if count <= 0 or packet["time"] <= 0 or int(packet["flags"]) & 5:
+            raise ValueError("Audio packet clock or flags are invalid.")
+        if last_end is not None and abs(packet["time"] - last_end) > 20000:
+            packet_gaps.append(
+                {
+                    "packet_index": packet_index,
+                    "previous_end_qpc_100ns": last_end,
+                    "packet_start_qpc_100ns": packet["time"],
+                    "gap_ms": (packet["time"] - last_end) / 10000,
+                }
+            )
         last_end = packet["end"]
     if not packets or offset != len(raw) or offset // 8 != summary["frames"]:
         raise ValueError("Audio WAV and packet manifest differ.")
@@ -137,6 +143,12 @@ def prepare(frames: Path, wav: Path, output: Path) -> dict:
     if len(selected) < 2:
         raise ValueError("No meaningful shared video/audio coverage.")
     start = selected[0]["time"]
+    for gap in packet_gaps:
+        if (
+            min(gap["previous_end_qpc_100ns"], gap["packet_start_qpc_100ns"]) < finish
+            and max(gap["previous_end_qpc_100ns"], gap["packet_start_qpc_100ns"]) > start
+        ):
+            raise ValueError("Audio packet gap over 2ms overlaps the shared encoded interval.")
     if finish - start > 120 * TICKS:
         raise ValueError("Evidence exceeds 120 seconds.")
     intervals = [b["time"] - a["time"] for a, b in zip(selected, selected[1:])]
@@ -192,6 +204,7 @@ def prepare(frames: Path, wav: Path, output: Path) -> dict:
         "selected_frame_count": len(selected),
         "frames_outside_shared_audio_coverage": len(captured) - len(selected),
         "declared_dropped_frames": end["dropped"],
+        "audio_packet_gaps_outside_shared_coverage": packet_gaps,
         "actual_interval_p50_ms": nearest(intervals, 0.5) / 10000,
         "actual_interval_p95_ms": nearest(intervals, 0.95) / 10000,
         "maximum_frame_hold_ms": max(intervals + [finish - selected[-1]["time"]]) / 10000,
@@ -259,6 +272,53 @@ def signal_regions(pcm: Path, chunks: list[tuple[int, int, int, int]], threshold
     return regions
 
 
+def mp4_time_scales(path: Path) -> dict:
+    """Read actual ISO BMFF mdhd scales; never assume the encoder's nominal frame rate."""
+
+    def boxes(data):
+        offset = 0
+        while offset < len(data):
+            if offset + 8 > len(data):
+                raise ValueError("Truncated MP4 box.")
+            length, kind = struct.unpack_from(">I4s", data, offset)
+            header = 8
+            if length == 1:
+                if offset + 16 > len(data):
+                    raise ValueError("Truncated extended MP4 box.")
+                length = struct.unpack_from(">Q", data, offset + 8)[0]
+                header = 16
+            if length == 0:
+                length = len(data) - offset
+            if length < header or offset + length > len(data):
+                raise ValueError("Invalid MP4 box size.")
+            yield kind, data[offset + header : offset + length]
+            offset += length
+
+    scales = {}
+    for kind, movie in boxes(path.read_bytes()):
+        if kind != b"moov":
+            continue
+        for kind, track in boxes(movie):
+            if kind != b"trak":
+                continue
+            for kind, media in boxes(track):
+                if kind != b"mdia":
+                    continue
+                items = dict(boxes(media))
+                header, handler = items[b"mdhd"], items[b"hdlr"]
+                offset = 20 if header[0] == 1 else 12
+                if header[0] not in (0, 1) or len(header) < offset + 4 or len(handler) < 12:
+                    raise ValueError("Invalid MP4 media header.")
+                scale = struct.unpack_from(">I", header, offset)[0]
+                label = handler[8:12].decode("ascii")
+                if scale <= 0 or label in scales:
+                    raise ValueError("Invalid or ambiguous MP4 track timescale.")
+                scales[label] = scale
+    if not {"vide", "soun"}.issubset(scales):
+        raise ValueError("MP4 must have independently identifiable video and audio clocks.")
+    return scales
+
+
 def verify_encoded(directory: Path) -> dict:
     """Read the encoder's independent MP4 demux/decode output and reject timing changes."""
     expected = [
@@ -275,9 +335,11 @@ def verify_encoded(directory: Path) -> dict:
     durations = [
         abs(int(row["duration_100ns"]) - int(source[1])) for source, row in zip(expected, video)
     ]
-    if max(deltas) > 10 or max(durations) > 10:
+    scales = mp4_time_scales(directory / "synchronized-evidence.mp4")
+    video_tick_bound = math.ceil(TICKS / scales["vide"])
+    if max(deltas) > video_tick_bound or max(durations) > video_tick_bound:
         raise ValueError(
-            "Encoded video timing differs from native-QPC input by over one microsecond."
+            "Encoded video timing differs from native-QPC input by over one actual container tick."
         )
     raw_chunks = [
         tuple(map(int, line.split("\t")))
@@ -320,6 +382,8 @@ def verify_encoded(directory: Path) -> dict:
         "video_frames": len(video),
         "maximum_video_pts_delta_100ns": max(deltas),
         "maximum_video_duration_delta_100ns": max(durations),
+        "mp4_track_timescales": scales,
+        "video_quantization_bound_100ns": video_tick_bound,
         "audio_input_start_100ns": raw_chunks[0][0],
         "audio_decoded_start_100ns": decoded_chunks[0][0],
         "audio_input_end_100ns": raw_chunks[-1][0] + raw_chunks[-1][1],

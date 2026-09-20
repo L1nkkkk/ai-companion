@@ -29,6 +29,8 @@ namespace AICompanion.Preview.UI
         private CancellationTokenSource exportCancellation;
         private Task pendingExport = Task.CompletedTask;
         private readonly ConcurrentQueue<HistoryExportProgress> exportProgress = new ConcurrentQueue<HistoryExportProgress>();
+        private readonly ConcurrentQueue<string> exportDiagnostics = new ConcurrentQueue<string>();
+        private bool exportDiagnosticsEnabled;
         public bool IsExporting => exportCancellation != null;
         public event Action<HistoryExportProgress> ExportProgressChanged;
         private RectTransform canvas, messageContent, modal, modalContent;
@@ -60,6 +62,7 @@ namespace AICompanion.Preview.UI
             font = chineseFont != null ? chineseFont : throw new ArgumentNullException(nameof(chineseFont));
             characterId = character;
             exportSink = onExport;
+            exportDiagnosticsEnabled = Array.IndexOf(Environment.GetCommandLineArgs(), "-evidenceDirectory") >= 0;
             Build();
             session.SnapshotChanged += Render;
             session.DraftUpdated += ApplyDraft;
@@ -410,7 +413,7 @@ namespace AICompanion.Preview.UI
                     // Native stages are queued without touching Unity from the dedicated STA.
                     string path = await HistoryFileExport.SaveAsync(result.Value, cancellation.Token, stage =>
                         exportProgress.Enqueue(new HistoryExportProgress(stage, id, trigger.Phase, trigger.Operation,
-                            System.Diagnostics.Stopwatch.GetTimestamp())));
+                            System.Diagnostics.Stopwatch.GetTimestamp())), exportDiagnosticsEnabled ? exportDiagnostics.Enqueue : (Action<string>)null);
                     if (!this || lifetime.IsCancellationRequested) return;
                     DrainExportProgress();
                     publish(path == null ? HistoryExportStage.Cancelled : HistoryExportStage.Saved);
@@ -448,7 +451,10 @@ namespace AICompanion.Preview.UI
         public Task WaitForPendingExportAsync() => pendingExport;
         private void Stop() { session.Cancel(StopReason.User); CancelPendingExport(); }
         private void DrainExportProgress()
-        { while (exportProgress.TryDequeue(out var progress)) PublishExport(progress); }
+        {
+            while (exportDiagnostics.TryDequeue(out var value)) Debug.Log("HISTORY_EXPORT_NATIVE " + value);
+            while (exportProgress.TryDequeue(out var progress)) PublishExport(progress);
+        }
         private void PublishExport(HistoryExportProgress progress)
         {
             try { ExportProgressChanged?.Invoke(progress); }

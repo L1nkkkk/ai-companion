@@ -197,10 +197,46 @@ class QpcEvidenceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "timestamps"):
             MODULE.prepare(self.frames, self.wav, self.out)
 
+    def test_packet_gap_outside_shared_coverage_retained_but_not_encoded(self):
+        path = Path(str(self.wav) + ".packets.csv")
+        text = path.read_text()
+        text = text.replace("600000000000", "599999890000")
+        path.write_text(text)
+        result = MODULE.prepare(self.frames, self.wav, self.out)
+        self.assertEqual(len(result["audio_packet_gaps_outside_shared_coverage"]), 1)
+        self.assertEqual(result["audio_packet_gaps_outside_shared_coverage"][0]["gap_ms"], 11)
+
+    def test_packet_gap_inside_shared_coverage_rejected(self):
+        path = Path(str(self.wav) + ".packets.csv")
+        path.write_text(path.read_text().replace("600005000000", "600005030000"))
+        with self.assertRaisesRegex(ValueError, "gap over 2ms overlaps"):
+            MODULE.prepare(self.frames, self.wav, self.out)
+
+    def test_packet_gap_intersecting_shared_start_is_rejected(self):
+        path = Path(str(self.wav) + ".packets.csv")
+        path.write_text(path.read_text().replace("600000500000", "600000530000"))
+        with self.assertRaisesRegex(ValueError, "gap over 2ms overlaps"):
+            MODULE.prepare(self.frames, self.wav, self.out)
+
     def test_encoded_timestamps_independently_verified(self):
         MODULE.prepare(self.frames, self.wav, self.out)
         folder = self.out / "decoded"
         folder.mkdir()
+
+        def box(kind, body):
+            return struct.pack(">I4s", len(body) + 8, kind) + body
+
+        tracks = b""
+        for kind, scale in [(b"vide", 15000), (b"soun", 48000)]:
+            tracks += box(
+                b"trak",
+                box(
+                    b"mdia",
+                    box(b"mdhd", b"\0" * 12 + struct.pack(">I", scale))
+                    + box(b"hdlr", b"\0" * 8 + kind),
+                ),
+            )
+        (self.out / "synchronized-evidence.mp4").write_bytes(box(b"moov", tracks))
         shutil.copyfile(self.out / "audio.pcm", folder / "decoded-audio.pcm")
         with (folder / "decoded-timeline.csv").open("w", newline="") as f:
             writer = csv.writer(f)
@@ -213,8 +249,13 @@ class QpcEvidenceTests(unittest.TestCase):
                 writer.writerow(["audio", pts, duration, length, 0])
         report = MODULE.verify_encoded(self.out)
         self.assertEqual(report["maximum_codec_edge_shift_ms"], 0)
+        self.assertEqual(report["mp4_track_timescales"], {"vide": 15000, "soun": 48000})
+        self.assertEqual(report["video_quantization_bound_100ns"], 667)
         p = folder / "decoded-timeline.csv"
-        p.write_text(p.read_text().replace("video,0,", "video,10000,", 1))
+        original = p.read_text()
+        p.write_text(original.replace("video,0,", "video,501,", 1))
+        self.assertEqual(MODULE.verify_encoded(self.out)["maximum_video_pts_delta_100ns"], 501)
+        p.write_text(original.replace("video,0,", "video,10000,", 1))
         with self.assertRaisesRegex(ValueError, "timing differs"):
             MODULE.verify_encoded(self.out)
 

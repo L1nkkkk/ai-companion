@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -47,6 +48,7 @@ namespace AICompanion.Preview.Tests
             finally { Marshal.FreeHGlobal(memory); }
             CheckExportWorker();
             CheckExportFiles();
+            CheckDialogCancellation();
 #endif
             Debug.Log("U01_UI_CHECKS_PASSED assertions=" + assertions + "; actual Windows IME/DPI requires Player QA");
         }
@@ -141,6 +143,108 @@ namespace AICompanion.Preview.Tests
                 Directory.Delete(directory);
             }
         }
+
+#if UNITY_EDITOR_WIN
+        private static void CheckDialogCancellation()
+        {
+            var windows = new DialogWindows();
+            var dialog = new HistoryFileExport.DialogWindow(windows);
+            IntPtr child = new IntPtr(10), root = new IntPtr(20), popup = new IntPtr(30), nested = new IntPtr(40);
+            dialog.Opened(child, root);
+            var request = Task.Run(() => { dialog.RequestClose(); dialog.RequestClose(); });
+            WaitCompleted(request); request.GetAwaiter().GetResult();
+            Check(windows.Posts.Count == 1 && windows.Posts[0].Window == child && windows.Posts[0].Message == HistoryFileExport.DialogWindow.CancelMessage,
+                "cross-thread cancellation only queues one private STA message");
+            Check(windows.Queries == 0, "cancellation callback never queries native windows from the caller thread");
+            windows.Posts.Clear();
+            windows.Popups[root] = popup; windows.Popups[popup] = nested;
+            windows.Buttons[(nested, 7)] = new IntPtr(47);
+            windows.Disabled.Add(root); windows.Disabled.Add(popup);
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 1 && windows.Posts[0].Window == nested && windows.Posts[0].Message == 0x0111 && windows.Posts[0].Command == 7,
+                "overwrite cancellation only posts No to the deepest modal window");
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 1, "pending modal command is not duplicated or followed by Close");
+            windows.Popups[popup] = popup; windows.Disabled.Remove(popup);
+            windows.Buttons[(popup, 2)] = new IntPtr(32);
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 2 && windows.Posts[1].Window == popup && windows.Posts[1].Message == 0x0111 && windows.Posts[1].Command == 2,
+                "next STA pump cancels the remaining popup after deeper modal unwinds");
+            windows.Popups[root] = root;
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 2, "save parent is not cancelled while native modal still disables it");
+            windows.Disabled.Remove(root);
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 3 && windows.Posts[2].Window == root && windows.Posts[2].Message == 0x0111 && windows.Posts[2].Command == 2,
+                "enabled save parent receives only IDCANCEL after nested dialogs leave");
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 3, "save parent cancellation is single-shot until destruction");
+            int queries = windows.Queries;
+            var wrongThread = Task.Run(() => dialog.ProcessClose());
+            WaitCompleted(wrongThread);
+            Check(wrongThread.IsFaulted && wrongThread.Exception.InnerException is InvalidOperationException && windows.Queries == queries,
+                "dialog queries reject the wrong thread before touching any window");
+            dialog.Closed(); dialog.RequestClose(); dialog.ProcessClose();
+            Check(windows.Posts.Count == 3, "destroyed native dialog cannot receive another cancellation");
+
+            windows = new DialogWindows(); dialog = new HistoryFileExport.DialogWindow(windows); dialog.Opened(child, root);
+            windows.Popups[root] = popup;
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 1 && windows.Posts[0].Window == popup && windows.Posts[0].Message == 0x0010,
+                "popup without No or Cancel receives exactly one Close and no parent command");
+            dialog.Closed();
+            windows = new DialogWindows(); dialog = new HistoryFileExport.DialogWindow(windows); dialog.Opened(child, root);
+            windows.Popups[root] = popup; windows.Buttons[(popup, 7)] = new IntPtr(37); windows.Disabled.Add(new IntPtr(37));
+            windows.Buttons[(popup, 2)] = new IntPtr(32);
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 1 && windows.Posts[0].Command == 2, "disabled No falls back to an enabled Cancel button");
+            dialog.Closed();
+            windows = new DialogWindows(); dialog = new HistoryFileExport.DialogWindow(windows); dialog.Opened(child, root);
+            windows.PostSucceeds = false; dialog.RequestClose();
+            windows.PostSucceeds = true; dialog.RequestClose();
+            Check(windows.Posts.Count == 2, "failed private wakeup can be retried");
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 3 && windows.Posts[2].Command == 2, "retried cancellation still follows the native IDCANCEL path");
+            dialog.Closed();
+            windows = new DialogWindows(); dialog = new HistoryFileExport.DialogWindow(windows); dialog.Opened(child, root);
+            windows.Popups[root] = popup; windows.Hidden.Add(popup);
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 1 && windows.Posts[0].Window == root, "hidden stale popup does not prevent cancellation of the enabled save window");
+            dialog.Closed();
+            windows = new DialogWindows(); dialog = new HistoryFileExport.DialogWindow(windows); dialog.Opened(child, root);
+            windows.Popups[root] = popup; windows.TaskDialogs.Add(popup); windows.Disabled.Add(root);
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 1 && windows.Posts[0].Window == popup && windows.Posts[0].Message == 0x466 && windows.Posts[0].Command == 7,
+                "owned DirectUI overwrite prompt receives TaskDialog No without native button IDs");
+            dialog.ProcessClose();
+            Check(windows.Posts.Count == 1, "TaskDialog No is not followed by another command while its modal loop exits");
+            windows.Popups[root] = root; windows.Disabled.Remove(root); dialog.ProcessClose();
+            Check(windows.Posts.Count == 2 && windows.Posts[1].Window == root && windows.Posts[1].Message == 0x111 && windows.Posts[1].Command == 2,
+                "save parent cancels only after owned TaskDialog leaves");
+            dialog.Closed();
+        }
+
+        // Window policy checks deliberately do not create native dialogs or claim native-loop QA.
+        private sealed class DialogWindows : HistoryFileExport.IDialogWindows
+        {
+            private readonly int thread = Thread.CurrentThread.ManagedThreadId;
+            public readonly Dictionary<IntPtr, IntPtr> Popups = new Dictionary<IntPtr, IntPtr>();
+            public readonly Dictionary<(IntPtr, int), IntPtr> Buttons = new Dictionary<(IntPtr, int), IntPtr>();
+            public readonly HashSet<IntPtr> Disabled = new HashSet<IntPtr>();
+            public readonly HashSet<IntPtr> Hidden = new HashSet<IntPtr>();
+            public readonly HashSet<IntPtr> TaskDialogs = new HashSet<IntPtr>();
+            public readonly List<(IntPtr Window, uint Message, ulong Command)> Posts = new List<(IntPtr, uint, ulong)>();
+            public int Queries;
+            public bool PostSucceeds = true;
+            private void Query() { if (Thread.CurrentThread.ManagedThreadId != thread) throw new InvalidOperationException("Unexpected cross-thread native query."); Queries++; }
+            public IntPtr OwnedPopup(IntPtr window) { Query(); return Popups.TryGetValue(window, out var popup) ? popup : window; }
+            public bool TaskDialog(IntPtr window) { Query(); return TaskDialogs.Contains(window); }
+            public IntPtr Button(IntPtr window, int id) { Query(); return Buttons.TryGetValue((window, id), out var button) ? button : IntPtr.Zero; }
+            public bool Enabled(IntPtr window) { Query(); return !Disabled.Contains(window); }
+            public bool Visible(IntPtr window) { Query(); return !Hidden.Contains(window); }
+            public bool Post(IntPtr window, uint message, UIntPtr wParam, IntPtr lParam) { Posts.Add((window, message, wParam.ToUInt64())); return PostSucceeds; }
+        }
+#endif
 
         private static void WaitCompleted(Task task)
         {

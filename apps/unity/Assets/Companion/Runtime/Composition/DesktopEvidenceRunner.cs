@@ -130,6 +130,7 @@ namespace AICompanion.Preview.Composition
             }
             result.audioDriver = AudioSettings.driverCapabilities.ToString(); result.outputSampleRate = AudioSettings.outputSampleRate;
             AudioSettings.GetDSPBufferSize(out result.dspBufferFrames, out result.dspBufferCount);
+            File.WriteAllText(Path.Combine(directory, "player-environment.json"), JsonUtility.ToJson(result, true));
             app.Player.PostVolumeLevel += OnLevel;
             app.Player.PlaybackStarted += OnStarted;
             app.Player.PlaybackEnded += OnEnded;
