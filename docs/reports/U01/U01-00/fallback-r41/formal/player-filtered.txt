@@ -1,0 +1,7 @@
+Selected diagnostic lines only; complete raw log retained locally with the hash in verification-summary.json.
+Initialize engine version: 2022.3.62f3c1 (1623fc0bbb97)
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 5060 (ID=0x2d05)
+    Vendor:   NVIDIA
+U01-00_CAMERA_VISIBLE_BOUNDS count=133 bounds=Center: (-0.12, -0.04, 0.00), Extents: (0.37, 0.65, 0.00) orthographicSize=0.80972
+U01-00_MODEL_INITIALIZED: {"unity":"2022.3.62f3c1","core":"0x05010000","model":"Mao","graphicsDevice":"NVIDIA GeForce RTX 5060","graphicsApi":"Direct3D11","renderPipeline":"Built-in","width":1280,"height":800,"drawables":262,"maskedDrawables":37,"invertedMasks":10,"unsupportedMaterials":0,"idleClipPlaying":true,"errors":0,"warnings":0,"sampledFrames":0,"frameSamplesTruncated":false,"elapsedSeconds":0.0,"p95FrameMs":0.0,"maxFrameMs":0.0,"framesAtMost33_3MsPercent":0.0,"framesAtLeast1000Ms":0,"memoryMethod":"Windows GetProcessMemoryInfo: OS peak working set, 5-second private/Unity allocation samples, baseline after 30 seconds","memoryBaselineAt30sBytes":0,"peakWorkingSetBytes":216014848,"finalWorkingSetBytes":0,"workingSetIncreaseFrom30sBytes":0,"peakPrivateBytes":408608768,"peakUnityAllocatedBytes":68868125,"behaviourProbeFailed":false,"contractsAssembly":"Companion.Contracts","scope":"U01-00 rendering fixture; direct parameter tests, no audio-driven lip sync, cloud, chat or recording"}

@@ -1,0 +1,5147 @@
+{
+  "testedAtUtc": "2026-09-20T09:49:42.964585+00:00",
+  "sourceSha": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "sourceDirty": false,
+  "libraryExistsBeforeFirstImport": false,
+  "officialSdkFilesMatched": 1022,
+  "excludedCompilerResponseFiles": [
+    "Assets/csc.rsp",
+    "Assets/csc.rsp.meta",
+    "Assets/mcs.rsp",
+    "Assets/mcs.rsp.meta"
+  ],
+  "downloadCacheReused": false,
+  "restoration": "Official network download into a fresh detached worktree; no Library copied",
+  "checks": [
+    {
+      "path": "Assets/Live2D.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/CHANGELOG.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/CHANGELOG.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/ArrayExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/ArrayExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/ComponentExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/ComponentExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismCanvasInformation.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismCanvasInformation.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismDrawable.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismDrawable.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismDynamicDrawableData.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismDynamicDrawableData.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismLogging.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismLogging.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismMoc.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismMoc.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismModel.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismModel.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismParameter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismParameter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismPart.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismPart.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismTaskQueue.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismTaskQueue.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismTaskableModel.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/CubismTaskableModel.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/GameObjectExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/GameObjectExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/ICubismTask.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/ICubismTask.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/ByteExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/ByteExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismCoreDll.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismCoreDll.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedArrayView.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedArrayView.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedCanvasInformation.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedCanvasInformation.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedDrawables.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedDrawables.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedMemory.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedMemory.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedMoc.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedMoc.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedModel.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedModel.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedParameters.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedParameters.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedParts.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Core/Unmanaged/CubismUnmanagedParts.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/AssetGuid.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/AssetGuid.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismAssetProcessor.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismAssetProcessor.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismCreatedAssetList.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismCreatedAssetList.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismOriginalWorkflowSettings.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismOriginalWorkflowSettings.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismUnityEditorMenu.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismUnityEditorMenu.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismUnityEditorUtility.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/CubismUnityEditorUtility.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismAnimationClipDeleter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismAnimationClipDeleter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismDeleter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismDeleter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismDeleterBase.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismDeleterBase.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismExpressionAssetDeleter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismExpressionAssetDeleter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismFadeAssetDeleter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/CubismFadeAssetDeleter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/ICubismDeleter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Deleters/ICubismDeleter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/ComponentExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/ComponentExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/CubismImporter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/CubismImporter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/CubismImporterBase.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/CubismImporterBase.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/CubismModel3JsonImporter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/CubismModel3JsonImporter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/CubismMotion3JsonImporter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/CubismMotion3JsonImporter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/ICubismImporter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Importers/ICubismImporter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismDisplayInfoParameterNameInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismDisplayInfoParameterNameInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismDrawableInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismDrawableInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismHarmonicMotionParameterInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismHarmonicMotionParameterInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismHitDrawableInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismHitDrawableInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismLookControllerInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismLookControllerInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismLookParameterInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismLookParameterInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismMaskControllerInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismMaskControllerInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismMaskTextureInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismMaskTextureInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismParametersInspectorInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismParametersInspectorInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismPartColorsEditorInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismPartColorsEditorInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismPartInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismPartInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismPartsInspectorInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismPartsInspectorInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismPosePartInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismPosePartInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismRaycastableInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismRaycastableInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismRenderControllerInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismRenderControllerInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismRendererInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismRendererInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismUserDataTagInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Inspectors/CubismUserDataTagInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Live2D.Cubism.Editor.asmdef",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Live2D.Cubism.Editor.asmdef.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Resources.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Resources/Live2D.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Resources/Live2D/Cubism.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Resources/Live2D/Cubism/OriginalWorkflowSettings.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Editor/Resources/Live2D/Cubism/OriginalWorkflowSettings.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/ComponentExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/ComponentExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismAutoEyeBlinkInput.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismAutoEyeBlinkInput.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismDisplayInfoCombinedParameterInfo.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismDisplayInfoCombinedParameterInfo.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismDisplayInfoParameterName.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismDisplayInfoParameterName.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismDisplayInfoPartName.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismDisplayInfoPartName.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismDontMoveOnReimportAttribute.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismDontMoveOnReimportAttribute.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismEyeBlinkController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismEyeBlinkController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismEyeBlinkParameter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismEyeBlinkParameter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismHitDrawable.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismHitDrawable.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismInspectorAbstruct.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismInspectorAbstruct.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismMoveOnReimportCopyComponentsOnly.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismMoveOnReimportCopyComponentsOnly.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismParameterBlendMode.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismParameterBlendMode.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismParameterExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismParameterExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismParameterStore.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismParameterStore.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismParametersInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismParametersInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismPartsInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismPartsInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismUpdateController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismUpdateController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismUpdateExecutionOrder.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/CubismUpdateExecutionOrder.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismExpressionController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismExpressionController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismExpressionData.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismExpressionData.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismExpressionList.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismExpressionList.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismExpressionParameterValue.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismExpressionParameterValue.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismPlayingExpression.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/CubismPlayingExpression.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/Editor.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/Editor/CubismExpression3JsonImporter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/Editor/CubismExpression3JsonImporter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/Editor/Live2D.Cubism.Editor.asmref",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Expression/Editor/Live2D.Cubism.Editor.asmref.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/HarmonicMotion.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/HarmonicMotion/CubismHarmonicMotionController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/HarmonicMotion/CubismHarmonicMotionController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/HarmonicMotion/CubismHarmonicMotionDirection.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/HarmonicMotion/CubismHarmonicMotionDirection.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/HarmonicMotion/CubismHarmonicMotionParameter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/HarmonicMotion/CubismHarmonicMotionParameter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/ICubismUpdatable.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/ICubismUpdatable.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismBuiltinPickers.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismBuiltinPickers.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismDisplayInfo3Json.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismDisplayInfo3Json.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismExp3Json.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismExp3Json.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismJsonParser.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismJsonParser.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismModel3Json.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismModel3Json.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismMotion3Json.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismMotion3Json.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismPhysics3Json.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismPhysics3Json.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismPose3Json.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismPose3Json.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismUserData3Json.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Json/CubismUserData3Json.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/CubismLookAxis.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/CubismLookAxis.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/CubismLookController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/CubismLookController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/CubismLookParameter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/CubismLookParameter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/CubismLookTargetBehaviour.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/CubismLookTargetBehaviour.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/ICubismLookTarget.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/LookAt/ICubismLookTarget.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Motion.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Motion/CubismMotionController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Motion/CubismMotionController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Motion/CubismMotionLayer.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Motion/CubismMotionLayer.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Motion/CubismMotionPriority.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Motion/CubismMotionPriority.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Motion/CubismMotionState.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Motion/CubismMotionState.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeCurveType.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeCurveType.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeMath.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeMath.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeMotionData.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeMotionData.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeMotionList.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeMotionList.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadePlayingMotion.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadePlayingMotion.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeStateObserver.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/CubismFadeStateObserver.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/Editor.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/Editor/CubismFadeMotionImporter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/Editor/CubismFadeMotionImporter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/Editor/Live2D.Cubism.Editor.asmref",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/Editor/Live2D.Cubism.Editor.asmref.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/ICubismFadeState.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MotionFade/ICubismFadeState.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismAudioMouthInput.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismAudioMouthInput.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismAudioSamplingQuality.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismAudioSamplingQuality.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismAutoMouthInput.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismAutoMouthInput.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismMouthController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismMouthController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismMouthParameter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/MouthMovement/CubismMouthParameter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/ObjectExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/ObjectExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/ParameterRepeat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/ParameterRepeat/CubismRepeatController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/ParameterRepeat/CubismRepeatController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysics.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysics.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsInput.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsInput.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsMath.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsMath.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsNormalization.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsNormalization.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsOutput.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsOutput.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsParticle.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsParticle.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsRig.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsRig.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsSourceComponent.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsSourceComponent.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsSubRig.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Physics/CubismPhysicsSubRig.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/CubismPoseController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/CubismPoseController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/CubismPoseData.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/CubismPoseData.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/CubismPosePart.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/CubismPosePart.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/Editor.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/Editor/CubismPoseMotionImporter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/Editor/CubismPoseMotionImporter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/Editor/Live2D.Cubism.Editor.asmref",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Pose/Editor/Live2D.Cubism.Editor.asmref.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Raycasting.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Raycasting/CubismRaycastHit.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Raycasting/CubismRaycastHit.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Raycasting/CubismRaycastable.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Raycasting/CubismRaycastable.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Raycasting/CubismRaycastablePrecision.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Raycasting/CubismRaycastablePrecision.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Raycasting/CubismRaycaster.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Raycasting/CubismRaycaster.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Tasking.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Tasking/CubismBuiltinAsyncTaskHandler.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Tasking/CubismBuiltinAsyncTaskHandler.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/UserData.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/UserData/CubismUserDataBody.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/UserData/CubismUserDataBody.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/UserData/CubismUserDataTag.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/UserData/CubismUserDataTag.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/UserData/CubismUserDataTargetType.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/UserData/CubismUserDataTargetType.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Utils.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Utils/CubismMath.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Framework/Utils/CubismMath.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/LICENSE.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/LICENSE.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Live2D.Cubism.asmdef",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Live2D.Cubism.asmdef.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/NOTICE.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/NOTICE.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/NOTICE.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/NOTICE.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android/arm64-v8a.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android/arm64-v8a/libLive2DCubismCore.so",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android/arm64-v8a/libLive2DCubismCore.so.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android/x86.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android/x86/libLive2DCubismCore.so",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android/x86/libLive2DCubismCore.so.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android/x86_64.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android/x86_64/libLive2DCubismCore.so",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Android/x86_64/libLive2DCubismCore.so.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/CHANGELOG.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/CHANGELOG.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Editor.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Editor/CubismiOSPluginProcessor.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Editor/CubismiOSPluginProcessor.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Editor/Live2D.Cubism.Editor.asmref",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Editor/Live2D.Cubism.Editor.asmref.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/Emscripten.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/Emscripten/1_38_48.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/Emscripten/latest.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/Emscripten/latest/Live2DCubismCore.bc",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/Emscripten/latest/Live2DCubismCore.bc.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/arm.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/arm/Live2DCubismCore.dll",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/arm/Live2DCubismCore.dll.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/arm64.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/arm64/Live2DCubismCore.dll",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/arm64/Live2DCubismCore.dll.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/x64.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/x64/Live2DCubismCore.dll",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/x64/Live2DCubismCore.dll.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/x86.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/x86/Live2DCubismCore.dll",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Experimental/UWP/x86/Live2DCubismCore.dll.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS/arm64-v8a.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS/arm64-v8a/libLive2DCubismCore.so",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS/arm64-v8a/libLive2DCubismCore.so.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS/armeabi-v7a.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS/armeabi-v7a/libLive2DCubismCore.so",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS/armeabi-v7a/libLive2DCubismCore.so.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS/x86_64.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS/x86_64/libLive2DCubismCore.so",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/HarmonyOS/x86_64/libLive2DCubismCore.so.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/LICENSE.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/LICENSE.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Linux.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Linux/x86_64.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Linux/x86_64/libLive2DCubismCore.so",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Linux/x86_64/libLive2DCubismCore.so.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/README.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/README.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/README.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/README.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/RedistributableFiles.txt",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/RedistributableFiles.txt.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Windows.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Windows/x86.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Windows/x86/Live2DCubismCore.dll",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Windows/x86/Live2DCubismCore.dll.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Windows/x86_64.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Windows/x86_64/Live2DCubismCore.dll",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Windows/x86_64/Live2DCubismCore.dll.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Debug-iphoneos.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Debug-iphoneos/libLive2DCubismCore.a",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Debug-iphoneos/libLive2DCubismCore.a.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Debug-iphonesimulator.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Debug-iphonesimulator/libLive2DCubismCore.a",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Debug-iphonesimulator/libLive2DCubismCore.a.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Release-iphoneos.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Release-iphoneos/libLive2DCubismCore.a",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Release-iphoneos/libLive2DCubismCore.a.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Release-iphonesimulator.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Release-iphonesimulator/libLive2DCubismCore.a",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/iOS/Release-iphonesimulator/libLive2DCubismCore.a.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/macOS.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/macOS/Live2DCubismCore.bundle",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/macOS/Live2DCubismCore.bundle.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/README.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/README.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/README.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/README.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/ArrayExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/ArrayExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismBuiltinMaterials.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismBuiltinMaterials.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismBuiltinShaders.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismBuiltinShaders.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismPartColorsEditor.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismPartColorsEditor.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismRenderController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismRenderController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismRenderer.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismRenderer.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismShaderVariables.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismShaderVariables.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismSortingMode.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismSortingMode.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismSortingModeExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/CubismSortingModeExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/ICubismBlendColorHandler.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/ICubismBlendColorHandler.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/ICubismDrawOrderHandler.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/ICubismDrawOrderHandler.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/ICubismOpacityHandler.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/ICubismOpacityHandler.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskCommandBuffer.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskCommandBuffer.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskMaskedJunction.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskMaskedJunction.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskProperties.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskProperties.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskRenderer.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskRenderer.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskRendererExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskRendererExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskTexture.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskTexture.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskTile.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskTile.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskTilePool.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskTilePool.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskTransform.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/CubismMaskTransform.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/ICubismMaskCommandSource.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/ICubismMaskCommandSource.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/ICubismMaskTextureCommandSource.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/ICubismMaskTextureCommandSource.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/IntExtensionMethods.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Masking/IntExtensionMethods.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/GlobalMaskTexture.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/GlobalMaskTexture.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/Mask.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/Mask.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/MaskCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/MaskCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/Unlit.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/Unlit.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditive.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditive.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveMasked.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveMasked.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveMaskedCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveMaskedCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveMaskedInverted.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveMaskedInverted.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveMaskedInvertedCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitAdditiveMaskedInvertedCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMasked.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMasked.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMaskedCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMaskedCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMaskedInverted.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMaskedInverted.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMaskedInvertedCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMaskedInvertedCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiply.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiply.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyMasked.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyMasked.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyMaskedCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyMaskedCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyMaskedInverted.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyMaskedInverted.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyMaskedInvertedCulling.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Materials/UnlitMultiplyMaskedInvertedCulling.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Shaders.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Shaders/CubismCG.cginc",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Shaders/CubismCG.cginc.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Shaders/Mask.shader",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Shaders/Mask.shader.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Shaders/Unlit.shader",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Rendering/Resources/Live2D/Cubism/Shaders/Unlit.shader.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Animation.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Animation/Animation.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Animation/Animation.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Animation/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Animation/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Animation/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Animation/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Animation/Koharu.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Animation/Koharu.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/AsyncBenchmark.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/AsyncBenchmark.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/AsyncToggler.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/AsyncToggler.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/AutomaticAsyncBenchmark.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/AutomaticAsyncBenchmark.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/BenchmarkController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/BenchmarkController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Editor.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Editor/FrameRateUiHolderInspector.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Editor/FrameRateUiHolderInspector.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Editor/Live2D.Cubism.Editor.asmref",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Editor/Live2D.Cubism.Editor.asmref.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/FpsCounter.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/FpsCounter.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/FrameRateMeasurer.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/FrameRateMeasurer.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/FrameRateUiHolder.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/FrameRateUiHolder.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Koharu.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Koharu.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Koharu.prefab",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/Koharu.prefab.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/ModelSpawner.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/ModelSpawner.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/TotalElapsedTime.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/AsyncBenchmark/TotalElapsedTime.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Editor.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Editor/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Editor/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Editor/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Editor/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Editor/ImportCustomization.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Editor/ImportCustomization.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Editor/Live2D.Cubism.Editor.asmref",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Editor/Live2D.Cubism.Editor.asmref.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/HarmonicMotion.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/HarmonicMotion/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/HarmonicMotion/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/HarmonicMotion/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/HarmonicMotion/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/HarmonicMotion/HarmonicMotion.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/HarmonicMotion/HarmonicMotion.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Billboarder.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Billboarder.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Cubism.png",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Cubism.png.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/LookAt.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/LookAt.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Target.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Target.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Target.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/LookAt/Target.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/MaskPreview.mat",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/MaskPreview.mat.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/MaskTexturePreview.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/MaskTexturePreview.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/Masking.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Masking/Masking.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.1024.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.1024/texture_00.png",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.1024/texture_00.png.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.moc3",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.moc3.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.model3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.model3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.prefab",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/Clipping.prefab.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/ClippingMaskTexture.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Clipping/ClippingMaskTexture.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/body.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/body.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/body.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/body.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/body.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/body.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face01.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face01.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face01.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face01.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face01.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face01.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face02.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face02.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face02.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face02.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face02.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Animation/face02.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.2048.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.2048/texture_00.png",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.2048/texture_00.png.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.fadeMotionList.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.fadeMotionList.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.moc3",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.moc3.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.model3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.model3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.prefab",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Koharu/Koharu.prefab.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.2048.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.2048/texture_00.png",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.2048/texture_00.png.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.cdi3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.cdi3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.expressionList.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.expressionList.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.fadeMotionList.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.fadeMotionList.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.moc3",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.moc3.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.model3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.model3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.physics3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.physics3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.pose3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.pose3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.prefab",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.prefab.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/MaoMaskTexture.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/MaoMaskTexture.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_01.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_01.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_01.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_01.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_02.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_02.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_02.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_02.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_03.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_03.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_03.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_03.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_04.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_04.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_04.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_04.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_05.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_05.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_05.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_05.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_06.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_06.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_06.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_06.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_07.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_07.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_07.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_07.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_08.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_08.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_08.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_08.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.2048.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.2048/texture_00.png",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.2048/texture_00.png.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.expressionList.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.expressionList.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.fadeMotionList.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.fadeMotionList.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.moc3",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.moc3.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.model3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.model3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.physics3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.physics3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.pose3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.pose3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.prefab",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.prefab.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/NatoriMaskTexture.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/NatoriMaskTexture.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_00.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_00.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_00.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_00.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_01.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_01.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_01.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_01.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_02.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_02.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_02.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_02.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_03.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_03.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_03.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_03.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_04.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_04.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_04.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_04.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_05.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_05.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_05.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_05.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_06.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_06.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_06.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_06.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_07.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_07.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_07.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_07.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_08.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_08.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_08.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_08.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_09.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_09.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_09.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_09.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_10.exp3.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_10.exp3.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_10.exp3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/exp/exp_10.exp3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_00.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_00.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_00.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_00.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_00.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_00.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_01.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_01.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_01.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_01.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_01.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_01.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_02.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_02.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_02.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_02.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_02.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_02.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_03.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_03.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_03.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_03.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_03.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_03.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_04.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_04.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_04.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_04.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_04.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_04.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_05.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_05.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_05.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_05.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_05.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_05.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_06.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_06.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_06.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_06.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_06.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_06.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_07.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_07.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_07.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_07.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_07.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_07.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_08.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_08.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_08.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_08.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_08.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_08.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.2048.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.2048/texture_00.png",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.2048/texture_00.png.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.2048/texture_01.png",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.2048/texture_01.png.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.cdi3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.cdi3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.fadeMotionList.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.fadeMotionList.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.moc3",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.moc3.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.model3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.model3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.physics3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.physics3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.prefab",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.prefab.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/RiceMaskTexture.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/RiceMaskTexture.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_00.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_00.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_00.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_00.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_00.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_00.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_01.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_01.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_01.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_01.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_01.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_01.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_02.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_02.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_02.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_02.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_02.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_02.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_03.anim",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_03.anim.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_03.fade.asset",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_03.fade.asset.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_03.motion3.json",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_03.motion3.json.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/MultipleModels.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/MultipleModels/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/MultipleModels/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/MultipleModels/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/MultipleModels/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/MultipleModels/MultipleModels.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/MultipleModels/MultipleModels.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/CubismLookTarget.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/CubismLookTarget.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/CubismSampleController.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/CubismSampleController.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/Demo.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/Demo.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/DemoCubism4.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/DemoCubism4.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/DemoCubism4_2.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/DemoCubism4_2.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Demo/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Expression.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Expression/CubismExpressionPreview.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Expression/CubismExpressionPreview.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Expression/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Expression/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Expression/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Expression/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Expression/Expression.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Expression/Expression.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Motion.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Motion/CubismMotionPreview.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Motion/CubismMotionPreview.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Motion/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Motion/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Motion/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Motion/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Motion/Motion.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Motion/Motion.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/MotionFade.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/MotionFade/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/MotionFade/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/MotionFade/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/MotionFade/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/MotionFade/MotionFade.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/MotionFade/MotionFade.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/MotionFade/Natori.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/MotionFade/Natori.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Pose.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Pose/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Pose/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Pose/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Pose/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Pose/Natori.controller",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Pose/Natori.controller.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Pose/Pose.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/OriginalWorkflow/Pose/Pose.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/PerspectiveCamera.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/PerspectiveCamera/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/PerspectiveCamera/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/PerspectiveCamera/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/PerspectiveCamera/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/PerspectiveCamera/PerspectiveCamera.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/PerspectiveCamera/PerspectiveCamera.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Raycasting.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Raycasting/Description.ja.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Raycasting/Description.ja.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Raycasting/Description.md",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Raycasting/Description.md.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Raycasting/RaycastHitDisplay.cs",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Raycasting/RaycastHitDisplay.cs.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Raycasting/Raycasting.unity",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Raycasting/Raycasting.unity.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/cubism-info.yml",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/Live2D/Cubism/cubism-info.yml.meta",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "path": "Assets/csc.rsp",
+      "exists": false,
+      "matches": false
+    },
+    {
+      "path": "Assets/csc.rsp.meta",
+      "exists": false,
+      "matches": false
+    },
+    {
+      "path": "Assets/mcs.rsp",
+      "exists": false,
+      "matches": false
+    },
+    {
+      "path": "Assets/mcs.rsp.meta",
+      "exists": false,
+      "matches": false
+    }
+  ]
+}

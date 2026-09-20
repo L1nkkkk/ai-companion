@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "scope": "Read-only precise-editor acquisition research. This file summarizes earlier official metadata, HEAD requests and installed-file inspections in this session; writing this summary made no additional network request.",
+  "summaryWrittenAtUtc": "2026-09-20T09:53:30.650670+00:00",
+  "previousObservationDateLocal": "2026-09-20",
+  "observationTimingNote": "Exact UTC time of the earlier HEAD observations was not retained; response Date headers can be cached and are not the observation time.",
+  "requestedEditor": {
+    "version": "2022.3.62f3c1",
+    "revision": "1623fc0bbb97",
+    "platform": "Windows x64"
+  },
+  "officialArchive": {
+    "entryUrl": "https://unity.cn/releases/full/2022",
+    "observedRedirect": "https://unity.cn/tuanjie/releases?u_release_type=full&u_major=2022",
+    "metadataUrl": "https://unity.cn/api/releases?releaseType=full&major=2022",
+    "metadataHttpStatus": 200,
+    "matchingRecord": {
+      "title": "2022.3.62f3",
+      "chinesePostfix": "f3c1",
+      "chineseHash": "1623fc0bbb97",
+      "id": "69014b0f7fbf7d782e6c25ab",
+      "downloadWin.unityEditor64": "https://download.unitychina.cn/download_unity/1623fc0bbb97/Windows64EditorInstaller/UnitySetup64.exe"
+    },
+    "moduleCaution": "The API additionalDownloads fields include global 96770f904ca7 links. They are not evidence of Chinese 1623fc0bbb97 module identity and must not be mixed into this pinned installation."
+  },
+  "editorInstallerHeadObservation": {
+    "method": "HEAD",
+    "url": "https://download.unitychina.cn/download_unity/1623fc0bbb97/Windows64EditorInstaller/UnitySetup64.exe",
+    "finalUrl": "https://download.unitychina.cn/download_unity/1623fc0bbb97/Windows64EditorInstaller/UnitySetup64.exe",
+    "httpStatus": 200,
+    "contentLength": 3759910736,
+    "contentType": "application/x-msdownload",
+    "lastModified": "Thu, 27 Nov 2025 04:26:04 GMT",
+    "etag": "\"100F1246888EE5C52E85995B584CB3CD-72\"",
+    "downloadedFullInstaller": false,
+    "fullInstallerSha256": null,
+    "authenticodeOfDownloadedInstallerVerified": false,
+    "limitations": "HTTP HEAD availability only; the multipart ETag is not a SHA-256 or a verified complete-file digest."
+  },
+  "existingInstallationObservation": {
+    "editorPath": "C:/Program Files/Unity/Hub/Editor/2022.3.62f3c1/Editor/Unity.exe",
+    "productVersion": "2022.3.62f3c1_1623fc0bbb97",
+    "fileVersion": "2022.3.62.1451004",
+    "authenticodeStatus": "Valid",
+    "signerSubject": "CN=优三缔科技（上海）有限公司, O=优三缔科技（上海）有限公司, S=上海市, C=CN",
+    "modulesFile": "C:/Program Files/Unity/Hub/Editor/2022.3.62f3c1/modules.json",
+    "windowsModuleIds": [
+      "universal-windows-platform",
+      "windows-il2cpp",
+      "windows-server"
+    ],
+    "separateWindowsMonoModuleListed": false,
+    "selectedModuleIds": [
+      "windows-il2cpp"
+    ],
+    "monoTemplatesPresent": [
+      "Editor/Data/PlaybackEngines/windowsstandalonesupport/Variations/mono",
+      "Editor/Data/PlaybackEngines/windowsstandalonesupport/Variations/win32_player_development_mono",
+      "Editor/Data/PlaybackEngines/windowsstandalonesupport/Variations/win32_player_nondevelopment_mono",
+      "Editor/Data/PlaybackEngines/windowsstandalonesupport/Variations/win64_player_development_mono",
+      "Editor/Data/PlaybackEngines/windowsstandalonesupport/Variations/win64_player_nondevelopment_mono"
+    ],
+    "windowsMonoAcquisitionInference": "Windows Mono is obtained with the Windows Editor installation; the installed Windows module list exposes no separate windows-mono add-on. This inference is supported by the local Mono templates and successful local Mono build, not by unpacking a newly downloaded installer."
+  },
+  "optionalIl2cppModuleHeadObservation": {
+    "requiredForThisMonoBuild": false,
+    "source": "Existing installation modules.json",
+    "method": "HEAD",
+    "url": "https://download.unitychina.cn/download_unity/1623fc0bbb97/TargetSupportInstaller/UnitySetup-Windows-IL2CPP-Support-for-Editor-2022.3.62f3c1.exe",
+    "httpStatus": 200,
+    "contentLength": 102112056,
+    "metadataChecksum": "c156066fa1d0c7df5788899329c8f03c",
+    "metadataChecksumAlgorithm": "MD5",
+    "downloaded": false,
+    "sha256": null
+  },
+  "otherMachineProcedure": [
+    "Obtain the exact Windows Editor installer from the official Chinese-version URL above and install it in a distinct directory.",
+    "Use the recipient machine and account licensing flow; do not copy another machine license.",
+    "Add the installed Editor/Unity.exe to Hub using its existing-installation/Locate function if needed. Verify product version 2022.3.62f3c1_1623fc0bbb97.",
+    "Verify the Windows Mono x64 templates exist, then restore the pinned repository resources and run the registered clean build and Player tests on that machine."
+  ],
+  "documentation": [
+    {
+      "purpose": "Official installation options",
+      "url": "https://docs.unity.cn/2022.3/Documentation/Manual/InstallingUnity.html"
+    },
+    {
+      "purpose": "Official Hub documentation for locating an existing Editor; archived UI wording may differ in current Hub",
+      "url": "https://docs.unity3d.com/2020.1/Documentation/Manual/GettingStartedInstallingHub.html"
+    },
+    {
+      "purpose": "Unity 2022.3 Windows Mono backend settings",
+      "url": "https://docs.unity3d.com/cn/2022.3/Manual/playersettings-windows.html"
+    }
+  ],
+  "secondMachineDownloadPerformed": false,
+  "secondMachineInstallPerformed": false,
+  "secondMachineBuildPerformed": false,
+  "conclusion": "Exact official acquisition entry is identified and was HEAD-accessible. Existing local Editor identity and Mono templates are confirmed. Complete installer integrity and second-machine reproducibility remain unverified."
+}

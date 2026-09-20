@@ -1,19 +1,18 @@
 {
   "task": "U01-00",
-  "status": "awaiting_external",
-  "source_base": "765c635327685b413c7f930558711db7d88df60c",
-  "candidate_editor": "6000.3.11f1",
-  "artifact": null,
-  "sha256": null,
-  "successful_unity_build_log": null,
-  "player_started": false,
-  "player_evidence": [],
-  "reason": "Official Editor download and global Hub CLI installation returned HTTP 404 before payload acquisition. No target Unity Editor was available to import or build.",
-  "evidence": [
-    "environment-install.md",
-    "environment-evidence/hub-global-install-redacted.jsonl",
-    "build-preflight.txt"
-  ],
-  "prepared_source_sha": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
-  "built_source_sha": null
+  "status": "built_and_player_tested_pending_a0",
+  "built_source_sha": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "tested_source_sha": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "design_sha": "000f2b7776abb9a87e63337eb6df4b7b0fcd5fa7",
+  "source_dirty": false,
+  "artifact": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation\\Windows-x64.zip",
+  "bytes": 50352471,
+  "sha256": "8c59e9c54cb89e5dafac2027fc8bdfa1ce53bd0c5a93f889435d15361bd8a6db",
+  "player_started": true,
+  "player_test_seconds": 600.0253533,
+  "build_receipt": "fallback-r41/formal/build-receipt.json",
+  "runtime_manifest": "fallback-r41/formal/runtime-manifest.json",
+  "validation_summary": "fallback-r41/formal/verification-summary.json",
+  "note": "The original build receipt playerStarted=false describes build-time state. The separate runtime manifest proves this exact package was subsequently run. Player exe is the Unity launcher; use ZIP and full per-file hashes to identify the application.",
+  "historical_r5_record": "fallback-r41/history-r5/build-manifest.json"
 }

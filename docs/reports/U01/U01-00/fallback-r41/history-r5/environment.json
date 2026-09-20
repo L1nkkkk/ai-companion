@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-09-20T16:40:08.7211762+08:00",
+  "task": "U01-00",
+  "baseline_sha": "765c635327685b413c7f930558711db7d88df60c",
+  "status": "awaiting_external",
+  "blocker": "Official Unity 6.3 Windows editor download redirects to a regional CDN with HTTP 404; global Hub install also fails source availability validation.",
+  "host": {
+    "os": "Microsoft Windows 11 Pro",
+    "os_version": "10.0.26200",
+    "architecture": "x86_64",
+    "cpu": "Intel Core Ultra 7 265",
+    "physical_cores": 20,
+    "logical_processors": 20,
+    "physical_memory_gib": 63.19,
+    "gpu": [
+      {
+        "name": "NVIDIA GeForce RTX 5060",
+        "driver": "32.0.15.9571"
+      },
+      {
+        "name": "Intel Graphics",
+        "driver": "32.0.101.6629"
+      }
+    ]
+  },
+  "existing_editor": {
+    "version": "2022.3.62f3c1",
+    "path": "C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.62f3c1\\Editor\\Unity.exe",
+    "windows_x64_mono_variations_present": true,
+    "il2cpp_toolchain_tested": false,
+    "license_file_present": true,
+    "license_contents_copied": false,
+    "batchmode_create_project_exit_code": 0,
+    "license_updated_in_editor_log": true,
+    "is_pro": 0,
+    "empty_project_build_exit_code": 1,
+    "empty_project_build_failure": "No saved scene: empty scene path rejected by BuildPlayer",
+    "not_a_u01_build": true
+  },
+  "candidate": {
+    "version": "6000.3.11f1",
+    "stream": "LTS",
+    "revision": "3000ef702840",
+    "release_date": "2026-03-11",
+    "installer_url": "https://download.unity3d.com/download_unity/3000ef702840/Windows64EditorInstaller/UnitySetup64-6000.3.11f1.exe",
+    "publisher_download_size_bytes": 4183040280,
+    "publisher_md5": "74af0e8736260889664604154e2c8995",
+    "downloaded": false,
+    "installed": false,
+    "local_installer_sha256": null,
+    "unity6_license_status": "not_run",
+    "unity6_windows_build_status": "not_run"
+  },
+  "alternative_lts_downloads": [
+    {
+      "version": "6000.3.22f1",
+      "revision": "1c726e1fb402",
+      "http_result": 404
+    },
+    {
+      "version": "6000.3.23f1",
+      "revision": "09d2ecc7fb28",
+      "http_result": 404
+    },
+    {
+      "version": "6000.3.24f1",
+      "revision": "4e7b9b5b6244",
+      "http_result": 404
+    }
+  ],
+  "global_hub_probe": {
+    "version": "3.14.5",
+    "source": "https://public-cdn.cloud.unity3d.com/hub/3.14.5/UnityHubSetup.exe",
+    "official_documentation": "https://docs.unity.com/en-us/hub/install-legacy-hub",
+    "installer_sha256": "697bb600791d712ecbd210c268ab5ed4b126110ed5c68239a61314cb0cfec3f9",
+    "signature_status": "Valid",
+    "signer": "Unity Technologies SF",
+    "isolated_extracted_app": true,
+    "existing_hub_replaced": false,
+    "install_command_executed": true,
+    "install_result": "download_failed",
+    "source_validation_http_result": 404
+  },
+  "evidence_root": "../U01-00-evidence",
+  "evidence": [
+    {
+      "file": "release-api.json",
+      "sha256": "83e26dab691b1baf124ef814a1779c93995b56f8b93631fa236a0e22960e803c",
+      "bytes": 97191
+    },
+    {
+      "file": "releases-current.json",
+      "sha256": "b1cd5f157a903d11d24e2b00326c80610bfc07bbe5073980184a3cef7ff679fe",
+      "bytes": 2508878
+    },
+    {
+      "file": "download-6000.3.11f1-http-headers.txt",
+      "sha256": "b404b643beede3ccc7f415184b41026c24869ed487853b260c2385768117e192",
+      "bytes": 1376
+    },
+    {
+      "file": "download-6000.3.22f1-http-headers.txt",
+      "sha256": "14fe124910a6345d965e83ec536f74ed12f024136fa8d207682fb4f28fee7910",
+      "bytes": 1363
+    },
+    {
+      "file": "download-6000.3.23f1-http-headers.txt",
+      "sha256": "067873f2b7178a007188aefcf6180e69245fd3d8672f0ab1711b59787a609d8e",
+      "bytes": 1363
+    },
+    {
+      "file": "download-6000.3.24f1-http-headers.txt",
+      "sha256": "2836718fa4678f463b9e3a24581f07ec6a97ea2bd9b6d2a008368be0ec08f58f",
+      "bytes": 1363
+    },
+    {
+      "file": "environment-license-probe-redacted.txt",
+      "sha256": "e4b66e6b4f8075c0905702b833f071b78dc40b62e13cf2a9bd6cba5de012329c",
+      "bytes": 971
+    },
+    {
+      "file": "hub-global-install-redacted.jsonl",
+      "sha256": "cd9e28a684962ee4b227ffe1d12381f85938e4d55a2fc2f7527fc46a9c1d1b25",
+      "bytes": 4700
+    }
+  ],
+  "external_evidence_root_relative_to": "repository_root",
+  "committed_evidence": [
+    {
+      "file": "environment-evidence/environment-license-probe-redacted.txt",
+      "sha256": "00a6ea2bb1f79cc04e4af64c44db0d2ba826a1797d38bcda25637635222aeeae"
+    },
+    {
+      "file": "environment-evidence/hub-global-install-redacted.jsonl",
+      "sha256": "de2958a12023d1313cb855a6b6a4c92e592120525f7a305a1c8db850cc213ac4"
+    },
+    {
+      "file": "environment-evidence/download-6000.3.11f1-http-headers.txt",
+      "sha256": "471801435940d073913e75dc3d1bba51842504cb0c52251caccfc9f456942a8a"
+    },
+    {
+      "file": "environment-evidence/download-6000.3.22f1-http-headers.txt",
+      "sha256": "910d42bb8ad52e506a6ff48712f4a9d696065ae64d42e050dc2051fb74e44c6a"
+    },
+    {
+      "file": "environment-evidence/download-6000.3.23f1-http-headers.txt",
+      "sha256": "322d57e72ae4eee84111ee64943c18c96465a0fcf9dc60b90190fb4fab2f96e1"
+    },
+    {
+      "file": "environment-evidence/download-6000.3.24f1-http-headers.txt",
+      "sha256": "0a5ab92ab41a7976a149ea4772a3e2714c779cdddc5fab3e12a2fd6a606be2c7"
+    }
+  ],
+  "private_local_log_hashes": [
+    {
+      "file": "license-probe-2022.private.log",
+      "sha256": "16cd922eb3e274d0d655e30eaa6b46eed30ab8ef5a490576ba59365993ba00e3",
+      "publish": false
+    },
+    {
+      "file": "license-probe-2022-build.private.log",
+      "sha256": "26f43cff51dd49c8cb05f164473c109179f52033746072e3c2ae15ed50c8d054",
+      "publish": false
+    }
+  ],
+  "committed_evidence_note": "Sanitized text normalized to UTF-8 LF for Git; external raw evidence retains its separately recorded hashes."
+}

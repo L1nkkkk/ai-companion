@@ -1,0 +1,12 @@
+{
+  "unity": "2022.3.62f3c1",
+  "result": "Succeeded",
+  "errors": 0,
+  "warnings": 2,
+  "messages": [
+    "Warning: Assets\\Live2D\\Cubism\\Framework\\Json\\CubismMotion3Json.cs(439,25): warning CS0162: Unreachable code detected",
+    "Warning: GfxDevice renderer is null. Unity cannot update the Ambient Probe and Reflection Probes that the SkyManager generates. Run the Editor without the -nographics argument or generate lighting for your scene."
+  ],
+  "sizeBytes": 115500182,
+  "elapsedSeconds": 15.5776855
+}

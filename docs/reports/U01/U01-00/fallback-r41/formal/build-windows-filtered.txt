@@ -1,0 +1,13 @@
+Selected diagnostic lines only; complete raw log retained locally with the hash in verification-summary.json.
+  Version:                 1.16.2+bdef8f5
+Initialize engine version: 2022.3.62f3c1 (1623fc0bbb97)
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Assets\Live2D\Cubism\Framework\Json\CubismMotion3Json.cs(439,25): warning CS0162: Unreachable code detected
+Assets\Live2D\Cubism\Framework\Json\CubismMotion3Json.cs(439,25): warning CS0162: Unreachable code detected
+U01-00_CONTRACTS_COMPILED Companion.Contracts, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+Assets\Live2D\Cubism\Framework\Json\CubismMotion3Json.cs(439,25): warning CS0162: Unreachable code detected
+Assets\Live2D\Cubism\Framework\Json\CubismMotion3Json.cs(439,25): warning CS0162: Unreachable code detected
+GfxDevice renderer is null. Unity cannot update the Ambient Probe and Reflection Probes that the SkyManager generates. Run the Editor without the -nographics argument or generate lighting for your scene.
+U01-00_BUILD_RESULT Succeeded, errors=0, warnings=2, bytes=115500182

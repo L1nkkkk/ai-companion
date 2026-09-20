@@ -1,217 +1,174 @@
 {
   "task": "U01-00",
   "status": "awaiting_external",
-  "tested_commit": null,
-  "tester": "U01-00 development/integration agent; independent static and native resource review by subagents",
+  "development_status": "foundation_validation_complete",
+  "awaiting": "A0 final review/version and shared-boundary freeze",
+  "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
   "environment": "environment.json",
   "results": [
     {
       "id": "UA01",
-      "status": "awaiting_external",
-      "method": "Official asset acquisition and native resource restoration; Unity6 installation and build preflight attempted",
+      "status": "passed",
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Fresh directory official asset restoration, actual Unity import/compile/build and packaged Windows Player run",
       "evidence": [
-        "environment-install.md",
-        "native-assets-verification.json",
-        "build-preflight.txt"
+        "fallback-r41/formal/verification-summary.json"
       ],
-      "limitations": "No Unity import, compiler, Player build or packaged binary.",
-      "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "limitations": "Development verification; final A0 acceptance pending. Same-machine fresh worktree, not a second-machine reproduction."
     },
     {
       "id": "UA02",
-      "status": "awaiting_external",
-      "method": "Official Windows x64 Core C API model consistency, masked drawable inventory and actual parameter deformation",
+      "status": "not_run",
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Foundation rendering subchecks completed; full role acceptance not run",
       "evidence": [
-        "native-assets-verification.json"
+        "fallback-r41/formal/verification-summary.json"
       ],
-      "limitations": "No URP rendered material, mask, sorting or Player stability validation.",
-      "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "limitations": "600-second render fixture passed, but natural blinking, pointer follow, user greeting entry, missing-parameter fallback and production AvatarPresenter remain untested/unimplemented."
     },
     {
       "id": "UA03",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     },
     {
       "id": "UA04",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     },
     {
       "id": "UA05",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     },
     {
       "id": "UA06",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     },
     {
       "id": "UA07",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     },
     {
       "id": "UA08",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     },
     {
       "id": "UA09",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     },
     {
       "id": "UA10",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     },
     {
       "id": "UA11",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     },
     {
       "id": "UA12",
       "status": "not_run",
-      "method": "Outside the completed foundation preparation",
-      "evidence": [],
-      "limitations": "No acceptance claim.",
       "tested_commit": null,
-      "tester": "U01-00 integration agent",
-      "environment": "environment.json"
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
     }
   ],
   "preparation_checks": [
     {
       "name": "Repository foundation suite",
       "status": "passed",
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
       "evidence": [
-        "foundation-check.txt"
-      ],
-      "limitations": "Does not test Unity or native mobile builds."
+        "fallback-r41/formal/foundation-check.txt"
+      ]
     },
     {
-      "name": "Source review and script syntax",
+      "name": "Pure Contracts compile in actual Editor and build",
       "status": "passed",
-      "evidence": [
-        "report.md"
-      ],
-      "limitations": "No Unity6 C# compile evidence."
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+      "limitations": "Interfaces and data shapes, no module business implementation"
     },
     {
-      "name": "Fresh Git worktree official resource restoration and native model probe",
+      "name": "600-second deterministic Live2D rendering fixture",
       "status": "passed",
-      "tested_commit": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
       "evidence": [
-        "clean-reproduction.json",
-        "native-reproduction.json"
+        "fallback-r41/formal/behavior-summary.json",
+        "fallback-r41/formal/player-result.json"
       ],
-      "limitations": "No Unity Editor import, C# compile, URP appearance or Windows Player."
-    },
-    {
-      "name": "Review fix controlled-process regression and full repository checks",
-      "status": "passed",
-      "tested_commit": "7f905b5d0a027844cf45d554558cc6440e21a2a7",
-      "source_dirty_at_start": false,
-      "evidence": [
-        "review-fixes/player-harness.json",
-        "review-fixes/foundation-check.txt"
-      ],
-      "limitations": "No Unity acceptance tests; synthetic fixture outputs excluded from graphics evidence."
+      "limitations": [
+        "First 3 seconds excluded from monotonic Unity Update frame-gap samples; no sample truncation. Not GPU timing or an OS/UI input-latency test.",
+        "OS peak working set from GetProcessMemoryInfo; private and Unity allocated peaks sampled every 5 seconds. Working-set growth uses a baseline near 30 seconds.",
+        "Core visibility plus opacity is not proof of on-screen contribution or every mask path. Only first-cycle screenshots were captured.",
+        "Direct parameter sweeps and SDK clips are a rendering fixture, not natural blinking, pointer following, user greeting interaction, actual audio-driven lip sync or missing-parameter fallback.",
+        "One Mao model and one Windows machine. No second-machine install/build, no installer SHA-256, no full UA02 or U-G0 acceptance."
+      ]
     }
   ],
-  "prepared_commit": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
-  "tested_commit_scope": "No Unity acceptance test ran. Prepared source was used for the independent native/assets reproduction below.",
   "review_fixes": {
-    "review_source_commit": "b397e7dccac0b1699387e7f1e59f0ca7040fb2fa",
-    "implementation_commit": "7f905b5d0a027844cf45d554558cc6440e21a2a7",
-    "a0_rereview_status": "pending",
-    "items": [
-      {
-        "id": "U01-00-R1",
-        "development_status": "proposal_updated",
-        "method": "Session-only UI boundary traced through complete DTO mappings, bounded history/export/device/voice APIs and examples",
-        "evidence": [
-          "interfaces-proposal.md",
-          "review-fixes.md"
-        ],
-        "limitations": "Proposal only; not a compiled implementation or A0 freeze."
-      },
-      {
-        "id": "U01-00-R2",
-        "development_status": "tests_passed",
-        "method": "Four real controlled Windows process cases: normal, hang with same-image sentinel, missing screenshot, invalid result; all evidence hashes checked",
-        "evidence": [
-          "review-fixes/player-harness.json",
-          "review-fixes.md"
-        ],
-        "limitations": "Synthetic fixture outputs test process supervision and evidence validation; no Unity import, graphics, build, UA01 or UA02 acceptance evidence."
-      }
-    ]
+    "R1": "closed",
+    "R2": "closed",
+    "a0_design_commit": "5286a56",
+    "harness_changed_by_migration": false
   },
-  "environment_followup": {
-    "status": "awaiting_external",
-    "local_unity_63_found": false,
-    "additional_official_version_checked": "6000.3.21f1",
-    "official_head_status_chain": [
-      302,
-      404
-    ],
-    "evidence": [
-      "environment-install.md",
-      "review-fixes/unity-6000.3.21f1-official-head.txt",
-      "review-fixes/unity-6000.3.21f1-metadata-excerpt.json"
-    ]
-  }
+  "historical_r5_record": "fallback-r41/history-r5/verification.json",
+  "gate_status": "U-G0 and complete UA02/UA03-12 are not accepted by this task"
 }
