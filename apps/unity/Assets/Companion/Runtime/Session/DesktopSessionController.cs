@@ -305,6 +305,12 @@ namespace AICompanion.Preview.Session
         public void NotifyDraftEdited(string text) { _draft = text ?? ""; _draftRevision++; Publish(); }
         public Task<LocalResult<ConversationPage>> ListConversationsAsync(ConversationListQuery query, CancellationToken token) => _history.ListAsync(query, token);
         public async Task<LocalResult<HistoryExport>> ExportConversationAsync(Guid id, CancellationToken token) { await _pendingWrites; return await _history.ExportAsync(id, token); }
+        /// <summary>
+        /// Await after Cancel(WindowClosing), before Dispose. Drains every already queued history
+        /// update without blocking Unity's synchronization context; Composition owns the quit deadline.
+        /// Persistence errors remain explicit in Snapshot.Error and are never reported as saved.
+        /// </summary>
+        public Task FlushHistoryAsync() => _pendingWrites;
 
         public Task NewConversationAsync(CancellationToken token) => NavigateAsync(Guid.NewGuid(), true, StopReason.NewConversation, token);
         public Task SelectConversationAsync(Guid id, CancellationToken token) => NavigateAsync(id, false, StopReason.SelectConversation, token);

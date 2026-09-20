@@ -134,6 +134,15 @@ namespace AICompanion.Preview.Tests
                 await Until(() => session.Snapshot.Settings.SaveState == SettingsSaveState.Saved);
                 Assert(File.Exists(Path.Combine(folder, "settings.json")), "settings_persisted");
                 session.SetVolume(0.35f);
+                history.PauseWrites = true;
+                session.SubmitText(new SubmitTextCommand("关闭窗口前保存中断", "mao", null, false));
+                session.Cancel(StopReason.WindowClosing);
+                Task flush = session.FlushHistoryAsync();
+                Assert(!flush.IsCompleted, "shutdown_flush_waits_for_queued_history");
+                history.ResumeWrites();
+                await flush;
+                Assert(history.LastRecord != null && history.LastRecord.DeliveryState == DeliveryState.Interrupted,
+                    "shutdown_flush_persists_terminal_record_after_prior_writes");
             }
             Assert(File.ReadAllText(Path.Combine(folder, "settings.json")).Contains("0.35"), "shutdown_flushes_last_volume_setting");
             if (Directory.Exists(folder)) Directory.Delete(folder, true);
@@ -202,13 +211,27 @@ namespace AICompanion.Preview.Tests
         {
             private readonly Dictionary<Guid, ConversationHistory> _items = new Dictionary<Guid, ConversationHistory>();
             private ulong _generation = 1;
+            internal bool PauseWrites;
+            internal HistoryTurn LastRecord;
+            private TaskCompletionSource<bool> _writeGate;
+            internal void ResumeWrites() { PauseWrites = false; _writeGate?.TrySetResult(true); }
             public HistoryCapacitySnapshot Capacity => new HistoryCapacitySnapshot(_items.Count, 20, 80, HistoryRetentionPolicy.EvictOldestInactive, 1);
             public event Action<HistoryCapacitySnapshot> CapacityChanged;
             public Task<LocalResult<ConversationPage>> ListAsync(ConversationListQuery query, CancellationToken token) => Task.FromResult(new LocalResult<ConversationPage>(true, new ConversationPage(Array.Empty<ConversationSummary>(), null, 1), null));
             public Task<ConversationHistory> CreateAsync(Guid id, CancellationToken token) { var value = new ConversationHistory(1, id, new HistoryWriteToken(id, _generation++), "测试", DateTimeOffset.UtcNow, DateTimeOffset.UtcNow, Array.Empty<HistoryTurn>()); _items[id] = value; return Task.FromResult(value); }
             public Task<ConversationHistory> LoadAsync(Guid id, CancellationToken token) => Task.FromResult(_items[id]);
-            public Task<HistoryWriteResult> AppendOrUpdateAsync(HistoryWriteToken token, HistoryTurn row, CancellationToken cancel)
-            { if (!_items.TryGetValue(token.ConversationId, out var existing) || existing.WriteToken != token) return Task.FromResult(new HistoryWriteResult(false, 1, new PreviewError("deleted", "已删除", false, row.Operation))); return Task.FromResult(new HistoryWriteResult(true, 1, null)); }
+            public async Task<HistoryWriteResult> AppendOrUpdateAsync(HistoryWriteToken token, HistoryTurn row, CancellationToken cancel)
+            {
+                if (PauseWrites)
+                {
+                    if (_writeGate == null) _writeGate = new TaskCompletionSource<bool>();
+                    await _writeGate.Task;
+                }
+                if (!_items.TryGetValue(token.ConversationId, out var existing) || existing.WriteToken != token)
+                    return new HistoryWriteResult(false, 1, new PreviewError("deleted", "已删除", false, row.Operation));
+                LastRecord = row;
+                return new HistoryWriteResult(true, 1, null);
+            }
             public Task<LocalResult<HistoryExport>> ExportAsync(Guid id, CancellationToken token) => throw new NotSupportedException();
             public Task DeleteConversationAsync(Guid id, CancellationToken token) { _items.Remove(id); return Task.CompletedTask; }
             public Task ClearAllAsync(CancellationToken token) { _items.Clear(); return Task.CompletedTask; }

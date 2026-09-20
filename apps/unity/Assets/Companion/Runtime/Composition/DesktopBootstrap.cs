@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using AICompanion.Preview.Audio;
 using AICompanion.Preview.Avatar;
 using AICompanion.Preview.Contracts;
@@ -12,6 +13,7 @@ using AICompanion.Preview.UI;
 using Live2D.Cubism.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace AICompanion.Preview.Composition
 {
@@ -34,8 +36,12 @@ namespace AICompanion.Preview.Composition
         private int lastHeight;
         private string startupError;
         private bool stopped;
+        private bool quitPending;
+        private bool quitAllowed;
 
         [Serializable] private sealed class RuntimeConfig { public string protocol; public string base_url; public string token; }
+
+        private void Awake() { Application.wantsToQuit += WantsToQuit; }
 
         private IEnumerator Start()
         {
@@ -175,8 +181,38 @@ namespace AICompanion.Preview.Composition
             Avatar?.Dispose();
             if (modelObject != null) Destroy(modelObject);
         }
+        private bool WantsToQuit()
+        {
+            if (quitAllowed || Session == null) return true;
+            if (!quitPending)
+            {
+                quitPending = true;
+                if (EventSystem.current != null) EventSystem.current.enabled = false;
+                FinishQuitAsync();
+            }
+            return false;
+        }
+        private async void FinishQuitAsync()
+        {
+            // Keep Unity's synchronization context alive until queued terminal records
+            // reach disk. The first action still silences local playback synchronously.
+            Session.Cancel(StopReason.WindowClosing);
+            await Task.Yield(); // Let the first wantsToQuit callback return before retrying.
+            try
+            {
+                var flush = Session.FlushHistoryAsync();
+                if (await Task.WhenAny(flush, Task.Delay(2000)) == flush) await flush;
+                else Debug.LogWarning("DESKTOP_HISTORY_CLOSE_TIMEOUT: terminal write did not finish within two seconds.");
+                if (Session.Snapshot.Error?.Code == "history_write_failed")
+                    Debug.LogWarning("DESKTOP_HISTORY_CLOSE_FAILED: queued write reported a local storage error.");
+            }
+            catch (Exception) { Debug.LogWarning("DESKTOP_HISTORY_CLOSE_FAILED: check local storage availability."); }
+            quitAllowed = true;
+            Shutdown();
+            Application.Quit();
+        }
         private void OnApplicationQuit() { Shutdown(); }
-        private void OnDestroy() { Shutdown(); lifetime.Dispose(); }
+        private void OnDestroy() { Application.wantsToQuit -= WantsToQuit; Shutdown(); lifetime.Dispose(); }
         public static string Argument(string name)
         {
             var args = Environment.GetCommandLineArgs();
