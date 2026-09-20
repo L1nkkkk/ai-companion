@@ -1,8 +1,10 @@
 # AI Companion
 
-桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。本分支交付设计与任务书，尚未实现或验收 Unity 工程；现有 React / React Native 文件是 T00 历史工程起点。
+桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。U01-00 的回退实验已真实构建并运行角色，A0 已接受进入正式工程迁移，尚未完成版本冻结与完整验收。首轮两项返工保持关闭，进度见 [A0 回退初评与下一步](docs/reports/U01/acceptance/R4_1-initial-assessment.md)。本分支维护设计与验收文档；现有 React / React Native 文件是 T00 历史工程起点。
 
-从 [U01 Unity 桌面原型任务书](docs/tasks/U01/TASKBOOK.md) 开始，开发者先领取 [U01-00](docs/tasks/U01/DISPATCH.md)。A0 当前会话只负责设计和验收，编码与打包由其他开发会话承担，规则见 [ADR15](docs/adr/0015-unity-client-and-design-only-a0.md)。历史 [P01 网页草稿](https://github.com/L1nkkkk/ai-companion/pull/1) 仅作交互参考，不是 Unity 交付。
+用户已允许更换版本，[ADR16](docs/adr/0016-unity-2022-r41-fallback-validation.md)选择 Unity 2022.3 / Cubism R4_1 / BiRP。原开发 owner 下一步迁移正式工程、从干净提交构建并完成 600 秒及角色基础行为验证；后续模块实现尚未放行。
+
+从 [U01 Unity 桌面原型任务书](docs/tasks/U01/TASKBOOK.md) 开始，当前先由原开发会话续作 U01-00；[派工提示](docs/tasks/U01/DISPATCH.md) 随验收状态使用。A0 当前会话只负责设计和验收，编码与打包由其他开发会话承担，规则见 [ADR15](docs/adr/0015-unity-client-and-design-only-a0.md)。历史 [P01 网页草稿](https://github.com/L1nkkkk/ai-companion/pull/1) 仅作交互参考，不是 Unity 交付。
 
 正式私有仓库：[L1nkkkk/ai-companion](https://github.com/L1nkkkk/ai-companion)，主分支 `main`。其他机器通过 Git 克隆后按下方步骤安装。
 
@@ -17,7 +19,7 @@
 
 ## 已有 T00 工具安装
 
-以下固定工具用于现有后台与历史工程检查。Unity、URP、Cubism、模型及资源锁定另由 U01-00 验证，不以这些命令代替 Unity 安装或构建。
+以下固定工具用于现有后台与历史工程检查。Unity、渲染管线、Cubism、模型及资源锁定另由 U01-00 验证，不以这些命令代替 Unity 安装或构建。
 
 安装 Node **24.19.0**、Python **3.12.10** 和 Git。工程工具为 pnpm **11.19.0**、uv **0.12.17**。Node 官网标准安装包附带 npm；若当前环境已提供固定版本 pnpm，直接使用它。
 

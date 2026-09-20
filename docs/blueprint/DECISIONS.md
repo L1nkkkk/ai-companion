@@ -20,6 +20,7 @@
 | ADR12 | 设计基线 | R1 以测试分发安装为完成范围 | 决定面向公众上架 |
 | ADR13 | 已接受 | [T00 工具与契约基线](../adr/0013-foundation-toolchain.md)，历史工程工具保持锁定 | 工具变更需要单独记录 |
 | ADR15 | 用户确认、设计采用 | [Unity 前台、Windows 优先，A0 会话仅设计与验收](../adr/0015-unity-client-and-design-only-a0.md) | 用户修改平台路线或独立验证发现必要调整 |
+| ADR16 | 接受进入正式工程迁移，未冻结基线 | [Unity 2022.3 / Cubism R4_1 / BiRP 迁移候选](../adr/0016-unity-2022-r41-fallback-validation.md)，短时真实渲染已跑通；由原 U01-00 owner 统一迁移 | 固定源码、干净目录构建、600 秒与对应范围证据到齐后，由 A0 冻结版本并放行后续模块 |
 
 ## 必须尽早验证的事项
 

@@ -29,6 +29,8 @@ U01 是独立的本机开发预览，使用 [U01 接口草案](../tasks/U01/INTE
 
 官方提供 Cubism SDK for Unity；当前正式 R5 文档要求 URP，不支持把 Built-in / HDRP 配置直接混用。SDK、Core、模型各自记录来源与使用条件。Unity 6.3 LTS 为候选版本族，精确补丁、URP 与 SDK 包由 U01-00 通过导入和 Windows 构建后冻结。已有 Unity 2022.3 安装记录不作为兼容性结论。
 
+后续选型以 [ADR16](0016-unity-2022-r41-fallback-validation.md) 为准：经独立实验，A0 选择 Unity `2022.3.62f3c1` + Cubism `5-r.4.1` + BiRP 进入正式工程迁移，基线仍待干净构建与验收后冻结；本 ADR 的客户端方向与 A0 职责保持有效。
+
 证据与适用限制见 [U01 官方来源](../tasks/U01/SOURCES.md)。本次仅核对文档，尚未运行 Unity、取得模型包或证明本机 Unity 构建成功。
 
 完整工作包：[U01 Unity 桌面原型任务书](../tasks/U01/TASKBOOK.md)。
