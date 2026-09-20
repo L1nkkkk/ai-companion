@@ -1,11 +1,16 @@
-"""T00 process liveness only; business routes are implemented in later tasks."""
+"""Local desktop preview. The authenticated R1 service is still separate work."""
 
 from typing import Literal
 
 from fastapi import FastAPI
 from pydantic import BaseModel, ConfigDict
+from starlette.middleware.trustedhost import TrustedHostMiddleware
 
-app = FastAPI(title="AI Companion foundation", version="0.0.0")
+from app.prototype.routes import router
+
+app = FastAPI(title="AI Companion desktop preview", version="0.1.0")
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1", "[::1]"])
+app.include_router(router)
 
 
 class Health(BaseModel):
