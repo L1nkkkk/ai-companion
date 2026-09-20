@@ -1,0 +1,117 @@
+{
+  "task": "U01-00",
+  "status": "awaiting_external",
+  "tested_commit": null,
+  "tester": "U01-00 development/integration agent; independent static and native resource review by subagents",
+  "environment": "environment.json",
+  "results": [
+    {
+      "id": "UA01",
+      "status": "awaiting_external",
+      "method": "Official asset acquisition and native resource restoration; Unity6 installation and build preflight attempted",
+      "evidence": [
+        "environment-install.md",
+        "native-assets-verification.json",
+        "build-preflight.txt"
+      ],
+      "limitations": "No Unity import, compiler, Player build or packaged binary."
+    },
+    {
+      "id": "UA02",
+      "status": "awaiting_external",
+      "method": "Official Windows x64 Core C API model consistency, masked drawable inventory and actual parameter deformation",
+      "evidence": [
+        "native-assets-verification.json"
+      ],
+      "limitations": "No URP rendered material, mask, sorting or Player stability validation."
+    },
+    {
+      "id": "UA03",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA04",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA05",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA06",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA07",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA08",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA09",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA10",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA11",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA12",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    }
+  ],
+  "preparation_checks": [
+    {
+      "name": "Repository foundation suite",
+      "status": "passed",
+      "evidence": [
+        "foundation-check.txt"
+      ],
+      "limitations": "Does not test Unity or native mobile builds."
+    },
+    {
+      "name": "Source review and script syntax",
+      "status": "passed",
+      "evidence": [
+        "report.md"
+      ],
+      "limitations": "No Unity6 C# compile evidence."
+    }
+  ]
+}

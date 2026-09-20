@@ -1,0 +1,2 @@
+Unity 6000.3.11f1 Editor is missing at C:\Program Files\Unity\Hub\Editor\6000.3.11f1\Editor\Unity.exe. Install the official version with a valid license, then pass -UnityEditor. Unity 2022 is not a substitute.
+Expected Unity 6000.3.11f1; executable reports 2022.3.62f3c1_1623fc0bbb97. No project was opened.

@@ -1,0 +1,6 @@
+{
+  "name": "Companion.Foundation.Editor",
+  "rootNamespace": "Companion.Foundation.Editor",
+  "references": ["Companion.Foundation", "Live2D.Cubism", "Unity.RenderPipelines.Universal.Runtime", "Unity.RenderPipelines.Core.Runtime"],
+  "includePlatforms": ["Editor"]
+}

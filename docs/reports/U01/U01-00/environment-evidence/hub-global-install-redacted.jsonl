@@ -1,0 +1,25 @@
+{"timestamp":"2026-09-20T08:39:17.341Z","level":"info","module":"UnityReleaseServiceAdapter","message":"Initialization with service type: LivePlatformAPI."}
+{"timestamp":"2026-09-20T08:39:17.428Z","level":"info","module":"UnityReleaseServiceAdapter","message":"Begin fetching Unity editor release data."}
+{"timestamp":"2026-09-20T08:39:18.094Z","level":"info","module":"UnityReleaseServiceAdapter","message":"2 LTS releases retrieved from LivePlatformAPI. { architecture: [ 'X86_64' ], platform: 'WINDOWS', entitlements: [] }"}
+{"timestamp":"2026-09-20T08:39:18.095Z","level":"info","module":"UnityReleaseServiceAdapter","message":"1 SUPPORTED releases retrieved from LivePlatformAPI. { architecture: [ 'X86_64' ], platform: 'WINDOWS', entitlements: [] }"}
+{"timestamp":"2026-09-20T08:39:18.095Z","level":"info","module":"UnityReleaseServiceAdapter","message":"0 RELEASE releases retrieved from LivePlatformAPI. { architecture: [ 'X86_64' ], platform: 'WINDOWS', entitlements: [] }"}
+{"timestamp":"2026-09-20T08:39:18.095Z","level":"info","module":"UnityReleaseServiceAdapter","message":"0 TECH releases retrieved from LivePlatformAPI. { architecture: [ 'X86_64' ], platform: 'WINDOWS', entitlements: [] }"}
+{"timestamp":"2026-09-20T08:39:18.095Z","level":"info","module":"UnityReleaseServiceAdapter","message":"2 BETA releases retrieved from LivePlatformAPI. { architecture: [ 'X86_64' ], platform: 'WINDOWS', entitlements: [] }"}
+{"timestamp":"2026-09-20T08:39:18.095Z","level":"info","module":"UnityReleaseServiceAdapter","message":"0 ALPHA releases retrieved from LivePlatformAPI. { architecture: [ 'X86_64' ], platform: 'WINDOWS', entitlements: [] }"}
+{"timestamp":"2026-09-20T08:39:18.965Z","level":"info","module":"UnityReleaseServiceAdapter","message":"1 releases retrieved from LivePlatformAPI. { architecture: 'X86_64', platform: 'WINDOWS', limit: 1, version: '6000.3.11f1', entitlements: [ 'U7_ALPHA', 'XLTS' ], orderBy: 'RELEASE_DATE_ASC' }"}
+{"timestamp":"2026-09-20T08:39:19.101Z","level":"info","module":"UnityReleaseServiceAdapter","message":"setCustomEditorInfo sets a new custom editor using release service LivePlatformAPI for version 6000.3.11f1 with revisionHash 3000ef702840 and architecutre X86_64"}
+{"timestamp":"2026-09-20T08:39:19.102Z","level":"info","module":"UnityReleaseServiceAdapter","message":"getCustomEditorInfo retrieved custom editor info from the unityReleaseServiceAdapter."}
+{"timestamp":"2026-09-20T08:39:19.113Z","level":"info","module":"Download Manager","message":"Item: 6000.3.11f1-x86_64 added to Download Queue."}
+{"timestamp":"2026-09-20T08:39:19.148Z","level":"info","module":"Download Manager","message":"Removed 6000.3.11f1-x86_64 from Download Queue."}
+{"timestamp":"2026-09-20T08:39:19.149Z","level":"info","module":"Download Manager","message":"Starting download of 6000.3.11f1-x86_64"}
+{"timestamp":"2026-09-20T08:39:19.151Z","level":"info","module":"Download Item","message":"Download: 6000.3.11f1-x86_64, Current State: Validation, Event: xstate.init"}
+{"timestamp":"2026-09-20T08:39:19.151Z","level":"info","module":"Download Item 6000.3.11f1-x86_64","message":"Transition to state download_validation"}
+{"timestamp":"2026-09-20T08:39:19.152Z","level":"info","module":"Disk Validation Strategy","message":"Executing the Download Validation Strategy..."}
+{"timestamp":"2026-09-20T08:39:19.152Z","level":"info","module":"Disk Validation Strategy","message":"Validating destination path permission for access..."}
+{"timestamp":"2026-09-20T08:39:19.153Z","level":"info","module":"Disk Validation Strategy","message":"Destination Path check: Passed"}
+{"timestamp":"2026-09-20T08:39:19.153Z","level":"info","module":"Disk Validation Strategy","message":"Validating source path (https://download.unity3d.com/download_unity/3000ef702840/Windows64EditorInstaller/UnitySetup64-6000.3.11f1.exe) availability..."}
+{"timestamp":"2026-09-20T08:39:19.576Z","level":"error","module":"Disk Validation Strategy","message":"Error occured in 'Source Availablity Check'. SafeAxiosError: Request failed with status code 404"}
+{"timestamp":"2026-09-20T08:39:19.576Z","level":"info","module":"Disk Validation Strategy","message":"Source Availability check: Failed"}
+{"timestamp":"2026-09-20T08:39:19.577Z","level":"info","module":"Download Item","message":"Download: 6000.3.11f1-x86_64, Exiting from State: Validation, Event: ERROR"}
+{"timestamp":"2026-09-20T08:39:19.577Z","level":"info","module":"Download Item","message":"Download: 6000.3.11f1-x86_64, Current State: Failed, Event: ERROR"}
+{"timestamp":"2026-09-20T08:39:19.577Z","level":"info","module":"Download Item 6000.3.11f1-x86_64","message":"Transition to state download_failed"}

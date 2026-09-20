@@ -1,0 +1,6 @@
+{
+  "name": "Companion.Foundation",
+  "rootNamespace": "Companion.Foundation",
+  "references": ["Live2D.Cubism", "Unity.InputSystem", "UnityEngine.UI"],
+  "autoReferenced": false
+}

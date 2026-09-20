@@ -1,0 +1,17 @@
+{
+  "task": "U01-00",
+  "status": "awaiting_external",
+  "source_base": "765c635327685b413c7f930558711db7d88df60c",
+  "candidate_editor": "6000.3.11f1",
+  "artifact": null,
+  "sha256": null,
+  "successful_unity_build_log": null,
+  "player_started": false,
+  "player_evidence": [],
+  "reason": "Official Editor download and global Hub CLI installation returned HTTP 404 before payload acquisition. No target Unity Editor was available to import or build.",
+  "evidence": [
+    "environment-install.md",
+    "environment-evidence/hub-global-install-redacted.jsonl",
+    "build-preflight.txt"
+  ]
+}

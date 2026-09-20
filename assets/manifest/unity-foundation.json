@@ -1,0 +1,1592 @@
+{
+  "schemaVersion": 1,
+  "task": "U01-00",
+  "verifiedDate": "2026-09-20",
+  "provenanceScope": "Official downloaded bytes and public Core API resource inspection. Unity import/build/Player results are reported separately under docs/reports/U01/U01-00.",
+  "candidateUnityVersion": "6000.3.11f1",
+  "compatibilitySources": [
+    "https://github.com/Live2D/CubismUnityComponents/blob/c598e36eb2302a7e8a6177b2c8e52e9c1da21923/README.md",
+    "https://github.com/Live2D/CubismUnityComponents/blob/c598e36eb2302a7e8a6177b2c8e52e9c1da21923/CHANGELOG.md"
+  ],
+  "sdk": {
+    "name": "Cubism SDK for Unity",
+    "version": "5-r.5",
+    "releaseDate": "2026-04-02",
+    "releaseChannel": "stable",
+    "renderPipeline": "URP",
+    "componentsGitTag": "5-r.5",
+    "componentsGitCommit": "c598e36eb2302a7e8a6177b2c8e52e9c1da21923",
+    "landingPage": "https://www.live2d.com/en/sdk/download/unity/",
+    "downloadMetadataUrl": "https://cubism.live2d.com/sdk-unity/js/download.js",
+    "downloadUrl": "https://cubism.live2d.com/sdk-unity/bin/CubismSdkForUnity-5-r.5.unitypackage",
+    "fileName": "CubismSdkForUnity-5-r.5.unitypackage",
+    "bytes": 20780340,
+    "sha256": "c9ac920b3a7359dc9ebe4ec0e9ad3c50367d615bdaeba3fc028141e90d45a0a1",
+    "license": "Live2D Open Software License Agreement (components); separate Core and model licenses below",
+    "licenseUrl": "https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html",
+    "extractedFilesIncludingMeta": 3057,
+    "extractedTreeSha256": "be04ccbf17264a4f22c86dd34bfcb63bde2dceb8b99a7bfe09907f1b904b3996",
+    "extractedTreeHashAlgorithm": "SHA-256 of UTF-8 concatenation of sorted paths: path + NUL + lowercase file SHA-256 + NUL + decimal size + LF. Paths use forward slashes, relative to package root; all asset and asset.meta payloads included."
+  },
+  "core": {
+    "name": "Live2D Cubism Core",
+    "version": "06.00.0001",
+    "versionUInt32": 100663297,
+    "versionHex": "0x06000001",
+    "obtainedFrom": "sdk.downloadUrl",
+    "file": {
+      "path": "Assets/Live2D/Cubism/Plugins/Windows/x86_64/Live2DCubismCore.dll",
+      "bytes": 249800,
+      "sha256": "d883c00d114fdf6cef61f439feb23e02d000fdf683e092803010470b80dfaf09"
+    },
+    "license": "Live2D Proprietary Software License Agreement",
+    "licenseUrl": "https://www.live2d.com/eula/live2d-proprietary-software-license-agreement_en.html",
+    "redistributableFilesManifest": {
+      "path": "Assets/Live2D/Cubism/Plugins/RedistributableFiles.txt",
+      "bytes": 1042,
+      "sha256": "b13b16db7fd6e6f31896e1eb42530c6a0c6b2c8f78424b7b448e9dd979c11c47"
+    },
+    "redistributionScope": "Windows/x86_64/Live2DCubismCore.dll is explicitly listed. Distribute only as part of the application under the agreement; do not republish the full SDK archive as a dependency mirror."
+  },
+  "model": {
+    "name": "Niziiro Mao",
+    "alsoCalled": "Mao Niziiro",
+    "packageFolder": "Mao",
+    "version": "Exact bundled model in CubismSdkForUnity-5-r.5.unitypackage",
+    "landingPage": "https://www.live2d.com/en/learn/sample/niziiro-mao/",
+    "obtainedFrom": "sdk.downloadUrl",
+    "category": "Live2D original character",
+    "prefab": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.prefab",
+    "model3Json": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.model3.json",
+    "licenses": [
+      "https://www.live2d.com/eula/live2d-free-material-license-agreement_en.html",
+      "https://www.live2d.com/en/learn/sample/model-terms/"
+    ],
+    "copyrightNotice": "This content uses sample data owned and copyrighted by Live2D Inc. The sample data are utilized in accordance with terms and conditions set by Live2D Inc. This content itself is created at the author’s sole discretion.",
+    "parameterGroups": [
+      {
+        "Target": "Parameter",
+        "Name": "LipSync",
+        "Ids": [
+          "ParamA"
+        ]
+      },
+      {
+        "Target": "Parameter",
+        "Name": "EyeBlink",
+        "Ids": [
+          "ParamEyeLOpen",
+          "ParamEyeROpen"
+        ]
+      }
+    ],
+    "motions": {
+      "Idle": [
+        {
+          "File": "motions/mtn_01.motion3.json"
+        },
+        {
+          "File": "motions/sample_01.motion3.json"
+        }
+      ],
+      "TapBody": [
+        {
+          "File": "motions/mtn_02.motion3.json"
+        },
+        {
+          "File": "motions/mtn_03.motion3.json"
+        },
+        {
+          "File": "motions/mtn_04.motion3.json"
+        },
+        {
+          "File": "motions/special_01.motion3.json"
+        },
+        {
+          "File": "motions/special_02.motion3.json"
+        },
+        {
+          "File": "motions/special_03.motion3.json"
+        }
+      ]
+    },
+    "expressions": [
+      {
+        "Name": "exp_01",
+        "File": "expressions/exp_01.exp3.json"
+      },
+      {
+        "Name": "exp_02",
+        "File": "expressions/exp_02.exp3.json"
+      },
+      {
+        "Name": "exp_03",
+        "File": "expressions/exp_03.exp3.json"
+      },
+      {
+        "Name": "exp_04",
+        "File": "expressions/exp_04.exp3.json"
+      },
+      {
+        "Name": "exp_05",
+        "File": "expressions/exp_05.exp3.json"
+      },
+      {
+        "Name": "exp_06",
+        "File": "expressions/exp_06.exp3.json"
+      },
+      {
+        "Name": "exp_07",
+        "File": "expressions/exp_07.exp3.json"
+      },
+      {
+        "Name": "exp_08",
+        "File": "expressions/exp_08.exp3.json"
+      }
+    ],
+    "filesIncludingMeta": [
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao.meta",
+        "bytes": 172,
+        "sha256": "b8d7028cc6102f5b8843858d7b74ca54b88ad585f0b3b9477793a3e8574b4b1d"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.2048.meta",
+        "bytes": 172,
+        "sha256": "46cd24f280023d8545dd81655fb3443020b7de253ad27679325bbacc26098575"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.2048/texture_00.png",
+        "bytes": 3130953,
+        "sha256": "0b97283d69e62d346bcca25f8a91a5dd477f2e668ad9801b15fa7f108631c624"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.2048/texture_00.png.meta",
+        "bytes": 3749,
+        "sha256": "21490bd83546cb7d31eb71fb76661bfc909f1aa1f83765442d2be181c2107d40"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.asset",
+        "bytes": 1759763,
+        "sha256": "b804237507268ee59d3a9c01b0ae7e0bb095b8253b62c105754f63f009f88d32"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.asset.meta",
+        "bytes": 189,
+        "sha256": "44f81a5d0774924528d96b835f0bfe49fbfabf58da06ee0979015d59c74a971d"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.cdi3.json",
+        "bytes": 16797,
+        "sha256": "f261069f302c013f1c60b48045aa4bf5ac2cb086ebb54917f7e5c3f47e5c8f81"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.cdi3.json.meta",
+        "bytes": 158,
+        "sha256": "1afbc88a14c995d3e96008e22ed5202bfe95df967867101f9b0581c1423c7493"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.controller",
+        "bytes": 1602,
+        "sha256": "fabe747c3dee46243ece2f4dff6dfdd4cd61e281acc66043aca81a635f09a98e"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.controller.meta",
+        "bytes": 188,
+        "sha256": "ecec7684244b27cc8db77e705e2a592776ac43ff315d46fd41291f858829cf5f"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.expressionList.asset",
+        "bytes": 1010,
+        "sha256": "5f21a85e36a0ceaa2b908c2814c70000798155a33c74ad51421a5a9e9d1506c5"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.expressionList.asset.meta",
+        "bytes": 189,
+        "sha256": "19d51d3a4f26bfc475f046e979fe7fba3dc581239147b3405538779b144d7496"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.fadeMotionList.asset",
+        "bytes": 1096,
+        "sha256": "5e560779bab2b5b9bbd8e9cc113337b95a7e08c815724bed8e94c95dd9061b8a"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.fadeMotionList.asset.meta",
+        "bytes": 189,
+        "sha256": "8abcc5e73b1a689c7090048fef9e108a7343d9ee6f82c0715ba660daa9e3bf93"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.moc3",
+        "bytes": 879680,
+        "sha256": "ad5195b39e35e0da8ba0c825ad9cc2d60571502007f6f7d4f00963b768bb90d8"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.moc3.meta",
+        "bytes": 155,
+        "sha256": "5215fe6a4a82bada436e3f26681326ad3257bcf8a5477b12965dfe739aeb7350"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.model3.json",
+        "bytes": 1699,
+        "sha256": "d5fb29f93ef3cf3eba96b5aa9538eca063abbebee81a8d2dbeecea0cef4fecba"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.model3.json.meta",
+        "bytes": 266,
+        "sha256": "ef78c22facfbcc9532c627db523a559eea740447b8af3a8cfd61f7e360e38d18"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.physics3.json",
+        "bytes": 21838,
+        "sha256": "27de73695ca6418a84953a0b2776e78160f9d0b988521e9bbfa02ff913f20a6d"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.physics3.json.meta",
+        "bytes": 158,
+        "sha256": "54b2cf05a6a4628fcd73787e9cf88556382d62d0b95250c72a0704df96a8e71b"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.pose3.json",
+        "bytes": 254,
+        "sha256": "efac160eccb7183ee6555d4e53a739042e1c55b92f59a99c2e4bed8e73a5ab91"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.pose3.json.meta",
+        "bytes": 158,
+        "sha256": "8508f4e167b900464d54f7941906a9b2e672ad19966bbeddb41aeafdd95407cc"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.prefab",
+        "bytes": 1459381,
+        "sha256": "bc0f0c024ead0043606de83acd63d80fbf271432115402dd5890503f67db527a"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.prefab.meta",
+        "bytes": 154,
+        "sha256": "7da3220dfced4e2ad88ce31c16988d77e5fed164fa59d561965fab7d4cf91876"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions.meta",
+        "bytes": 172,
+        "sha256": "64e10f6316cf9117582fc9e75eccd30d45014977c648980b5ec23c4770e3a2ca"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_01.exp3.asset",
+        "bytes": 1795,
+        "sha256": "e2abcade6349166b5d97aff128ac2b3b47ba487b0d18c53dcd48d2bc7ce69d67"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_01.exp3.asset.meta",
+        "bytes": 189,
+        "sha256": "3850fccef8d02b34ed2df61c4236aceb2e471c83fdb2e86c7bc0be2790eb089a"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_01.exp3.json",
+        "bytes": 1981,
+        "sha256": "afbe54559e428acdaf43190d1c497792048c35ed37979f33d9a37c70181ddf5b"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_01.exp3.json.meta",
+        "bytes": 158,
+        "sha256": "349f3685864f7531e00e97e67cacee5eb1753cb6dcca4333b25dac3fd08f6e2e"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_02.exp3.asset",
+        "bytes": 1795,
+        "sha256": "7d2308a1ed2722aacaf958298a4ddb7674ac892f1ab770972013765b0486866d"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_02.exp3.asset.meta",
+        "bytes": 189,
+        "sha256": "ac3f648579132396a9dcd8436c4fe044add974ba452ed2da3f3e03e559fcc707"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_02.exp3.json",
+        "bytes": 1981,
+        "sha256": "6d35132627f9e362e526c0ce8c2152ece2b305c9abd3368da43460c2af8538f6"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_02.exp3.json.meta",
+        "bytes": 158,
+        "sha256": "3f1c491d4c44664e7cda26066b852a3db04eda2190b1311a99ebd10ba53437eb"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_03.exp3.asset",
+        "bytes": 1795,
+        "sha256": "1a343f03a8ca2c22572bd7739c9077ce3e13f639d889bbfca3e5626dced1a54e"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_03.exp3.asset.meta",
+        "bytes": 189,
+        "sha256": "14dfe4fffa3c6c02ed7b212bfa28cb019d9ebd4b789aa28224be7a3579978241"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_03.exp3.json",
+        "bytes": 1981,
+        "sha256": "460a3077d61adfdd1e6b9a062d0d7c3fcc2fb74c80f67ec3649982a9fab49bee"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_03.exp3.json.meta",
+        "bytes": 158,
+        "sha256": "ee2117696da9701459b8c14825ee22ce449c2f5e0e1303a8202cbcc28908f1bb"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_04.exp3.asset",
+        "bytes": 1799,
+        "sha256": "7602ca13a0b41f1b920c2451d425aec6d59969775b522aef70f575580821b068"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_04.exp3.asset.meta",
+        "bytes": 189,
+        "sha256": "fd69abd94fa370f3d62eaa2ce37da853c6ab41ba2e4cf2c044ee3862ffb3fe8d"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_04.exp3.json",
+        "bytes": 1985,
+        "sha256": "abad61f4ec7f1a157d6b914643e5bd4ffb29964e67f538cace420ebc9f69a716"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_04.exp3.json.meta",
+        "bytes": 158,
+        "sha256": "d6037e754c903c9b6a6d981c35ce3ec8cb64863aec6d22e05e1bb77f6af94a39"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_05.exp3.asset",
+        "bytes": 1800,
+        "sha256": "c4e8b0799debae84e6ceb590a672de26348a21cbcad4d9f3584b2ef916e89795"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_05.exp3.asset.meta",
+        "bytes": 189,
+        "sha256": "159703329b2631b7867f797767f96ed0ccc3bf3ac74a77431025b53928e98379"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_05.exp3.json",
+        "bytes": 1986,
+        "sha256": "331fe0d9c78861496a9cc9acba9650f295a72af8c36df7036ab8a372840d2cc1"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_05.exp3.json.meta",
+        "bytes": 158,
+        "sha256": "5984e87cd37183059db3fa3929e589074b81f1cb07bb5ecf5c729ad0d3012e7b"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_06.exp3.asset",
+        "bytes": 1799,
+        "sha256": "4ed4a90d4ffd0ab8eba085166276c3b92b77651074b23ed6a6404f6a32ce9311"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_06.exp3.asset.meta",
+        "bytes": 189,
+        "sha256": "508d03bca722da865178cd66efa60d4f188e3b4ba6b58573cb7b108f05434842"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_06.exp3.json",
+        "bytes": 1985,
+        "sha256": "52f1e391008d61efb17a33602c004a637a42bdb8af8aca3d2319ac5dac215ed1"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_06.exp3.json.meta",
+        "bytes": 158,
+        "sha256": "7bc599a542420e1b5e3741eac5678984a0c0e1054a6ac4bdd8be74345f86c162"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_07.exp3.asset",
+        "bytes": 1801,
+        "sha256": "7326597caf1680893727493cec8bf69b363f71fbf821eb14c31ca6d376438881"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_07.exp3.asset.meta",
+        "bytes": 189,
+        "sha256": "70425aa2dff98301cf05b5f061ebe81976d93a3d49ebf9059ec5a3db85c65692"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_07.exp3.json",
+        "bytes": 1987,
+        "sha256": "8bf587d3d7bef509166c8ff95cc9f47c23c895eaf55f9d95110263e44452a53a"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_07.exp3.json.meta",
+        "bytes": 158,
+        "sha256": "8e00ce75615dc7d1234f44aa1e49bfe884c271928744686cbe3705a2539ddde3"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_08.exp3.asset",
+        "bytes": 1796,
+        "sha256": "aba8fcfac02ca685adfce1860a76bcc9031ea22041a67defb00f3130a38230a2"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_08.exp3.asset.meta",
+        "bytes": 189,
+        "sha256": "774e3a26a358fe0c3088e612f6fb9670049b910e7c7520d8e455538fc852af4f"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_08.exp3.json",
+        "bytes": 1982,
+        "sha256": "761190452e48d22727fce91e76270af2c27b0bb0ee3d04b2c6b0dc6cec49f88d"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/expressions/exp_08.exp3.json.meta",
+        "bytes": 158,
+        "sha256": "ba69013d853f4fe0da0137c95d4155c90d80ec3fa3b166454f008032a64d877e"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions.meta",
+        "bytes": 172,
+        "sha256": "01b080aa940c3e12c99be3f7eab638fe240538205d1abc0c1507d86673cd6a94"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.anim",
+        "bytes": 273184,
+        "sha256": "920498e00b8367702d1ddac22d0f71ce5b703de2b8d0ddaeed280a6c8399e568"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.anim.meta",
+        "bytes": 188,
+        "sha256": "1fbc5f6d657b1b0c53f868de313caaedec93fd7a311009e19528796eab6fdae6"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.fade.asset",
+        "bytes": 80143,
+        "sha256": "a40e80c30dd104d7a984007cadcbd1d90dc50fb17adfe49ccbecffbd8accf6dc"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.fade.asset.meta",
+        "bytes": 189,
+        "sha256": "66233d32c606f886b5e5ed2a6724f7a629c842c4e3c27231db0fef7dede899a8"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.motion3.json",
+        "bytes": 27661,
+        "sha256": "4a17c9b0b4ffd42ee5b8386cba0ae18916953ac693d79f44cd831bf5d59877f6"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.motion3.json.meta",
+        "bytes": 217,
+        "sha256": "7c6f7023d519ce5f5419c42d318d87a516440efd2e58ff2c3e8ddc33d44ba375"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.anim",
+        "bytes": 288122,
+        "sha256": "6da1ace648a2813615c2fa2eb874cacfe2815552972f87d6aeb5e1840364bf43"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.anim.meta",
+        "bytes": 188,
+        "sha256": "9e3865e2113d221ffb2ef2906d362620eac6c5e3adcb7fcf5b68fbfcfc381e24"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.fade.asset",
+        "bytes": 87116,
+        "sha256": "910b575a044df563fc523224c7101b1f890755d51887a206f35d15fbe6b00b2e"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.fade.asset.meta",
+        "bytes": 189,
+        "sha256": "ae4c3ff9d27c1a098ee2192190ecce3667d7d1f028e340ac02734e65bce08445"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.motion3.json",
+        "bytes": 24274,
+        "sha256": "aa8c78c03f1d5fe143eedecfb7d077e7e4a7804c93723ba661eef2dd6a5d5ae0"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.motion3.json.meta",
+        "bytes": 217,
+        "sha256": "a13a951df50a34c09f8f85e1020728a13eae767c29f27fff7b9032f570d92587"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.anim",
+        "bytes": 280871,
+        "sha256": "422011fb190d84fc4a9fff62bf8b3c3ed8ca0a467ba8606a7516a67662a97f6b"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.anim.meta",
+        "bytes": 188,
+        "sha256": "130cfa93f0df7768e806c572dca89932137eec90966bbfa94845c41742a63e7a"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.fade.asset",
+        "bytes": 83830,
+        "sha256": "fc05f3f724247b0f2648e1a87ae8cb651bdd505b3f1fe65e4c5fa3141b43df4c"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.fade.asset.meta",
+        "bytes": 189,
+        "sha256": "47f27814d146959a379c8f448b9658f2138f0495545caa95e47d15e108ed6cd7"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.motion3.json",
+        "bytes": 22934,
+        "sha256": "e31eab8c371a253322c68968dbe5895e3029562f31a5b8d277012e94b0a6badd"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.motion3.json.meta",
+        "bytes": 217,
+        "sha256": "47acc4fab4cf4c4f2202902fead934950e4a3144ad24c9f1583c51eb91a85a78"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.anim",
+        "bytes": 306767,
+        "sha256": "49a7133704b5ba9ce3ccc866be8bd83662f6f67e8bef0b6f6460fd3d01051c46"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.anim.meta",
+        "bytes": 188,
+        "sha256": "ed4d61147e6b9ecb9536877851d56b67043c41b81511ffe1770043ef7ed7730a"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.fade.asset",
+        "bytes": 95610,
+        "sha256": "075b8dd4b5e1051d2a303cec8975f7d9b1521b0c68f47973050b30cc525f4b26"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.fade.asset.meta",
+        "bytes": 189,
+        "sha256": "7f6ce56be3a4b0050993bb2d68368963d223cb1ca41defe9afe1fe30ce5fcf36"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.motion3.json",
+        "bytes": 27346,
+        "sha256": "a95f67d35c81755dee7f3be1e5e60171f090026725f628c99a1e3585985a1ac1"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.motion3.json.meta",
+        "bytes": 217,
+        "sha256": "47434c2c4a427d168e7c246e7cf5f3e7545d7c24361fc3b3be1a808abf9d80ee"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.anim",
+        "bytes": 267832,
+        "sha256": "58c98a1204c82fc4fec912f677fe8e7a683dd086411cbf69749cd086315e30c0"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.anim.meta",
+        "bytes": 188,
+        "sha256": "b9cf5320f57162b1de2939a881e0cc05e449610cba792a56e32caac111408c6f"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.fade.asset",
+        "bytes": 83806,
+        "sha256": "1462a3c35b9c0434ea3bea2f3c498a46835e230e53144ef3550932d0a453686c"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.fade.asset.meta",
+        "bytes": 189,
+        "sha256": "fdd1afb32b12178f883de1397ae95aa1bd9a84473e9a1ccc573b46ce6a7f40f0"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.motion3.json",
+        "bytes": 28330,
+        "sha256": "21293d1d7c91f8d8b055f5215274df663e345a198517ebf8e3d26613ba37324a"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.motion3.json.meta",
+        "bytes": 217,
+        "sha256": "2d879e84db76f676eed1644a49e7ac5dccbb6233a0806bc9441571aabd539f34"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.anim",
+        "bytes": 356737,
+        "sha256": "ba6dfa0026c5a332a60c8109429ba20af1af0f11d4492373029ca1dc8678ebfe"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.anim.meta",
+        "bytes": 188,
+        "sha256": "b3ad963737b353ea11126531f46ca31110efe83fd403d6d01ff9338c11885db7"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.fade.asset",
+        "bytes": 115459,
+        "sha256": "b62fc4effe86754f8c65517179f1c4986c349d711577ba48f86695053f493bc2"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.fade.asset.meta",
+        "bytes": 189,
+        "sha256": "bc60bd9409fbc5f42f36dd544b3a66066486e2767953789ec274ad0b8f7e56f0"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.motion3.json",
+        "bytes": 34229,
+        "sha256": "141320d2e8913097156bf61aa2c27cd51ffcf8ba5d288172da288d2afcc164db"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.motion3.json.meta",
+        "bytes": 217,
+        "sha256": "8ec8255ab395af491685cd2fbf10dcceec798bce1b2b67cd062145b059d4c80f"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.anim",
+        "bytes": 402536,
+        "sha256": "afed62b73afa69bf97fd2bd0ee1f85169c291b56c32bcc670375f325fa507759"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.anim.meta",
+        "bytes": 188,
+        "sha256": "8015768f696152d884fc392a62cb6adff860690136cfd8f875cac2595cc08057"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.fade.asset",
+        "bytes": 137703,
+        "sha256": "47ea75bf25940e5c9d7c51054807426b3c3472ec2441568f10cdf0761af8c80e"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.fade.asset.meta",
+        "bytes": 189,
+        "sha256": "82698ecbb22cae5cb381eb59ea9c3039ccb270086182c27fecb23f7a26da971e"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.motion3.json",
+        "bytes": 41809,
+        "sha256": "68e6e12c14d2c06504891971dcdce7771637aedbda9ef5edc616fd4f6972d20c"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.motion3.json.meta",
+        "bytes": 217,
+        "sha256": "4e9e30aa9e433b67e55b3192ba93ba97be61a64100c151294353f75dab7d650a"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.anim",
+        "bytes": 418772,
+        "sha256": "353277a1afa8607ff9ed725ffd2e0f848dfaa4f06e81db267c3c4617aea6670a"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.anim.meta",
+        "bytes": 188,
+        "sha256": "071ad7424a0920708e99a2fe4d5513fc1f84a5eadf76d08276e3641295f6b3c1"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.fade.asset",
+        "bytes": 152540,
+        "sha256": "61a6a98f35b7286088e773094cb4e51f59d4a6f7f2d9d2ee57e63b9ca8f7ead3"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.fade.asset.meta",
+        "bytes": 189,
+        "sha256": "2c84421967b5406eb76a3154d01cf5c37a29577bfa78a78a883954e206c2c680"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.motion3.json",
+        "bytes": 48041,
+        "sha256": "fe6b990b6d26a48955c0b33e27c3de8e020c98d2d06be41dcdfecdd053e6dd0f"
+      },
+      {
+        "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.motion3.json.meta",
+        "bytes": 217,
+        "sha256": "2051f1ddeaee0fbe02834818dfac976bef454529b181358bd38f40cd11a92ed6"
+      }
+    ],
+    "treeSha256": "3e843d81c19eb80c3afb0b7f337103bff26ff8e94a08bf1d28cb3c07a496d46c",
+    "nativeProbe": {
+      "status": "passed",
+      "testedAtUtc": "2026-09-20T08:37:02.165482+00:00",
+      "scope": "Official Core/model public API and deformations; no Unity/Player rendering",
+      "python": "3.12.10",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "coreVersion": 100663297,
+      "coreVersionHex": "0x06000001",
+      "coreVersionFormatted": "06.00.0001",
+      "coreSha256": "d883c00d114fdf6cef61f439feb23e02d000fdf683e092803010470b80dfaf09",
+      "mocSha256": "ad5195b39e35e0da8ba0c825ad9cc2d60571502007f6f7d4f00963b768bb90d8",
+      "mocConsistency": 1,
+      "parameterCount": 132,
+      "drawableCount": 262,
+      "maskedDrawableCount": 37,
+      "invertedMaskDrawableCount": 10,
+      "deformationProbes": [
+        {
+          "parameter": "ParamA",
+          "value": 1.0,
+          "changedDrawableCount": 13
+        },
+        {
+          "parameter": "ParamEyeLOpen",
+          "value": 0.0,
+          "changedDrawableCount": 13
+        },
+        {
+          "parameter": "ParamEyeROpen",
+          "value": 0.0,
+          "changedDrawableCount": 13
+        },
+        {
+          "parameter": "ParamBreath",
+          "value": 1.0,
+          "changedDrawableCount": 156
+        }
+      ],
+      "parameters": [
+        {
+          "id": "ParamAngleX",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAngleY",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAngleZ",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamCheek",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamFaceInkOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamEyeLOpen",
+          "min": 0.0,
+          "max": 1.2000000476837158,
+          "default": 1.0
+        },
+        {
+          "id": "ParamEyeLSmile",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamEyeLForm",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamEyeROpen",
+          "min": 0.0,
+          "max": 1.2000000476837158,
+          "default": 1.0
+        },
+        {
+          "id": "ParamEyeRSmile",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamEyeRForm",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamEyeBallX",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamEyeBallY",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamEyeBallForm",
+          "min": -1.0,
+          "max": 0.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamEyeEffect",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBrowLY",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBrowRY",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBrowLX",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBrowRX",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBrowLAngle",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBrowRAngle",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBrowLForm",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBrowRForm",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamA",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamI",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamU",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamE",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamO",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamMouthUp",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 1.0
+        },
+        {
+          "id": "ParamMouthDown",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamMouthAngry",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamMouthAngryLine",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBodyAngleX",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBodyAngleY",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBodyAngleZ",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamBreath",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamLeftShoulderUp",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRightShoulderUp",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmLA01",
+          "min": -10.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmLA02",
+          "min": -20.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmLA03",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHandLA",
+          "min": -10.0,
+          "max": 0.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmRA01",
+          "min": -10.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmRA02",
+          "min": -20.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmRA03",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamWandRotate",
+          "min": 0.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHandRA",
+          "min": -10.0,
+          "max": 0.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamInkDrop",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamInkDropRotate",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamInkDropOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmLB01",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmLB02",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmLB03",
+          "min": -30.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHandLB",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHatForm",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmRB01",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmRB02",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmRB02Y",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamArmRB03",
+          "min": -20.0,
+          "max": 20.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHandRB",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAllX",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAllY",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAllRotate",
+          "min": -10.0,
+          "max": 10.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHairFront",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHairSideL",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHairSideR",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHairBack",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHairBackR",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHairBackL",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamoHairMesh",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHairFrontFuwa",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHairSideFuwa",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHairBackFuwa",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamWing",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRibbon",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHatBrim",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHatTop",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAccessory1",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAccessory2",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamString",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRobeL",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRobeR",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRobeFuwa",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartMissOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartBackMissOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartColorRainbow",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartHealOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartBackHealOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartColorHeal",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartDrow",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartSize",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartColorLight",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamWandInkColorRainbow",
+          "min": 0.0,
+          "max": 35.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamWandInkColorHeal",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamWandInk",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamSmokeOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamSmoke",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamExplosionChargeOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamExplosionLightCharge",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamExplosionOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamExplosion",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitElimination",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitAppearance",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitSize",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitDraworder",
+          "min": -1.0,
+          "max": 0.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitEar",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitDirection",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitLight",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitLightSize",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitX",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamRabbitY",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 1.0
+        },
+        {
+          "id": "ParamRabbitRotate",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAuraOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAura",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAuraColor1",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAuraColor2",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartLightOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartLight",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHeartLightColor",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHealLightOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamHealLight",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamStrengthenLightOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamStrengthenLight",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamStrengthenLightMove",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamMagicPositionX",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamMagicPositionY",
+          "min": -30.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAllColor1",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamAllColor2",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamSphereOn",
+          "min": 0.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamSphereMove",
+          "min": -1.0,
+          "max": 1.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamSphereMultiplyColor",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        },
+        {
+          "id": "ParamSphereScreenColor",
+          "min": 0.0,
+          "max": 30.0,
+          "default": 0.0
+        }
+      ],
+      "notVerified": [
+        "Unity compilation",
+        "URP material or mask appearance",
+        "Windows Player"
+      ]
+    }
+  },
+  "font": {
+    "name": "Noto Sans CJK SC Regular",
+    "version": "2.004",
+    "format": "Static OpenType CFF font (.otf); not a variable CFF2 font",
+    "repository": "https://github.com/notofonts/noto-cjk",
+    "tag": "Sans2.004",
+    "commit": "523d033d6cb47f4a80c58a35753646f5c3608a78",
+    "downloadUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/523d033d6cb47f4a80c58a35753646f5c3608a78/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf",
+    "fileName": "NotoSansCJKsc-Regular.otf",
+    "bytes": 16437364,
+    "sha256": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b",
+    "license": "SIL Open Font License 1.1",
+    "licenseUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/523d033d6cb47f4a80c58a35753646f5c3608a78/LICENSE",
+    "licenseFile": {
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    "probe": {
+      "family": "Noto Sans CJK SC",
+      "version": "Version 2.004;hotconv 1.0.118;makeotfexe 2.5.65603",
+      "copyright": "© 2014-2021 Adobe (http://www.adobe.com/).",
+      "probeText": "中文字体测试你好，世界！",
+      "missingProbeGlyphs": "",
+      "unicodeGlyphCount": 44810
+    },
+    "usageConditions": "May bundle/embed/redistribute with software while preserving the font copyright and OFL. Do not sell the font alone or relicense it. Modified fonts must observe reserved-font-name restrictions."
+  },
+  "officialLicenseSourceHashes": [
+    {
+      "id": "open_software",
+      "url": "https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html",
+      "retrievedAt": "2026-09-20",
+      "bytes": 73603,
+      "sha256": "a8274bf5f461335738791e9f392eb3f3684eaa22cbb4dfe1f3f887c3586a8d82"
+    },
+    {
+      "id": "proprietary_core",
+      "url": "https://www.live2d.com/eula/live2d-proprietary-software-license-agreement_en.html",
+      "retrievedAt": "2026-09-20",
+      "bytes": 85820,
+      "sha256": "e7b4ffc6c636de2cfdd6d2eed6a4e43fa7034e7f15a0c3a15f1603dbb3b4c2b6"
+    },
+    {
+      "id": "free_material",
+      "url": "https://www.live2d.com/eula/live2d-free-material-license-agreement_en.html",
+      "retrievedAt": "2026-09-20",
+      "bytes": 54499,
+      "sha256": "e7daa8a2a20b491fa9e530455a83faf8f4fe5876d7b85cf9d9ad1bcdddcbaf8f"
+    },
+    {
+      "id": "sample_model_terms",
+      "url": "https://www.live2d.com/en/learn/sample/model-terms/",
+      "retrievedAt": "2026-09-20",
+      "bytes": 51731,
+      "sha256": "f052701ba090c63740405339dc4d0a1af3c5c6dbd11a162c7158ef7e3486fa4a"
+    },
+    {
+      "id": "mao_sample_page",
+      "url": "https://www.live2d.com/en/learn/sample/niziiro-mao/",
+      "retrievedAt": "2026-09-20",
+      "bytes": 47713,
+      "sha256": "7b342ca44318480d4fc670cb6d4d5b3df25f506ddf3b8c1357cd5950454c9fe7"
+    }
+  ],
+  "notValidatedHere": [
+    "Unity Editor activation",
+    "URP package resolution",
+    "Unity import and compilation",
+    "Windows Player build",
+    "Actual rendered material/clipping-mask appearance",
+    "Complete Chinese text coverage or IME behavior",
+    "General user or business release-license eligibility for future publication"
+  ]
+}
