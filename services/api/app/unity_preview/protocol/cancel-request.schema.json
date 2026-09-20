@@ -1,0 +1,18 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "generation": {
+      "maximum": 4294967295,
+      "minimum": 0,
+      "title": "Generation",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "generation"
+  ],
+  "title": "CancelRequest",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:neurosaki:unity-preview:1:cancel-request.schema.json"
+}

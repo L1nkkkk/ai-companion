@@ -4,7 +4,9 @@
   "references": [
     "Companion.Foundation",
     "Companion.Contracts",
-    "Live2D.Cubism"
+    "Live2D.Cubism",
+    "Companion.Composition",
+    "Unity.TextMeshPro"
   ],
   "includePlatforms": [
     "Editor"

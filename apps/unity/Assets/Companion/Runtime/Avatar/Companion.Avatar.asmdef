@@ -1,0 +1,6 @@
+{
+  "name": "Companion.Avatar",
+  "rootNamespace": "AICompanion.Preview.Avatar",
+  "references": ["Companion.Contracts", "Live2D.Cubism", "Unity.ugui"],
+  "autoReferenced": false
+}

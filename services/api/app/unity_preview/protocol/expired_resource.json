@@ -1,0 +1,6 @@
+{
+  "code": "resource_expired",
+  "message": "音频已过期或已取消，请重新发送。",
+  "retryable": false,
+  "request_id": null
+}

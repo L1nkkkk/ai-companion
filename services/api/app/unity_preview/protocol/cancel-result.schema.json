@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$"
+    },
+    "cancelled": {
+      "enum": [
+        true
+      ]
+    }
+  },
+  "required": [
+    "request_id",
+    "cancelled"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:neurosaki:unity-preview:1:cancel-result.schema.json"
+}

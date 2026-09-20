@@ -1,0 +1,105 @@
+{
+  "$defs": {
+    "HistoryItem": {
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "user",
+            "assistant"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "text"
+      ],
+      "title": "HistoryItem",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "const": "unity-preview/1",
+      "title": "Protocol",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "generation": {
+      "maximum": 4294967295,
+      "minimum": 0,
+      "title": "Generation",
+      "type": "integer"
+    },
+    "conversation_id": {
+      "title": "Conversation Id",
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$"
+    },
+    "character_id": {
+      "const": "mao",
+      "title": "Character Id",
+      "type": "string"
+    },
+    "text": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+    },
+    "history": {
+      "items": {
+        "$ref": "#/$defs/HistoryItem"
+      },
+      "maxItems": 6,
+      "title": "History",
+      "type": "array"
+    },
+    "generate_audio": {
+      "title": "Generate Audio",
+      "type": "boolean"
+    },
+    "voice_id": {
+      "anyOf": [
+        {
+          "const": "fixture-tone",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Voice Id"
+    }
+  },
+  "required": [
+    "protocol",
+    "request_id",
+    "generation",
+    "conversation_id",
+    "character_id",
+    "text",
+    "history",
+    "generate_audio",
+    "voice_id"
+  ],
+  "title": "TurnRequest",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:neurosaki:unity-preview:1:turn-request.schema.json"
+}

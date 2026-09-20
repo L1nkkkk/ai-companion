@@ -1,0 +1,1 @@
+{"name":"Companion.SessionAudio.Tests","rootNamespace":"AICompanion.Preview.Tests","references":["Companion.Contracts","Companion.Audio","Companion.Session","Companion.Transport"],"includePlatforms":["Editor"],"autoReferenced":false}

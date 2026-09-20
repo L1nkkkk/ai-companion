@@ -1,0 +1,31 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "protocol": {
+      "const": "unity-preview/1",
+      "title": "Protocol",
+      "type": "string"
+    },
+    "base_url": {
+      "const": "http://127.0.0.1:8000",
+      "title": "Base Url",
+      "type": "string"
+    },
+    "token": {
+      "maxLength": 256,
+      "minLength": 32,
+      "pattern": "^[A-Za-z0-9_-]+$",
+      "title": "Token",
+      "type": "string"
+    }
+  },
+  "required": [
+    "protocol",
+    "base_url",
+    "token"
+  ],
+  "title": "RuntimeConfiguration",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:neurosaki:unity-preview:1:runtime-config.schema.json"
+}

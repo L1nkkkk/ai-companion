@@ -1,0 +1,24 @@
+{
+  "protocol": "unity-preview/1",
+  "audio": "../fixtures/demo-tone.wav",
+  "audio_total_samples": 192000,
+  "audio_seconds": 8,
+  "negative_streams": [
+    "partial_stream",
+    "seq_gap",
+    "wrong_ids"
+  ],
+  "duplicate_policy": "Identical repeated sequence is discarded; conflicting sequence fails.",
+  "http_errors": {
+    "cloud_missing": 503,
+    "cancel_before_submit": 409,
+    "budget_exceeded": 429,
+    "empty_recording": 422,
+    "expired_resource": 410
+  },
+  "scenario_environment": "U01_PREVIEW_SCENARIO",
+  "late_audio_delay_seconds": 3,
+  "slow_generation_delay_seconds": 3,
+  "slow_download_body_delay_seconds": 3,
+  "delay_scenario_source": "Explicit fixture scheduler; no cloud/provider latency claim."
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Companion.UI.Checks",
+  "references": ["Companion.UI"],
+  "includePlatforms": ["Editor"]
+}

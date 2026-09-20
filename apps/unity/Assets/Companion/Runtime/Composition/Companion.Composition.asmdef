@@ -1,0 +1,6 @@
+{
+  "name": "Companion.Composition",
+  "rootNamespace": "AICompanion.Preview.Composition",
+  "references": ["Companion.Contracts", "Companion.Avatar", "Companion.Audio", "Companion.Transport", "Companion.Session", "Companion.History", "Companion.UI", "Live2D.Cubism", "Unity.TextMeshPro", "Unity.ugui"],
+  "autoReferenced": false
+}

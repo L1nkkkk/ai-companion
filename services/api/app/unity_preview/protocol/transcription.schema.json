@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$"
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "mode": {
+      "enum": [
+        "fixture",
+        "cloud"
+      ]
+    }
+  },
+  "required": [
+    "request_id",
+    "generation",
+    "text",
+    "mode"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:neurosaki:unity-preview:1:transcription.schema.json"
+}

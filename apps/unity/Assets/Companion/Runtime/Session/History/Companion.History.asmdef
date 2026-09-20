@@ -1,0 +1,6 @@
+{
+  "name": "Companion.History",
+  "rootNamespace": "AICompanion.Preview.History",
+  "references": ["Companion.Contracts"],
+  "autoReferenced": true
+}

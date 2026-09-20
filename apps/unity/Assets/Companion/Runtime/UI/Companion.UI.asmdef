@@ -1,0 +1,6 @@
+{
+  "name": "Companion.UI",
+  "rootNamespace": "AICompanion.Preview.UI",
+  "references": ["Companion.Contracts", "Unity.TextMeshPro", "Unity.ugui"],
+  "autoReferenced": true
+}

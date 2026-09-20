@@ -1,0 +1,5 @@
+{
+  "name": "Companion.History.Checks",
+  "references": ["Companion.History", "Companion.Contracts"],
+  "includePlatforms": ["Editor"]
+}

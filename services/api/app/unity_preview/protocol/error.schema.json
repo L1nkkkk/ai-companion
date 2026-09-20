@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 400
+    },
+    "retryable": {
+      "type": "boolean"
+    },
+    "request_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "code",
+    "message",
+    "retryable",
+    "request_id"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:neurosaki:unity-preview:1:error.schema.json"
+}
