@@ -1,6 +1,6 @@
 # AI Companion
 
-桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。本分支已接入桌面聊天、本机历史、Mao 互动、测试音频播放与口型，以及本机 Python 后台。按最新实施优先级，回复和声音明确标记为演示；真实模型、语音输入与长期记忆留到后续阶段。可运行版本、构建与测试证据见 [桌面基础交接](docs/reports/U01/desktop-basics/report.md)，启动方法见 [Unity 说明](apps/unity/README.md)。
+桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。本分支已接入桌面聊天、本机历史、Mao 互动、测试音频播放与口型，以及本机 Python 后台。按最新实施优先级，回复和声音明确标记为演示；真实模型、语音输入与长期记忆留到后续阶段。当前可运行版本、全新构建、原生导出、系统缩放与同步音画证据见 [桌面基础第二轮交接](docs/reports/U01/desktop-basics-round2/report.md)，[第一轮交接](docs/reports/U01/desktop-basics/report.md)保留为历史记录。启动方法见 [Unity 说明](apps/unity/README.md)。
 
 **U01-00 基础工程已通过 A0 验收**；本次模块实现和测试不替代 A0 对完整 U-G0/U-G1/U-G2 的逐项结论。版本、共享接口及原有验收条件保持冻结，见 [A0 已有验收](docs/reports/U01/acceptance/PR-003-round3-review.md)。现有 React / React Native 文件是 T00 历史工程起点。
 

@@ -1,0 +1,163 @@
+{
+  "format": 1,
+  "reviewed_utc": "2026-09-20T22:50:39.237516+00:00",
+  "status": "passed",
+  "scope": "Independent full directory and full ZIP-member integrity recheck after all final Player runs; original initial audit retained unchanged. No product, service, Player or Unity launched by reviewer.",
+  "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+  "fresh_worktree_clean": true,
+  "initial_audit": {
+    "path": "C:\\Users\\Link\\Dev\\Neuro-Saki\\docs\\reports\\U01\\desktop-basics-round2\\qa-package-924b79f.json",
+    "sha256": "9ee037b2676443de1949082b0374000f5cd259815b77300b0ed53dd8e9471ce2",
+    "audited_utc": "2026-09-20T21:29:14.368391+00:00"
+  },
+  "package_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\builds\\NeuroSaki-Desktop-924b79f",
+  "zip": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\builds\\NeuroSaki-Desktop-924b79f.zip",
+  "zip_bytes": 70330552,
+  "zip_sha256": "b14ca55facd93c55997968ad8d5fe07f3d0950809145b006bcc90a6d2f5e8036",
+  "package_manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+  "outer_manifest_sha256": "9ac5564531e5fda585bf30642b3d3e9c073f719c83b2341a45bed180db724303",
+  "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+  "manifest_files": 3014,
+  "directory_files": 3015,
+  "zip_members": 3015,
+  "zip_uncompressed_bytes": 175180215,
+  "full_member_crc_size_sha256_verified": true,
+  "directory_and_zip_exactly_match_initial": true,
+  "missing_extra_casefold_duplicates_unsafe_paths_symlinks": 0,
+  "source_license_inventory_evidence": "All bytes match the initial complete audit, including Player/backend/runtime/dependency source matching and all licenses. No runtime data, credentials container, logs or bytecode were introduced.",
+  "completed_case_run_results": [
+    {
+      "case": "audiovisual",
+      "run_result_sha256": "0601dcf85bbe9dcf3bc02b2b9bf45fc6974482f034fda4aeddff5885549d91ab",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "dpi125-1280x800",
+      "run_result_sha256": "3f3c27fbdb9fb628833f86223753aaddb1c822eaea487e1500f5d6dfc7c35efe",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "dpi125-960x640",
+      "run_result_sha256": "0faa829559b98a5fc85f552a9af8bd6eaf5c3505192045377e28f240e828a955",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "dpi150-1280x800",
+      "run_result_sha256": "c7061cc12ea0591efa176f620be7e08e4aa580717fffd88e77ebb0ec001745bf",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "dpi150-960x640",
+      "run_result_sha256": "1d824e7a875a2ea215c7b3b22d05be45ed57e8a713f110d604f98460936f1663",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "export-generation-cancel",
+      "run_result_sha256": "befd531158e1bbb10da1f85c69e3db69d42e9075919ca73d0e508bc18f573d71",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "export-generation-save",
+      "run_result_sha256": "643a1133bad5f5b157b231229f4843bea0f6b6108ebdb78d5401b67fe4731f3d",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "export-generation-save-02",
+      "run_result_sha256": "a914125c0041cafb85dcb2e4accf47495e70c6fb2992f52b0553bee7bcb410fe",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "export-idle-cancel",
+      "run_result_sha256": "b20693a30a8cb36e17e95c2a92cb8b2d8effe1e3327b7d6bf8e74c22e2d3a191",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "export-idle-nested-quit",
+      "run_result_sha256": "2391b99f5b9b1c5de06f2e8c889b95dcd105487cb3fe250d8420ca28da14be7b",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "export-idle-save",
+      "run_result_sha256": "28d3ab3dca26fc7acf1d314518cc74515e5840c2932797d83d43eec53a530832",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "export-playback-cancel",
+      "run_result_sha256": "42ff05deb63dea6869785814863b39cbed54d31525a6caa59cdf74f5cb5e0714",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "export-playback-save",
+      "run_result_sha256": "ad6901a24fbe39ae757bb1c41cedac7084a9ed936a681669be9561fdb6ce3f54",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "export-playback-save-02",
+      "run_result_sha256": "cdb67322e49f11cd1b441761b6d89567460bbda098fa2fd5e6befe8a0b7e2f6f",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "regression-close",
+      "run_result_sha256": "9194609951756d03a95f28def13536c37493e125b6a084876fea87afd6db838f",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "regression-generation",
+      "run_result_sha256": "6f47603ed7ef316745c8d2e0f48738b22a869846f56996f3a9c1d1b01b367761",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    },
+    {
+      "case": "regression-late-audio",
+      "run_result_sha256": "ac633b74d433969ec238e715201545f98d32812a4f7546acef9160ddb0005973",
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true
+    }
+  ],
+  "case_runtime_configuration_files_remaining": 0,
+  "default_runtime_configuration_exists": false,
+  "process_and_port_readback": {
+    "method": "Immediately before this file scan, read-only Win32_Process ExecutablePath filter for this package returned none and Get-NetTCPConnection LocalPort8000 Listen count was zero. No process command lines were read and no processes were stopped.",
+    "package_processes": 0,
+    "port_8000_listeners": 0
+  },
+  "root_completion_statement": "All four actual DPI cells exited normally; display2 restored to its original 100 percent in Windows Settings; no subsequent Player launches planned. DPI verification remains UI owner evidence, not this package auditor operation.",
+  "errors": [],
+  "limitations": [
+    "Same machine; no F04 second-machine or full U-G0 declaration.",
+    "Original invalid export attempts and extra normal-quit script diagnostics remain in R1 evidence; successful cleanup is not a pass for those invalid attempts.",
+    "No final error-path prompt test claimed; dev03 coverage remains scoped precheck."
+  ]
+}

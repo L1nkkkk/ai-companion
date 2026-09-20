@@ -1,0 +1,1987 @@
+{
+  "format": 1,
+  "reviewed_utc": "2026-09-20T22:46:16.483029+00:00",
+  "status": "R1_six_export_cells_and_required_cancel_normal_close_record_checks_passed_A0_review_pending",
+  "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+  "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+  "reviewer": "preview_backend independent read-only evidence review; no live UI/product/service/Unity operations",
+  "scope": "R1 actual native export phase, stop ordering, frame continuity, durable history/export consistency and normal cleanup. Manual UI observations are attributed to root. Full R1/UG0 not declared passed.",
+  "analyzer": {
+    "path": "tools/unity/qa/analyze_export_qa.py",
+    "sha256": "78076cacc22146d1121acd592248cc066a9ecc453d70c8096c2ebf119e3040d6",
+    "unchanged_thresholds": true
+  },
+  "passed_record_check_cases": [
+    {
+      "case_name": "export-generation-save-02",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-generation-save-02",
+      "analysis": {
+        "status": "automated_checks_passed",
+        "scope": "Native stage, whole-run frame continuity, durable terminal/export and package cleanup checks; manual avatar/input/window observations still required",
+        "phase": "generation",
+        "outcome": "save",
+        "invalid_reasons": [],
+        "failures": [],
+        "dialog_open_seconds": 24.5604944,
+        "maximum_frame_ms": 40.0467,
+        "target_delivery_state": 4,
+        "files_sha256": {
+          "case.json": "673b4c0def19caeb1ed8fc4453eecdddb70f21a7278e4b9623b8f831a1f071cb",
+          "run-result.json": "a914125c0041cafb85dcb2e4accf47495e70c6fb2992f52b0553bee7bcb410fe",
+          "player-result.json": "c59c6350418b4dfc0ebcaf7409a72626b620e0a1491b70057522ff6b111f0d1d",
+          "export-ready.json": "fec5573434441cad998c355b883cf6b390b5a0185f40c97dfd6a6066308dee69",
+          "export-events.csv": "9b19931dbb1199fa9bfff535dba54ba830fe6ccc9208ebb92eb7c2f47eaa22cc",
+          "frame-times.csv": "0ac7a1b12091813e006f41014e0a55248c1ff7db93be994396a82dc2479c8fa5",
+          "userdata/history/conversations.v1.json": "2f03b6e80397a689c8ea2ea47a434411594b15a0e936ceb5840ae7aa1410dbc7"
+        },
+        "export_sha256": "fd14a17d3a0c887576996462faa696762f37b7794009a0f6082f077c6cc24e0b"
+      },
+      "actual_trigger": {
+        "stage": "Stopping",
+        "stage_monotonic_ticks": "328547015",
+        "observed_native_qpc_ticks": "823667273654",
+        "qpc_frequency": "10000000",
+        "trigger_phase": "Thinking",
+        "conversation_id": "3923bec3-30d7-4c00-bc62-daa3b80352bc",
+        "request_id": "2997f2aa-f1dc-4e07-a13b-aad14cb0e038",
+        "generation": "3",
+        "current_phase": "Thinking",
+        "played_samples": "0",
+        "total_samples": "0",
+        "mouth": "0.000000",
+        "observed_seconds": "29.431867"
+      },
+      "stages": [
+        "Stopping",
+        "Stopped",
+        "Capturing",
+        "DialogOpen",
+        "Saving",
+        "Saved",
+        "Finished"
+      ],
+      "durable_record": {
+        "turnId": "6e9327c1-4af7-4a93-af45-d0afc77ad523",
+        "deliveryState": 4,
+        "playedSamples": 0,
+        "totalSamples": 0
+      },
+      "durable_text_empty": true,
+      "fixture_latency_injection": {
+        "api": "dataclasses.replace(PreviewSettings.from_environment(), scenario='slow_generation', fixture_delay=8.0); create_preview_app(settings)",
+        "fixture_reply_delay_seconds": 8.0,
+        "existing_slow_generation_delay_seconds": 3.0,
+        "accepted_to_text_minimum_seconds_if_not_cancelled": 11.0,
+        "fixture_speech_delay_seconds_if_reached": 8.0,
+        "package_files_modified": false,
+        "scope": "Explicit QA latency injection through frozen Settings API, not default production timing. Real accepted generation, cancellation, persistence and native dialog paths remain active. No acceptance threshold or analyzer is changed."
+      },
+      "identity": {
+        "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+        "source_dirty": false,
+        "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+        "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+        "file_count": 3015
+      },
+      "player_summary": {
+        "durationSeconds": 72.04272069999999,
+        "frames": 4139,
+        "p95FrameMs": 16.9,
+        "maximumFrameMs": 40.046700000000435,
+        "framesOverOneSecond": 0,
+        "errors": 0,
+        "warnings": 0,
+        "actualPlaybackStarts": 0,
+        "maximumMotionPlayables": 6,
+        "screenWidth": 1280,
+        "screenHeight": 800,
+        "windowDpi": 96,
+        "monitorScalePercent": 100
+      },
+      "native_interval": {
+        "timing_method": "duration uses original worker Stopwatch ticks / declared frequency; frame and avatar subset uses main-thread observed_seconds, subject to delivery-frame boundaries",
+        "frame_count": 1473,
+        "max_frame_ms": 21.6235,
+        "avatar_samples": [
+          {
+            "seconds": "30.112954",
+            "working_bytes": "356114432",
+            "private_bytes": "560365568",
+            "unity_bytes": "76354335",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.110580",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "35.114075",
+            "working_bytes": "356278272",
+            "private_bytes": "560254976",
+            "unity_bytes": "76354546",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.020978",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "40.115072",
+            "working_bytes": "318640128",
+            "private_bytes": "522444800",
+            "unity_bytes": "76354626",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.346600",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "45.115472",
+            "working_bytes": "319270912",
+            "private_bytes": "522473472",
+            "unity_bytes": "76355258",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.804790",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "50.116170",
+            "working_bytes": "319275008",
+            "private_bytes": "522473472",
+            "unity_bytes": "76355594",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.999313",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          }
+        ],
+        "all_recorded_mouth_zero": true,
+        "breath_changes": true
+      },
+      "old_nonzero_callbacks_after_stopped": 0,
+      "manual_observations": {
+        "status": "recorded_by_integration_owner_not_independent_UI_operation",
+        "path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-generation-save-02\\manual-observations.json",
+        "sha256": "076e17114a0b0be0cfb275e67ae6585029cf9aab8cb724ec0012ef1bd2b16575",
+        "record": {
+          "format": 1,
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "case_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-save-02",
+          "observer": "root / integration owner",
+          "observation_method": "Actual Windows Player operations through computer-use Sky",
+          "transcriber": "desktop_ui",
+          "transcription_source": "Root task messages reporting actual Sky observations; transcriber did not operate or independently inspect the live UI.",
+          "transcribed_utc": "2026-09-20T22:33:24.908339+00:00",
+          "is_R3_DPI_matrix_evidence": false,
+          "environment_from_player_file": {
+            "screenWidth": 1280,
+            "screenHeight": 800,
+            "windowDpi": 96,
+            "monitorScalePercent": 100
+          },
+          "actual_trigger_phase_from_csv": "Thinking",
+          "launcher_exit_code_from_run_result": 0,
+          "runtime_config_exists_after_run": false,
+          "package_unchanged_after_run": true,
+          "classification": "manual_observations_recorded",
+          "intended_phase": "Thinking",
+          "intended_outcome": "save",
+          "observations": [
+            "Root clicked Export in actual Thinking and saved through the native file window.",
+            "The reply displayed Interrupted with its waiting placeholder; no generated body had arrived and the stored body remained empty.",
+            "During file selection the idle model pose changed; no late reply text or audio returned.",
+            "Alt+F4 ended normally with exit code zero."
+          ],
+          "export_target": "exported-conversation.json",
+          "avatar_updates_observed": true,
+          "manual_close": "Alt+F4",
+          "fixture_latency_injection": {
+            "api": "dataclasses.replace(PreviewSettings.from_environment(), scenario='slow_generation', fixture_delay=8.0); create_preview_app(settings)",
+            "fixture_reply_delay_seconds": 8.0,
+            "existing_slow_generation_delay_seconds": 3.0,
+            "accepted_to_text_minimum_seconds_if_not_cancelled": 11.0,
+            "fixture_speech_delay_seconds_if_reached": 8.0,
+            "package_files_modified": false,
+            "scope": "Explicit QA latency injection through frozen Settings API, not default production timing. Real accepted generation, cancellation, persistence and native dialog paths remain active. No acceptance threshold or analyzer is changed."
+          },
+          "evidence_sha256": {
+            "case.json": "673b4c0def19caeb1ed8fc4453eecdddb70f21a7278e4b9623b8f831a1f071cb",
+            "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9",
+            "export-events.csv": "9b19931dbb1199fa9bfff535dba54ba830fe6ccc9208ebb92eb7c2f47eaa22cc",
+            "run-result.json": "a914125c0041cafb85dcb2e4accf47495e70c6fb2992f52b0553bee7bcb410fe",
+            "exported-conversation.json": "fd14a17d3a0c887576996462faa696762f37b7794009a0f6082f077c6cc24e0b"
+          }
+        }
+      },
+      "additional_files_sha256": {
+        "Player.log": "aac88fc99d87c4eefd3d0ee1cbe1dcf1f2886465e32ee0d1a81418bfcc5fa4c5",
+        "events.csv": "67d1df9a7ec4dc8cf020db852e07327b572d92c91f951859e1f4c3ee7e3eae2b",
+        "output-levels.csv": "169876857a5ee186693078aa0631d04a978ab225af62f3da5a06dfc9ef910d14",
+        "memory-avatar.csv": "018642c393a4b1ca0f8ee1b2090cbd71433007e6929f0fd2d935fbd614cbb97b",
+        "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9"
+      }
+    },
+    {
+      "case_name": "export-playback-save-02",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-playback-save-02",
+      "analysis": {
+        "status": "automated_checks_passed",
+        "scope": "Native stage, whole-run frame continuity, durable terminal/export and package cleanup checks; manual avatar/input/window observations still required",
+        "phase": "playback",
+        "outcome": "save",
+        "invalid_reasons": [],
+        "failures": [],
+        "dialog_open_seconds": 16.3764677,
+        "maximum_frame_ms": 26.4619,
+        "target_delivery_state": 4,
+        "files_sha256": {
+          "case.json": "07296848c2e660078b4cb5114ba16ea9fe4911d0d117ab9851d4234128a492cb",
+          "run-result.json": "cdb67322e49f11cd1b441761b6d89567460bbda098fa2fd5e6befe8a0b7e2f6f",
+          "player-result.json": "6fd83bb5c19661f4bd277e77f605d98c49c3e48d5771a6e3633555de5239dcdf",
+          "export-ready.json": "0f833ae694847728f4b163db41df8aacc9a5c5f0006ad64dbb92aa1b938a539f",
+          "export-events.csv": "4ff1a8a7d64313e968a90610560192e71a2a2c034dad8169efd00dcf7680cbf4",
+          "frame-times.csv": "f4bc69e4dac7e580516c42e5af3684c15747727d55db451cb6bc6a4630de9f9c",
+          "userdata/history/conversations.v1.json": "9c44984460df6a28d9d8426cfceeefbe1df25a05be4fd8619972003ba70be51c"
+        },
+        "export_sha256": "5301f175565877284eb38d73865cd0bf57cfadac0bf3eac8d6f5d41677970c24"
+      },
+      "actual_trigger": {
+        "stage": "Stopping",
+        "stage_monotonic_ticks": "347355069",
+        "observed_native_qpc_ticks": "792476880223",
+        "qpc_frequency": "10000000",
+        "trigger_phase": "Speaking",
+        "conversation_id": "839c0333-0e10-4cc0-a145-ec86ab1a6cdb",
+        "request_id": "427240ae-63ab-44a1-9b5a-010d6ea599e4",
+        "generation": "3",
+        "current_phase": "Speaking",
+        "played_samples": "137216",
+        "total_samples": "192000",
+        "mouth": "0.000000",
+        "observed_seconds": "31.276615"
+      },
+      "stages": [
+        "Stopping",
+        "Stopped",
+        "Capturing",
+        "DialogOpen",
+        "Saving",
+        "Saved",
+        "Finished"
+      ],
+      "durable_record": {
+        "turnId": "79dd649e-c2b8-43cf-a2e3-eaed3ec77b11",
+        "deliveryState": 4,
+        "playedSamples": 137216,
+        "totalSamples": 192000
+      },
+      "durable_text_empty": false,
+      "fixture_latency_injection": null,
+      "identity": {
+        "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+        "source_dirty": false,
+        "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+        "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+        "file_count": 3015
+      },
+      "player_summary": {
+        "durationSeconds": 57.4194994,
+        "frames": 3262,
+        "p95FrameMs": 16.9,
+        "maximumFrameMs": 26.461900000001037,
+        "framesOverOneSecond": 0,
+        "errors": 0,
+        "warnings": 0,
+        "actualPlaybackStarts": 1,
+        "maximumMotionPlayables": 6,
+        "screenWidth": 1280,
+        "screenHeight": 800,
+        "windowDpi": 96,
+        "monitorScalePercent": 100
+      },
+      "native_interval": {
+        "timing_method": "duration uses original worker Stopwatch ticks / declared frequency; frame and avatar subset uses main-thread observed_seconds, subject to delivery-frame boundaries",
+        "frame_count": 982,
+        "max_frame_ms": 23.8588,
+        "avatar_samples": [
+          {
+            "seconds": "35.122970",
+            "working_bytes": "356618240",
+            "private_bytes": "560357376",
+            "unity_bytes": "76439960",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.027887",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "40.124129",
+            "working_bytes": "323022848",
+            "private_bytes": "526704640",
+            "unity_bytes": "76440080",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.368259",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "45.124992",
+            "working_bytes": "323764224",
+            "private_bytes": "527155200",
+            "unity_bytes": "76440524",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.822649",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          }
+        ],
+        "all_recorded_mouth_zero": true,
+        "breath_changes": true
+      },
+      "old_nonzero_callbacks_after_stopped": 0,
+      "manual_observations": {
+        "status": "recorded_by_integration_owner_not_independent_UI_operation",
+        "path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-playback-save-02\\manual-observations.json",
+        "sha256": "c4782175e372fb3afb0916df43311aa211915b74c06ca74647a90c512caa8be0",
+        "record": {
+          "format": 1,
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "case_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-save-02",
+          "observer": "root / integration owner",
+          "observation_method": "Actual Windows Player operations through computer-use Sky",
+          "transcriber": "desktop_ui",
+          "transcription_source": "Root task message reporting the actual Sky observations; transcriber did not operate or independently inspect the live UI.",
+          "transcribed_utc": "2026-09-20T21:33:58.303745+00:00",
+          "is_R3_DPI_matrix_evidence": false,
+          "environment_from_player_file": {
+            "screenWidth": 1280,
+            "screenHeight": 800,
+            "windowDpi": 96,
+            "monitorScalePercent": 100
+          },
+          "actual_trigger_phase_from_csv": "Speaking",
+          "launcher_exit_code_from_run_result": 0,
+          "runtime_config_exists_after_run": false,
+          "package_unchanged_after_run": true,
+          "classification": "manual_observations_recorded",
+          "intended_phase": "Speaking",
+          "intended_outcome": "save",
+          "observations": [
+            "Root pressed F9 and clicked Export while the real Player was Speaking.",
+            "The Player displayed Interrupted before native file selection.",
+            "While the native file window remained open, the model idle pose changed across snapshots.",
+            "Root saved to the case exported-conversation.json through the native window and observed success.",
+            "Root closed the Player with Alt+F4 and observed normal exit code zero."
+          ],
+          "export_target": "exported-conversation.json",
+          "avatar_updates_observed": true,
+          "manual_close": "Alt+F4",
+          "evidence_sha256": {
+            "case.json": "07296848c2e660078b4cb5114ba16ea9fe4911d0d117ab9851d4234128a492cb",
+            "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9",
+            "export-events.csv": "4ff1a8a7d64313e968a90610560192e71a2a2c034dad8169efd00dcf7680cbf4",
+            "run-result.json": "cdb67322e49f11cd1b441761b6d89567460bbda098fa2fd5e6befe8a0b7e2f6f",
+            "exported-conversation.json": "5301f175565877284eb38d73865cd0bf57cfadac0bf3eac8d6f5d41677970c24"
+          }
+        }
+      },
+      "additional_files_sha256": {
+        "Player.log": "dc9c8dcd794e18f7e960dda51808cbd1bac9b4e86020d8eefe7b7d165e8fbcc6",
+        "events.csv": "aca74cd2c27f1fa5353b9c24ad70e4c0b376483a62ab8037a0f61efa4c668871",
+        "output-levels.csv": "297f91d28d90c988e71bdda7c1f303845cc5c5f54f0556bf750568628c072836",
+        "memory-avatar.csv": "f36f19e1eb42347203b4c4968be38b6e5e57df94237cb43f095c743f330852b5",
+        "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9"
+      }
+    },
+    {
+      "case_name": "export-playback-cancel",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-playback-cancel",
+      "analysis": {
+        "status": "automated_checks_passed",
+        "scope": "Native stage, whole-run frame continuity, durable terminal/export and package cleanup checks; manual avatar/input/window observations still required",
+        "phase": "playback",
+        "outcome": "cancel",
+        "invalid_reasons": [],
+        "failures": [],
+        "dialog_open_seconds": 31.808727,
+        "maximum_frame_ms": 27.9717,
+        "target_delivery_state": 4,
+        "files_sha256": {
+          "case.json": "f3715d390373255f3d3dfb76d227806f51223e0d445ef45c01c2385d6b7efda0",
+          "run-result.json": "42ff05deb63dea6869785814863b39cbed54d31525a6caa59cdf74f5cb5e0714",
+          "player-result.json": "ee87c3aef30c4eea3287a209a447175812735ba6112c3a45abee84014da04bf8",
+          "export-ready.json": "0f833ae694847728f4b163db41df8aacc9a5c5f0006ad64dbb92aa1b938a539f",
+          "export-events.csv": "b0f4ae80ac0bb6829971011a7edcd75bfc722065167f98534389851219be7c2e",
+          "frame-times.csv": "e177aaa378f9bcfaed05c0be9a081e8c3ab52b036ce9c2deb0133f2091552f1f",
+          "userdata/history/conversations.v1.json": "6429309a59026b0ab90687347a3c57a32575da6c6ee1fc764e4781f7a3308261"
+        },
+        "export_sha256": null
+      },
+      "actual_trigger": {
+        "stage": "Stopping",
+        "stage_monotonic_ticks": "289105227",
+        "observed_native_qpc_ticks": "793066646421",
+        "qpc_frequency": "10000000",
+        "trigger_phase": "Speaking",
+        "conversation_id": "2a81c6c5-b8ba-4210-bf1a-68d734f77370",
+        "request_id": "a79e3128-f2b1-4ec0-bf46-543116b48c1d",
+        "generation": "3",
+        "current_phase": "Speaking",
+        "played_samples": "111104",
+        "total_samples": "192000",
+        "mouth": "0.351548",
+        "observed_seconds": "25.440878"
+      },
+      "stages": [
+        "Stopping",
+        "Stopped",
+        "Capturing",
+        "DialogOpen",
+        "Cancelled",
+        "Finished"
+      ],
+      "durable_record": {
+        "turnId": "ca831aed-7839-40f9-866b-efb5a6c27571",
+        "deliveryState": 4,
+        "playedSamples": 111104,
+        "totalSamples": 192000
+      },
+      "durable_text_empty": false,
+      "fixture_latency_injection": null,
+      "identity": {
+        "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+        "source_dirty": false,
+        "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+        "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+        "file_count": 3015
+      },
+      "player_summary": {
+        "durationSeconds": 65.92995099999999,
+        "frames": 3772,
+        "p95FrameMs": 17.0,
+        "maximumFrameMs": 27.971699999994826,
+        "framesOverOneSecond": 0,
+        "errors": 0,
+        "warnings": 0,
+        "actualPlaybackStarts": 1,
+        "maximumMotionPlayables": 6,
+        "screenWidth": 1280,
+        "screenHeight": 800,
+        "windowDpi": 96,
+        "monitorScalePercent": 100
+      },
+      "native_interval": {
+        "timing_method": "duration uses original worker Stopwatch ticks / declared frequency; frame and avatar subset uses main-thread observed_seconds, subject to delivery-frame boundaries",
+        "frame_count": 1908,
+        "max_frame_ms": 27.9717,
+        "avatar_samples": [
+          {
+            "seconds": "30.120133",
+            "working_bytes": "355430400",
+            "private_bytes": "560549888",
+            "unity_bytes": "76441215",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.094736",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "35.121935",
+            "working_bytes": "322002944",
+            "private_bytes": "527085568",
+            "unity_bytes": "76441582",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.029225",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "40.123048",
+            "working_bytes": "322007040",
+            "private_bytes": "527085568",
+            "unity_bytes": "76442149",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.371969",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "45.123468",
+            "working_bytes": "322080768",
+            "private_bytes": "527085568",
+            "unity_bytes": "76443711",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.825363",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "50.124483",
+            "working_bytes": "326307840",
+            "private_bytes": "531283968",
+            "unity_bytes": "76443300",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.997185",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "55.137263",
+            "working_bytes": "331358208",
+            "private_bytes": "535388160",
+            "unity_bytes": "76444074",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.730595",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          }
+        ],
+        "all_recorded_mouth_zero": true,
+        "breath_changes": true
+      },
+      "old_nonzero_callbacks_after_stopped": 0,
+      "manual_observations": {
+        "status": "recorded_by_integration_owner_not_independent_UI_operation",
+        "path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-playback-cancel\\manual-observations.json",
+        "sha256": "d7993875a478a22bf1aad74b29f24ca61a915d2d4c71e5af2d16fdd3b110f0b3",
+        "record": {
+          "format": 1,
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "case_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-cancel",
+          "observer": "root / integration owner",
+          "observation_method": "Actual Windows Player operations through computer-use Sky",
+          "transcriber": "desktop_ui",
+          "transcription_source": "Root task message reporting the actual Sky observations; transcriber did not operate or independently inspect the live UI.",
+          "transcribed_utc": "2026-09-20T21:33:58.304745+00:00",
+          "is_R3_DPI_matrix_evidence": false,
+          "environment_from_player_file": {
+            "screenWidth": 1280,
+            "screenHeight": 800,
+            "windowDpi": 96,
+            "monitorScalePercent": 100
+          },
+          "actual_trigger_phase_from_csv": "Speaking",
+          "launcher_exit_code_from_run_result": 0,
+          "runtime_config_exists_after_run": false,
+          "package_unchanged_after_run": true,
+          "classification": "manual_observations_recorded",
+          "intended_phase": "Speaking",
+          "intended_outcome": "cancel",
+          "observations": [
+            "Root opened Export while the actual Player was Speaking, then switched back to the Player.",
+            "Volume was 80 percent, changed by mouse to 59 percent, then by a physical Left key event to 49 percent.",
+            "The idle character pose changed while the native file window was waiting.",
+            "Root pressed F8 to save desktop-manual-01.png.",
+            "The main-window Stop button cancelled export; the UI showed cancellation and the original reply remained Interrupted.",
+            "Root closed the Player with Alt+F4 and observed normal exit code zero."
+          ],
+          "volume_percent_sequence": [
+            80,
+            59,
+            49
+          ],
+          "volume_input_sequence": [
+            "initial",
+            "mouse",
+            "physical Left key"
+          ],
+          "avatar_updates_observed": true,
+          "cancel_control": "Player Stop button",
+          "manual_close": "Alt+F4",
+          "screenshot": "desktop-manual-01.png",
+          "evidence_sha256": {
+            "case.json": "f3715d390373255f3d3dfb76d227806f51223e0d445ef45c01c2385d6b7efda0",
+            "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9",
+            "export-events.csv": "b0f4ae80ac0bb6829971011a7edcd75bfc722065167f98534389851219be7c2e",
+            "run-result.json": "42ff05deb63dea6869785814863b39cbed54d31525a6caa59cdf74f5cb5e0714",
+            "desktop-manual-01.png": "87f2e1658e32a4c177a49bae67faf74ad8c7283d9a33c4bcab0d9721761a4b67"
+          }
+        }
+      },
+      "additional_files_sha256": {
+        "Player.log": "604666660be69fb5f4c9cd7e746d497776a266ee095fc504c6f0ae837a9e6073",
+        "events.csv": "6feab2ba988aa6318e51261fb75fd21580c2aa178c0ca1a28e28170eff937282",
+        "output-levels.csv": "73e5d749c9f0eba0985aa2d1a3859c0f4cbf0b069142d49a89644e07f1a27685",
+        "memory-avatar.csv": "3cb92bfbb8a77f9e30190681d64da4e382ff38d1c5f8bb2f090b956761987c18",
+        "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9"
+      }
+    },
+    {
+      "case_name": "export-idle-save",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-idle-save",
+      "analysis": {
+        "status": "automated_checks_passed",
+        "scope": "Native stage, whole-run frame continuity, durable terminal/export and package cleanup checks; manual avatar/input/window observations still required",
+        "phase": "idle",
+        "outcome": "save",
+        "invalid_reasons": [],
+        "failures": [],
+        "dialog_open_seconds": 13.7636783,
+        "maximum_frame_ms": 23.8699,
+        "target_delivery_state": 3,
+        "files_sha256": {
+          "case.json": "afbad2b39b397fd50fe48cc4ba8876cbe3b519a035bd1ec4512803f215e438e0",
+          "run-result.json": "28d3ab3dca26fc7acf1d314518cc74515e5840c2932797d83d43eec53a530832",
+          "player-result.json": "8a5137dbd295b6d8234253865ccf128826413d8cf7e7845f0d0b5d5f574d6d94",
+          "export-ready.json": "a8f351bc230d39b2eea3d1e6dac57a53d7fdbe23fd0744c0216cfdd6f4bb3349",
+          "export-events.csv": "cf34733d281060366039fe005af863a4c4018e64c80c6802fe272d7d95a3ed1a",
+          "frame-times.csv": "d80d51fa42a3ef3d0f6202ddba29f0b16edd8ace2261cdc9ba0a584661ab6a97",
+          "userdata/history/conversations.v1.json": "2817bbbc0aeed277a98e1c3968719af95fe2bb0b59fd84202badd9928abf0134"
+        },
+        "export_sha256": "3f92ad168572462c460980182ca53dbd2f0a6aab6a5bb8b28ead1145897115b5"
+      },
+      "actual_trigger": {
+        "stage": "Stopping",
+        "stage_monotonic_ticks": "501666575",
+        "observed_native_qpc_ticks": "794013605913",
+        "qpc_frequency": "10000000",
+        "trigger_phase": "Ready",
+        "conversation_id": "ad2a7a4a-8b88-4428-9661-0f0c02c8f653",
+        "request_id": "8b30234c-76aa-4faa-8186-41037356b80c",
+        "generation": "3",
+        "current_phase": "Ready",
+        "played_samples": "192000",
+        "total_samples": "192000",
+        "mouth": "0.000000",
+        "observed_seconds": "46.602307"
+      },
+      "stages": [
+        "Stopping",
+        "Stopped",
+        "Capturing",
+        "DialogOpen",
+        "Saving",
+        "Saved",
+        "Finished"
+      ],
+      "durable_record": {
+        "turnId": "f73878c0-3a83-4460-a1ec-f4526346f693",
+        "deliveryState": 3,
+        "playedSamples": 192000,
+        "totalSamples": 192000
+      },
+      "durable_text_empty": false,
+      "fixture_latency_injection": null,
+      "identity": {
+        "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+        "source_dirty": false,
+        "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+        "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+        "file_count": 3015
+      },
+      "player_summary": {
+        "durationSeconds": 69.71167020000001,
+        "frames": 3999,
+        "p95FrameMs": 17.0,
+        "maximumFrameMs": 23.869899999997557,
+        "framesOverOneSecond": 0,
+        "errors": 0,
+        "warnings": 0,
+        "actualPlaybackStarts": 1,
+        "maximumMotionPlayables": 6,
+        "screenWidth": 1280,
+        "screenHeight": 800,
+        "windowDpi": 96,
+        "monitorScalePercent": 100
+      },
+      "native_interval": {
+        "timing_method": "duration uses original worker Stopwatch ticks / declared frequency; frame and avatar subset uses main-thread observed_seconds, subject to delivery-frame boundaries",
+        "frame_count": 825,
+        "max_frame_ms": 22.3294,
+        "avatar_samples": [
+          {
+            "seconds": "50.116028",
+            "working_bytes": "350658560",
+            "private_bytes": "551997440",
+            "unity_bytes": "76438913",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.986200",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "55.117405",
+            "working_bytes": "321441792",
+            "private_bytes": "522731520",
+            "unity_bytes": "76439360",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.679401",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "60.118037",
+            "working_bytes": "322220032",
+            "private_bytes": "523251712",
+            "unity_bytes": "76439841",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.217173",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          }
+        ],
+        "all_recorded_mouth_zero": true,
+        "breath_changes": true
+      },
+      "old_nonzero_callbacks_after_stopped": 0,
+      "manual_observations": {
+        "status": "recorded_by_integration_owner_not_independent_UI_operation",
+        "path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-idle-save\\manual-observations.json",
+        "sha256": "75c5be31ccfbb9013be579505fa45bbf329957754d79ebaf05962b3dbcfaa12b",
+        "record": {
+          "format": 1,
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "case_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-idle-save",
+          "observer": "root / integration owner",
+          "observation_method": "Actual Windows Player operations through computer-use Sky",
+          "transcriber": "desktop_ui",
+          "transcription_source": "Root task messages reporting actual Sky observations; transcriber did not operate or independently inspect the live UI.",
+          "transcribed_utc": "2026-09-20T22:33:24.904308+00:00",
+          "is_R3_DPI_matrix_evidence": false,
+          "environment_from_player_file": {
+            "screenWidth": 1280,
+            "screenHeight": 800,
+            "windowDpi": 96,
+            "monitorScalePercent": 100
+          },
+          "actual_trigger_phase_from_csv": "Ready",
+          "launcher_exit_code_from_run_result": 0,
+          "runtime_config_exists_after_run": false,
+          "package_unchanged_after_run": true,
+          "classification": "manual_observations_recorded",
+          "intended_phase": "Ready",
+          "intended_outcome": "save",
+          "observations": [
+            "After F9, root waited for the entire WAV to finish and export-ready reported Ready.",
+            "When Export opened, the assistant visibly remained Played; the model pose continued changing.",
+            "Root saved to the case exported-conversation.json through the native window.",
+            "The reply remained Played before exit and no new reply appeared; Alt+F4 ended normally with exit code zero."
+          ],
+          "export_target": "exported-conversation.json",
+          "avatar_updates_observed": true,
+          "manual_close": "Alt+F4",
+          "evidence_sha256": {
+            "case.json": "afbad2b39b397fd50fe48cc4ba8876cbe3b519a035bd1ec4512803f215e438e0",
+            "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9",
+            "export-events.csv": "cf34733d281060366039fe005af863a4c4018e64c80c6802fe272d7d95a3ed1a",
+            "run-result.json": "28d3ab3dca26fc7acf1d314518cc74515e5840c2932797d83d43eec53a530832",
+            "exported-conversation.json": "3f92ad168572462c460980182ca53dbd2f0a6aab6a5bb8b28ead1145897115b5"
+          }
+        }
+      },
+      "additional_files_sha256": {
+        "Player.log": "162d26b17d5332503df5885312cc1455ea209b0bd697dacb069b601264c8c572",
+        "events.csv": "f38a3b7a8c304b75c2fb7983c66ce17883d19782afa9e3724a854f74777ed164",
+        "output-levels.csv": "4d969b8ee641d59d630fb959f482273007cab3f62305cf342912055d5163f4f1",
+        "memory-avatar.csv": "0f8fb1c356a3d662c48c4d35f1d6deaf9a9470674ff77ebc727024474e03f6da",
+        "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9"
+      }
+    },
+    {
+      "case_name": "export-idle-cancel",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-idle-cancel",
+      "analysis": {
+        "status": "automated_checks_passed",
+        "scope": "Native stage, whole-run frame continuity, durable terminal/export and package cleanup checks; manual avatar/input/window observations still required",
+        "phase": "idle",
+        "outcome": "cancel",
+        "invalid_reasons": [],
+        "failures": [],
+        "dialog_open_seconds": 10.7683295,
+        "maximum_frame_ms": 25.7881,
+        "target_delivery_state": 3,
+        "files_sha256": {
+          "case.json": "907865406d1bab8b721cf05efd914f52128d79272e1336e776236eb227d74023",
+          "run-result.json": "b20693a30a8cb36e17e95c2a92cb8b2d8effe1e3327b7d6bf8e74c22e2d3a191",
+          "player-result.json": "95b020b13745c2b1bf2b4c5ef1589004b78ef38b1a93021292bfbdabff9dfd5d",
+          "export-ready.json": "a8f351bc230d39b2eea3d1e6dac57a53d7fdbe23fd0744c0216cfdd6f4bb3349",
+          "export-events.csv": "37bdf67100db4c5ed378452e178387638ab895482666ea850bc140aaad5c9555",
+          "frame-times.csv": "68bb152f7933db4423822511e10d46182820a4120dc79f6ca07e4a946e463e62",
+          "userdata/history/conversations.v1.json": "c92d1115ec28ba0e84b3a341aa83fb6fede6b9f8b99ba1ad62905d24b009203f"
+        },
+        "export_sha256": null
+      },
+      "actual_trigger": {
+        "stage": "Stopping",
+        "stage_monotonic_ticks": "409341788",
+        "observed_native_qpc_ticks": "794693422353",
+        "qpc_frequency": "10000000",
+        "trigger_phase": "Ready",
+        "conversation_id": "5a504c39-c60a-4e8d-9615-25a0a719cebc",
+        "request_id": "1bf89997-d39a-4114-81cf-855ec9827f30",
+        "generation": "3",
+        "current_phase": "Ready",
+        "played_samples": "192000",
+        "total_samples": "192000",
+        "mouth": "0.000000",
+        "observed_seconds": "37.436922"
+      },
+      "stages": [
+        "Stopping",
+        "Stopped",
+        "Capturing",
+        "DialogOpen",
+        "Cancelled",
+        "Finished"
+      ],
+      "durable_record": {
+        "turnId": "820d5c1e-31ff-48c9-b249-35cc90f8d75b",
+        "deliveryState": 3,
+        "playedSamples": 192000,
+        "totalSamples": 192000
+      },
+      "durable_text_empty": false,
+      "fixture_latency_injection": null,
+      "identity": {
+        "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+        "source_dirty": false,
+        "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+        "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+        "file_count": 3015
+      },
+      "player_summary": {
+        "durationSeconds": 57.775569999999995,
+        "frames": 3284,
+        "p95FrameMs": 16.9,
+        "maximumFrameMs": 25.78809999999976,
+        "framesOverOneSecond": 0,
+        "errors": 0,
+        "warnings": 0,
+        "actualPlaybackStarts": 1,
+        "maximumMotionPlayables": 6,
+        "screenWidth": 1280,
+        "screenHeight": 800,
+        "windowDpi": 96,
+        "monitorScalePercent": 100
+      },
+      "native_interval": {
+        "timing_method": "duration uses original worker Stopwatch ticks / declared frequency; frame and avatar subset uses main-thread observed_seconds, subject to delivery-frame boundaries",
+        "frame_count": 646,
+        "max_frame_ms": 20.9501,
+        "avatar_samples": [
+          {
+            "seconds": "40.114311",
+            "working_bytes": "348893184",
+            "private_bytes": "550817792",
+            "unity_bytes": "76441235",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.393762",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "45.115143",
+            "working_bytes": "319557632",
+            "private_bytes": "521437184",
+            "unity_bytes": "76440218",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.842267",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          }
+        ],
+        "all_recorded_mouth_zero": true,
+        "breath_changes": true
+      },
+      "old_nonzero_callbacks_after_stopped": 0,
+      "manual_observations": {
+        "status": "recorded_by_integration_owner_not_independent_UI_operation",
+        "path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-idle-cancel\\manual-observations.json",
+        "sha256": "9d967a35b0def7407d452bfc39fa1b189199d965ef2ce150b47f9f793af1c82b",
+        "record": {
+          "format": 1,
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "case_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-idle-cancel",
+          "observer": "root / integration owner",
+          "observation_method": "Actual Windows Player operations through computer-use Sky",
+          "transcriber": "desktop_ui",
+          "transcription_source": "Root task messages reporting actual Sky observations; transcriber did not operate or independently inspect the live UI.",
+          "transcribed_utc": "2026-09-20T22:33:24.905811+00:00",
+          "is_R3_DPI_matrix_evidence": false,
+          "environment_from_player_file": {
+            "screenWidth": 1280,
+            "screenHeight": 800,
+            "windowDpi": 96,
+            "monitorScalePercent": 100
+          },
+          "actual_trigger_phase_from_csv": "Ready",
+          "launcher_exit_code_from_run_result": 0,
+          "runtime_config_exists_after_run": false,
+          "package_unchanged_after_run": true,
+          "classification": "manual_observations_recorded",
+          "intended_phase": "Ready",
+          "intended_outcome": "cancel",
+          "observations": [
+            "Root opened Export in actual Ready with the assistant already Played.",
+            "After the native file window remained open about 10.77 seconds, root used its native Cancel button.",
+            "The Player returned with the reply still Played and no new reply; Alt+F4 ended normally with exit code zero."
+          ],
+          "cancel_control": "Native save dialog Cancel button",
+          "manual_close": "Alt+F4",
+          "evidence_sha256": {
+            "case.json": "907865406d1bab8b721cf05efd914f52128d79272e1336e776236eb227d74023",
+            "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9",
+            "export-events.csv": "37bdf67100db4c5ed378452e178387638ab895482666ea850bc140aaad5c9555",
+            "run-result.json": "b20693a30a8cb36e17e95c2a92cb8b2d8effe1e3327b7d6bf8e74c22e2d3a191"
+          }
+        }
+      },
+      "additional_files_sha256": {
+        "Player.log": "3c8e3a588593dc83d443d653b544bb7df62344e52270673f9242ed8bb7df0f36",
+        "events.csv": "fff92f497715d4ffc52a2e2648123d62cd8e478ed17a08eb1ded76627b0d9553",
+        "output-levels.csv": "32a4870e0a3aa11f079755313ba04272bdc40276e7286580dd85fe06c7917cb7",
+        "memory-avatar.csv": "dc65c598ee720d85eaffa64f93742137579fd9057f76b6bf3bc7f9531061da59",
+        "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9"
+      }
+    },
+    {
+      "case_name": "export-generation-cancel",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-generation-cancel",
+      "analysis": {
+        "status": "automated_checks_passed",
+        "scope": "Native stage, whole-run frame continuity, durable terminal/export and package cleanup checks; manual avatar/input/window observations still required",
+        "phase": "generation",
+        "outcome": "cancel",
+        "invalid_reasons": [],
+        "failures": [],
+        "dialog_open_seconds": 42.2600101,
+        "maximum_frame_ms": 27.9957,
+        "target_delivery_state": 4,
+        "files_sha256": {
+          "case.json": "76828b21b339354e81b3649cdf85bcb12508d23720f82bb182f810976f857aae",
+          "run-result.json": "befd531158e1bbb10da1f85c69e3db69d42e9075919ca73d0e508bc18f573d71",
+          "player-result.json": "b242a09997f5a893160c4948880b440335a58779ae9a5288fb0528619739a426",
+          "export-ready.json": "fec5573434441cad998c355b883cf6b390b5a0185f40c97dfd6a6066308dee69",
+          "export-events.csv": "bf8c6b012dcd84e8ca5ece6c7c11efdb8c2b1e8a83c7ac20df293a113dc0a29c",
+          "frame-times.csv": "dd22516fb0f7c983d62fdf05aca4108b7cb8ecf28ae8186292ba1eaedae3abe3",
+          "userdata/history/conversations.v1.json": "ee768a1c7718125ecb57713cabe8d160ed1ec03934f108b4a7267ff3d4ca2132"
+        },
+        "export_sha256": null
+      },
+      "actual_trigger": {
+        "stage": "Stopping",
+        "stage_monotonic_ticks": "467513141",
+        "observed_native_qpc_ticks": "824607792104",
+        "qpc_frequency": "10000000",
+        "trigger_phase": "Thinking",
+        "conversation_id": "b936e94b-9a39-40e5-9de3-c96523b1618c",
+        "request_id": "68dcbb99-9469-4a38-8faa-0911d52dc432",
+        "generation": "3",
+        "current_phase": "Thinking",
+        "played_samples": "0",
+        "total_samples": "0",
+        "mouth": "0.000000",
+        "observed_seconds": "43.300360"
+      },
+      "stages": [
+        "Stopping",
+        "Stopped",
+        "Capturing",
+        "DialogOpen",
+        "Cancelled",
+        "Finished"
+      ],
+      "durable_record": {
+        "turnId": "c05d44bf-f2da-438c-b699-9cbe833ff193",
+        "deliveryState": 4,
+        "playedSamples": 0,
+        "totalSamples": 0
+      },
+      "durable_text_empty": true,
+      "fixture_latency_injection": {
+        "api": "dataclasses.replace(PreviewSettings.from_environment(), scenario='slow_generation', fixture_delay=8.0); create_preview_app(settings)",
+        "fixture_reply_delay_seconds": 8.0,
+        "existing_slow_generation_delay_seconds": 3.0,
+        "accepted_to_text_minimum_seconds_if_not_cancelled": 11.0,
+        "fixture_speech_delay_seconds_if_reached": 8.0,
+        "package_files_modified": false,
+        "scope": "Explicit QA latency injection through frozen Settings API, not default production timing. Real accepted generation, cancellation, persistence and native dialog paths remain active. No acceptance threshold or analyzer is changed."
+      },
+      "identity": {
+        "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+        "source_dirty": false,
+        "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+        "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+        "file_count": 3015
+      },
+      "player_summary": {
+        "durationSeconds": 125.53266740000001,
+        "frames": 7348,
+        "p95FrameMs": 16.9,
+        "maximumFrameMs": 27.995700000005286,
+        "framesOverOneSecond": 0,
+        "errors": 0,
+        "warnings": 0,
+        "actualPlaybackStarts": 0,
+        "maximumMotionPlayables": 6,
+        "screenWidth": 1280,
+        "screenHeight": 800,
+        "windowDpi": 96,
+        "monitorScalePercent": 100
+      },
+      "native_interval": {
+        "timing_method": "duration uses original worker Stopwatch ticks / declared frequency; frame and avatar subset uses main-thread observed_seconds, subject to delivery-frame boundaries",
+        "frame_count": 2536,
+        "max_frame_ms": 22.2115,
+        "avatar_samples": [
+          {
+            "seconds": "45.113835",
+            "working_bytes": "355307520",
+            "private_bytes": "559534080",
+            "unity_bytes": "76353390",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.814912",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "50.114899",
+            "working_bytes": "317636608",
+            "private_bytes": "522207232",
+            "unity_bytes": "76353193",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.998452",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "55.115563",
+            "working_bytes": "317693952",
+            "private_bytes": "522207232",
+            "unity_bytes": "76353193",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.750179",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "60.116700",
+            "working_bytes": "317894656",
+            "private_bytes": "522207232",
+            "unity_bytes": "76353529",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.284999",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "65.117827",
+            "working_bytes": "318803968",
+            "private_bytes": "522244096",
+            "unity_bytes": "76353126",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.006236",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "70.119120",
+            "working_bytes": "318803968",
+            "private_bytes": "522244096",
+            "unity_bytes": "76353390",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.155532",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "75.119694",
+            "working_bytes": "320090112",
+            "private_bytes": "522338304",
+            "unity_bytes": "76353641",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.603073",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "80.119978",
+            "working_bytes": "320098304",
+            "private_bytes": "522342400",
+            "unity_bytes": "76354214",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.961303",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          },
+          {
+            "seconds": "85.120250",
+            "working_bytes": "320098304",
+            "private_bytes": "522342400",
+            "unity_bytes": "76354878",
+            "mouth": "0.000000",
+            "blink": "1.000000",
+            "breath": "0.920672",
+            "gaze_x": "0.000000",
+            "gaze_y": "0.000000",
+            "phase": "Ready",
+            "motion_playables": "6"
+          }
+        ],
+        "all_recorded_mouth_zero": true,
+        "breath_changes": true
+      },
+      "old_nonzero_callbacks_after_stopped": 0,
+      "manual_observations": {
+        "status": "recorded_by_integration_owner_not_independent_UI_operation",
+        "path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-generation-cancel\\manual-observations.json",
+        "sha256": "0bca22dd5aedb7c5923def0872784e7e9a7e06163e9990bd1da8366c97b31a29",
+        "record": {
+          "format": 1,
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "case_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-cancel",
+          "observer": "root / integration owner",
+          "observation_method": "Actual Windows Player operations through computer-use Sky",
+          "transcriber": "desktop_ui",
+          "transcription_source": "Root task messages reporting actual Sky observations; transcriber did not operate or independently inspect the live UI.",
+          "transcribed_utc": "2026-09-20T22:33:24.910340+00:00",
+          "is_R3_DPI_matrix_evidence": false,
+          "environment_from_player_file": {
+            "screenWidth": 1280,
+            "screenHeight": 800,
+            "windowDpi": 96,
+            "monitorScalePercent": 100
+          },
+          "actual_trigger_phase_from_csv": "Thinking",
+          "launcher_exit_code_from_run_result": 0,
+          "runtime_config_exists_after_run": false,
+          "package_unchanged_after_run": true,
+          "classification": "manual_observations_recorded",
+          "intended_phase": "Thinking",
+          "intended_outcome": "cancel",
+          "observations": [
+            "Root clicked Export in actual Thinking, selected the existing overwrite guard and left its confirmation prompt open.",
+            "Root switched to the Player and pressed Escape; both native dialog layers closed, with Cancelled and Finished at about 85.671 seconds.",
+            "Root then successfully used New conversation; the visible conversation became empty.",
+            "Root pressed F8 to save desktop-manual-01.png and closed normally with Alt+F4, exit code zero."
+          ],
+          "cancel_control": "Player Escape while nested overwrite confirmation is pending",
+          "nested_overwrite_cancel": true,
+          "new_conversation_after_cancel": true,
+          "manual_close": "Alt+F4",
+          "screenshot": "desktop-manual-01.png",
+          "guard_file": "overwrite-guard.json",
+          "fixture_latency_injection": {
+            "api": "dataclasses.replace(PreviewSettings.from_environment(), scenario='slow_generation', fixture_delay=8.0); create_preview_app(settings)",
+            "fixture_reply_delay_seconds": 8.0,
+            "existing_slow_generation_delay_seconds": 3.0,
+            "accepted_to_text_minimum_seconds_if_not_cancelled": 11.0,
+            "fixture_speech_delay_seconds_if_reached": 8.0,
+            "package_files_modified": false,
+            "scope": "Explicit QA latency injection through frozen Settings API, not default production timing. Real accepted generation, cancellation, persistence and native dialog paths remain active. No acceptance threshold or analyzer is changed."
+          },
+          "evidence_sha256": {
+            "case.json": "76828b21b339354e81b3649cdf85bcb12508d23720f82bb182f810976f857aae",
+            "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9",
+            "export-events.csv": "bf8c6b012dcd84e8ca5ece6c7c11efdb8c2b1e8a83c7ac20df293a113dc0a29c",
+            "run-result.json": "befd531158e1bbb10da1f85c69e3db69d42e9075919ca73d0e508bc18f573d71",
+            "desktop-manual-01.png": "a1660d3c3df3f8ed716cd992a699ebc4480aa813be8e589dd23982941fd6f189",
+            "overwrite-guard.json": "8b60a6a25c500f67c11604aa032e7612cffeccc83f86992dd96027b990ff195d"
+          },
+          "guard_sha256_after": "8b60a6a25c500f67c11604aa032e7612cffeccc83f86992dd96027b990ff195d",
+          "guard_sha256_before_reported_by_root": "8b60a6a25c500f67c11604aa032e7612cffeccc83f86992dd96027b990ff195d",
+          "guard_unchanged": true
+        }
+      },
+      "additional_files_sha256": {
+        "Player.log": "1fea2976c9c09394da8211b332ee612099b20806769adc8cc13ebae17e21d0b5",
+        "events.csv": "a1039ce613df0405de2a34687681e36c85bdc8baa9ebd84bc355519c0edf63a6",
+        "output-levels.csv": "169876857a5ee186693078aa0631d04a978ab225af62f3da5a06dfc9ef910d14",
+        "memory-avatar.csv": "98309d8d07c380942c7d368d411d75a084729f314b55b5af1e4d73c125d3e360",
+        "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9",
+        "overwrite-guard.json": "8b60a6a25c500f67c11604aa032e7612cffeccc83f86992dd96027b990ff195d",
+        "desktop-manual-01.png": "a1660d3c3df3f8ed716cd992a699ebc4480aa813be8e589dd23982941fd6f189"
+      },
+      "nested_cancel_regression": {
+        "guard_sha256": "8b60a6a25c500f67c11604aa032e7612cffeccc83f86992dd96027b990ff195d",
+        "guard_matches_root_before_digest": true,
+        "native_diagnostics": [
+          "HISTORY_EXPORT_NATIVE ticks=468628954 thread=22 opened child=51122692 root=8589908",
+          "HISTORY_EXPORT_NATIVE ticks=890729440 thread=1 cancel_request child=51122692",
+          "HISTORY_EXPORT_NATIVE ticks=890730718 thread=1 wake_post ok=True",
+          "HISTORY_EXPORT_NATIVE ticks=890737233 thread=22 wake_received",
+          "HISTORY_EXPORT_NATIVE ticks=890750410 thread=22 target root=8589908 window=19598610 enabled=True direct_ui=True",
+          "HISTORY_EXPORT_NATIVE ticks=890751192 thread=22 cancel_post window=19598610 message=1126 command=7 ok=True",
+          "HISTORY_EXPORT_NATIVE ticks=890973246 thread=22 target root=8589908 window=8589908 enabled=True direct_ui=False",
+          "HISTORY_EXPORT_NATIVE ticks=890973377 thread=22 cancel_post window=8589908 message=273 command=2 ok=True",
+          "HISTORY_EXPORT_NATIVE ticks=891114457 thread=22 closed",
+          "HISTORY_EXPORT_NATIVE ticks=891207515 thread=22 native_return selected=False error=0"
+        ],
+        "native_return_false_error_zero": true,
+        "close_timeout": false,
+        "new_empty_conversation_ids": [
+          "5e86bb75-252e-4750-b2a2-dbbab1900f3d"
+        ]
+      }
+    }
+  ],
+  "pending_matrix": [],
+  "invalid_attempts": [
+    {
+      "case_name": "export-playback-save",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-playback-save",
+      "review_classification": "invalid_attempt",
+      "reason": "Actual click was Ready after the playback window; native dialog was then cancelled. Phase mismatch is an invalid attempt, not a passed cell.",
+      "unchanged_analyzer_result": {
+        "status": "invalid_attempt",
+        "scope": "Native stage, whole-run frame continuity, durable terminal/export and package cleanup checks; manual avatar/input/window observations still required",
+        "phase": "playback",
+        "outcome": "save",
+        "invalid_reasons": [
+          "Actual click did not occur in the requested phase; repeat with a new case"
+        ],
+        "failures": [
+          "Native export did not finish with the requested outcome",
+          "Player recorded runtime errors or failed checks",
+          "Save case has no selected export file",
+          "Assistant durable delivery state is not the expected Played/Interrupted terminal",
+          "Playback case did not preserve an actual interrupted output position"
+        ],
+        "dialog_open_seconds": null,
+        "maximum_frame_ms": 619.0711,
+        "target_delivery_state": 3,
+        "files_sha256": {
+          "case.json": "ad334304342d87a64aab2ebe728ba4167c4df8a6460bebacc5f99415fd3bc596",
+          "run-result.json": "ad6901a24fbe39ae757bb1c41cedac7084a9ed936a681669be9561fdb6ce3f54",
+          "player-result.json": "99899c18db21cc5d361c4b38bd066d496c947beac33b6abf39357dfa7a991a73",
+          "export-ready.json": "0f833ae694847728f4b163db41df8aacc9a5c5f0006ad64dbb92aa1b938a539f",
+          "export-events.csv": "95e4c98056c726494630ee0fea9530121e5d699c00781e3b4ad6f251d6b68d42",
+          "frame-times.csv": "066eeafa0758f767738866ca94dcbea67f854dec8181b78a092618486100527e",
+          "userdata/history/conversations.v1.json": "1a439249511c1d6a7121bbf014d51b8147a0a72a97dad83487200745351a3b85"
+        },
+        "export_sha256": null
+      },
+      "player_failures_retained": [
+        "Export was not triggered during the requested actual phase: Ready"
+      ],
+      "duration_seconds": 66.11397720000001,
+      "maximum_frame_ms": 619.0710999999993,
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true,
+      "available_evidence_sha256": {
+        "case.json": "ad334304342d87a64aab2ebe728ba4167c4df8a6460bebacc5f99415fd3bc596",
+        "events.csv": "6914a69499054eca119cf37d9f94c4617b9ac965d3a1a3af5eb08a5183cf0242",
+        "export-events.csv": "95e4c98056c726494630ee0fea9530121e5d699c00781e3b4ad6f251d6b68d42",
+        "export-ready.json": "0f833ae694847728f4b163db41df8aacc9a5c5f0006ad64dbb92aa1b938a539f",
+        "frame-times.csv": "066eeafa0758f767738866ca94dcbea67f854dec8181b78a092618486100527e",
+        "manual-observations.json": "68ef3e08fe2d97650faa77019cfb0c40f57b0ee9465177f63548985644c08c6c",
+        "manual-steps.txt": "0d1dc0321f0a1807efbcfdcc4a2bfdece7613bb7d6feb350d8e34244d341fbb3",
+        "memory-avatar.csv": "0ff849b303b9f4e0f0cf2107f8f2d04cc1d059652ae40e37cc0372152aeacdad",
+        "output-levels.csv": "0a1c97e9ba692ee5dfcd386008515618273d8bffc38af6adecbaf74b3dd0edef",
+        "player-environment.json": "0595401eddf3bd064060298441be9ae13b83bffdc62da232b1ef4f8aba18be8a",
+        "player-result.json": "99899c18db21cc5d361c4b38bd066d496c947beac33b6abf39357dfa7a991a73",
+        "Player.log": "c710a737082e4605833fdd5dd03bd79cf340dde22fc08c1a08acd9ecc3c74329",
+        "run-result.json": "ad6901a24fbe39ae757bb1c41cedac7084a9ed936a681669be9561fdb6ce3f54",
+        "stop-measurements.csv": "63c26b97f2d650562f7dd12e6d575be05f3a2474ac9441d019d0e9c0c90b465f"
+      },
+      "manual_observations": {
+        "path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-playback-save\\manual-observations.json",
+        "sha256": "68ef3e08fe2d97650faa77019cfb0c40f57b0ee9465177f63548985644c08c6c",
+        "record": {
+          "format": 1,
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "case_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-save",
+          "observer": "root / integration owner",
+          "observation_method": "Actual Windows Player operations through computer-use Sky",
+          "transcriber": "desktop_ui",
+          "transcription_source": "Root task message reporting the actual Sky observations; transcriber did not operate or independently inspect the live UI.",
+          "transcribed_utc": "2026-09-20T21:33:58.302747+00:00",
+          "is_R3_DPI_matrix_evidence": false,
+          "environment_from_player_file": {
+            "screenWidth": 1280,
+            "screenHeight": 800,
+            "windowDpi": 120,
+            "monitorScalePercent": 125
+          },
+          "actual_trigger_phase_from_csv": "Ready",
+          "launcher_exit_code_from_run_result": 0,
+          "runtime_config_exists_after_run": false,
+          "package_unchanged_after_run": true,
+          "classification": "invalid_attempt",
+          "intended_phase": "Speaking",
+          "intended_outcome": "save",
+          "observations": [
+            "The screenshotId became stale and the eight-second playback window was missed before export was clicked.",
+            "Export was actually opened in Ready and then cancelled; this is retained as an invalid playback-save attempt, not a product failure or a successful matrix cell."
+          ],
+          "evidence_sha256": {
+            "case.json": "ad334304342d87a64aab2ebe728ba4167c4df8a6460bebacc5f99415fd3bc596",
+            "player-environment.json": "0595401eddf3bd064060298441be9ae13b83bffdc62da232b1ef4f8aba18be8a",
+            "export-events.csv": "95e4c98056c726494630ee0fea9530121e5d699c00781e3b4ad6f251d6b68d42",
+            "run-result.json": "ad6901a24fbe39ae757bb1c41cedac7084a9ed936a681669be9561fdb6ce3f54"
+          }
+        }
+      }
+    },
+    {
+      "case_name": "export-generation-save",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-generation-save",
+      "review_classification": "invalid_attempt",
+      "reason": "No F9/request/export operation occurred before the 240-second automatic end during an operator usage interruption, reported by root. No dialog evidence; not a product pass.",
+      "unchanged_analyzer_result": {
+        "status": "incomplete_evidence",
+        "missing": [
+          "export-ready.json"
+        ],
+        "failures": []
+      },
+      "player_failures_retained": [
+        "Scripted checks did not finish within the run."
+      ],
+      "duration_seconds": 240.00908780000003,
+      "maximum_frame_ms": 19.587100000009627,
+      "launcher_exit_code": 0,
+      "runtime_config_exists": false,
+      "package_unchanged": true,
+      "available_evidence_sha256": {
+        "case.json": "c9a4b7849c5802181fd9d46370f0960563bd990721629f7b7a6c25c530bcfc3b",
+        "events.csv": "95771e0fd4c7dc9b0a8355727c1bee3cd33e56e566cc25b76380096ffb51de19",
+        "export-events.csv": "df1ede3953f6a62b5ae6e1e7141a4b2ac678115d04fe4327fdfce36038d1518d",
+        "frame-times.csv": "197d0297989a01e5a372516ebf83c0c2c68712921bbb894f58508eb1e6a30120",
+        "manual-steps.txt": "3bb8f09e2989ddaf8a95368e8ba41f8adc9f6f2d148a58d4216c525a24fdef05",
+        "memory-avatar.csv": "6d5bab3e52d3719cbac9eb0693eecc3d3ab5a5345872be4d306cd293f689fb33",
+        "output-levels.csv": "169876857a5ee186693078aa0631d04a978ab225af62f3da5a06dfc9ef910d14",
+        "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9",
+        "player-result.json": "348f7285a431ad8076274d44df22e4325fb8dd1987cd993283262445c134b8d3",
+        "Player.log": "353396ad9ef8c75869e4cdb3599915f81a70468d1d89d873c364339033bd3df1",
+        "run-result.json": "643a1133bad5f5b157b231229f4843bea0f6b6108ebdb78d5401b67fe4731f3d",
+        "stop-measurements.csv": "63c26b97f2d650562f7dd12e6d575be05f3a2474ac9441d019d0e9c0c90b465f"
+      },
+      "manual_observations": {
+        "path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-generation-save\\manual-observations.json",
+        "sha256": "0bdffb955c6c9df4f810da191419a3335d496d7c12b6618fb8fc3275ee8eaf6f",
+        "record": {
+          "format": 1,
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "case_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-save",
+          "observer": "root / integration owner",
+          "observation_method": "Actual Windows Player operations through computer-use Sky",
+          "transcriber": "desktop_ui",
+          "transcription_source": "Root task messages reporting actual Sky observations; transcriber did not operate or independently inspect the live UI.",
+          "transcribed_utc": "2026-09-20T22:33:24.907332+00:00",
+          "is_R3_DPI_matrix_evidence": false,
+          "environment_from_player_file": {
+            "screenWidth": 1280,
+            "screenHeight": 800,
+            "windowDpi": 96,
+            "monitorScalePercent": 100
+          },
+          "actual_trigger_phase_from_csv": null,
+          "launcher_exit_code_from_run_result": 0,
+          "runtime_config_exists_after_run": false,
+          "package_unchanged_after_run": true,
+          "classification": "invalid_attempt",
+          "intended_phase": "Thinking",
+          "intended_outcome": "save",
+          "observations": [
+            "An operator usage interruption prevented any request/export interaction; the Player reached its automatic 240-second end.",
+            "No export window was exercised. This remains an invalid attempt, not a successful generation-save case or an inferred product failure."
+          ],
+          "manual_close": null,
+          "fixture_latency_injection": {
+            "api": "dataclasses.replace(PreviewSettings.from_environment(), scenario='slow_generation', fixture_delay=8.0); create_preview_app(settings)",
+            "fixture_reply_delay_seconds": 8.0,
+            "existing_slow_generation_delay_seconds": 3.0,
+            "accepted_to_text_minimum_seconds_if_not_cancelled": 11.0,
+            "fixture_speech_delay_seconds_if_reached": 8.0,
+            "package_files_modified": false,
+            "scope": "Explicit QA latency injection through frozen Settings API, not default production timing. Real accepted generation, cancellation, persistence and native dialog paths remain active. No acceptance threshold or analyzer is changed."
+          },
+          "evidence_sha256": {
+            "case.json": "c9a4b7849c5802181fd9d46370f0960563bd990721629f7b7a6c25c530bcfc3b",
+            "player-environment.json": "d51ffecf7c80309965e4268209e3e77989641a69f02711d003720bf1692e36e9",
+            "export-events.csv": "df1ede3953f6a62b5ae6e1e7141a4b2ac678115d04fe4327fdfce36038d1518d",
+            "run-result.json": "643a1133bad5f5b157b231229f4843bea0f6b6108ebdb78d5401b67fe4731f3d"
+          }
+        }
+      }
+    }
+  ],
+  "additional_regressions_status": "Required final-candidate cancellation, normal-close and same-package restart evidence reviewed. Invalid-path prompt cancellation remains clearly scoped dev03 precheck, not an added final gate.",
+  "limitations": [
+    "Native interval frame/parameter data supports continuous updates; root alone performs manual UI observations.",
+    "Audio callback checks are not OS loopback tail latency.",
+    "Generation cases explicitly inject fixture delay 8 seconds plus existing slow_generation 3 seconds through frozen Settings API; no package files or acceptance thresholds change.",
+    "No old candidate results counted as final candidate passes.",
+    "R2 final post-run integrity, R3/R4 and A0 complete gate verdict are separate."
+  ],
+  "additional_regressions": {
+    "nested_overwrite_cancel": {
+      "status": "record_and_manual_checks_passed",
+      "case_name": "export-generation-cancel"
+    },
+    "next_new_conversation_after_cancel": {
+      "status": "record_and_manual_checks_passed",
+      "case_name": "export-generation-cancel"
+    },
+    "nested_overwrite_normal_quit": {
+      "status": "automatic_normal_quit_cleanup_passed_separate_from_export_matrix",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\export-idle-nested-quit",
+      "trigger": "240-second QA deadline calls Application.Quit through production normal close lifecycle; attempted manual Alt+F4 arrived after the window was gone and is not the trigger",
+      "duration_seconds": 240.00677800000003,
+      "frames": 14218,
+      "maximum_frame_ms": 22.003200000000334,
+      "native_open_to_return_seconds": 175.3239646,
+      "cancel_request_to_native_return_ms": 39.4183,
+      "native_return_ticks": 2435012640,
+      "native_return_false_error_zero": true,
+      "no_close_timeout": true,
+      "guard_sha256": "8b60a6a25c500f67c11604aa032e7612cffeccc83f86992dd96027b990ff195d",
+      "guard_matches_root_before_digest": true,
+      "run_result": {
+        "started_utc": "2026-09-20T22:26:05.220036+00:00",
+        "launcher_exit_code": 0,
+        "finished_utc": "2026-09-20T22:30:10.825125+00:00",
+        "runtime_config_exists": false,
+        "export_file_exists": false,
+        "package_after_run": {
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "source_dirty": false,
+          "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+          "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+          "file_count": 3015
+        },
+        "package_unchanged": true,
+        "acceptance_status": "requires independent ExportProgress/frame/history review"
+      },
+      "preserved_player_failures": [
+        "Scripted checks did not finish within the run."
+      ],
+      "export_csv_stages": [
+        "Stopping",
+        "Stopped",
+        "Capturing",
+        "DialogOpen"
+      ],
+      "export_analyzer_unmodified_result": {
+        "status": "failed",
+        "scope": "Native stage, whole-run frame continuity, durable terminal/export and package cleanup checks; manual avatar/input/window observations still required",
+        "phase": "idle",
+        "outcome": "quit",
+        "invalid_reasons": [],
+        "failures": [
+          "Native export did not finish with the requested outcome",
+          "Player recorded runtime errors or failed checks",
+          "Player did not complete its export-stage checks"
+        ],
+        "dialog_open_seconds": null,
+        "maximum_frame_ms": 22.0032,
+        "target_delivery_state": 3,
+        "files_sha256": {
+          "case.json": "0de8c3a92f285c59bb49f6070d2635931ae851a6f055f6dc1e74d517368bf010",
+          "run-result.json": "2391b99f5b9b1c5de06f2e8c889b95dcd105487cb3fe250d8420ca28da14be7b",
+          "player-result.json": "995ca8fe3e1ab032a8bda704f329839081e659232b860bd36228db269f457c37",
+          "export-ready.json": "a8f351bc230d39b2eea3d1e6dac57a53d7fdbe23fd0744c0216cfdd6f4bb3349",
+          "export-events.csv": "7c437dc97175f6e210726ce3597a314e952b575ef851a4d7f0049c72eec82a6e",
+          "frame-times.csv": "a2b90f8c3163888d037b18374bcc43103cc9e8e8f5379b6f157ddf40c8f72ef2",
+          "userdata/history/conversations.v1.json": "25f0c915df206aa575bbbfd6ee27d46d4922a96c7e9405d8f41617c3c49fcc8a"
+        },
+        "export_sha256": null
+      },
+      "evidence_limitation": "EvidenceRunner.Finish closes CSV and unsubscribes before requesting normal quit at deadline, so no Cancelled/Finished row is recorded; no fabricated terminal rows and no physical Alt+F4 claim. This extra regression is not a seventh export-matrix pass.",
+      "native_diagnostics": [
+        "HISTORY_EXPORT_NATIVE ticks=681770824 thread=18 opened child=57479336 root=16974830",
+        "HISTORY_EXPORT_NATIVE ticks=2434618457 thread=1 cancel_request child=57479336",
+        "HISTORY_EXPORT_NATIVE ticks=2434619604 thread=1 wake_post ok=True",
+        "HISTORY_EXPORT_NATIVE ticks=2434625761 thread=18 wake_received",
+        "HISTORY_EXPORT_NATIVE ticks=2434636855 thread=18 target root=16974830 window=14484924 enabled=True direct_ui=True",
+        "HISTORY_EXPORT_NATIVE ticks=2434637768 thread=18 cancel_post window=14484924 message=1126 command=7 ok=True",
+        "HISTORY_EXPORT_NATIVE ticks=2434767117 thread=18 target root=16974830 window=16974830 enabled=True direct_ui=False",
+        "HISTORY_EXPORT_NATIVE ticks=2434767254 thread=18 cancel_post window=16974830 message=273 command=2 ok=True",
+        "HISTORY_EXPORT_NATIVE ticks=2434912543 thread=18 closed",
+        "HISTORY_EXPORT_NATIVE ticks=2435012640 thread=18 native_return selected=False error=0"
+      ],
+      "files_sha256": {
+        "case.json": "0de8c3a92f285c59bb49f6070d2635931ae851a6f055f6dc1e74d517368bf010",
+        "run-result.json": "2391b99f5b9b1c5de06f2e8c889b95dcd105487cb3fe250d8420ca28da14be7b",
+        "player-result.json": "995ca8fe3e1ab032a8bda704f329839081e659232b860bd36228db269f457c37",
+        "Player.log": "472e0091d759445c7fa317f587834da241f84b139aec6592a3f54eb03436124b",
+        "export-events.csv": "7c437dc97175f6e210726ce3597a314e952b575ef851a4d7f0049c72eec82a6e",
+        "frame-times.csv": "a2b90f8c3163888d037b18374bcc43103cc9e8e8f5379b6f157ddf40c8f72ef2",
+        "overwrite-guard.json": "8b60a6a25c500f67c11604aa032e7612cffeccc83f86992dd96027b990ff195d",
+        "userdata/history/conversations.v1.json": "25f0c915df206aa575bbbfd6ee27d46d4922a96c7e9405d8f41617c3c49fcc8a"
+      }
+    },
+    "regression-generation": {
+      "status": "passed_independent_record_checks",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\regression-generation",
+      "mode": "generation",
+      "scenario": "slow_generation",
+      "trigger_scope": "real accepted pre-text cancellation",
+      "command_count": 10,
+      "duration_seconds": 35.016817200000006,
+      "frames": 1920,
+      "max_frame_ms": 27.22630000000059,
+      "actual_playback_starts": 0,
+      "nonzero_level_samples": 0,
+      "assistant_record_count": 10,
+      "assistant_delivery_states": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "assistant_sample_positions": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "run_result": {
+        "format": 1,
+        "started_utc": "2026-09-20T22:33:31.690377+00:00",
+        "launcher_exit_code": 0,
+        "player_exit_code": 0,
+        "backend_exit_code": 1,
+        "process_started": true,
+        "package_before_run": {
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "source_dirty": false,
+          "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+          "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+          "file_count": 3015
+        },
+        "backend_pid": 19492,
+        "player_pid": 14280,
+        "finished_utc": "2026-09-20T22:34:12.714647+00:00",
+        "runtime_config_exists": false,
+        "pending_config_files": 0,
+        "package_after_run": {
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "source_dirty": false,
+          "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+          "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+          "file_count": 3015
+        },
+        "package_unchanged": true,
+        "wrapper_exit_code": 0,
+        "acceptance_status": "requires independent frame/history/DPI/audio-video review"
+      },
+      "files_sha256": {
+        "case.json": "b331522cdd1ee11dcde54a03899fc58557eb59ab1459a63931126c3223e804a8",
+        "run-result.json": "6f47603ed7ef316745c8d2e0f48738b22a869846f56996f3a9c1d1b01b367761",
+        "player-result.json": "1be0504d7666cc05c6a170580a4a97c4d7f8419d6dcea0d080c9f354bbd44540",
+        "Player.log": "3617984109b1852afcd4edbc93f87dc6a0c866608f2c648757238df035585a9e",
+        "events.csv": "e4fe76d6625d6bb756d0a7416720047307cfad8e22a5b415a569de9c36079475",
+        "frame-times.csv": "6d00724ba4acf4de33e4946bd9f47a51354ec7f239d41fce77ee09b51bb1b4bf",
+        "userdata/history/conversations.v1.json": "3db7c0f7dcdd4583a2348d5700b2626c5c8f7ba2294f8f7b6758ee668a095af2"
+      }
+    },
+    "regression-late-audio": {
+      "status": "passed_independent_record_checks",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\regression-late-audio",
+      "mode": "late-audio",
+      "scenario": "slow_download",
+      "trigger_scope": "real audio HTTP headers received before body completion cancellation",
+      "command_count": 10,
+      "duration_seconds": 35.0046249,
+      "frames": 1920,
+      "max_frame_ms": 29.224400000000372,
+      "actual_playback_starts": 0,
+      "nonzero_level_samples": 0,
+      "assistant_record_count": 10,
+      "assistant_delivery_states": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "assistant_sample_positions": [
+        [
+          0,
+          192000
+        ],
+        [
+          0,
+          192000
+        ],
+        [
+          0,
+          192000
+        ],
+        [
+          0,
+          192000
+        ],
+        [
+          0,
+          192000
+        ],
+        [
+          0,
+          192000
+        ],
+        [
+          0,
+          192000
+        ],
+        [
+          0,
+          192000
+        ],
+        [
+          0,
+          192000
+        ],
+        [
+          0,
+          192000
+        ]
+      ],
+      "run_result": {
+        "format": 1,
+        "started_utc": "2026-09-20T22:34:14.525973+00:00",
+        "launcher_exit_code": 0,
+        "player_exit_code": 0,
+        "backend_exit_code": 1,
+        "process_started": true,
+        "package_before_run": {
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "source_dirty": false,
+          "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+          "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+          "file_count": 3015
+        },
+        "backend_pid": 33536,
+        "player_pid": 3212,
+        "finished_utc": "2026-09-20T22:34:55.342520+00:00",
+        "runtime_config_exists": false,
+        "pending_config_files": 0,
+        "package_after_run": {
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "source_dirty": false,
+          "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+          "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+          "file_count": 3015
+        },
+        "package_unchanged": true,
+        "wrapper_exit_code": 0,
+        "acceptance_status": "requires independent frame/history/DPI/audio-video review"
+      },
+      "files_sha256": {
+        "case.json": "cbefba525b805a8f29dc78a07fc628f89cb9fac1a69160d3dd4ae5fe6706816d",
+        "run-result.json": "ac633b74d433969ec238e715201545f98d32812a4f7546acef9160ddb0005973",
+        "player-result.json": "50901421f936b68b9563d0bbc4b12c9115d68ecae393719b8b40a26bafe03b48",
+        "Player.log": "4fd2e2ad9315b12c2453ea28f79ab78fb12739290af72cfc59c3e265cdf930e5",
+        "events.csv": "f6cfc99850dfd8c87de44875d4d06bebb8fbacacfb7385fc1a392b79fc57ec0f",
+        "frame-times.csv": "f148e6c5bb135cbe0d245138cb5331f75c28731c35bba4c9667bfee529e64cd2",
+        "userdata/history/conversations.v1.json": "f34153545a2c88a66b2bc811941f598fb2a3bfacae793847baaab532c141a04d"
+      }
+    },
+    "regression-close": {
+      "status": "passed_independent_record_checks",
+      "case_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\regression-close",
+      "mode": "close",
+      "scenario": "normal",
+      "trigger_scope": "automatic Application.Quit after actual nonzero output; not physical Alt+F4",
+      "command_count": 1,
+      "duration_seconds": 6.647323799999999,
+      "frames": 218,
+      "max_frame_ms": 18.287100000000223,
+      "actual_playback_starts": 1,
+      "nonzero_level_samples": 1,
+      "assistant_record_count": 1,
+      "assistant_delivery_states": [
+        4
+      ],
+      "assistant_sample_positions": [
+        [
+          12800,
+          192000
+        ]
+      ],
+      "run_result": {
+        "format": 1,
+        "started_utc": "2026-09-20T22:34:57.173672+00:00",
+        "launcher_exit_code": 0,
+        "player_exit_code": 0,
+        "backend_exit_code": 1,
+        "process_started": true,
+        "package_before_run": {
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "source_dirty": false,
+          "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+          "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+          "file_count": 3015
+        },
+        "backend_pid": 42820,
+        "player_pid": 30772,
+        "finished_utc": "2026-09-20T22:35:09.736320+00:00",
+        "runtime_config_exists": false,
+        "pending_config_files": 0,
+        "package_after_run": {
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "source_dirty": false,
+          "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+          "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+          "file_count": 3015
+        },
+        "package_unchanged": true,
+        "wrapper_exit_code": 0,
+        "acceptance_status": "requires independent frame/history/DPI/audio-video review"
+      },
+      "files_sha256": {
+        "case.json": "12691d945180fcc74434c4c1c1220e14b94eda17d3ad2fc5f99692b75cd0efc2",
+        "run-result.json": "9194609951756d03a95f28def13536c37493e125b6a084876fea87afd6db838f",
+        "player-result.json": "e499b31729cbf0e2cac5e2a68308cd80a00c47ac6c5dcfb33ef992fc57b22a53",
+        "Player.log": "9fbbbe05ad985d0d8d9421153480c99a0b7d9f5d3281bd0121a579ac8849702c",
+        "events.csv": "6cfdeec62afd09eaf3a921fc6e4d10a4a57dca52e3ba9c9eaea712d5133c4d9a",
+        "frame-times.csv": "732a7934ee8e4ea6e000e454149313f29c16c89b5e09e8079a43bb6e9c6bbdc9",
+        "userdata/history/conversations.v1.json": "13bc0a99aca75912ddb826fd545d16a44d994196cfdae02742b887d2b5a4a311"
+      }
+    },
+    "restart_restore": {
+      "status": "passed_independent_snapshot_records_and_root_manual_observation",
+      "source_case": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-1280x800",
+      "restored_case": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-960x640",
+      "explicit_existing_user_data": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-1280x800\\userdata",
+      "records_before": 2,
+      "records_after_new_turn": 4,
+      "old_records_exactly_unchanged": true,
+      "old_assistant_interrupted_samples": [
+        150016,
+        192000
+      ],
+      "new_assistant_interrupted_samples": [
+        187904,
+        192000
+      ],
+      "persisted_volume": 0.462811023,
+      "displayed_volume_percent": 46,
+      "old_operation_playback_starts_after_restart": 0,
+      "independent_saved_image_review": "preview_backend viewed the existing desktop-manual-01.png: Ready text, two recovered records, assistant interrupted label, two-line user text, and volume46 visible. No live UI operation; absence of replay is supported by events and root observation.",
+      "manual_observations": {
+        "sha256": "0d7a1fbabac3b0df72e47a7e041a2bba4a47436a7003472e4c339d3dd826fa4a",
+        "record": {
+          "format": 1,
+          "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+          "case_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi125-960x640",
+          "classification": "manual_DPI_matrix_cell_recorded",
+          "observer": "root / integration owner",
+          "observation_method": "Actual Windows Player operations through computer-use Sky",
+          "transcriber": "desktop_ui",
+          "transcription_source": "Root task message reporting actual Sky observations; transcriber did not operate the live UI.",
+          "transcribed_utc": "2026-09-20T22:45:07.360536+00:00",
+          "is_R3_DPI_matrix_evidence": true,
+          "system_scale_action": {
+            "display": 2,
+            "during_percent": 125,
+            "carried_from_case": "dpi125-1280x800",
+            "display_1_changed": false,
+            "restore_to_100_status": "pending_until_matrix_complete"
+          },
+          "environment_from_player_file": {
+            "screenWidth": 960,
+            "screenHeight": 640,
+            "windowDpi": 120,
+            "monitorScalePercent": 125,
+            "monitorScaleHresult": 0
+          },
+          "observations": [
+            "On normal restart using the first 125-percent case userdata, root saw the previous two records with 你 followed by 第二行, assistant Interrupted, volume 46 percent, and Ready without automatic replay; F8 saved desktop-manual-01.png.",
+            "Physical n and i showed candidate 1 你; Space confirmed it without sending. Shift+Enter inserted a newline; typing 小窗口 produced the two-line draft 你\\n小窗口 with count 5; F8 saved desktop-manual-02.png.",
+            "One Enter submitted one new turn. Actual playback began, then Escape marked it Interrupted.",
+            "Mouse volume adjustment changed 46 to 51 percent; a physical Left key changed it to 41 percent; F8 saved desktop-manual-03.png.",
+            "History displayed four records with Open, Export, Delete, Close, Clear-all and Refresh visible; F8 saved desktop-manual-04.png.",
+            "The complete published avatar, input, Send, Stop, volume, mute, auto-read, New conversation, Settings and History were visible.",
+            "Root closed with Alt+F4; Player and launcher exited zero."
+          ],
+          "IME_candidate_evidence": "Live root Sky observation only; F8 Player backbuffer PNGs do not include the OS candidate popup.",
+          "restored_history": {
+            "source_case": "dpi125-1280x800",
+            "explicit_existing_user_data": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-1280x800\\userdata",
+            "records_before_new_input": 2,
+            "assistant_state": "Interrupted",
+            "volume_percent": 46,
+            "phase": "Ready",
+            "automatic_replay_observed": false,
+            "screenshot": "desktop-manual-01.png"
+          },
+          "history_snapshot": {
+            "file": "history-after-run.json",
+            "records_after_new_input": 4,
+            "restored_user_text": "你\n第二行",
+            "new_user_text": "你\n小窗口",
+            "new_assistant_state": "Interrupted",
+            "new_played_samples": 187904,
+            "total_samples": 192000
+          },
+          "volume_percent_sequence": [
+            46,
+            51,
+            41
+          ],
+          "exit_codes": {
+            "player_exit_code": 0,
+            "launcher_exit_code": 0,
+            "backend_exit_code": 1,
+            "wrapper_exit_code": 0
+          },
+          "package_unchanged": true,
+          "runtime_config_exists": false,
+          "selected_saved_frame_review": {
+            "reviewer": "desktop_ui",
+            "method": "Read existing Player PNGs only; no live UI control",
+            "observations": [
+              "01 shows recovered two-record conversation, Ready/Interrupted and volume46.",
+              "02 shows two-line draft and count5.",
+              "03 shows both interrupted assistant turns and volume41.",
+              "04 shows four-record history and all reported history controls."
+            ],
+            "claim_OS_candidate_screenshot": false
+          },
+          "evidence_sha256": {
+            "case.json": "11c431f9d8109326b2c81792fc5bc4b1869a3e31d5d3bf592d236c72eb9c6d43",
+            "player-environment.json": "2f9121b182606f1abac28177a123e30a9b8a0800f4c4fa863cad2bee1215f6d1",
+            "player-result.json": "ec9f053dfdb670fb851a208367939e877dcb6907b479e2102d383e9c6a746c0c",
+            "run-result.json": "0faa829559b98a5fc85f552a9af8bd6eaf5c3505192045377e28f240e828a955",
+            "history-after-run.json": "d471025a18583dd8a778ea9536a47b55e899bd659d693858d13f8c37bf5f0179",
+            "desktop-manual-01.png": "ed55fc7028dfbad43f6147222b4a360e2aaedfe5a4fc2d0f1033d84961504e39",
+            "desktop-manual-02.png": "a7243a4b8ed09ecccbc2ac577cfc525c5a97b110961d2f5c78fc6f5986a65dcc",
+            "desktop-manual-03.png": "811a83d0018457e1841aca9398f2d28bdb41fe93845b47bd2b893490ff1b743a",
+            "desktop-manual-04.png": "fc5c482e26f6b5d7f334f155b89a3de1c2f915a37e6c28fe6a0398b8f1e1c852"
+          }
+        }
+      },
+      "files_sha256": {
+        "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-1280x800\\history-after-run.json": "4f657be7d202dd29d1454d3ac6c663654bd5c1cfb2e0345d59ff4c975a18a60a",
+        "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-1280x800\\history-after-first-close.json": "4f657be7d202dd29d1454d3ac6c663654bd5c1cfb2e0345d59ff4c975a18a60a",
+        "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-1280x800\\settings-after-first-close.json": "2f32fb65766956277f3bf44bdf9f0c66d8a9bb2ab72a66c7d4a89dcdb33bece1",
+        "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-960x640\\history-after-run.json": "d471025a18583dd8a778ea9536a47b55e899bd659d693858d13f8c37bf5f0179",
+        "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-960x640\\case.json": "11c431f9d8109326b2c81792fc5bc4b1869a3e31d5d3bf592d236c72eb9c6d43",
+        "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-960x640\\run-result.json": "0faa829559b98a5fc85f552a9af8bd6eaf5c3505192045377e28f240e828a955",
+        "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-960x640\\events.csv": "0cf3d9a3469409f7d985a4ae48eef471fdedeef45767a3aa798d1911d12e69fe",
+        "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f\\dpi125-960x640\\desktop-manual-01.png": "ed55fc7028dfbad43f6147222b4a360e2aaedfe5a4fc2d0f1033d84961504e39"
+      }
+    }
+  }
+}

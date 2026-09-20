@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "observed_utc": "2026-09-20T21:13:50.029671+00:00",
+  "source_sha": "3110a56f30671161ddfb9e39998c9972d4f3a34a",
+  "candidate_status": "withdrawn_requires_product_fix_and_new_fresh_build",
+  "reason": "Valid Thinking export cancellation from a nested overwrite confirmation never settled the STA task; normal quit timed out and the owned Player required root forced cleanup.",
+  "initial_integrity_audit": "qa-package.json remains unchanged; its passed result is limited to this withdrawn SHA and artifact integrity",
+  "cases": [
+    {
+      "case": "export-generation-cancel",
+      "analysis_path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-final\\export-generation-cancel\\analysis.json",
+      "status": "invalid_attempt",
+      "sha256": "a58c42fd6092de6e603eecc1dee5630c951c459f37c9e159d42ebacca431e6da"
+    },
+    {
+      "case": "export-generation-cancel-delayed",
+      "analysis_path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-final\\export-generation-cancel-delayed\\analysis-after-cleanup.json",
+      "status": "failed",
+      "sha256": "91b3315682e3772f4029c2a849165045197829249f7c2a0ae3158be7b18a3969"
+    },
+    {
+      "case": "export-generation-save-delayed",
+      "analysis_path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-final\\export-generation-save-delayed\\analysis.json",
+      "status": "automated_checks_passed",
+      "sha256": "67c6a917ce6dbf8de5138e2f3cc7d537662c1e5442d37882f3098f1f89aa8214"
+    },
+    {
+      "case": "export-idle-cancel",
+      "analysis_path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-final\\export-idle-cancel\\analysis.json",
+      "status": "automated_checks_passed",
+      "sha256": "dc6552eefb3e4b3d4e51544a98dd072d553c292a690ab5ce28c2d6df79757dda"
+    },
+    {
+      "case": "export-idle-save",
+      "analysis_path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-final\\export-idle-save\\analysis.json",
+      "status": "automated_checks_passed",
+      "sha256": "161fae836c49e9cc10cc28905b0fa4f089178f42ee025a7743653a1a44627209"
+    },
+    {
+      "case": "export-playback-cancel",
+      "analysis_path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-final\\export-playback-cancel\\analysis.json",
+      "status": "automated_checks_passed",
+      "sha256": "966a14a8e5c1c4fa76c645724f50cc1006a08460637f9715e90e02db7727fc84"
+    },
+    {
+      "case": "export-playback-save",
+      "analysis_path": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-final\\export-playback-save\\analysis.json",
+      "status": "automated_checks_passed",
+      "sha256": "1e4cb87b1cc1929d7d5d1e5029c9fe7e050250deca88d8bc76c561c72d9799f2"
+    }
+  ],
+  "failed_case": "export-generation-cancel-delayed",
+  "failed_case_guard_unchanged": true,
+  "post_force_runtime_config_exists": false,
+  "post_force_package_unchanged_reported_by_wrapper": true,
+  "independent_full_package_rescan_performed": false,
+  "next_candidate_requirements": [
+    "new product SHA",
+    "entirely new worktree without Library before import",
+    "new portable package audit",
+    "actual nested cancellation and normal quit regression"
+  ],
+  "processes_started_or_stopped_by_reviewer": false
+}

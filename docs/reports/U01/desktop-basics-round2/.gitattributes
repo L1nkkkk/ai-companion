@@ -1,0 +1,2 @@
+# Preserve evidence bytes: these JSON files have published SHA-256 digests.
+*.json -text whitespace=trailing-space,space-before-tab,cr-at-eol

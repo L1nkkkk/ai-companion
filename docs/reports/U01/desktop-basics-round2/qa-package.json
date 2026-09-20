@@ -1,0 +1,197 @@
+{
+  "format": 1,
+  "audited_utc": "2026-09-20T20:58:39.839523+00:00",
+  "status": "passed",
+  "scope": "Read-only fresh source/build and complete portable directory/ZIP integrity audit; no process launched; not R1/R3/R4 or full gate approval",
+  "source_sha": "3110a56f30671161ddfb9e39998c9972d4f3a34a",
+  "source_worktree": "C:\\Users\\Link\\Dev\\Neuro-Saki-U01-round2-3110a56",
+  "source_clean_now": true,
+  "origin_records": {
+    "after-build.json": {
+      "observedUtc": "2026-09-20T20:56:59.6745960Z",
+      "sourceSha": "3110a56f30671161ddfb9e39998c9972d4f3a34a",
+      "gitStatus": [],
+      "libraryCreated": "2026-09-20T20:55:40.0806996Z",
+      "libraryExists": true
+    },
+    "after-worktree-before-restore.json": {
+      "sourceSha": "3110a56f30671161ddfb9e39998c9972d4f3a34a",
+      "gitStatus": [],
+      "libraryExists": false,
+      "tempExists": false,
+      "sdkExists": false,
+      "observedUtc": "2026-09-20T20:55:27.6655793Z"
+    },
+    "before-unity.json": {
+      "observedUtc": "2026-09-20T20:55:35.4380092Z",
+      "libraryExists": false,
+      "gitStatus": [],
+      "sourceSha": "3110a56f30671161ddfb9e39998c9972d4f3a34a"
+    },
+    "before-worktree.json": {
+      "startedUtc": "2026-09-20T20:55:27.1182763Z",
+      "target": "C:/Users/Link/Dev/Neuro-Saki-U01-round2-3110a56",
+      "targetExistedBefore": false,
+      "sourceSha": "3110a56f30671161ddfb9e39998c9972d4f3a34a",
+      "resourceCache": "C:/Users/Link/Dev/ai-companion-dev-tools/resources",
+      "libraryCopyPermitted": false
+    }
+  },
+  "origin_files_sha256": {
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-3110a56\\after-build.json": "b1673209677760afbd17cdccce0fb147c74f58690ef79c03f24189ac4f7f908e",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-3110a56\\after-worktree-before-restore.json": "7cd85a2b2df6af2075172d6f3be216c0d744fae5c4f477783ade5f8e884592ed",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-3110a56\\before-unity.json": "6a6c69be0b03dde46f25d2df116ff66d6ba7ec30e2065ad37c164f1c4cf55f69",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-3110a56\\before-worktree.json": "edee087e9b500616f2a9969a2d2d87b4c5f44d30ddf5f5964e16db80a34a407f",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-3110a56\\native-assets.json": "028b9786322bffe18b367d4e4c33a3c79119879da4327099222f6989978f974c",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-3110a56\\restore.log": "38763ef5027cdc3c9bc9ce57d87b9685243856b4a2d3dfa8324dd8e5527bf483",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-3110a56\\verify-native.log": "19d2560738491c5ceb6174d3e065e9d94d5d8f722e8500b9b0a820ff4c84c9e8"
+  },
+  "build_log_sha256": "b6921e1ede4cd50fdc9a39a07de22b1f846a3b2ab94d2d0973a8a5b6ea9cef6d",
+  "check_log_sha256": "e38617d738876b22e0b893a1120ee76dedf2b6e66afdd56be84e276e93dc7adf",
+  "build_result": {
+    "unity": "2022.3.62f3c1",
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 2,
+    "bytes": 117841756,
+    "seconds": 10.358063399999999
+  },
+  "unity_assertions": {
+    "history": 32,
+    "ui": 34,
+    "session_audio": 53,
+    "total": 119
+  },
+  "package_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\builds\\NeuroSaki-Desktop-3110a56",
+  "zip": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\builds\\NeuroSaki-Desktop-3110a56.zip",
+  "zip_bytes": 70327532,
+  "zip_sha256": "ddcf9dccf2eb4db0882e3fab2ccf5d1623f24c77ff99c5e2035940e013e2a8ac",
+  "package_manifest_sha256": "3fa75186a14341c56d98884285184b08809f5da701acb323cb981f5e1aaa1c1e",
+  "outer_manifest_sha256": "09f7648949b6dd0bd445983534bb1581bd208f1a487a039ed02984a2f141da9f",
+  "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+  "manifest_files": 3014,
+  "zip_members": 3015,
+  "zip_uncompressed_bytes": 175174218,
+  "built_player_files_matching": 226,
+  "backend_files_matching_source": 43,
+  "python_runtime_files_matching_source": 2297,
+  "runtime_dependencies": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.141.1"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.13.5"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.46.5"
+    },
+    {
+      "name": "starlette",
+      "version": "1.6.0"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.53.0"
+    }
+  ],
+  "dependency_licenses": {
+    "annotated-doc": [
+      "annotated_doc-0.0.5.dist-info/licenses/LICENSE"
+    ],
+    "annotated-types": [
+      "annotated_types-0.8.0.dist-info/licenses/LICENSE"
+    ],
+    "anyio": [
+      "anyio-4.15.1.dist-info/licenses/LICENSE"
+    ],
+    "click": [
+      "click-8.5.0.dist-info/licenses/LICENSE.txt"
+    ],
+    "fastapi": [
+      "fastapi-0.141.1.dist-info/licenses/LICENSE"
+    ],
+    "h11": [
+      "h11-0.16.0.dist-info/licenses/LICENSE.txt"
+    ],
+    "idna": [
+      "idna-3.20.dist-info/licenses/LICENSE.md"
+    ],
+    "pydantic": [
+      "pydantic-2.13.5.dist-info/licenses/LICENSE"
+    ],
+    "pydantic_core": [
+      "pydantic_core-2.46.5.dist-info/licenses/LICENSE"
+    ],
+    "starlette": [
+      "starlette-1.6.0.dist-info/licenses/LICENSE.md"
+    ],
+    "typing_extensions": [
+      "typing_extensions-4.16.0.dist-info/licenses/LICENSE"
+    ],
+    "typing-inspection": [
+      "typing_inspection-0.4.4.dist-info/licenses/LICENSE"
+    ],
+    "uvicorn": [
+      "uvicorn-0.53.0.dist-info/licenses/LICENSE.md"
+    ]
+  },
+  "license_hashes": {
+    "licenses/FONT-OFL.txt": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+    "licenses/LIBERATION-SANS-OFL.txt": "37f8552e9a874ec10710dc0ede6a9adf168e6609fbd02a507f35629373b85a48",
+    "licenses/LIVE2D-CORE-LICENSE.md": "b81e37048010ef1d336106151201a0323c3309cae44aecdedf57831fe88fa991",
+    "licenses/LIVE2D-LICENSE.md": "1b14d964eaf7bb16e5ca2957c2612391216d500aa27594b5bd0b17f1a4746101",
+    "licenses/LIVE2D-NOTICE.md": "2fbfd83ec0ec595ecd2ad6627315b2ac403b17f469e55a2351744984ea4b9b0a",
+    "licenses/LIVE2D-REDISTRIBUTABLES.txt": "793c95b10bfcd6bfa11dbc8dca5daa56f4a6b772d7312c6b9ddcdec2f02ab88a",
+    "licenses/RESOURCE-NOTICES.md": "648e252fce72f9779f6cb34cb0f345f5d3728fac37e4b9e89b30f29c7bbee53f",
+    "licenses/TEST-AUDIO-SOURCE.md": "d42d367fe1dd49bd180bbbd5369852ead3b4793ff16980a36f4806d154625270"
+  },
+  "package_inventory_screen": "All paths checked for runtime config/history/token-container names, logs, cache dirs, Python bytecode and databases; no such files found. This is an inventory check, not proof of arbitrary encoded secret absence.",
+  "errors": [],
+  "post_runtime_recheck": "pending root completion of acceptance runs",
+  "site_package_files_matching_frozen_environment": 436,
+  "resource_notices_matching_source": {
+    "apps/unity/Assets/Live2D/Cubism/LICENSE.md": "LIVE2D-LICENSE.md",
+    "apps/unity/Assets/Live2D/Cubism/NOTICE.md": "LIVE2D-NOTICE.md",
+    "apps/unity/Assets/Live2D/Cubism/Plugins/LICENSE.md": "LIVE2D-CORE-LICENSE.md",
+    "apps/unity/Assets/Live2D/Cubism/Plugins/RedistributableFiles.txt": "LIVE2D-REDISTRIBUTABLES.txt",
+    "apps/unity/Assets/ThirdParty/Fonts/OFL.txt": "FONT-OFL.txt",
+    "apps/unity/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt": "LIBERATION-SANS-OFL.txt",
+    "assets/manifest/unity-foundation-resources.md": "RESOURCE-NOTICES.md",
+    "services/api/app/unity_preview/fixtures/SOURCE.md": "TEST-AUDIO-SOURCE.md"
+  }
+}

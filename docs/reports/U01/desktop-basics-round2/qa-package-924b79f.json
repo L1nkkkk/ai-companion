@@ -1,0 +1,200 @@
+{
+  "format": 1,
+  "audited_utc": "2026-09-20T21:29:14.368391+00:00",
+  "status": "passed",
+  "scope": "Initial independent fresh-source/build and complete portable integrity audit; no Player/backend/Unity launched by reviewer. Same-package acceptance and post-run recheck are separate.",
+  "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+  "source_worktree": "C:\\Users\\Link\\Dev\\Neuro-Saki-U01-round2-924b79f",
+  "source_clean_now": true,
+  "origin_records": {
+    "after-build.json": {
+      "observedUtc": "2026-09-20T21:26:56.9003473Z",
+      "sourceSha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+      "gitStatus": [],
+      "libraryExists": true
+    },
+    "after-worktree-before-restore.json": {
+      "sourceSha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+      "gitStatus": [],
+      "libraryExists": false,
+      "sdkExists": false,
+      "tempExists": false,
+      "observedUtc": "2026-09-20T21:25:44.9849958Z"
+    },
+    "before-unity.json": {
+      "sourceSha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+      "observedUtc": "2026-09-20T21:25:54.7562035Z",
+      "gitStatus": [],
+      "libraryExists": false
+    },
+    "before-worktree.json": {
+      "libraryCopyPermitted": false,
+      "sourceSha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+      "targetExistedBefore": false,
+      "startedUtc": "2026-09-20T21:25:44.5962625Z",
+      "resourceCache": "C:/Users/Link/Dev/ai-companion-dev-tools/resources",
+      "target": "C:/Users/Link/Dev/Neuro-Saki-U01-round2-924b79f"
+    }
+  },
+  "origin_files_sha256": {
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-924b79f\\after-build.json": "4f97e6b15268aacde5805539320bc56c439b568b5bb3df84ac5ee37da4c4288c",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-924b79f\\after-worktree-before-restore.json": "290c1eeebe4743b02dc1ca0c7fc0bb337d10fc0da6885c89ba94bf75b1323283",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-924b79f\\before-unity.json": "85827f61916fa9dc3eb36d7564ee4550f22b0452feb9172bd35d19cea66f7617",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-924b79f\\before-worktree.json": "78ae186f9bf2626dee190a21443c968512e5040e8d56fa3c466c4c46472cfd7f",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-924b79f\\native-assets.json": "0f18d92bbadd07b92dd03d277f56bd417d7a7c67d409085ba6993c1da8c9cf34",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-924b79f\\restore.log": "38763ef5027cdc3c9bc9ce57d87b9685243856b4a2d3dfa8324dd8e5527bf483",
+    "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-fresh-924b79f\\verify-native.log": "2519764e3a8089d5cb7f16fb64932d44324d3d41c6877fcad88b91e14358f2a7"
+  },
+  "build_log_sha256": "1d915ab49977f637cb3e0b868e59c7b855a0f5f4e9c15f8bdf0ccd286739b9de",
+  "check_log_sha256": "bf19a6507449ffbeb1e797a46f3e1f9c20e4e05ccd08fbd7affee76ceaa3b572",
+  "build_result": {
+    "unity": "2022.3.62f3c1",
+    "result": "Succeeded",
+    "errors": 0,
+    "warnings": 2,
+    "bytes": 117847753,
+    "seconds": 10.723816399999999
+  },
+  "unity_assertions": {
+    "history": 32,
+    "ui": 52,
+    "session_audio": 53,
+    "total": 137
+  },
+  "python_tests": {
+    "fresh_worktree_passed": 97,
+    "fresh_worktree_skipped": 1,
+    "warnings": 2,
+    "same_sha_original_worktree_supplemental_passed": 1,
+    "distinct_passed": 98,
+    "remaining_skips": 0,
+    "logs_sha256": {
+      "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f-python-checks.log": "fa871288e7153e0e2b9be98bcfe07146089bf86fb208f52a9945efb489ecfcfc",
+      "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\evidence\\desktop-r2-924b79f-dependency-check.log": "49a2111f8aec1fcae2c70cc8ef16ce196aec6259ac5eec52f5926f4e41ac8aea"
+    }
+  },
+  "package_directory": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\builds\\NeuroSaki-Desktop-924b79f",
+  "zip": "C:\\Users\\Link\\Dev\\ai-companion-dev-tools\\builds\\NeuroSaki-Desktop-924b79f.zip",
+  "zip_bytes": 70330552,
+  "zip_sha256": "b14ca55facd93c55997968ad8d5fe07f3d0950809145b006bcc90a6d2f5e8036",
+  "package_manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+  "outer_manifest_sha256": "9ac5564531e5fda585bf30642b3d3e9c073f719c83b2341a45bed180db724303",
+  "launcher_sha256": "6feae1488c22cadbb7205ef5192471ccba581f04eb98eb35cc571c9f0c368875",
+  "manifest_files": 3014,
+  "zip_members": 3015,
+  "zip_uncompressed_bytes": 175180215,
+  "built_player_files_matching": 226,
+  "matching_source_files": {
+    "backend": 43,
+    "dependency": 436,
+    "python_runtime": 2297
+  },
+  "runtime_dependencies": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.141.1"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.13.5"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.46.5"
+    },
+    {
+      "name": "starlette",
+      "version": "1.6.0"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.53.0"
+    }
+  ],
+  "dependency_licenses": {
+    "annotated-doc": [
+      "annotated_doc-0.0.5.dist-info/licenses/LICENSE"
+    ],
+    "annotated-types": [
+      "annotated_types-0.8.0.dist-info/licenses/LICENSE"
+    ],
+    "anyio": [
+      "anyio-4.15.1.dist-info/licenses/LICENSE"
+    ],
+    "click": [
+      "click-8.5.0.dist-info/licenses/LICENSE.txt"
+    ],
+    "fastapi": [
+      "fastapi-0.141.1.dist-info/licenses/LICENSE"
+    ],
+    "h11": [
+      "h11-0.16.0.dist-info/licenses/LICENSE.txt"
+    ],
+    "idna": [
+      "idna-3.20.dist-info/licenses/LICENSE.md"
+    ],
+    "pydantic": [
+      "pydantic-2.13.5.dist-info/licenses/LICENSE"
+    ],
+    "pydantic_core": [
+      "pydantic_core-2.46.5.dist-info/licenses/LICENSE"
+    ],
+    "starlette": [
+      "starlette-1.6.0.dist-info/licenses/LICENSE.md"
+    ],
+    "typing_extensions": [
+      "typing_extensions-4.16.0.dist-info/licenses/LICENSE"
+    ],
+    "typing-inspection": [
+      "typing_inspection-0.4.4.dist-info/licenses/LICENSE"
+    ],
+    "uvicorn": [
+      "uvicorn-0.53.0.dist-info/licenses/LICENSE.md"
+    ]
+  },
+  "resource_notice_hashes": {
+    "LIVE2D-LICENSE.md": "1b14d964eaf7bb16e5ca2957c2612391216d500aa27594b5bd0b17f1a4746101",
+    "LIVE2D-NOTICE.md": "2fbfd83ec0ec595ecd2ad6627315b2ac403b17f469e55a2351744984ea4b9b0a",
+    "LIVE2D-CORE-LICENSE.md": "b81e37048010ef1d336106151201a0323c3309cae44aecdedf57831fe88fa991",
+    "LIVE2D-REDISTRIBUTABLES.txt": "793c95b10bfcd6bfa11dbc8dca5daa56f4a6b772d7312c6b9ddcdec2f02ab88a",
+    "FONT-OFL.txt": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+    "LIBERATION-SANS-OFL.txt": "37f8552e9a874ec10710dc0ede6a9adf168e6609fbd02a507f35629373b85a48",
+    "RESOURCE-NOTICES.md": "648e252fce72f9779f6cb34cb0f345f5d3728fac37e4b9e89b30f29c7bbee53f",
+    "TEST-AUDIO-SOURCE.md": "d42d367fe1dd49bd180bbbd5369852ead3b4793ff16980a36f4806d154625270"
+  },
+  "inventory_screen": "No runtime configuration/history/settings, cache dirs, logs, Python bytecode, databases, or extra files in the package inventory. Source matching is checked; no claim to detect arbitrary encoded secrets.",
+  "errors": [],
+  "post_runtime_recheck": "pending final acceptance runs"
+}

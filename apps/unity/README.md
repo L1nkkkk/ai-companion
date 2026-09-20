@@ -109,7 +109,7 @@ pwsh -File tools/unity/Start-Desktop.ps1 -Player (Join-Path $desktopOutput 'Neur
 
 源码自检、固定回复流程、实际 Windows 操作、真实音频输出和 OS DPI 是不同证据。通过内部停止回调不能直接宣称扬声器停止延迟已通过。中文 IME 候选、长按快捷键、125% / 150% DPI、设备切换、长时间运行及完整 U-G0/U-G1/U-G2 仍以逐项验收报告为准。
 
-当前交接证据见 [UI 与历史](../../docs/reports/U01/desktop-basics/ui-history.md)、[Session 与音频](../../docs/reports/U01/desktop-basics/session-audio.md)、[后台](../../docs/reports/U01/desktop-basics/backend.md) 及同目录总报告；第二轮返工记录见 [返工登记](../../docs/reports/U01/desktop-basics-round2/WORK-ORDER.md)。本 README 不宣告完整桌面门禁通过。
+当前版本与验收证据见 [第二轮交接](../../docs/reports/U01/desktop-basics-round2/report.md)，其中包括原生导出修复、最终源码全新构建、实际 Windows 缩放矩阵及同次同步音画演示。首轮 [UI 与历史](../../docs/reports/U01/desktop-basics/ui-history.md)、[Session 与音频](../../docs/reports/U01/desktop-basics/session-audio.md)、[后台](../../docs/reports/U01/desktop-basics/backend.md) 和 [返工登记](../../docs/reports/U01/desktop-basics-round2/WORK-ORDER.md)保留来源与范围。本 README 不宣告完整桌面门禁通过。
 
 第二轮 QA 仅在显式指定隔离数据与证据目录时使用：`export-stage` 配合 `-ExportPhase` 和 `-ExportDelay -1`，打开历史后按 F9 准备真实阶段，再手工点击导出；便携包入口为 `tools/unity/qa/run_export_qa.py`。F8 保存当前 Player 自身渲染截图，不捕获其他应用或系统输入法窗口。`audiovisual` 配合最终 `-EvidenceSourceSha` 记录 60 秒实际渲染帧及原生 QPC，使用明确指定 PID 的进程回环另采同次声音，离线封装见 `tools/unity/qa/mux_qpc_evidence.py`。这些入口不在日常启动时运行。
 

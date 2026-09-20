@@ -1,0 +1,24 @@
+{
+  "observedUtc": "2026-09-20T22:50:04.3388293Z",
+  "sourceSha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+  "productWorkingTreeDiff": [],
+  "freshWorktree": "C:/Users/Link/Dev/Neuro-Saki-U01-round2-924b79f",
+  "freshWorktreeStatus": [],
+  "playerProcesses": [],
+  "port8000Listeners": [],
+  "runtimeConfigFiles": [],
+  "displayScaleRestoration": {
+    "primaryDisplayChanged": false,
+    "screenshotSaved": false,
+    "reason": "Settings contains account details; retained observation only",
+    "originalPercent": 100,
+    "method": "Sky actual Windows Settings interaction and refreshed screenshot, no registry or image-scale substitute",
+    "restoredPercent": 100,
+    "observer": "root",
+    "display": 2,
+    "testPercent": [
+      125,
+      150
+    ]
+  }
+}

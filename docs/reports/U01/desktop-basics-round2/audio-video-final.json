@@ -1,0 +1,349 @@
+{
+  "format": 1,
+  "classification": "final_candidate_synchronized_audiovisual_development_evidence_delivered_for_A0_review",
+  "source_commit": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+  "target_pid": 42280,
+  "package_manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+  "same_run_identity_verified": true,
+  "package_unchanged": true,
+  "screen": {
+    "screenWidth": 1280,
+    "screenHeight": 800,
+    "windowDpi": 120,
+    "monitorScalePercent": 125
+  },
+  "capture_scope": {
+    "video": "unity_player_backbuffer_only",
+    "audio": "include_target_process_tree_only",
+    "microphone_used": false,
+    "system_loopback_used": false,
+    "audio_packets": 6703,
+    "audio_discontinuities": 0,
+    "audio_timestamp_errors": 0,
+    "audio_end_reason": "target_exited"
+  },
+  "alignment": {
+    "source_commit": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+    "target_pid": 42280,
+    "scope": "actual_Unity_Player_backbuffer_and_same_target_process_WASAPI_only",
+    "capture_timestamp_boundary": "Win32 QPC immediately before synchronous EndOfFrame backbuffer readback; not DWM presentation or physical display time",
+    "time_basis": "independent native Win32 QPC; actual per-frame variable presentation times; no lip-sync offset correction",
+    "start_qpc_100ns": 790630984874,
+    "end_qpc_100ns": 791200352616,
+    "duration_seconds": 56.9367742,
+    "width": 1280,
+    "height": 800,
+    "nominal_fps": 15,
+    "source_frame_count": 772,
+    "selected_frame_count": 732,
+    "frames_outside_shared_audio_coverage": 40,
+    "declared_dropped_frames": 0,
+    "audio_packet_gaps_outside_shared_coverage": [
+      {
+        "packet_index": 6694,
+        "previous_end_qpc_100ns": 791300022713,
+        "packet_start_qpc_100ns": 791300131875,
+        "gap_ms": 10.9162
+      }
+    ],
+    "actual_interval_p50_ms": 77.7614,
+    "actual_interval_p95_ms": 79.6073,
+    "maximum_frame_hold_ms": 83.106,
+    "effective_capture_fps": 12.844709028191385,
+    "readback_p95_ms": 2.6067,
+    "readback_write_max_ms": 34.5679,
+    "audio_chunks": 5695,
+    "audio_samples_quantized_below_half_pcm16_lsb": 3321664,
+    "viewing_derivative": "H264 YUV420 BT601 plus AAC from PCM16; raw float WAV/PNG/QPC evidence authoritative",
+    "limitations": [
+      "Frame held until next actual capture; missed render frames are not interpolated.",
+      "Unity backbuffer observation is not DWM/physical display timing.",
+      "AAC codec delay and output timestamps must be inspected before declaring the derivative synchronized.",
+      "Audio is clipped only to common coverage; pre-capture sound is never invented."
+    ],
+    "input_sha256": {
+      "frames.csv": "065a14d64508161cc3394b557a85051bce3b9632f760ea35a058b706946b49df",
+      "frame-source.json": "92efbc8a9d5d74c871db0ecdc96827ec150f9c347a6259aedc9d8e80577071af",
+      "capture-end.json": "e580e0de805256aa8ea601fca44eafcce65e4c99ce9a927f7569eb45d656dff3",
+      "audio.wav": "3d83944e9f60f7efe889e494e3467bc0143ea7d2623e23bfd498e6aac04dcfad",
+      "audio.wav.json": "4fe0f359b7d05415dab7c507ec2dfc7d920c341201582780c7c9ee5c23786847",
+      "audio.wav.packets.csv": "c51422db0e95f9b4a686fc09e1dd7c564221997e8560b09ddb1c33798700b629"
+    },
+    "mp4_sha256": "8affcd16db61b31d877e0cc9211ceb9dde796bfc49c51a3c93e1cb132dc77cec",
+    "encoder_sha256": "29da45f61001302f5c3781d141fcbf2f175bad17baedc320f9c927ed78f4406d"
+  },
+  "phase_events": [
+    {
+      "event": "av-full-fixture-submit",
+      "request_id": "",
+      "generation": null,
+      "event_qpc_ticks": 790750339074,
+      "video_seconds": 11.93542,
+      "first_frame": "frame-000195.png",
+      "first_frame_delay_ms": 22.2414,
+      "mouth": 0.0,
+      "volume": 0.8
+    },
+    {
+      "event": "playback-started",
+      "request_id": "ad1c10ac-5b76-4e6d-82d2-495e029cc2fd",
+      "generation": 3,
+      "event_qpc_ticks": 790762301480,
+      "video_seconds": 13.1316606,
+      "first_frame": "frame-000210.png",
+      "first_frame_delay_ms": 1.6775,
+      "mouth": 0.0,
+      "volume": 0.8
+    },
+    {
+      "event": "playback-ended-Completed",
+      "request_id": "ad1c10ac-5b76-4e6d-82d2-495e029cc2fd",
+      "generation": 3,
+      "event_qpc_ticks": 790842146445,
+      "video_seconds": 21.1161571,
+      "first_frame": "frame-000313.png",
+      "first_frame_delay_ms": 16.2187,
+      "mouth": 0.0,
+      "volume": 0.8
+    },
+    {
+      "event": "av-volume-fixture-submit",
+      "request_id": "ad1c10ac-5b76-4e6d-82d2-495e029cc2fd",
+      "generation": 3,
+      "event_qpc_ticks": 790862278125,
+      "video_seconds": 23.1293251,
+      "first_frame": "frame-000339.png",
+      "first_frame_delay_ms": 7.4842,
+      "mouth": 0.0,
+      "volume": 0.8
+    },
+    {
+      "event": "playback-started",
+      "request_id": "9c6aa90e-5663-4ef7-ae51-0dae13713f30",
+      "generation": 5,
+      "event_qpc_ticks": 790873801035,
+      "video_seconds": 24.2816161,
+      "first_frame": "frame-000354.png",
+      "first_frame_delay_ms": 34.2647,
+      "mouth": 0.0,
+      "volume": 0.8
+    },
+    {
+      "event": "av-volume-20",
+      "request_id": "9c6aa90e-5663-4ef7-ae51-0dae13713f30",
+      "generation": 5,
+      "event_qpc_ticks": 790881863492,
+      "video_seconds": 25.0878618,
+      "first_frame": "frame-000364.png",
+      "first_frame_delay_ms": 17.5412,
+      "mouth": 0.3513336,
+      "volume": 0.2
+    },
+    {
+      "event": "av-mute",
+      "request_id": "9c6aa90e-5663-4ef7-ae51-0dae13713f30",
+      "generation": 5,
+      "event_qpc_ticks": 790888927862,
+      "video_seconds": 25.7942988,
+      "first_frame": "frame-000373.png",
+      "first_frame_delay_ms": 17.8531,
+      "mouth": 0.0,
+      "volume": 0.0
+    },
+    {
+      "event": "av-volume-80-restored",
+      "request_id": "9c6aa90e-5663-4ef7-ae51-0dae13713f30",
+      "generation": 5,
+      "event_qpc_ticks": 790906993768,
+      "video_seconds": 27.6008894,
+      "first_frame": "frame-000396.png",
+      "first_frame_delay_ms": 17.9196,
+      "mouth": 0.116268575,
+      "volume": 0.8
+    },
+    {
+      "event": "av-stop-command",
+      "request_id": "9c6aa90e-5663-4ef7-ae51-0dae13713f30",
+      "generation": 5,
+      "event_qpc_ticks": 790914055303,
+      "video_seconds": 28.3070429,
+      "first_frame": "frame-000405.png",
+      "first_frame_delay_ms": 18.51,
+      "mouth": 0.0,
+      "volume": 0.8
+    },
+    {
+      "event": "playback-ended-Stopped",
+      "request_id": "9c6aa90e-5663-4ef7-ae51-0dae13713f30",
+      "generation": 5,
+      "event_qpc_ticks": 790914056001,
+      "video_seconds": 28.3071127,
+      "first_frame": "frame-000405.png",
+      "first_frame_delay_ms": 18.4402,
+      "mouth": 0.0,
+      "volume": 0.8
+    },
+    {
+      "event": "av-sequence-complete",
+      "request_id": "9c6aa90e-5663-4ef7-ae51-0dae13713f30",
+      "generation": 5,
+      "event_qpc_ticks": 790944136780,
+      "video_seconds": 31.3151906,
+      "first_frame": "frame-000443.png",
+      "first_frame_delay_ms": 1.1285,
+      "mouth": 0.0,
+      "volume": 0.8
+    }
+  ],
+  "full_fixture_windows": [
+    {
+      "wav_start_seconds": 0,
+      "wav_end_seconds": 0.45,
+      "expected_voiced": false,
+      "rows": 11,
+      "minimum_rms": 0.0,
+      "maximum_rms": 0.0,
+      "matched": true
+    },
+    {
+      "wav_start_seconds": 0.6,
+      "wav_end_seconds": 1.9,
+      "expected_voiced": true,
+      "rows": 30,
+      "minimum_rms": 0.086587,
+      "maximum_rms": 0.089366,
+      "matched": true
+    },
+    {
+      "wav_start_seconds": 2.1,
+      "wav_end_seconds": 2.9,
+      "expected_voiced": false,
+      "rows": 17,
+      "minimum_rms": 0.0,
+      "maximum_rms": 0.0,
+      "matched": true
+    },
+    {
+      "wav_start_seconds": 3.1,
+      "wav_end_seconds": 4.9,
+      "expected_voiced": true,
+      "rows": 40,
+      "minimum_rms": 0.08771,
+      "maximum_rms": 0.088203,
+      "matched": true
+    },
+    {
+      "wav_start_seconds": 5.1,
+      "wav_end_seconds": 5.9,
+      "expected_voiced": false,
+      "rows": 18,
+      "minimum_rms": 0.0,
+      "maximum_rms": 0.0,
+      "matched": true
+    },
+    {
+      "wav_start_seconds": 6.1,
+      "wav_end_seconds": 7.4,
+      "expected_voiced": true,
+      "rows": 29,
+      "minimum_rms": 0.087436,
+      "maximum_rms": 0.088407,
+      "matched": true
+    },
+    {
+      "wav_start_seconds": 7.6,
+      "wav_end_seconds": 7.9,
+      "expected_voiced": false,
+      "rows": 7,
+      "minimum_rms": 0.0,
+      "maximum_rms": 0.0,
+      "matched": true
+    }
+  ],
+  "volume": [
+    {
+      "volume": 0.8,
+      "level_rows": 34,
+      "nonzero_rows": 22,
+      "median_nonzero_rms": 0.08790049999999999
+    },
+    {
+      "volume": 0.2,
+      "level_rows": 15,
+      "nonzero_rows": 15,
+      "median_nonzero_rms": 0.021763
+    },
+    {
+      "volume": 0,
+      "level_rows": 42,
+      "nonzero_rows": 0,
+      "median_nonzero_rms": 0
+    }
+  ],
+  "volume_20_to_80_rms_ratio": 0.24758676002980645,
+  "mute_frames": 23,
+  "mute_nonzero_mouth_frames": 0,
+  "stop_observation_frames": 38,
+  "stop_nonzero_mouth_frames": 0,
+  "single_stop": {
+    "threshold_full_scale": 1e-09,
+    "stop_qpc_ticks": 790914055303,
+    "last_signal_qpc_100ns": 790915355838,
+    "tail_ms": 130.0535,
+    "is_UA05_20_sample_distribution": false
+  },
+  "player": {
+    "durationSeconds": 70.0165764,
+    "p95FrameMs": 28.6,
+    "maximumFrameMs": 52.432700000000665,
+    "framesOverOneSecond": 0,
+    "actualPlaybackStarts": 2,
+    "actualPlaybackCompletions": 1,
+    "playbackStops": 1,
+    "errors": 0,
+    "warnings": 0,
+    "scriptedChecksCompleted": true,
+    "failures": []
+  },
+  "visual_review": {
+    "reviewed_actual_pngs": [
+      "frame-000218.png",
+      "frame-000243.png",
+      "frame-000373.png",
+      "frame-000405.png"
+    ],
+    "manual_full_movie_listening_claim": false,
+    "method": "Independent timestamp/statistical review plus selected saved actual PNG inspection; the synchronized MP4 is delivered for A0 playback.",
+    "observations": [
+      "Voiced and silent source frames show the actual Mao view and the visible fixture label.",
+      "Mute frame visibly shows 0% and the restore control while playback remains active.",
+      "Stopped frame visibly shows Ready and Interrupted with mouth=0 in that captured frame."
+    ]
+  },
+  "limitations": [
+    "Not a DWM or physical display timing measurement; rendered Player backbuffer observation only.",
+    "Frame capture is variable-rate around 12.845fps, not stable15fps; native timestamps and holds preserved.",
+    "AAC/YUV420 viewing derivative is lossy; authoritative raw float WAV and PNG remain untouched.",
+    "One stop tail is supplementary, not a replacement for the accepted earlier20-stop latency result.",
+    "This analyst did not claim to have manually listened through the whole MP4.",
+    "Formal R4/U-G0 conclusion remains for A0."
+  ],
+  "sha256": {
+    "run-result.json": "0601dcf85bbe9dcf3bc02b2b9bf45fc6974482f034fda4aeddff5885549d91ab",
+    "player-result.json": "e39c49ce059c27e327416176cecedb9701ba53a4c7dd286f1a7da3b632f128e3",
+    "events.csv": "d551be4b56cf4aff65b85ac5b625abed112368a914bfa15bb3fdeebb96ec4e83",
+    "output-levels.csv": "fc146fca990046d56e817d1babd07a5fd286371d3f0d7423f32b1e219e16562a",
+    "video-frames/frames.csv": "065a14d64508161cc3394b557a85051bce3b9632f760ea35a058b706946b49df",
+    "audio.wav": "3d83944e9f60f7efe889e494e3467bc0143ea7d2623e23bfd498e6aac04dcfad",
+    "audio.wav.packets.csv": "c51422db0e95f9b4a686fc09e1dd7c564221997e8560b09ddb1c33798700b629",
+    "mux-01/synchronized-evidence.mp4": "8affcd16db61b31d877e0cc9211ceb9dde796bfc49c51a3c93e1cb132dc77cec",
+    "mux-01/encoding-verification.json": "522e153902aa981a1f5a316d188271f4c8ac7fa1135220b1c92ed8e69fd44833",
+    "mux-01/alignment.json": "475dff107c217671826a9e10064c902c0eabb5076ddb00dfd428beb7681ceaef"
+  },
+  "reviewed_png_sha256": {
+    "frame-000218.png": "18223ffe8f64edd86ffc8b4e31bf5a69fa099f8c437718ae2f7a3fab0e857f5f",
+    "frame-000243.png": "a6618821a942552ebdfb63e41751aa137a8ba16929ade6c78533061ab68db1c3",
+    "frame-000373.png": "77fc54dc78a94cb5ec3ad58d05c84421105165a9c54cd79a2cfe83e677c50891",
+    "frame-000405.png": "e054666ef2e1054a656b79e99ab7845a05b75078c20047d2af6725ef9470483b"
+  }
+}

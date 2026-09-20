@@ -1,0 +1,621 @@
+{
+  "format": 2,
+  "date": "2026-09-21",
+  "document_state": "development_delivery_complete_A0_review_pending",
+  "scope": "Desktop basics round 2: R1 implementation and R2-R4 evidence on one new fixture-only Windows package.",
+  "product_source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+  "tester": "Development/integration owners and independent evidence reviewers; A0 retains final acceptance.",
+  "overall_status": "R1_R2_R3_R4_development_delivered_awaiting_A0_review",
+  "review_basis": "C:/Users/Link/Dev/Neuro-Saki-U01-acceptance/docs/reports/U01/acceptance/desktop-basics-round1-review.md",
+  "gates": {
+    "U-G0": "not_declared_passed_A0_review_pending",
+    "U-G1": "not_run_deferred",
+    "U-G2": "not_run_deferred"
+  },
+  "candidate": {
+    "status": "fresh_final_package_development_evidence_complete_A0_review_pending",
+    "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+    "zip_path": "C:/Users/Link/Dev/ai-companion-dev-tools/builds/NeuroSaki-Desktop-924b79f.zip",
+    "package_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/builds/NeuroSaki-Desktop-924b79f",
+    "zip_bytes": 70330552,
+    "zip_sha256": "b14ca55facd93c55997968ad8d5fe07f3d0950809145b006bcc90a6d2f5e8036",
+    "manifest_sha256": "b05472f60a49424f6c198f35980f472d0e2ff13f2116d0bc5c5885e411a8c934",
+    "manifest_file_count": 3014,
+    "zip_member_count": 3015,
+    "evidence_root": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f",
+    "fresh_source_evidence_root": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-fresh-924b79f",
+    "paths_are_planned_until_verified": false,
+    "independent_package_audit": "initial_and_post_run_full_audits_passed",
+    "post_run_package_integrity": "passed",
+    "independent_package_audit_evidence": [
+      "qa-package-924b79f.md",
+      "qa-package-924b79f.json",
+      "qa-package-924b79f-postrun.md",
+      "qa-package-924b79f-postrun.json"
+    ]
+  },
+  "prior_candidates": [
+    {
+      "source_sha": "3110a56f30671161ddfb9e39998c9972d4f3a34a",
+      "status": "withdrawn",
+      "reason": "Valid Thinking export with nested overwrite confirmation did not settle; normal close timed out and required forced cleanup.",
+      "evidence": [
+        "qa-package.md",
+        "qa-package.json",
+        "qa-package-disposition.json"
+      ],
+      "reuse_for_new_package_pass": false
+    },
+    {
+      "name": "dev03",
+      "baseline_sha": "3110a56f30671161ddfb9e39998c9972d4f3a34a",
+      "source_dirty": true,
+      "status": "real_native_dialog_precheck_only",
+      "evidence": [
+        "ui-export.md",
+        "dev03-precheck.json"
+      ],
+      "precheck_paths": [
+        "overwrite_escape",
+        "invalid_path_escape",
+        "overwrite_alt_f4"
+      ],
+      "reuse_for_new_package_pass": false
+    }
+  ],
+  "rework_items": [
+    {
+      "id": "U01-DB-R1",
+      "related_acceptance": [
+        "UA03",
+        "UA04",
+        "UA05",
+        "UA07"
+      ],
+      "status": "development_delivered_six_export_cells_and_required_regressions_complete_A0_review_pending",
+      "method": "Stop locally, await durable terminal history, capture export snapshot, then independent owner-free STA save dialog and atomic file commit. Keep rendering, stop/cancel and volume usable.",
+      "implementation_evidence": [
+        "ui-export.md",
+        "r1-review-plan.md"
+      ],
+      "final_evidence": [
+        "r1-final-924b79f.md",
+        "r1-final-924b79f.json",
+        "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-save-02/manual-observations.json",
+        "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-save-02/manual-observations.json",
+        "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-cancel/manual-observations.json",
+        "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-idle-save/manual-observations.json",
+        "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-idle-cancel/manual-observations.json",
+        "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-cancel/manual-observations.json"
+      ],
+      "matrix": [
+        {
+          "phase": "Thinking_accepted",
+          "outcome": "cancel",
+          "status": "record_checks_and_manual_observations_passed_A0_review_pending",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-cancel",
+          "actual_trigger_phase": "Thinking",
+          "history_terminal": "Interrupted",
+          "played_samples": 0,
+          "total_samples": 0,
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-cancel/manual-observations.json",
+          "independent_record_reviewer": "preview_backend",
+          "native_dialog_seconds": 42.2600101,
+          "native_interval_maximum_frame_ms": 22.2115,
+          "old_nonzero_callbacks_after_stopped": 0,
+          "fixture_latency_injection": {
+            "api": "dataclasses.replace(PreviewSettings.from_environment(), scenario='slow_generation', fixture_delay=8.0); create_preview_app(settings)",
+            "fixture_reply_delay_seconds": 8.0,
+            "existing_slow_generation_delay_seconds": 3.0,
+            "accepted_to_text_minimum_seconds_if_not_cancelled": 11.0,
+            "fixture_speech_delay_seconds_if_reached": 8.0,
+            "package_files_modified": false,
+            "scope": "Explicit QA latency injection through frozen Settings API, not default production timing. Real accepted generation, cancellation, persistence and native dialog paths remain active. No acceptance threshold or analyzer is changed."
+          }
+        },
+        {
+          "phase": "Thinking_accepted",
+          "outcome": "save",
+          "status": "record_checks_and_manual_observations_passed_A0_review_pending",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-save-02",
+          "actual_trigger_phase": "Thinking",
+          "history_terminal": "Interrupted",
+          "played_samples": 0,
+          "total_samples": 0,
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-save-02/manual-observations.json",
+          "independent_record_reviewer": "preview_backend",
+          "native_dialog_seconds": 24.5604944,
+          "native_interval_maximum_frame_ms": 21.6235,
+          "old_nonzero_callbacks_after_stopped": 0,
+          "fixture_latency_injection": {
+            "api": "dataclasses.replace(PreviewSettings.from_environment(), scenario='slow_generation', fixture_delay=8.0); create_preview_app(settings)",
+            "fixture_reply_delay_seconds": 8.0,
+            "existing_slow_generation_delay_seconds": 3.0,
+            "accepted_to_text_minimum_seconds_if_not_cancelled": 11.0,
+            "fixture_speech_delay_seconds_if_reached": 8.0,
+            "package_files_modified": false,
+            "scope": "Explicit QA latency injection through frozen Settings API, not default production timing. Real accepted generation, cancellation, persistence and native dialog paths remain active. No acceptance threshold or analyzer is changed."
+          }
+        },
+        {
+          "phase": "Speaking_nonzero_output",
+          "outcome": "cancel",
+          "status": "record_checks_and_manual_observations_passed_A0_review_pending",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-cancel",
+          "actual_trigger_phase": "Speaking",
+          "history_terminal": "Interrupted",
+          "played_samples": 111104,
+          "total_samples": 192000,
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-cancel/manual-observations.json",
+          "independent_record_reviewer": "preview_backend",
+          "native_dialog_seconds": 31.808727,
+          "native_interval_maximum_frame_ms": 27.9717,
+          "old_nonzero_callbacks_after_stopped": 0
+        },
+        {
+          "phase": "Speaking_nonzero_output",
+          "outcome": "save",
+          "status": "record_checks_and_manual_observations_passed_A0_review_pending",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-save-02",
+          "actual_trigger_phase": "Speaking",
+          "history_terminal": "Interrupted",
+          "played_samples": 137216,
+          "total_samples": 192000,
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-save-02/manual-observations.json",
+          "independent_record_reviewer": "preview_backend",
+          "native_dialog_seconds": 16.3764677,
+          "native_interval_maximum_frame_ms": 23.8588,
+          "old_nonzero_callbacks_after_stopped": 0
+        },
+        {
+          "phase": "Ready_completed_history",
+          "outcome": "cancel",
+          "status": "record_checks_and_manual_observations_passed_A0_review_pending",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-idle-cancel",
+          "actual_trigger_phase": "Ready",
+          "history_terminal": "Played",
+          "played_samples": 192000,
+          "total_samples": 192000,
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-idle-cancel/manual-observations.json",
+          "independent_record_reviewer": "preview_backend",
+          "native_dialog_seconds": 10.7683295,
+          "native_interval_maximum_frame_ms": 20.9501,
+          "old_nonzero_callbacks_after_stopped": 0
+        },
+        {
+          "phase": "Ready_completed_history",
+          "outcome": "save",
+          "status": "record_checks_and_manual_observations_passed_A0_review_pending",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-idle-save",
+          "actual_trigger_phase": "Ready",
+          "history_terminal": "Played",
+          "played_samples": 192000,
+          "total_samples": 192000,
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-idle-save/manual-observations.json",
+          "independent_record_reviewer": "preview_backend",
+          "native_dialog_seconds": 13.7636783,
+          "native_interval_maximum_frame_ms": 22.3294,
+          "old_nonzero_callbacks_after_stopped": 0
+        }
+      ],
+      "required_observations": [
+        "Actual trigger phase and operation",
+        "At least five seconds of native selection with Unity frames and avatar updating",
+        "Stop/cancel and volume accessible",
+        "Correct durable history and exported snapshot",
+        "No old output revival",
+        "Real native return and normal exit"
+      ],
+      "additional_regressions": {
+        "nested_overwrite_cancel": "passed_export_generation_cancel",
+        "nested_overwrite_normal_quit": {
+          "status": "automatic_normal_quit_cleanup_passed_not_physical_AltF4",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-idle-nested-quit",
+          "trigger": "240-second QA deadline Application.Quit through production normal-close lifecycle",
+          "native_return_false_error_zero": true,
+          "no_close_timeout": true,
+          "launcher_exit_code": 0,
+          "retained_failures": "Export-stage runner deadline failure and missing CSV terminal rows retained; separate cleanup regression, not seventh export-matrix pass."
+        },
+        "invalid_path_prompt_cancel": "dev03_precheck_only_not_rerun_on_final_candidate_not_an_added_A0_gate",
+        "single_flight_and_next_conversation": "next_conversation_after_cancel_passed_single_flight_also_covered_by_module_checks",
+        "restart_history_restore": "passed_final_DPI125_960_case_exact_old_two_records_Interrupted_volume46_no_old_replay",
+        "accepted_generation_cancel_10": {
+          "status": "passed_final_candidate_independent_record_checks",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/regression-generation",
+          "count": 10,
+          "actual_playback_starts": 0,
+          "terminal": "Interrupted",
+          "samples": [
+            0,
+            0
+          ]
+        },
+        "download_after_headers_cancel_10": {
+          "status": "passed_final_candidate_independent_record_checks",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/regression-late-audio",
+          "count": 10,
+          "actual_playback_starts": 0,
+          "terminal": "Interrupted",
+          "samples": [
+            0,
+            192000
+          ]
+        },
+        "playback_normal_quit_persistence": {
+          "status": "passed_final_candidate_independent_record_checks",
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/regression-close",
+          "trigger": "Application.Quit after real nonzero output, not physical AltF4",
+          "samples": [
+            12800,
+            192000
+          ],
+          "terminal": "Interrupted",
+          "player_exit_code": 0
+        }
+      },
+      "limitations": [
+        "Controlled window-policy checks do not prove native modal-loop behavior.",
+        "Missed phase attempts must remain invalid, not successful cases.",
+        "Any explicit fixture delay must be recorded and not presented as default response timing."
+      ],
+      "retained_invalid_attempts": [
+        {
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-save",
+          "reason": "Stale screenshot reference delayed the click beyond playback; actual trigger Ready, then cancelled.",
+          "counts_as_playback_save": false,
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-playback-save/manual-observations.json"
+        },
+        {
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-save",
+          "reason": "Operator usage interruption; no request/export interaction before automatic 240-second end.",
+          "counts_as_generation_save": false,
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/export-generation-save/manual-observations.json"
+        }
+      ],
+      "independent_final_review_status": "R1_six_export_cells_and_required_cancel_normal_close_record_checks_passed_A0_review_pending"
+    },
+    {
+      "id": "U01-DB-R2",
+      "related_acceptance": [
+        "UA01",
+        "UA12"
+      ],
+      "status": "development_delivered_fresh_build_and_pre_post_full_audits_passed_A0_review_pending",
+      "method": "Create a new worktree directly at final SHA, restore frozen resources before first import without copying Library, then build/check/package and independently verify every member and source.",
+      "final_evidence": [
+        "qa-package-924b79f.md",
+        "qa-package-924b79f.json",
+        "qa-package-924b79f-postrun.md",
+        "qa-package-924b79f-postrun.json"
+      ],
+      "required_records": {
+        "new_target_absent_before_creation": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-fresh-924b79f/before-worktree.json",
+        "head_and_clean_before_import": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-fresh-924b79f/after-worktree-before-restore.json",
+        "library_absent_before_first_import": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-fresh-924b79f/before-unity.json",
+        "resource_restore_manifest": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-fresh-924b79f/native-assets.json",
+        "first_import_and_build_log": "C:/Users/Link/Dev/ai-companion-dev-tools/builds/desktop-r2-924b79f-evidence/Build.log",
+        "final_module_check_log": "C:/Users/Link/Dev/ai-companion-dev-tools/builds/desktop-r2-finalcheck-924b79f-evidence/Check.log",
+        "head_and_clean_after_build": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-fresh-924b79f/after-build.json",
+        "package_source_and_member_audit": "qa-package-924b79f.json",
+        "post_run_package_integrity": "qa-package-924b79f-postrun.json"
+      },
+      "limitations": [
+        "The withdrawn 3110 audit and a reused Library are not evidence for this final SHA.",
+        "Same machine; F04 second-machine reproduction is separately pending."
+      ],
+      "post_run_summary": {
+        "directory_files": 3015,
+        "zip_members": 3015,
+        "full_member_crc_size_sha256_verified": true,
+        "differences": 0,
+        "completed_case_run_results": 17,
+        "package_unchanged_all_runs": true,
+        "runtime_config_files_remaining": 0,
+        "pending_config_files_remaining": 0,
+        "package_processes_remaining": 0,
+        "port_8000_listeners": 0,
+        "fresh_worktree_clean": true
+      }
+    },
+    {
+      "id": "U01-DB-R3",
+      "related_acceptance": [
+        "UA04"
+      ],
+      "status": "development_delivered_four_of_four_actual_DPI_cells_and_restoration_complete_A0_review_pending",
+      "final_evidence": [
+        "dpi-final.md",
+        "dpi-final.json",
+        "final-environment.json"
+      ],
+      "matrix": [
+        {
+          "scale_percent": 125,
+          "window": [
+            1280,
+            800
+          ],
+          "status": "actual_manual_checks_recorded_pending_A0_review",
+          "actual_window_dpi": 120,
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi125-1280x800",
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi125-1280x800/manual-observations.json",
+          "monitor_scale_hresult": 0,
+          "history_snapshot": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi125-1280x800/history-after-run.json"
+        },
+        {
+          "scale_percent": 125,
+          "window": [
+            960,
+            640
+          ],
+          "status": "actual_manual_checks_recorded_pending_A0_review",
+          "actual_window_dpi": 120,
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi125-960x640",
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi125-960x640/manual-observations.json",
+          "monitor_scale_hresult": 0,
+          "history_snapshot": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi125-960x640/history-after-run.json",
+          "restored_existing_history_without_replay": true
+        },
+        {
+          "scale_percent": 150,
+          "window": [
+            1280,
+            800
+          ],
+          "status": "actual_manual_checks_recorded_pending_A0_review",
+          "actual_window_dpi": 144,
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi150-1280x800",
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi150-1280x800/manual-observations.json",
+          "monitor_scale_hresult": 0,
+          "history_snapshot": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi150-1280x800/history-after-run.json"
+        },
+        {
+          "scale_percent": 150,
+          "window": [
+            960,
+            640
+          ],
+          "status": "actual_manual_checks_recorded_pending_A0_review",
+          "actual_window_dpi": 144,
+          "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi150-960x640",
+          "manual_observations": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi150-960x640/manual-observations.json",
+          "monitor_scale_hresult": 0,
+          "history_snapshot": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/dpi150-960x640/history-after-run.json"
+        }
+      ],
+      "required_observations_per_cell": [
+        "Actual Windows monitor scale and window DPI",
+        "Chinese IME candidate confirmation without accidental send",
+        "Shift+Enter one newline and Enter send",
+        "Escape stops",
+        "Keyboard volume",
+        "History and necessary controls visible",
+        "Published avatar visible"
+      ],
+      "system_scale_restored_after_testing": true,
+      "limitations": [
+        "Window resizing and scaled screenshots are not actual OS DPI tests.",
+        "Dirty dev03 at 125 percent is precheck context only."
+      ],
+      "scale_restore_details": {
+        "display_changed": 2,
+        "original_percent": 100,
+        "display_1_changed": false,
+        "restore_status": "restored_after_matrix_by_root_in_actual_Windows_Settings",
+        "restored_percent": 100,
+        "restored_resolution": [
+          1920,
+          1080
+        ],
+        "restoration_evidence": "final-environment.json",
+        "restoration_evidence_sha256": "b39c9bf57555df91c2c7da59d6ea984f69dde7a0b4d1d6c311c6538bc2478970",
+        "restoration_observer": "root",
+        "settings_screenshot_retained": false
+      }
+    },
+    {
+      "id": "U01-DB-R4",
+      "related_acceptance": [
+        "UA03"
+      ],
+      "status": "development_delivered_synchronized_artifact_and_programmatic_review_complete_A0_playback_review_pending",
+      "method": "Actual same-Player backbuffer frames and PID-restricted process-loopback audio, aligned using native QPC without manual audio shift; preserve raw sources and audit encoded derivative.",
+      "method_evidence": [
+        "audio-video.md"
+      ],
+      "final_evidence": [
+        "audio-video-final.md",
+        "audio-video-final.json",
+        "audio-video-encoding-final.json"
+      ],
+      "recording": {
+        "source_sha": "924b79f05b6c90983bdc5c18344aa125375fa57c",
+        "player_pid": 42280,
+        "case_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/audiovisual",
+        "mp4_path": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-924b79f/audiovisual/mux-01/synchronized-evidence.mp4",
+        "mp4_sha256": "8affcd16db61b31d877e0cc9211ceb9dde796bfc49c51a3c93e1cb132dc77cec",
+        "raw_manifest_sha256": "475dff107c217671826a9e10064c902c0eabb5076ddb00dfd428beb7681ceaef",
+        "common_coverage_seconds": 56.9367742,
+        "included_frames": 732,
+        "actual_fps": 12.844709028191385,
+        "maximum_frame_gap_ms": 83.106,
+        "encoding_verification": "audio-video-encoding-final.json",
+        "full_viewing_result": "Not claimed by development analyst; A0 receives the complete MP4 for playback review.",
+        "selected_actual_frames_reviewed": [
+          "frame-000218.png",
+          "frame-000243.png",
+          "frame-000373.png",
+          "frame-000405.png"
+        ],
+        "programmatic_findings": {
+          "same_run_identity_verified": true,
+          "volume_20_to_80_rms_ratio": 0.24758676002980645,
+          "mute_nonzero_mouth_frames": 0,
+          "stop_observation_nonzero_mouth_frames": 0,
+          "single_stop_tail_ms": 130.0535,
+          "single_stop_is_20_sample_distribution": false,
+          "package_unchanged_for_this_run": true
+        }
+      },
+      "required_demonstration": [
+        "Voiced and silent fixture segments",
+        "80 to 20 percent volume",
+        "Mute",
+        "Volume restoration",
+        "Stop with closed mouth and actual OS output tail"
+      ],
+      "limitations": [
+        "Old 3110 recordings and synthetic calibration are tool prechecks only.",
+        "H264/AAC viewing derivative does not replace raw float stop-tail measurements.",
+        "No microphone, other applications, physical display scanout or acoustic latency claim.",
+        "Only four selected actual PNGs were independently viewed; no complete manual listening claim. Actual capture about 12.845fps, not stable 15fps."
+      ]
+    }
+  ],
+  "final_candidate_checks": {
+    "repository_checks": {
+      "status": "pre_freeze_full_entry_recorded_final_full_entry_not_claimed",
+      "evidence": [
+        "independent-checks.md"
+      ],
+      "note": "Final SHA API/QA and Unity checks are recorded separately; no assertion that the whole tools/check.py entry was rerun at final SHA."
+    },
+    "python_unique_tests": {
+      "status": "passed",
+      "count": 98,
+      "fresh_passed": 97,
+      "fresh_skipped": 1,
+      "same_SHA_dependency_check_supplemental_passed": 1,
+      "remaining_skips": 0,
+      "warnings": 2,
+      "evidence": [
+        "qa-package-924b79f.md",
+        "qa-package-924b79f.json"
+      ]
+    },
+    "unity": {
+      "status": "passed",
+      "history_assertions": 32,
+      "ui_assertions": 52,
+      "session_audio_assertions": 53,
+      "total": 137,
+      "evidence": [
+        "qa-package-924b79f.json",
+        "C:/Users/Link/Dev/ai-companion-dev-tools/builds/desktop-r2-finalcheck-924b79f-evidence/Check.log"
+      ]
+    },
+    "pre_freeze_reference": [
+      "independent-checks.md",
+      "ui-export.md",
+      "audio-video.md"
+    ]
+  },
+  "inherited_A0_findings": [
+    {
+      "id": "U01-F01",
+      "status": "accepted_restricted_scope_with_limitations",
+      "scope": "Published motion set ten-minute bounded graph and stable segments from b94af81",
+      "limitations": [
+        "65,812-byte native shutdown MemoryLeaks marker remains unassigned",
+        "Broader load not covered",
+        "No zero-leak or UA11 claim"
+      ],
+      "evidence": [
+        "../desktop-basics/qa-memory.md",
+        "../desktop-basics/player-result-600.json"
+      ]
+    },
+    {
+      "id": "U01-F02",
+      "status": "accepted_capability_exclusion",
+      "scope": "neutral / idle / greeting only",
+      "excluded_drawables": [
+        "ArtMesh274",
+        "ArtMesh273",
+        "ArtMesh256",
+        "ArtMesh193",
+        "ArtMesh192"
+      ],
+      "limitations": [
+        "Excluded effects are not verified masks; newly published effects need retesting"
+      ],
+      "evidence": [
+        "../desktop-basics/avatar.md"
+      ]
+    },
+    {
+      "id": "U01-F03",
+      "status": "accepted_current_actions_and_window_sizes",
+      "limitations": [
+        "OS DPI remains R3",
+        "Other actions and effects are not included"
+      ],
+      "evidence": [
+        "../desktop-basics/avatar.md"
+      ]
+    },
+    {
+      "id": "U01-F04",
+      "status": "awaiting_external_second_machine",
+      "blocks_current_same_machine_gate": false,
+      "limitations": [
+        "No second-machine result is claimed"
+      ]
+    },
+    {
+      "id": "UA05_previous_loopback",
+      "status": "A0_accepted_prior_sample_recalculation_not_rerecorded",
+      "source_sha": "b94af81d73101d684b856bd0942de778ea74074a",
+      "valid_samples": 20,
+      "threshold_fs": 1e-09,
+      "p95_ms": 155.845,
+      "limitations": [
+        "Program-command to Windows process output, not physical input or acoustic delay",
+        "Generation and download cancellation are separate samples"
+      ],
+      "evidence": [
+        "../desktop-basics/qa-loopback.md"
+      ]
+    }
+  ],
+  "deferred_capabilities": [
+    "Real LLM and TTS",
+    "ASR and microphone lifecycle",
+    "Voice cloning and model tuning",
+    "Long-term memory",
+    "Mobile background audio and live-platform integration",
+    "UA11 thirty-minute mixed real voice session"
+  ],
+  "preserved_boundaries": [
+    "A0 acceptance worktree not modified",
+    "Frozen contracts and dependency locks unchanged",
+    "User local-environment uncommitted files preserved",
+    "Only fixture text and test audio used",
+    "No full private runtime logs or credentials copied into the repository"
+  ],
+  "final_environment": {
+    "evidence": "final-environment.json",
+    "sha256": "b39c9bf57555df91c2c7da59d6ea984f69dde7a0b4d1d6c311c6538bc2478970",
+    "product_working_tree_diff_empty": true,
+    "fresh_worktree_clean": true,
+    "player_processes": 0,
+    "port_8000_listeners": 0,
+    "runtime_config_files": 0,
+    "display_2_restored_percent": 100,
+    "display_1_changed": false,
+    "settings_account_screenshot_retained": false
+  },
+  "evidence_report_sha256": {
+    "dpi-final.json": "965bf3627eae5eb72b447ee65394dcacd0f90617f01bb159f72cf08cf38c481f",
+    "r1-final-924b79f.md": "9e6d31064b38a4883da82cc24cb5abf9ac5859b67d4b06478b79a7909c87dcf0",
+    "r1-final-924b79f.json": "aa516cddd117b7d2eba30421a63c85f4486e4aa7bdd87c3b3f85b377d9c35c31",
+    "qa-package-924b79f.json": "9ee037b2676443de1949082b0374000f5cd259815b77300b0ed53dd8e9471ce2",
+    "qa-package-924b79f-postrun.md": "3b832cf0902594fcc4ee5d13bb4bf585dfdd8e10b372e0deaef683110636dc67",
+    "qa-package-924b79f-postrun.json": "b7eb4dea3179850d3fa537069eff1f943115ea9c522c3942ca7a558939eab7a4",
+    "audio-video-final.md": "fdd92ee6190000fad49ba7e561a89779bedf4cac0d47a7b218d4c05fb63f0ddb",
+    "audio-video-final.json": "27405e2afa9d7447878269c95d7102cd50afc5c918fdbda0aa7a749be352de3a",
+    "audio-video-encoding-final.json": "522e153902aa981a1f5a316d188271f4c8ac7fa1135220b1c92ed8e69fd44833",
+    "final-environment.json": "b39c9bf57555df91c2c7da59d6ea984f69dde7a0b4d1d6c311c6538bc2478970"
+  }
+}

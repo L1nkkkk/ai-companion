@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "scope": "Real Windows native export-dialog precheck; dirty development build, not final package acceptance.",
+  "source": {
+    "baseline_sha": "3110a56f30671161ddfb9e39998c9972d4f3a34a",
+    "dirty": true,
+    "final_frozen_source": false,
+    "build_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/builds/desktop-r2-dev03"
+  },
+  "evidence_directory": "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-r2-dev03-nested",
+  "trigger_phase_all_cases": "Ready",
+  "cases": [
+    {
+      "id": "overwrite_prompt_escape",
+      "action": "Keep overwrite confirmation open, switch to Player, press Escape.",
+      "dialog_open_seconds": 24.895783,
+      "cancelled_seconds": 61.717420,
+      "finished_seconds": 61.717477,
+      "native_return": { "selected": false, "error": 0 },
+      "cancel_request_to_native_return_ms": 118.8202,
+      "result": "passed_precheck"
+    },
+    {
+      "id": "invalid_path_prompt_escape",
+      "action": "Enter a nonexistent parent directory, keep the OK-only DirectUI error prompt open, switch to Player, press Escape.",
+      "dialog_open_seconds": 77.235301,
+      "cancelled_seconds": 105.455434,
+      "finished_seconds": 105.455466,
+      "native_return": { "selected": false, "error": 0 },
+      "cancel_request_to_native_return_ms": 99.9382,
+      "result": "passed_precheck"
+    },
+    {
+      "id": "overwrite_prompt_alt_f4",
+      "action": "Keep a new overwrite confirmation open, switch to Player, press Alt+F4.",
+      "dialog_open_seconds": 118.758522,
+      "native_return": { "selected": false, "error": 0 },
+      "cancel_request_to_native_return_ms": 67.8564,
+      "finished_event_recorded": false,
+      "finished_event_absence_reason": "Evidence listener was detached before shutdown cleanup; native_return and normal exit are the evidence.",
+      "launcher_session_id": 67006,
+      "exit_code": 0,
+      "exit_evidence_source": "Integration owner observed launcher completion and no remaining NeuroSaki process.",
+      "close_timeout_logged": false,
+      "result": "passed_precheck"
+    }
+  ],
+  "native_cancel_sequence_all_cases": [
+    { "target": "owned_directui_prompt", "message": 1126, "command": 7 },
+    { "target": "save_parent", "message": 273, "command": 2 },
+    { "event": "closed" },
+    { "event": "native_return", "selected": false, "error": 0 }
+  ],
+  "overwrite_guard": {
+    "file": "overwrite-guard.json",
+    "bytes": 23,
+    "content": "{\"qa\":\"do-not-replace\"}",
+    "sha256": "8b60a6a25c500f67c11604aa032e7612cffeccc83f86992dd96027b990ff195d",
+    "unchanged": true,
+    "baseline_source": "Integration owner supplied the before/after guard hash; report owner independently hashed the final file."
+  },
+  "player_observations": {
+    "duration_seconds": 152.5206849,
+    "frames": 8968,
+    "p95_frame_ms": 16.9,
+    "maximum_frame_ms": 22.7107,
+    "frames_over_one_second": 0,
+    "errors": 0,
+    "warnings": 0,
+    "window": [1280, 800],
+    "window_dpi": 120,
+    "monitor_scale_percent": 125
+  },
+  "evidence_sha256": {
+    "player.log": "c5d12847bf117ca54e50433892dcb8b131ee84efe0076b9f035af5525e3bfab2",
+    "export-events.csv": "2b050eae2076791772e26fe0b08e2141becafb87303f35a706b6e72c16713b6d",
+    "player-result.json": "838d65d7338f75490935bc13c2b6addf8f085eb7707ffbf91bc8790a1e2edda9",
+    "player-environment.json": "0595401eddf3bd064060298441be9ae13b83bffdc62da232b1ef4f8aba18be8a",
+    "frame-times.csv": "fb5f820e63715a0fc5c93e2155515a02d843e5fd8462c72b7a6682767419d183"
+  },
+  "limitations": [
+    "All three clicks occurred in Ready; final generation and playback phase cases remain separate.",
+    "125% DPI here is incidental precheck context, not the final package DPI matrix.",
+    "Successful dismissal of this Windows prompt does not prove every future third-party or unsupported dialog type.",
+    "No final frozen source SHA or clean-worktree package identity is claimed."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "classification": "superseded_candidate_tool_precheck_not_final_R4",
+  "source_commit": "3110a56f30671161ddfb9e39998c9972d4f3a34a",
+  "target_pid": 42680,
+  "phase_changes": [
+    {
+      "event": "av-volume-20",
+      "event_qpc_ticks": 781240505972,
+      "first_frame": "frame-000361.png",
+      "first_frame_delay_ms": 34.376,
+      "mouth": 0.207347229,
+      "volume": 0.2
+    },
+    {
+      "event": "av-mute",
+      "event_qpc_ticks": 781247523233,
+      "first_frame": "frame-000370.png",
+      "first_frame_delay_ms": 50.8473,
+      "mouth": 0.0,
+      "volume": 0.0
+    },
+    {
+      "event": "av-volume-80-restored",
+      "event_qpc_ticks": 781265537286,
+      "first_frame": "frame-000393.png",
+      "first_frame_delay_ms": 51.1328,
+      "mouth": 0.2465255,
+      "volume": 0.8
+    },
+    {
+      "event": "av-stop-command",
+      "event_qpc_ticks": 781272632936,
+      "first_frame": "frame-000402.png",
+      "first_frame_delay_ms": 51.4308,
+      "mouth": 0.0,
+      "volume": 0.8
+    }
+  ],
+  "volume": [
+    {
+      "volume": 0.8,
+      "level_rows": 36,
+      "nonzero_rows": 22,
+      "median_nonzero_rms": 0.087852
+    },
+    {
+      "volume": 0.2,
+      "level_rows": 15,
+      "nonzero_rows": 15,
+      "median_nonzero_rms": 0.021891
+    },
+    {
+      "volume": 0,
+      "level_rows": 39,
+      "nonzero_rows": 0,
+      "median_nonzero_rms": 0
+    }
+  ],
+  "volume_20_to_80_rms_ratio": 0.24918043983062424,
+  "mute_frames": 23,
+  "mute_nonzero_mouth_frames": 0,
+  "stop_observation_frames": 38,
+  "stop_nonzero_mouth_frames": 0,
+  "single_stop_raw_float_threshold": 1e-09,
+  "single_stop_last_signal_qpc_100ns": 781273908586.0,
+  "single_stop_tail_ms": 127.565,
+  "notes": [
+    "One scripted stop only; not the 20-stop UA05 latency distribution.",
+    "Saved source frames inspected at selected voiced/mute/stopped moments; no full manual movie playback by this analyst.",
+    "Frame observations do not prove physical display scanout timing."
+  ],
+  "sha256": {
+    "events.csv": "eea1839547574dea821019ae23d74e7d58f51b5e4321a306dd3f0273952b2c7f",
+    "output-levels.csv": "0cf6aab1f420202db66e4402a7e55ce1fe625c385343845d9de9d88c543711dc",
+    "video-frames/frames.csv": "46ef94ed616a0009795af4ece98edd3887c7154474a55fed751f9e6548868043",
+    "audio.wav": "e6cfb4c1ee88685caaf24d700b975c07dadbcd751338e777b85f7ce2d4c46d37",
+    "audio.wav.packets.csv": "f17560ebf3d34a96d366d9a1b6f9ce1009f1456abd08aa0e1cf18431e80a6001",
+    "mux-03/synchronized-evidence.mp4": "3aa632d00380341a91dbd49125cbb4407892700eaec0efe68e6d009417a23b60",
+    "mux-03/encoding-verification.json": "5be55b34e49a68c7e4801cb61b8c6698ecc8ef40d3290d3c899d2102af7642cb"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "video_frames": 721,
+  "maximum_video_pts_delta_100ns": 657,
+  "maximum_video_duration_delta_100ns": 624,
+  "mp4_track_timescales": {
+    "vide": 15000,
+    "soun": 48000
+  },
+  "video_quantization_bound_100ns": 667,
+  "audio_input_start_100ns": 151,
+  "audio_decoded_start_100ns": 208,
+  "audio_input_end_100ns": 564454526,
+  "audio_decoded_end_100ns": 564480207,
+  "audio_edge_audit_threshold_pcm16": 100,
+  "audio_edge_audit_join_quiet_ms": 10,
+  "maximum_codec_edge_shift_ms": 0.0776,
+  "audio_signal_regions": [
+    {
+      "region": 0,
+      "source_start_100ns": 132578692,
+      "decoded_start_100ns": 132578541,
+      "source_last_100ns": 147562026,
+      "decoded_last_100ns": 147562083,
+      "start_shift_ms": -0.0151,
+      "last_shift_ms": 0.0057
+    },
+    {
+      "region": 1,
+      "source_start_100ns": 157577859,
+      "decoded_start_100ns": 157577916,
+      "source_last_100ns": 177562859,
+      "decoded_last_100ns": 177562916,
+      "start_shift_ms": 0.0057,
+      "last_shift_ms": 0.0057
+    },
+    {
+      "region": 2,
+      "source_start_100ns": 187583901,
+      "decoded_start_100ns": 187583958,
+      "source_last_100ns": 202556817,
+      "decoded_last_100ns": 202556874,
+      "start_shift_ms": 0.0057,
+      "last_shift_ms": 0.0057
+    },
+    {
+      "region": 3,
+      "source_start_100ns": 243512026,
+      "decoded_start_100ns": 243511874,
+      "source_last_100ns": 253650151,
+      "decoded_last_100ns": 253650416,
+      "start_shift_ms": -0.0152,
+      "last_shift_ms": 0.0265
+    },
+    {
+      "region": 4,
+      "source_start_100ns": 271783692,
+      "decoded_start_100ns": 271782916,
+      "source_last_100ns": 278823484,
+      "decoded_last_100ns": 278823958,
+      "start_shift_ms": -0.0776,
+      "last_shift_ms": 0.0474
+    }
+  ],
+  "note": "Decoded viewing derivative audit; raw float samples remain the source for stop latency. No audio time correction was applied."
+}
