@@ -24,7 +24,10 @@ def acquire(url: str, destination: Path, expected: str) -> Path:
     destination.parent.mkdir(parents=True, exist_ok=True)
     if not destination.exists():
         temporary = destination.with_suffix(destination.suffix + ".partial")
-        with urllib.request.urlopen(url, timeout=120) as source, temporary.open("wb") as sink:
+        request = urllib.request.Request(
+            url, headers={"User-Agent": "AICompanion-AssetRestore/1.0"}
+        )
+        with urllib.request.urlopen(request, timeout=120) as source, temporary.open("wb") as sink:
             shutil.copyfileobj(source, sink)
         if digest(temporary) != expected:
             raise ValueError(f"Hash mismatch for {url}; refusing to install")
