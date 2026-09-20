@@ -1,14 +1,16 @@
 # U01 · Unity 桌面 Live2D 伙伴原型任务书
 
-版本：1.0。日期：2026-09-20。设计与最终验收：A0。实现：用户另行启动的开发会话。
+版本：1.1。日期：2026-09-20。设计与最终验收：A0。实现：用户另行启动的开发会话。
 
 **目标：交付一个可独立启动的 Windows Unity 程序，使用真实 Live2D 演示模型，完成文字或按键语音输入、云端对话、声音播放、实际音量口型和随时打断。**
 
-本文是开发任务书，不是实现报告。U01-00 已在独立开发会话提交候选工程；当前因 Unity 6 安装器下载失败处于 `awaiting_external`，没有 Windows Unity 构建产物通过验收。首轮两项返工已复核关闭，继续原 U01-00 会话补齐环境与真实构建，不重复派发；后续实现尚未放行。详见 [PR #3 的 A0 最新复核与续作要求](../../reports/U01/acceptance/PR-003-round2-review.md)。
+本文是开发任务书，不是实现报告。U01-00 已在独立开发会话提交原候选工程；Unity 6 下载受阻后的回退实验已跑通，当前恢复 `in_progress`，正式工程仍待迁移和验收。首轮两项返工已复核关闭，继续原 U01-00 会话，不重复派发；后续模块实现尚未放行。原 PR 审阅事实见 [第二轮复核](../../reports/U01/acceptance/PR-003-round2-review.md)。
+
+用户已允许更换版本，[ADR16](../../adr/0016-unity-2022-r41-fallback-validation.md)选择 Unity `2022.3.62f3c1` + Cubism `5-r.4.1` + BiRP 作为下一步迁移候选。原 owner 可以修改正式工程、提交并从干净目录验证，再交 A0 冻结版本；[独立实验初评](../../reports/U01/acceptance/R4_1-initial-assessment.md)不代替正式验收。
 
 ## 1. 使用这份任务书
 
-按顺序阅读 [ADR15](../../adr/0015-unity-client-and-design-only-a0.md)、本文、[接口约定](INTERFACES.md)、[验收表](ACCEPTANCE.md)、[派工提示](DISPATCH.md)。机器可读台账是 [unity-desktop.json](../../blueprint/planning/unity-desktop.json)。官方来源与版本说明见 [SOURCES.md](SOURCES.md)。
+按顺序阅读 [ADR15](../../adr/0015-unity-client-and-design-only-a0.md)、[ADR16 条件回退](../../adr/0016-unity-2022-r41-fallback-validation.md)、本文、[接口约定](INTERFACES.md)、[验收表](ACCEPTANCE.md)、[派工提示](DISPATCH.md)。机器可读台账是 [unity-desktop.json](../../blueprint/planning/unity-desktop.json)。官方来源与版本说明见 [SOURCES.md](SOURCES.md)。
 
 本工作包从 main 基线 `0bfc133` 独立形成。开发起点必须包含 ADR15：先取得 `design/unity-desktop-taskbook`，在交接记录中写明其精确提交 SHA；合并后可使用包含相同设计的 main 提交。不要直接从历史 P01 网页分支继续做客户端。
 
@@ -33,14 +35,14 @@ A0 在本会话写设计、检查证据和提出返工项。开发 owner 在另�
 | 项目 | 设计选择 | 首次开发的必交证据 |
 |---|---|---|
 | 客户端 | Unity / C#，Windows x86_64 Standalone；普通窗口；uGUI + TextMeshPro，使用可分发的中文字体 | 独立 Player 启动、中文输入法、字体来源与缺字检查 |
-| Unity | 候选 Unity 6.3 LTS；SDK 官方 README 列出的 `6000.3.11f1` 仅作为已核对的参考组合 | U01-00 选择一个确切维护补丁，记录版本、安装模块、许可证可用性与构建日志；后续所有 agent 共用该版本 |
-| Live2D | 官方 Cubism SDK for Unity 正式 R5 路线，URP；不选 alpha / beta，不使用 WebView 包网页 | 精确 SDK / Core / URP / Input System 版本、包来源和 SHA-256、遮罩与材质的 Player 截图 |
+| Unity | ADR16 迁移候选 `2022.3.62f3c1` / `1623fc0bbb97`，Windows x64 Mono / D3D11 | 正式工程从干净提交导入构建，A0 复核后冻结；后续所有 agent 共用同一确切版本 |
+| Live2D | 正式 R4_1 / Core 5.1.0 / BiRP；原 R5 / URP 仅保留历史；不混用资源或选 alpha / beta | SDK / Core / 管线与实际解析的包版本、来源和 SHA-256、材质/遮罩/排序的 Player 证据 |
 | 演示模型 | 从官方样例中选一款许可适用且有口型、眨眼参数的模型；没有指定美术角色 | 模型名称、下载地址、具体适用条件、文件哈希、支持参数与动作映射；不假定所有官方样例同一许可 |
 | 后台 | 现有 Python / FastAPI 工具基线；新增隔离的 Unity 预览模块 | 受控 fixture 与真实 provider 两条路径，模式在 UI 中可见 |
 | 语音 | Unity 桌面音频输出；前景按键录音；LLM / ASR 由后台调用云服务，TTS 可云端或 Windows 系统语音 | 实际音频格式、取消证据、设备信息和真实服务使用量 |
 | 持久化 | Unity 本机应用数据目录中的带版本 JSON；对话与设置分开 | 原子写入、损坏恢复、导出删除、容量限制；不得写进 Git 工作目录 |
 
-**版本冻结点是 U01-00。** 本任务书没有伪造已经测试的 `ProjectVersion.txt`、`manifest.json` 或 `packages-lock.json`。U01-00 提交导入与构建证据及建议版本，A0 评审后，开发集成 owner 写入工程锁定文件；其他并行任务不得自行升级。
+**版本冻结点是 U01-00。** 开发集成 owner 先在工程内写入候选版本并生成真实依赖锁，用于导入和构建；提交固定源码与证据，经 A0 复核后才成为后续协作的冻结版本。实验包锁不能直接当作正式提交的复现证据；其他并行任务不得自行升级。
 
 保留 `.meta` 并启用文本序列化。Unity `Library/`、`Temp/`、`Logs/`、`Obj/`、`UserSettings/`、构建输出与用户数据不提交。模型、纹理及 SDK 二进制按实际许可与大小选择可提交资源或固定版本获取说明；需要 LFS 时连同配额与克隆验证一起登记。不能用只在作者机器存在的绝对路径代替资源交付。
 
@@ -153,8 +155,8 @@ Unity 构建产物放测试分发附件或批准的存储位置，不提交大�
 
 | 输入 | 已知状态 | 缺失时推进方式 |
 |---|---|---|
-| Windows 开发机 | 旧资源登记有 Windows 11、Unity 2022.3、RTX 5060；本任务书没有重新验证安装与激活 | U01-00 核对并选定 SDK 兼容版本；本会话不安装 |
-| 演示模型 | 用户已同意先用演示角色；具体 Live2D 样例未选 | U01-00/01 从官方样例选择并记录资源条件 |
+| Windows 开发机 | 已有 Unity `2022.3.62f3c1`，回退实验真实构建和短时运行成功 | 原 U01-00 owner 按 ADR16 迁移正式工程并干净复现；A0 不安装或代为构建 |
+| 演示模型 | 用户同意演示角色；原候选与回退实验均选各自官方包内 Mao | 分别登记资源条件、哈希与实际能力，不按同名沿用清单 |
 | 云服务 | 用户倾向云端 AI；服务商、密钥、预算、音色待登记 | 完成 fixture 和故障路径；真实门槛不虚报通过 |
 | Mac / 手机 | 用户有 M4 MacBook Pro，目前暂不参与 | Windows 原型独立推进，移动任务后续恢复 |
-| 开发会话 | 本次只交付任务书 | 用户在其他会话启动 U01-00；A0 本会话保持设计与验收职责 |
+| 开发会话 | 原 U01-00 owner 已交付回退实验，等待执行正式迁移 | 继续原任务提交证据；A0 保持设计与验收职责 |

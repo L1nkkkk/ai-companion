@@ -12,5 +12,8 @@
 | U-S06 | [Cubism SDK for Unity 手册](https://docs.live2d.com/en/cubism-sdk-manual/cubism-sdk-for-unity/) 与 [官方下载](https://www.live2d.com/en/sdk/download/unity/) | Core 不在官方 GitHub 源码仓库分发，需要按官方 SDK 包获取。Framework、Core 的来源和适用条件分别记录 |
 | U-S07 | [官方模型样例入口](https://www.live2d.com/en/learn/sample/) | 可用于选取演示资源；具体模型条件与能力由 U01-00/01 核实，不宣称所有样例均可任意再分发 |
 | U-S08 | [Unity Application.runInBackground](https://docs.unity3d.com/ScriptReference/Application-runInBackground.html) | Android 真正进入后台时仍会暂停，iOS 忽略此设置；不能用桌面失焦继续运行证明手机后台语音可用 |
+| U-S09 | [Cubism R4_1 固定提交 README](https://github.com/Live2D/CubismUnityComponents/blob/ca8babb42333a2e4407aa72a78a12d7268294455/README.md) | `5-r.4.1` 对应此提交，列出 `2022.3.61f1` / `6000.0.49f1` 开发环境；本机 `2022.3.62f3c1` 的短时实验依据另见 [ADR16](../../adr/0016-unity-2022-r41-fallback-validation.md)，不能冒充官方同版测试 |
+| U-S10 | [R4_1 官方完整包](https://cubism.live2d.com/sdk-unity/bin/CubismSdkForUnity-5-r.4.1.unitypackage) | 开发 owner 获取并登记包哈希、Core 实际版本与资源条件；下载可达不等于导入或 Player 验证通过 |
+| U-S11 | [正式 R5 固定 tag README](https://github.com/Live2D/CubismUnityComponents/blob/5-r.5/README.md) | 交叉核对 U-S04/U-S05 的 beta 时期描述：正式 R5 要求 URP，不支持 BiRP/HDRP；不能用 R4_1 / BiRP 成功替代 R5 测试 |
 
 本任务的模块分工、临时协议、超时、缓存上限与验收目标是项目设计决定，不是 Unity 或 Live2D 官方提供的完整 AI 伙伴架构。手机后台和灵动岛继续依赖原有 [平台依据](../../blueprint/SOURCES.md)，本次未执行手机原生验证。

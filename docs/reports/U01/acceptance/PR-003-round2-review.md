@@ -4,6 +4,8 @@
 
 **本轮关闭首轮的 U01-00-R1、U01-00-R2。U01-00 整体仍为 `awaiting_external`，UA01、UA02 未通过；没有放行后续实现、冻结兼容版本或批准合并。** [首轮记录](PR-003-review.md)保留为历史，本页覆盖其中两项返工的当前状态；[结构化验收状态](PR-003-round2-verification.json)明确区分测试工具通过与产品待验证。
 
+后续设计补充：用户授权更换版本，经独立实验，[ADR16](../../../adr/0016-unity-2022-r41-fallback-validation.md)已允许原 owner 将 Unity 2022.3 / R4_1 / BiRP 迁入正式工程并验证。U01-00 当前恢复 `in_progress`；本页记录原 R5 提交的审阅事实，两项关闭结论保持不变。下文对 Unity 6 的单一路径要求由 ADR16 覆盖；新候选尚未通过正式验收。
+
 ## 1. R1：UI 接口设计补齐，通过
 
 已审阅[修订接口提案](https://github.com/L1nkkkk/ai-companion/blob/b9eb29763a97fb5259cb2e3ffb0214cf7194a7f5/docs/reports/U01/U01-00/interfaces-proposal.md)。Session 已提供即时音量、设置/容量快照、音色状态、麦克风枚举、有界历史分页和单会话导出；History 与 Capture 对应入口、数据类型、线程、取消、错误和容量约束齐全，UI 调用样例不绕过 Session。
