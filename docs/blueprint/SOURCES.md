@@ -82,7 +82,7 @@ OBS 可加载网页或本地文件作为画面来源，支持透明背景设置�
 
 [Native Platform](https://reactnative.dev/docs/native-platform)
 
-官方提供原生模块和原生组件机制，可连接 Swift、Kotlin 等实现。本项目采用当前稳定架构兼容的实现，具体依赖由 T00 固定并通过真机原型验证。
+官方提供原生模块和原生组件机制，可连接 Swift、Kotlin 等实现。此条只记录 T00 历史 RN 起点的依据；当前 Unity 路线按 ADR15 和 U01 资料设计，不继续据此扩展 RN 客户端。
 
 <a id="s11"></a>
 ## S11 FastAPI 实时接口
@@ -99,3 +99,8 @@ OBS 可加载网页或本地文件作为画面来源，支持透明背景设置�
 [GitHub 大文件管理](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)
 
 worktree 用于隔离并行任务。大模型、美术工程和贴图按大小采用 Git LFS；普通 GitHub 提交存在单文件大小限制。缓存、密钥和运行数据库不提交。
+
+<a id="s13"></a>
+## S13 Unity 与 Cubism SDK for Unity
+
+当前 Unity LTS、SDK R5/URP、Core 获取和官方模型样例依据见 [U01 官方来源](../tasks/U01/SOURCES.md)。这些资料支持技术路线，不代表已经完成本机导入、Windows 构建或手机真机验证。

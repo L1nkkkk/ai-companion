@@ -2,11 +2,13 @@
 
 版本 1.0 · 2026 年 9 月 20 日
 
+客户端路线与职责已按 [ADR15](../adr/0015-unity-client-and-design-only-a0.md) 修订：Unity 为前台主线，A0 当前会话仅设计和验收。近期可执行范围见 [U01](../tasks/U01/TASKBOOK.md)；以下为完整 R1 目标，不能视为已经实现。
+
 ## 1 项目目标与责任
 
 构建一个有统一人设、声音和 Live2D 形象的 AI 角色。用户在电脑或手机与她交流；主播在直播模式下让她选择并回应观众弹幕。Android 和 iOS 均提供可安装 App，用户开启陪伴会话后可在后台继续语音。iPhone 通过灵动岛或锁屏实时活动展示会话状态。
 
-项目负责人决定产品优先级、角色审美、预算和对外发布。A0 主架构 agent 负责系统设计、接口冻结、任务分派、跨模块变更、集成顺序和最终技术验收。各开发 agent 对领取任务及对应测试负责。验收 agent 独立检查证据；A0 不以“所有 agent 都报告完成”替代集成验收。
+项目负责人决定产品优先级、角色审美、预算和对外发布。A0 主架构 agent 负责设计、接口设计基线、派工文档、跨模块变更评审、集成顺序和最终技术验收；本会话不代写实现或修复。各开发 agent 在独立开发会话完成领取任务和对应测试，指定集成 owner 实施合并与构建。验收 agent 独立检查证据；A0 不以“所有 agent 都报告完成”替代集成验收。
 
 本任务书里的“第一版”指全部 R1 需求完成；阶段演示只是其中一部分。软件开发与原画、模型绑定、配音风格设计分别推进。
 
@@ -84,26 +86,27 @@ flowchart TB
 
 | 层次 | 默认选型 | 选择目的 |
 |---|---|---|
-| 网页与直播界面 | React、TypeScript、Vite | 复用角色和控制界面 |
-| 手机界面 | React Native，保留完整 iOS 和 Android 原生工程 | 共享界面，允许开发系统能力 |
+| 桌面前台 | Unity、C#，Windows Standalone 优先 | 原生桌面角色、聊天与声音交互 |
+| 手机前台 | Unity 共享角色与界面模块，后续原生桥接验证 | Android / iOS 独立 App，手机后台不依赖 Unity 渲染循环 |
+| 直播显示与控制 | 后续按 Unity 客户端与 OBS 实际捕获/显示方案单独设计 | 保留直播需求，U01 不交付 OBS 专用入口 |
 | iOS 原生能力 | Swift、系统音频、ActivityKit、SwiftUI 扩展 | 后台语音与灵动岛 |
 | Android 原生能力 | Kotlin、音频处理、前台服务与通知 | 后台语音与系统控制 |
-| Live2D 显示 | 官方 Cubism SDK for Web，封装为独立 viewer | 网页、OBS、手机前台复用 |
-| 手机角色容器 | 原生 WebView 加载打包的 viewer 文件 | 与原生音频通过窄接口通信 |
+| Live2D 显示 | 官方 Cubism SDK for Unity、独立 C# AvatarPresenter | 桌面与后续手机前台复用表现逻辑 |
+| 手机原生桥接 | Unity 与 Swift / Kotlin 的受限命令、状态快照接口 | 前台显示与原生后台音频分离 |
 | 服务端 | Python 3.12、FastAPI、asyncio | 流式 AI 调用与会话调度 |
 | 数据库 | PostgreSQL、版本化数据库迁移 | 会话、记忆、设备与持久化元数据 |
 | 实时连接 | 分离的控制 WSS 和音频 WSS | 控制消息不排在大块音频之后 |
 | 开发与发布 | GitHub 私有仓库、worktree、持续集成 | 多机器与多 agent 协作 |
 
-React Native 支持连接 Swift、Kotlin 等原生模块，但共享界面并不自动获得原生后台能力。[S10](SOURCES.md#s10) 技术具体版本由 T00 选择稳定版本并写入锁文件，不追逐每个 agent 所在机器的最新版本。
+U01-00 已按 [ADR16](../adr/0016-unity-2022-r41-fallback-validation.md)冻结 Unity 2022.3 / R4_1 / BiRP 的 Windows 基础工程，版本、范围和剩余项见 [A0 验收](../reports/U01/acceptance/PR-003-round3-review.md)。原 Unity 6 / R5 / URP 候选保留为历史和回退参考。Unity 前台不自动获得手机后台音频能力，原生桥接与真机行为仍由手机任务验证。
 
 首版后台使用模块化单体和一个会话运行进程。直播连接、AI 适配器和数据库访问均采用异步、限时调用。禁止直接启动多个独立 worker 共同管理同一会话；未来扩容需要加入共享会话所有权与消息路由，并另立决策记录。
 
-### 4.2 WebView 的责任边界
+### 4.2 Unity 前台与手机原生引擎的责任边界
 
-WebView 只负责前台 Live2D 绘制和触摸事件。收音、播放、音频网络、后台令牌续期、重连、静音与结束控制全部在手机原生引擎中执行。JavaScript 或 WebView 暂停后，音频不能因此失去生命周期管理。
+Unity 手机前台负责角色、界面与输入命令。手机收音、播放、音频网络、后台令牌续期、重连、静音与结束控制全部在原生引擎中执行。Unity 主循环暂停后，音频不能因此失去生命周期管理；恢复前台时读取原生快照。
 
-先在 WKWebView 和 Android WebView 真机验证 Cubism。官方浏览器平台支持可作为选型依据，但不能代替嵌入 WebView 的兼容性测试。[S05](SOURCES.md#s05) 如果目标机型不可用，由 A0 评估原生 Live2D 渲染替代，其他接口保持不变。
+先完成 Windows Unity 原型，再在 iPhone / Android 实机验证 Unity Player、Cubism、原生桥接和暂停恢复。Windows 通过不能证明手机兼容；具体嵌入与打包路径由后续客户端迁移任务设计。
 
 ## 5 模块职责与边界
 
@@ -116,8 +119,8 @@ WebView 只负责前台 Live2D 绘制和触摸事件。收音、播放、音频�
 | memory | 已确认信息、会话摘要 | 带来源的可检索记忆 | A1 |
 | live | 平台消息与连接状态 | 统一直播事件 | A7 |
 | viewer | 播放状态、口型值、情绪 | Live2D 画面 | A3 |
-| web | 用户操作、服务端事件 | 聊天和直播控制界面 | A3 |
-| mobile shell | 用户操作、原生状态 | 手机界面与导航 | A4 |
+| unity presentation | 用户操作、角色与会话状态 | 桌面及未来手机前台 | A3 |
+| client runtime / bridge | 网络事件、音频、原生状态 | 会话状态、音频控制与桥接 | A4 |
 | native audio | 麦克风、音频数据、系统中断 | 音频传输、播放状态、系统入口 | A5 与 A6 |
 | verification | 构建产物、契约、设备 | 验收报告与失败证据 | A8 |
 
@@ -190,20 +193,21 @@ R1 使用单拥有者账号，关闭公开注册。初始化通过一次性管�
 
 开发仓库采用单仓库。各台开发机安装锁定版本，通过 GitHub 接力或独立 worktree 并行。运行数据不通过 Git 同步。多机代码协作和手机访问同一服务是两件分别配置的事情。
 
-开发期可以在 Windows 本机运行服务端、网页和 Android 工具。移动跨网络测试及实际使用需要可访问的 HTTPS 服务。R1 推荐一个持续在线的服务实例加 PostgreSQL，并配置备份、错误日志和基础监控。数据库、服务端、资源目录分别持久化；进程重启后会话可以重新连接，但不自动重播已经说过的音频。
+开发期先在 Windows 本机运行 Unity 客户端和 Python 服务。移动跨网络测试及实际使用需要可访问的 HTTPS 服务。R1 推荐一个持续在线的服务实例加 PostgreSQL，并配置备份、错误日志和基础监控。数据库、服务端、资源目录分别持久化；进程重启后会话可以重新连接，但不自动重播已经说过的音频。
 
 当前已确认的机器为 Windows 11、Core Ultra 7 265、约 64 GB 内存和 RTX 5060 8 GB，已有 Node.js、Python、Git、Unity 2022.3 等。T00 中用户补充确认有 M4 MacBook Pro；其 macOS、Xcode、签名及真机条件仍需现场登记。移动工具链尚需专门准备。iOS 构建与调试需要 Mac 和 Xcode，本地或远程均可；还需可实际安装测试版本的签名条件。[S04](SOURCES.md#s04)
 
 ### 10.1 正式仓库目标目录
 
 ~~~text
-apps/web/                      电脑聊天 控制台 OBS 页面
-apps/mobile/src/               手机共享界面
-apps/mobile/ios/               iOS 工程 音频 灵动岛扩展
-apps/mobile/android/           Android 工程 音频 通知服务
-packages/avatar-viewer/        Live2D 展示与原生桥接
-packages/client/               网页 REST 与事件客户端
-packages/mobile-bridge/        原生模块接口定义
+apps/unity/                    Unity 客户端、Live2D、UI、会话与桌面音频（待实现）
+native/ios/                    后续 iOS 原生引擎、扩展与桥接源码（待设计）
+native/android/                后续 Android 原生引擎与桥接源码（待设计）
+apps/web/                      历史网页起点，暂停扩展
+apps/mobile/                   历史 RN 起点，暂停扩展
+packages/avatar-viewer/        历史 Web viewer 骨架
+packages/client/               历史网页客户端骨架
+packages/mobile-bridge/        历史 RN 桥接骨架
 services/api/app/              identity session orchestrator memory
 services/api/app/providers/    云端能力适配器
 services/api/app/live/         直播平台适配器
@@ -211,7 +215,7 @@ services/api/migrations/       数据迁移
 contracts/                    OpenAPI 事件 schema 固定测试样例
 tests/contract/                契约测试
 tests/integration/             跨模块测试
-tests/e2e/                     网页和真机验收脚本
+tests/e2e/                     桌面和真机验收材料
 infra/                         开发与部署配置
 docs/blueprint/                本任务书
 docs/adr/                      后续决策记录
@@ -245,7 +249,7 @@ G0 中的真实资源验证与 mock 上的开发可并行。任一真实验证�
 
 A0 先冻结共享契约，然后分派有明确目录归属的任务。每个任务在自己的分支或 worktree 完成。共享锁文件、根配置、数据库迁移序号、schema 和原生工程公共配置由 A0 协调，避免多个 agent 同时修改。
 
-开发 agent 必须交付代码、相关测试、运行方法、结果证据、已知限制和接口变更清单。A0 集成后由 A8 运行跨端测试。每次合并只证明该任务通过，不自动证明整个阶段完成。
+开发 agent 必须交付代码、相关测试、运行方法、结果证据、已知限制和接口变更清单。指定开发集成 owner 完成集成，A8 运行跨端测试，A0 审阅结论并在具备条件时验收已有产物；A0 本会话不代写集成实现。每次合并只证明该任务通过，不自动证明整个阶段完成。
 
 详细角色、任务清单、可复制派工提示和交接格式见 AGENT_PLAYBOOK 与 TASKS。本项目不要求在同一时间启动所有角色；可按机器和 agent 配额分批运行。
 

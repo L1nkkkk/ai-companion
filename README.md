@@ -1,17 +1,25 @@
 # AI Companion
 
-桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前为 **T00 工程起点**，包含可运行的网页入口、后台存活检查、手机初始工程及冻结的接口。聊天、语音、Live2D 和后台陪伴将由后续任务实现。
+桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。**U01-00 基础工程已通过 A0 验收**：干净目录构建、同包 600 秒基础渲染与共享接口已验证，版本已冻结；角色、UI、后台和音频四个模块可以领取。完整角色交互与 U-G0 尚未完成，内存增长、遮罩覆盖和取景仍有后续项，见 [A0 最新验收与下一步](docs/reports/U01/acceptance/PR-003-round3-review.md)。本分支维护设计与验收文档；现有 React / React Native 文件是 T00 历史工程起点。
+
+[ADR16](docs/adr/0016-unity-2022-r41-fallback-validation.md)固定 Unity 2022.3.62f3c1 / Cubism R4_1 / BiRP；[C# 边界](docs/tasks/U01/CSHARP-BASELINE.md)明确后续模块接线。代码起点为 PR #3 的 cfffbf6，再合入最新验收设计提交并登记 SHA。
+
+从 [U01 Unity 桌面原型任务书](docs/tasks/U01/TASKBOOK.md) 开始，当前按 U01-01 至 U01-04 分工推进 U-G0；[派工提示](docs/tasks/U01/DISPATCH.md) 随验收状态使用。A0 当前会话只负责设计和验收，编码与打包由其他开发会话承担，规则见 [ADR15](docs/adr/0015-unity-client-and-design-only-a0.md)。历史 [P01 网页草稿](https://github.com/L1nkkkk/ai-companion/pull/1) 仅作交互参考，不是 Unity 交付。
 
 正式私有仓库：[L1nkkkk/ai-companion](https://github.com/L1nkkkk/ai-companion)，主分支 `main`。其他机器通过 Git 克隆后按下方步骤安装。
 
 ## 从这里开始
+
+- [Unity 原型任务书](docs/tasks/U01/TASKBOOK.md)、[接口](docs/tasks/U01/INTERFACES.md)、[验收](docs/tasks/U01/ACCEPTANCE.md)、[派工提示](docs/tasks/U01/DISPATCH.md)
 
 - [总架构](docs/blueprint/ARCHITECTURE.md)、[任务卡](docs/blueprint/TASKS.md)、[任务台账](docs/blueprint/planning/tasks.json)
 - [协作规则](AGENTS.md)、[接口说明](docs/blueprint/CONTRACTS.md)、[唯一契约目录](contracts/README.md)
 - [T00 交接与验证](docs/reports/T00/README.md)、[工具与资源清单](docs/development/ENVIRONMENT.md)
 - [第二台机器接手](docs/development/SECOND_MACHINE.md)、[GitHub 与并行开发](docs/development/COLLABORATION.md)
 
-## 安装
+## 已有 T00 工具安装
+
+以下固定工具用于现有后台与历史工程检查。Unity、渲染管线、Cubism、模型及资源锁定另由 U01-00 验证，不以这些命令代替 Unity 安装或构建。
 
 安装 Node **24.19.0**、Python **3.12.10** 和 Git。工程工具为 pnpm **11.19.0**、uv **0.12.17**。Node 官网标准安装包附带 npm；若当前环境已提供固定版本 pnpm，直接使用它。
 
@@ -25,7 +33,7 @@ uv run python tools/check.py
 
 上述命令从仓库根目录运行。uv 若不在 PATH，可用 `python -m uv` 代替 `uv`。依赖下载不需要云端 AI 密钥。全部 Python 运行依赖由根 pyproject.toml 和 uv.lock 管理；tools/requirements-validation.txt 仅用于单独校验设计包。
 
-## 运行开发预览
+## 运行历史 T00 工程预览
 
 在第一个终端启动后台：
 
@@ -41,7 +49,9 @@ pnpm dev:web
 
 打开终端显示的本地地址。网页显示基础服务连接状态。后台目前只提供 `/health/live`；`/health/ready` 和 `/v1/*` 尚未实现，不会假装业务已就绪。开发入口仅绑定本机，跨网手机测试由 T16 配置 HTTPS。
 
-## 手机工程
+## 历史 T00 手机工程（暂停扩展）
+
+下列命令只用于复查已导入的 RN 工程；新的客户端不按此路线继续扩展。Unity 手机客户端与原生后台桥接在桌面阶段之后另行派工。
 
 ```text
 pnpm dev:mobile

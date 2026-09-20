@@ -2,6 +2,10 @@
 
 正式私有仓库为 [L1nkkkk/ai-companion](https://github.com/L1nkkkk/ai-companion)，主分支 main。本地 origin 使用 HTTPS 地址。
 
+当前先按 [U01 Unity 任务书](../tasks/U01/TASKBOOK.md) 开发。其设计分支是 `design/unity-desktop-taskbook`，从 main 的 `0bfc133` 单独创建，不含 P01 网页实现。开发起点必须是包含 ADR15 的精确提交；该文档尚未合并时直接以文档分支为起点，不能用旧 main 的任务卡代替。首个开发会话使用 [U01-00 派工提示](../tasks/U01/DISPATCH.md)。
+
+A0 当前会话只做设计与验收。用户另开开发会话领取任务；集成 owner 处理工程、共享配置、冲突和打包。U01 并行 owner 分别写自己的 prefab / 组件，由集成 owner 单独写总场景及 ProjectSettings/Packages；必须提交 `.meta`。不要把 Unity 缓存、模型来源不明的文件或本机凭据同步到 GitHub。
+
 ## 在另一台机器克隆
 
 先在该机器登录具有仓库权限的 GitHub 账号，然后：

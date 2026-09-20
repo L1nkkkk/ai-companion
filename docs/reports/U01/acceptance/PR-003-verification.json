@@ -1,0 +1,59 @@
+{
+  "task": "U01-00",
+  "date": "2026-09-20",
+  "reviewer": "A0",
+  "pull_request": "https://github.com/L1nkkkk/ai-companion/pull/3",
+  "reviewed_commit": "5de03d46a048d1b976680aecc1e7c21962951b06",
+  "resource_test_commit": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
+  "foundation_commit": "765c635327685b413c7f930558711db7d88df60c",
+  "status": "awaiting_external",
+  "accepted_as_completed": false,
+  "release_dependents": false,
+  "interface_design": "changes_requested",
+  "implementation_findings": ["U01-00-R1", "U01-00-R2"],
+  "independent_checks": {
+    "scope": "passed: 69 files within assigned paths",
+    "protected_paths": "unchanged",
+    "development_worktree": "clean at reviewed commit",
+    "model_files_hashes": "106 matched",
+    "font_and_license_hashes": "matched",
+    "committed_environment_evidence_hashes": "6 matched against Git blobs",
+    "changes_since_resource_test": "5 report files only",
+    "unity_installer_head": {
+      "url": "https://download.unity3d.com/download_unity/3000ef702840/Windows64EditorInstaller/UnitySetup64-6000.3.11f1.exe",
+      "final_host": "download.unitychina.cn",
+      "status": 404,
+      "payload_downloaded": false
+    },
+    "github_foundation_ci": {
+      "run": "https://github.com/L1nkkkk/ai-companion/actions/runs/35500611249",
+      "platforms": ["windows-latest", "macos-15", "ubuntu-latest"],
+      "result": "success",
+      "includes_unity_build": false
+    }
+  },
+  "not_executed_by_a0": [
+    "Unity installation or SDK import",
+    "Core probe rerun or resource restoration",
+    "Unity C# compilation and package resolution",
+    "Windows Player build or runtime validation"
+  ],
+  "acceptance": {
+    "UA01": "awaiting_external",
+    "UA02": "awaiting_external",
+    "UA03": "not_run",
+    "UA04": "not_run",
+    "UA05": "not_run",
+    "UA06": "not_run",
+    "UA07": "not_run",
+    "UA08": "not_run",
+    "UA09": "not_run",
+    "UA10": "not_run",
+    "UA11": "not_run",
+    "UA12": "not_run"
+  },
+  "artifact": null,
+  "built_source_sha": null,
+  "runtime_verified": false,
+  "report": "PR-003-review.md"
+}

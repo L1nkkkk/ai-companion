@@ -1,0 +1,446 @@
+{
+  "id": "U01",
+  "version": "1.2",
+  "date": "2026-09-20",
+  "title": "Unity 桌面 Live2D 伙伴原型",
+  "status": "in_progress",
+  "decision": "docs/adr/0015-unity-client-and-design-only-a0.md",
+  "conditional_decision": "docs/adr/0016-unity-2022-r41-fallback-validation.md",
+  "taskbook": "docs/tasks/U01/TASKBOOK.md",
+  "interfaces": "docs/tasks/U01/INTERFACES.md",
+  "acceptance": "docs/tasks/U01/ACCEPTANCE.md",
+  "dispatch": "docs/tasks/U01/DISPATCH.md",
+  "design_branch": "design/unity-desktop-taskbook",
+  "foundation_commit": "0bfc133f1bd4c7b95a48e14e045101cb4fb38fda",
+  "development_base_rule": "Start from cfffbf6b307e58421d0316cda67d027a5f39be7d and merge the exact design commit containing round3 acceptance and CSHARP-BASELINE; record both SHAs.",
+  "design_session_role": "A0: design, review and acceptance only; no product implementation, SDK installation, fixes or packaging.",
+  "implementation_session": "Separate development sessions explicitly started by the user.",
+  "implementation_started": true,
+  "unity_build_verified": true,
+  "unity_build_verified_scope": "U01-00 Windows foundation at the accepted source; full UA02 and U-G0 remain incomplete.",
+  "r1_completion_changed": false,
+  "fallback_validation": {
+    "status": "accepted_foundation",
+    "owner_task": "U01-00",
+    "unity": "2022.3.62f3c1",
+    "unity_revision": "1623fc0bbb97",
+    "sdk": "5-r.4.1",
+    "core": "5.1.0",
+    "render_pipeline": "Built-in",
+    "design_selection": "frozen_u01_00_windows_baseline",
+    "migration_allowed": true,
+    "original_candidate": "6000.3.11f1 / 5-r.5 / URP",
+    "original_candidate_status": "awaiting_external",
+    "baseline_adopted": true,
+    "version_frozen": true,
+    "release_dependents": true,
+    "initial_assessment": "docs/reports/U01/acceptance/R4_1-initial-assessment.md",
+    "evidence_boundary": "Formal clean-workdir build and same-package 600-second fixture accepted for U01-00. Full UA02, UI, audio, cloud, mobile and second-machine validation remain outstanding.",
+    "accepted_source_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+    "final_review": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+  },
+  "latest_review": {
+    "pull_request": "https://github.com/L1nkkkk/ai-companion/pull/3",
+    "reviewed_commit": "cfffbf6b307e58421d0316cda67d027a5f39be7d",
+    "report": "docs/reports/U01/acceptance/PR-003-round3-review.md",
+    "verification": "docs/reports/U01/acceptance/PR-003-round3-verification.json",
+    "resolved_findings": [
+      "U01-00-R1",
+      "U01-00-R2"
+    ],
+    "task_completed": true,
+    "release_dependents": true,
+    "tested_source_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+    "scope": "U01-00 only; UA01 accepted and UA02 foundation subchecks accepted; no full UA02 or gate completion."
+  },
+  "gates": [
+    {
+      "id": "U-G0",
+      "title": "真实 Live2D 与 fixture 音频的 Windows Player",
+      "status": "in_progress",
+      "required": [
+        "UA01",
+        "UA02",
+        "UA03",
+        "UA04",
+        "UA05",
+        "UA12"
+      ]
+    },
+    {
+      "id": "U-G1",
+      "title": "真实云端文字对话与语音播放",
+      "status": "not_started",
+      "depends_on": [
+        "U-G0"
+      ],
+      "required": [
+        "UA05",
+        "UA06",
+        "UA07",
+        "UA08",
+        "UA12"
+      ]
+    },
+    {
+      "id": "U-G2",
+      "title": "真实按键语音与完整闭环",
+      "status": "not_started",
+      "depends_on": [
+        "U-G1"
+      ],
+      "required": [
+        "UA09",
+        "UA10",
+        "UA11",
+        "UA12"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "U01-00",
+      "title": "工程与版本验证",
+      "owner_role": "A3",
+      "owner_slot": "unity_integrator",
+      "status": "complete",
+      "depends_on": [],
+      "implementation_branch": "agent/U01-00-unity-foundation",
+      "pull_request": "https://github.com/L1nkkkk/ai-companion/pull/3",
+      "reviewed_commit": "cfffbf6b307e58421d0316cda67d027a5f39be7d",
+      "review_report": "docs/reports/U01/acceptance/PR-003-round3-review.md",
+      "blocker": null,
+      "rework_items": [],
+      "resolved_rework_items": [
+        "U01-00-R1: UI-facing interface proposal reviewed",
+        "U01-00-R2: externally bounded Player verification independently retested"
+      ],
+      "acceptance_state": {
+        "UA01": "passed",
+        "UA02": "not_run"
+      },
+      "acceptance_state_scope": "Full UA02 remains not_run; foundation rendering, 600-second no-crash/error and frame-time subchecks accepted. Memory/mask/framing follow-ups explicitly tracked.",
+      "shared_api_frozen": true,
+      "release_dependents": true,
+      "allowed_paths": [
+        "apps/unity initial scaffolding",
+        "apps/unity/Assets/Companion/Runtime/Contracts/",
+        "apps/unity/ProjectSettings/",
+        "apps/unity/Packages/",
+        "assets/manifest/",
+        "tools/unity/",
+        ".gitignore",
+        "docs/reports/U01/U01-00/"
+      ],
+      "deliverables": [
+        "exact version proposal and resources manifest",
+        "minimal real Windows Player and SHA-256",
+        "build/import logs",
+        "C# boundary proposal",
+        "clean-workdir reproduction"
+      ],
+      "acceptance": [
+        "UA01",
+        "UA02"
+      ],
+      "dispatch_file": "docs/tasks/U01/DISPATCH.md",
+      "design_review_required_before_dependents": true,
+      "tested_source_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+      "foundation_rendering_subchecks": "passed"
+    },
+    {
+      "id": "U01-01",
+      "title": "角色呈现",
+      "owner_role": "A3",
+      "owner_slot": "avatar",
+      "status": "ready",
+      "depends_on": [
+        "U01-00"
+      ],
+      "allowed_paths": [
+        "apps/unity/Assets/Companion/Runtime/Avatar/",
+        "apps/unity/Assets/Companion/Prefabs/Avatar/",
+        "apps/unity/Assets/Companion/Tests/Avatar/",
+        "assets/manifest/characters/",
+        "docs/reports/U01/U01-01/"
+      ],
+      "deliverables": [
+        "actual Live2D presenter",
+        "capability/parameter mapping",
+        "motion and fallback tests",
+        "audio-driven mouth evidence"
+      ],
+      "acceptance": [
+        "UA02",
+        "UA03"
+      ],
+      "implementation_started": false,
+      "development_base_commit": "cfffbf6b307e58421d0316cda67d027a5f39be7d",
+      "release_review": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-02",
+      "title": "桌面 UI 与历史",
+      "owner_role": "A3",
+      "owner_slot": "ui_history",
+      "status": "ready",
+      "depends_on": [
+        "U01-00"
+      ],
+      "allowed_paths": [
+        "apps/unity/Assets/Companion/Runtime/UI/",
+        "apps/unity/Assets/Companion/Runtime/Session/History/",
+        "apps/unity/Assets/Companion/Prefabs/UI/",
+        "apps/unity/Assets/Companion/Tests/UI/",
+        "docs/reports/U01/U01-02/"
+      ],
+      "deliverables": [
+        "Chinese IME and stateful controls",
+        "versioned local history",
+        "export/deletion/recovery tests"
+      ],
+      "acceptance": [
+        "UA04",
+        "UA07",
+        "UA08"
+      ],
+      "implementation_started": false,
+      "development_base_commit": "cfffbf6b307e58421d0316cda67d027a5f39be7d",
+      "release_review": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-03",
+      "title": "本机后台与云适配",
+      "owner_role": "A2",
+      "owner_slot": "backend",
+      "status": "ready",
+      "depends_on": [
+        "U01-00"
+      ],
+      "preparation_before_dependencies": "Read official provider documents and design fixtures only; no unreviewed protocol implementation.",
+      "allowed_paths": [
+        "services/api/app/unity_preview/",
+        "services/api/app/providers/",
+        "services/api/tests/unity_preview/",
+        "docs/reports/U01/U01-03/"
+      ],
+      "shared_paths_by_recorded_ownership": [
+        "services/api/app/main.py",
+        "pyproject.toml",
+        "uv.lock",
+        ".env.example"
+      ],
+      "deliverables": [
+        "preview schemas and fixtures",
+        "LLM/TTS/ASR adapters",
+        "cancellation and bounded resources",
+        "real provider evidence or explicit missing resources"
+      ],
+      "acceptance": [
+        "UA05",
+        "UA06",
+        "UA08",
+        "UA10"
+      ],
+      "implementation_started": false,
+      "development_base_commit": "cfffbf6b307e58421d0316cda67d027a5f39be7d",
+      "release_review": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-04",
+      "title": "会话、传输与音频",
+      "owner_role": "A4",
+      "owner_slot": "client_audio",
+      "status": "ready",
+      "depends_on": [
+        "U01-00"
+      ],
+      "allowed_paths": [
+        "apps/unity/Assets/Companion/Runtime/Session/ excluding History",
+        "apps/unity/Assets/Companion/Runtime/Transport/",
+        "apps/unity/Assets/Companion/Runtime/Audio/",
+        "apps/unity/Assets/Companion/Tests/ClientAudio/",
+        "docs/reports/U01/U01-04/"
+      ],
+      "deliverables": [
+        "state machine and request fencing",
+        "validated WAV playback and volume",
+        "PTT capture and draft revision protection",
+        "fixture concurrency tests"
+      ],
+      "acceptance": [
+        "UA03",
+        "UA05",
+        "UA08",
+        "UA09",
+        "UA10"
+      ],
+      "implementation_started": false,
+      "development_base_commit": "cfffbf6b307e58421d0316cda67d027a5f39be7d",
+      "release_review": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-05",
+      "title": "分阶段集成与打包",
+      "owner_role": "A3",
+      "owner_slot": "unity_integrator",
+      "status": "planned",
+      "depends_on": [
+        "U01-01",
+        "U01-02",
+        "U01-03",
+        "U01-04"
+      ],
+      "partial_gate_rule": "Integration can start when dependency deliverables for the selected gate are reviewed; real cloud gates remain pending without resources.",
+      "allowed_paths": [
+        "apps/unity/Assets/Companion/Scenes/",
+        "apps/unity/Assets/Companion/Runtime/Composition/",
+        "apps/unity/Assets/Companion/Runtime/Contracts/",
+        "apps/unity/ProjectSettings/",
+        "apps/unity/Packages/",
+        "tools/unity/",
+        "docs/reports/U01/U01-05/"
+      ],
+      "shared_paths_by_recorded_ownership": [
+        ".github/workflows/",
+        ".gitignore"
+      ],
+      "deliverables": [
+        "U-G0/U-G1/U-G2 candidate builds",
+        "build manifests and SHA-256",
+        "startup/shutdown instructions"
+      ],
+      "acceptance": [
+        "UA01",
+        "UA11",
+        "UA12"
+      ]
+    },
+    {
+      "id": "U01-06",
+      "title": "独立测试与交接",
+      "owner_role": "A8",
+      "owner_slot": "qa",
+      "status": "planned",
+      "depends_on": [
+        "U01-05"
+      ],
+      "allowed_paths": [
+        "tests/unity/",
+        "docs/reports/U01/"
+      ],
+      "deliverables": [
+        "per-UA evidence at exact SHA",
+        "latency/real-cloud/device results",
+        "defects assigned to implementation owners",
+        "regression and release manifest"
+      ],
+      "acceptance": [
+        "UA01",
+        "UA02",
+        "UA03",
+        "UA04",
+        "UA05",
+        "UA06",
+        "UA07",
+        "UA08",
+        "UA09",
+        "UA10",
+        "UA11",
+        "UA12"
+      ]
+    },
+    {
+      "id": "U01-07",
+      "title": "设计与最终验收",
+      "owner_role": "A0",
+      "owner_slot": "design_acceptance",
+      "status": "planned",
+      "depends_on": [
+        "U01-06"
+      ],
+      "allowed_paths": [
+        "design and collaboration documents",
+        "docs/blueprint/planning/unity-desktop.json",
+        "docs/reports/U01/acceptance/"
+      ],
+      "forbidden_actions_in_design_session": [
+        "product implementation",
+        "SDK installation",
+        "code fixes",
+        "build configuration changes",
+        "packaging"
+      ],
+      "deliverables": [
+        "independent review and stage verdict",
+        "explicit unverified items",
+        "owner-specific rework acceptance criteria"
+      ],
+      "acceptance": [
+        "UA01",
+        "UA02",
+        "UA03",
+        "UA04",
+        "UA05",
+        "UA06",
+        "UA07",
+        "UA08",
+        "UA09",
+        "UA10",
+        "UA11",
+        "UA12"
+      ]
+    }
+  ],
+  "accepted_implementation_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "development_base_commit": "cfffbf6b307e58421d0316cda67d027a5f39be7d",
+  "csharp_baseline": "docs/tasks/U01/CSHARP-BASELINE.md",
+  "open_followups": [
+    {
+      "id": "U01-F01",
+      "title": "Explain memory growth using time series and controlled runs",
+      "status": "open",
+      "owners": [
+        "U01-01",
+        "U01-05",
+        "QA"
+      ],
+      "due": "before U-G0; repeat with business load for UA11",
+      "report": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-F02",
+      "title": "Resolve unobserved mask paths or explicit capability exclusions",
+      "status": "open",
+      "owners": [
+        "U01-01",
+        "QA"
+      ],
+      "due": "full UA02",
+      "report": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-F03",
+      "title": "Validate product framing and UI against enabled motion/effect bounds",
+      "status": "open",
+      "owners": [
+        "U01-01",
+        "U01-02",
+        "U01-05"
+      ],
+      "due": "before U-G0",
+      "report": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-F04",
+      "title": "Exact Editor acquisition and second-machine reproduction",
+      "status": "open",
+      "owners": [
+        "T00 second-machine owner",
+        "QA"
+      ],
+      "due": "before formal multi-machine handoff; not required for current same-machine U01-00",
+      "report": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    }
+  ]
+}

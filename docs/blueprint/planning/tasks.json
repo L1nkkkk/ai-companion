@@ -355,7 +355,7 @@
       "title": "实现共享 Live2D viewer",
       "owner_role": "A3",
       "gate": "G1",
-      "status": "planned",
+      "status": "changed",
       "depends_on": [
         "T04"
       ],
@@ -384,14 +384,19 @@
         "模型资源说明"
       ],
       "external_resources": "合法可用模型及官方SDK；WebView最终兼容性由T18真机完成。",
-      "dispatch_prompt": "你负责 T09 实现共享 Live2D viewer，角色 A3。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：packages/avatar-viewer/；assets/manifest/；tests/viewer/。前置任务：T04。目标：提供不依赖 AI 供应商的角色展示组件。验收：AC09、AC26。外部条件：合法可用模型及官方SDK；WebView最终兼容性由T18真机完成。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "本任务原客户端实现卡已被 ADR15 覆盖，暂不可派发。不要执行旧 React/RN/WebView 目录的实现。先由 A0 重写 Unity 正式任务卡；当前 Windows 原型使用 docs/tasks/U01/TASKBOOK.md 和 docs/blueprint/planning/unity-desktop.json。保留本任务原 R1 目标与验收编号。",
+      "previous_status": "planned",
+      "dispatch_enabled": false,
+      "change_decision": "docs/adr/0015-unity-client-and-design-only-a0.md",
+      "change_reason": "Unity client replaces the React/RN/WebView implementation plan. Preserve R1 objectives and AC IDs; rewrite this implementation card before dispatch.",
+      "historical_dispatch_prompt": "你负责 T09 实现共享 Live2D viewer，角色 A3。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：packages/avatar-viewer/；assets/manifest/；tests/viewer/。前置任务：T04。目标：提供不依赖 AI 供应商的角色展示组件。验收：AC09、AC26。外部条件：合法可用模型及官方SDK；WebView最终兼容性由T18真机完成。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
     },
     {
       "id": "T10",
       "title": "实现电脑聊天控制台与 OBS 页面",
       "owner_role": "A3",
       "gate": "G1",
-      "status": "planned",
+      "status": "changed",
       "depends_on": [
         "T06",
         "T09"
@@ -425,14 +430,19 @@
         "网页交互测试"
       ],
       "external_resources": "无需真实账号；使用 mock。",
-      "dispatch_prompt": "你负责 T10 实现电脑聊天控制台与 OBS 页面，角色 A3。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：apps/web/；packages/client/；tests/web/。前置任务：T06、T09。目标：提供桌面聊天和直播操作界面。验收：AC03、AC09、AC14、AC19。外部条件：无需真实账号；使用 mock。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "本任务原客户端实现卡已被 ADR15 覆盖，暂不可派发。不要执行旧 React/RN/WebView 目录的实现。先由 A0 重写 Unity 正式任务卡；当前 Windows 原型使用 docs/tasks/U01/TASKBOOK.md 和 docs/blueprint/planning/unity-desktop.json。保留本任务原 R1 目标与验收编号。",
+      "previous_status": "planned",
+      "dispatch_enabled": false,
+      "change_decision": "docs/adr/0015-unity-client-and-design-only-a0.md",
+      "change_reason": "Unity client replaces the React/RN/WebView implementation plan. Preserve R1 objectives and AC IDs; rewrite this implementation card before dispatch.",
+      "historical_dispatch_prompt": "你负责 T10 实现电脑聊天控制台与 OBS 页面，角色 A3。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：apps/web/；packages/client/；tests/web/。前置任务：T06、T09。目标：提供桌面聊天和直播操作界面。验收：AC03、AC09、AC14、AC19。外部条件：无需真实账号；使用 mock。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
     },
     {
       "id": "T11",
       "title": "实现手机共享界面与原生接口",
       "owner_role": "A4",
       "gate": "G2",
-      "status": "planned",
+      "status": "changed",
       "depends_on": [
         "T04",
         "T09"
@@ -465,14 +475,19 @@
         "UI和原生状态一致性测试"
       ],
       "external_resources": "无需真实账号；使用 mock。",
-      "dispatch_prompt": "你负责 T11 实现手机共享界面与原生接口，角色 A4。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：apps/mobile/src/；packages/mobile-bridge/；tests/mobile-ui/。前置任务：T04、T09。目标：统一双端界面和原生音频的调用方式。验收：AC09、AC12、AC19。外部条件：无需真实账号；使用 mock。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "本任务原客户端实现卡已被 ADR15 覆盖，暂不可派发。不要执行旧 React/RN/WebView 目录的实现。先由 A0 重写 Unity 正式任务卡；当前 Windows 原型使用 docs/tasks/U01/TASKBOOK.md 和 docs/blueprint/planning/unity-desktop.json。保留本任务原 R1 目标与验收编号。",
+      "previous_status": "planned",
+      "dispatch_enabled": false,
+      "change_decision": "docs/adr/0015-unity-client-and-design-only-a0.md",
+      "change_reason": "Unity client replaces the React/RN/WebView implementation plan. Preserve R1 objectives and AC IDs; rewrite this implementation card before dispatch.",
+      "historical_dispatch_prompt": "你负责 T11 实现手机共享界面与原生接口，角色 A4。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：apps/mobile/src/；packages/mobile-bridge/；tests/mobile-ui/。前置任务：T04、T09。目标：统一双端界面和原生音频的调用方式。验收：AC09、AC12、AC19。外部条件：无需真实账号；使用 mock。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
     },
     {
       "id": "T12",
       "title": "实现 iOS 生产音频与灵动岛",
       "owner_role": "A5",
       "gate": "G2",
-      "status": "planned",
+      "status": "changed",
       "depends_on": [
         "T01",
         "T06",
@@ -507,14 +522,19 @@
         "签名与构建说明"
       ],
       "external_resources": "Mac/Xcode、目标iPhone、签名和真实或受控语音服务。",
-      "dispatch_prompt": "你负责 T12 实现 iOS 生产音频与灵动岛，角色 A5。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：apps/mobile/ios/；tests/ios/；docs/reports/T12/。前置任务：T01、T06、T11。目标：让手机界面暂停时仍能正确管理持续语音。验收：AC10、AC12、AC13、AC19、AC20。外部条件：Mac/Xcode、目标iPhone、签名和真实或受控语音服务。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "本任务原客户端实现卡已被 ADR15 覆盖，暂不可派发。不要执行旧 React/RN/WebView 目录的实现。先由 A0 重写 Unity 正式任务卡；当前 Windows 原型使用 docs/tasks/U01/TASKBOOK.md 和 docs/blueprint/planning/unity-desktop.json。保留本任务原 R1 目标与验收编号。",
+      "previous_status": "planned",
+      "dispatch_enabled": false,
+      "change_decision": "docs/adr/0015-unity-client-and-design-only-a0.md",
+      "change_reason": "Unity client replaces the React/RN/WebView implementation plan. Preserve R1 objectives and AC IDs; rewrite this implementation card before dispatch.",
+      "historical_dispatch_prompt": "你负责 T12 实现 iOS 生产音频与灵动岛，角色 A5。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：apps/mobile/ios/；tests/ios/；docs/reports/T12/。前置任务：T01、T06、T11。目标：让手机界面暂停时仍能正确管理持续语音。验收：AC10、AC12、AC13、AC19、AC20。外部条件：Mac/Xcode、目标iPhone、签名和真实或受控语音服务。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
     },
     {
       "id": "T13",
       "title": "实现 Android 生产音频与通知",
       "owner_role": "A6",
       "gate": "G2",
-      "status": "planned",
+      "status": "changed",
       "depends_on": [
         "T02",
         "T06",
@@ -549,7 +569,12 @@
         "设备回归报告"
       ],
       "external_resources": "主力Android真机及另一厂商或版本回归资源。",
-      "dispatch_prompt": "你负责 T13 实现 Android 生产音频与通知，角色 A6。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：apps/mobile/android/；tests/android/；docs/reports/T13/。前置任务：T02、T06、T11。目标：可靠运行前台服务和后台语音引擎。验收：AC11、AC12、AC13、AC19、AC20。外部条件：主力Android真机及另一厂商或版本回归资源。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "本任务原客户端实现卡已被 ADR15 覆盖，暂不可派发。不要执行旧 React/RN/WebView 目录的实现。先由 A0 重写 Unity 正式任务卡；当前 Windows 原型使用 docs/tasks/U01/TASKBOOK.md 和 docs/blueprint/planning/unity-desktop.json。保留本任务原 R1 目标与验收编号。",
+      "previous_status": "planned",
+      "dispatch_enabled": false,
+      "change_decision": "docs/adr/0015-unity-client-and-design-only-a0.md",
+      "change_reason": "Unity client replaces the React/RN/WebView implementation plan. Preserve R1 objectives and AC IDs; rewrite this implementation card before dispatch.",
+      "historical_dispatch_prompt": "你负责 T13 实现 Android 生产音频与通知，角色 A6。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：apps/mobile/android/；tests/android/；docs/reports/T13/。前置任务：T02、T06、T11。目标：可靠运行前台服务和后台语音引擎。验收：AC11、AC12、AC13、AC19、AC20。外部条件：主力Android真机及另一厂商或版本回归资源。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
     },
     {
       "id": "T14",
@@ -717,7 +742,7 @@
       "title": "双端手机后台与跨设备验收",
       "owner_role": "A8",
       "gate": "G2",
-      "status": "planned",
+      "status": "changed",
       "depends_on": [
         "T07",
         "T08",
@@ -759,14 +784,19 @@
         "已知设备限制"
       ],
       "external_resources": "iPhone、Android、Mac签名环境、可访问HTTPS后台与真实AI。",
-      "dispatch_prompt": "你负责 T18 双端手机后台与跨设备验收，角色 A8。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：tests/e2e/mobile/；docs/reports/T18/。前置任务：T07、T08、T12、T13、T16。目标：证明两种手机在真实使用条件下达到陪伴目标。验收：AC09、AC10、AC11、AC12、AC13、AC14、AC19、AC20、AC23。外部条件：iPhone、Android、Mac签名环境、可访问HTTPS后台与真实AI。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "本任务原客户端实现卡已被 ADR15 覆盖，暂不可派发。不要执行旧 React/RN/WebView 目录的实现。先由 A0 重写 Unity 正式任务卡；当前 Windows 原型使用 docs/tasks/U01/TASKBOOK.md 和 docs/blueprint/planning/unity-desktop.json。保留本任务原 R1 目标与验收编号。",
+      "previous_status": "planned",
+      "dispatch_enabled": false,
+      "change_decision": "docs/adr/0015-unity-client-and-design-only-a0.md",
+      "change_reason": "Unity client replaces the React/RN/WebView implementation plan. Preserve R1 objectives and AC IDs; rewrite this implementation card before dispatch.",
+      "historical_dispatch_prompt": "你负责 T18 双端手机后台与跨设备验收，角色 A8。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：tests/e2e/mobile/；docs/reports/T18/。前置任务：T07、T08、T12、T13、T16。目标：证明两种手机在真实使用条件下达到陪伴目标。验收：AC09、AC10、AC11、AC12、AC13、AC14、AC19、AC20、AC23。外部条件：iPhone、Android、Mac签名环境、可访问HTTPS后台与真实AI。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
     },
     {
       "id": "T19",
       "title": "真实直播与 OBS 联调验收",
       "owner_role": "A8",
       "gate": "G3",
-      "status": "planned",
+      "status": "changed",
       "depends_on": [
         "T10",
         "T15",
@@ -800,7 +830,12 @@
         "故障恢复记录"
       ],
       "external_resources": "授权直播间、平台能力、OBS与云端服务。",
-      "dispatch_prompt": "你负责 T19 真实直播与 OBS 联调验收，角色 A8。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：tests/e2e/live/；docs/reports/T19/。前置任务：T10、T15、T16。目标：证明实际直播间能稳定使用角色回应。验收：AC03、AC15、AC16、AC17、AC20。外部条件：授权直播间、平台能力、OBS与云端服务。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "本任务原客户端实现卡已被 ADR15 覆盖，暂不可派发。不要执行旧 React/RN/WebView 目录的实现。先由 A0 重写 Unity 正式任务卡；当前 Windows 原型使用 docs/tasks/U01/TASKBOOK.md 和 docs/blueprint/planning/unity-desktop.json。保留本任务原 R1 目标与验收编号。",
+      "previous_status": "planned",
+      "dispatch_enabled": false,
+      "change_decision": "docs/adr/0015-unity-client-and-design-only-a0.md",
+      "change_reason": "Unity client replaces the React/RN/WebView implementation plan. Preserve R1 objectives and AC IDs; rewrite this implementation card before dispatch.",
+      "historical_dispatch_prompt": "你负责 T19 真实直播与 OBS 联调验收，角色 A8。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：tests/e2e/live/；docs/reports/T19/。前置任务：T10、T15、T16。目标：证明实际直播间能稳定使用角色回应。验收：AC03、AC15、AC16、AC17、AC20。外部条件：授权直播间、平台能力、OBS与云端服务。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
     },
     {
       "id": "T20",
@@ -872,5 +907,7 @@
       "external_resources": "前置任务真实验收完成；测试分发和公开发行明确区分。",
       "dispatch_prompt": "你负责 T20 完整第一版验收与交付，角色 A0。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：docs/reports/release/；release metadata。前置任务：T17、T18、T19、T16。目标：以证据决定R1完成，并交付可安装和可复现版本。验收：AC01、AC02、AC03、AC04、AC05、AC06、AC07、AC08、AC09、AC10、AC11、AC12、AC13、AC14、AC15、AC16、AC17、AC18、AC19、AC20、AC21、AC22、AC23、AC24、AC25、AC26。外部条件：前置任务真实验收完成；测试分发和公开发行明确区分。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
     }
-  ]
+  ],
+  "client_direction": "Unity / C# + Cubism SDK for Unity; see ADR15 and separate U01 taskbook.",
+  "design_session_scope": "A0: design, review and acceptance; implementation is delegated only to user-started development sessions."
 }

@@ -2,6 +2,8 @@
 
 登记日期：2026-09-20。机器可读版本在 [toolchain.json](../../toolchain.json)，JS 与 Python 依赖由 pnpm-lock.yaml / uv.lock 冻结。
 
+**适用范围说明**：下表是 T00 导入时的环境与历史 React / RN 工具记录，不是 Unity 工程依赖。当前前台路线已改为 [Unity U01](../tasks/U01/TASKBOOK.md)；Editor、URP、Cubism、Core、字体与模型的确切版本尚待 U01-00 验证冻结。旧 Unity 2022.3 安装信息不能证明正式 R5 SDK 兼容；本设计会话没有安装或激活新 Editor。
+
 | 项目 | 固定版本或状态 |
 |---|---|
 | 本机 | Windows 11，Core Ultra 7 265，约 64 GB，RTX 5060 8 GB |
