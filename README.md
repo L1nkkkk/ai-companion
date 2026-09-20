@@ -1,6 +1,8 @@
 # AI Companion
 
-桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。**U01-00 基础工程已通过 A0 验收**：干净目录构建、同包 600 秒基础渲染与共享接口已验证，版本已冻结；角色、UI、后台和音频四个模块可以领取。完整角色交互与 U-G0 尚未完成，内存增长、遮罩覆盖和取景仍有后续项，见 [A0 最新验收与下一步](docs/reports/U01/acceptance/PR-003-round3-review.md)。本分支维护设计与验收文档；现有 React / React Native 文件是 T00 历史工程起点。
+桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。本分支已接入桌面聊天、本机历史、Mao 互动、测试音频播放与口型，以及本机 Python 后台。按最新实施优先级，回复和声音明确标记为演示；真实模型、语音输入与长期记忆留到后续阶段。可运行版本、构建与测试证据见 [桌面基础交接](docs/reports/U01/desktop-basics/report.md)，启动方法见 [Unity 说明](apps/unity/README.md)。
+
+**U01-00 基础工程已通过 A0 验收**；本次模块实现和测试不替代 A0 对完整 U-G0/U-G1/U-G2 的逐项结论。版本、共享接口及原有验收条件保持冻结，见 [A0 已有验收](docs/reports/U01/acceptance/PR-003-round3-review.md)。现有 React / React Native 文件是 T00 历史工程起点。
 
 [ADR16](docs/adr/0016-unity-2022-r41-fallback-validation.md)固定 Unity 2022.3.62f3c1 / Cubism R4_1 / BiRP；[C# 边界](docs/tasks/U01/CSHARP-BASELINE.md)明确后续模块接线。代码起点为 PR #3 的 cfffbf6，再合入最新验收设计提交并登记 SHA。
 
@@ -47,7 +49,7 @@ uv run uvicorn app.main:app --app-dir services/api --host 127.0.0.1 --port 8000
 pnpm dev:web
 ```
 
-打开终端显示的本地地址。网页显示基础服务连接状态。后台目前只提供 `/health/live`；`/health/ready` 和 `/v1/*` 尚未实现，不会假装业务已就绪。开发入口仅绑定本机，跨网手机测试由 T16 配置 HTTPS。
+打开终端显示的本地地址。历史网页只显示 `/health/live` 基础服务连接状态；本轮桌面使用单独的 `/preview/unity/v1` 预览接口。正式 `/health/ready` 和 `/v1/*` 尚未实现。开发入口仅绑定本机，跨网手机测试由 T16 配置 HTTPS。
 
 ## 历史 T00 手机工程（暂停扩展）
 

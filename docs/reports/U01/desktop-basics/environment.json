@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-21",
+  "os": "Microsoft Windows 11 Pro, 10.0.26200, x64",
+  "cpu": "12th Gen Intel(R) Core(TM) i7-12700KF",
+  "gpu": "NVIDIA GeForce RTX 5060 Ti",
+  "gpu_driver": "32.0.16.1656",
+  "gpu_vram_mb_reported_by_unity": 16052,
+  "unity": "2022.3.62f3c1 / 1623fc0bbb97",
+  "scripting_backend": "Mono",
+  "graphics": "D3D11 / Built-in Render Pipeline",
+  "cubism": "5-r.4.1",
+  "cubism_core": "5.1.0",
+  "character": "Official SDK Mao, neutral + mtn_01 idle + mtn_02 greeting",
+  "font": "Noto Sans CJK SC 2.004 / TextMeshPro 3.0.6",
+  "ui": "uGUI 1.0.0",
+  "python": "3.12.10, bundled portable runtime",
+  "provider": "Explicit fixture: fixed text and original mathematical WAV; no cloud calls",
+  "unity_output": "Stereo / 48000 Hz / 1024-frame DSP buffers x4",
+  "wasapi_capture": "Target process tree only, float32 stereo 48000 Hz; no microphone or system-wide capture",
+  "actual_player_window_sizes": ["1280x800", "960x640"],
+  "ime": "Microsoft Pinyin, physical n/i/space/Return plus Unicode text editing",
+  "dpi_matrix_125_150": "not_run",
+  "second_machine": "awaiting_external",
+  "notes": [
+    "Frame measurements are Unity Update intervals, not GPU or physical input latency.",
+    "Process-loopback timestamps measure Windows audio pipeline output, not acoustic speaker response.",
+    "No personal conversation, microphone recording or cloud credential is used by the automated tests."
+  ]
+}

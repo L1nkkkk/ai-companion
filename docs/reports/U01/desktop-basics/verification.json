@@ -1,0 +1,140 @@
+{
+  "format": 1,
+  "date": "2026-09-21",
+  "scope": "DESKTOP-PRIORITIES.md: current desktop foundation, explicit fixture only",
+  "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+  "tester": "U01 development/integration owner with independent module and evidence-review agents; not A0 acceptance",
+  "environment": "environment.json",
+  "overall_status": "awaiting_external",
+  "overall_reason": "Development delivery is available. Formal gate conclusions remain with A0; DPI matrix, synchronized audiovisual demonstration and second-machine reproduction remain pending. Cloud, ASR and long-term memory are deferred by the priority document.",
+  "gates": {
+    "U-G0": "awaiting_external",
+    "U-G1": "not_run",
+    "U-G2": "not_run"
+  },
+  "checks": [
+    {
+      "id": "UA01",
+      "status": "passed",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner; independent package reviewer",
+      "environment": "environment.json",
+      "method": "Fresh Git worktree with no copied Library; restore hash-verified official resources, build fixed Unity, advance to final committed source and rebuild; verify all package files and ZIP members.",
+      "evidence": ["build-manifest.json", "qa-package.md", "portable-package.md", "C:/Users/Link/Dev/ai-companion-dev-tools/builds/desktop-b94af81-evidence/Build.log"],
+      "limitations": ["Development check, not A0 final acceptance.", "The worktree was fresh at 40be263 and then advanced through the documented fixes to b94af81; final build reused its own import cache.", "Same machine; U01-F04 second-machine reproduction remains pending."]
+    },
+    {
+      "id": "UA02",
+      "status": "awaiting_external",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner; independent memory reviewer",
+      "environment": "environment.json",
+      "method": "Actual Mao Windows Player, published neutral/idle/greeting subset; screenshot inspection, capability and parameter sampling, actual 600-second runtime and motion graph node bounds.",
+      "evidence": ["avatar.md", "qa-memory.md", "motion-graph-check.json", "player-result-600.json", "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-b94af81-600/"],
+      "subcheck_status": {"actual_600_seconds": "passed", "frame_time_target": "passed", "published_motion_graph_max_6": "passed", "full_A0_acceptance": "awaiting_external"},
+      "limitations": ["Five unverified effect drawables are deliberately disabled, not declared mask-compatible.", "Pending A0 review of the restricted published capability set.", "Editor graph diagnostic supports cause isolation; only the Player run supplies runtime evidence."]
+    },
+    {
+      "id": "UA03",
+      "status": "awaiting_external",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner; independent process-loopback analyst",
+      "environment": "environment.json",
+      "method": "Actual AudioSource post-volume RMS sampled at up to 30 Hz; model mouth sampled every five seconds with additional immediate zero-mouth assertions at stop/mute; fixture voiced/silent intervals, 0.8/0.2/mute operations and target-process WASAPI capture.",
+      "evidence": ["avatar.md", "session-audio.md", "qa-loopback.md", "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-b94af81-600/output-levels.csv"],
+      "limitations": ["No complete synchronized audiovisual demonstration video; separate screenshots, numeric sampling and audio cannot replace it.", "Fixture signal is not generated TTS; no acoustic speaker measurement."]
+    },
+    {
+      "id": "UA04",
+      "status": "awaiting_external",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner; UI reviewer",
+      "environment": "environment.json",
+      "method": "Actual candidate Player physical IME candidate confirmation, Shift+Enter, Return, Esc, slider keyboard input, 1280x800 and 960x640 layout; 17 Editor UI checks.",
+      "evidence": ["ui-history.md", "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-manual-04/", "C:/Users/Link/Dev/ai-companion-dev-tools/builds/desktop-checks-08-evidence/Check.log"],
+      "limitations": ["Manual UI checks ran on dev05/dev06; UI product source is unchanged in final candidate.", "Actual OS 125%/150% DPI matrix not run; window resizing does not substitute for DPI."]
+    },
+    {
+      "id": "UA05",
+      "status": "awaiting_external",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner; fault-batch reviewer; independent loopback analyst",
+      "environment": "environment.json",
+      "method": "Final package 20 audible stops with native QPC and process-only WASAPI; separate 10 pre-accept cancels; earlier actual Player 10 accepted-generation and 10 post-header/pre-body download cancels; final actual-output window-quit/history-drain test; Session identity and late callback checks.",
+      "evidence": ["qa-loopback.md", "qa-faults.md", "session-audio.md", "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-b94af81-close/player-result.json", "latency.csv"],
+      "subcheck_status": {"audible_stop_20": "passed", "generation_10": "passed", "download_10": "passed", "window_quit_history": "passed", "cloud_retest": "not_run"},
+      "limitations": ["Declared 1e-9 FS threshold: P95 155.845 ms. Strict-zero analysis has no valid silent tails; preserved, not overwritten.", "Program-command to Windows output timing, not human input or physical acoustic latency.", "Accepted-generation/download batches were dev04, not final b94af81; report records changed UI/Composition/Avatar and unchanged cancellation logic.", "Full fixture gate determination and evidence reuse require A0 review; real-cloud repeat is deferred."]
+    },
+    {
+      "id": "UA06",
+      "status": "not_run",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner",
+      "environment": "environment.json",
+      "method": "Explicit fixture mode; cloud path reports unavailable without silently falling back.",
+      "evidence": ["backend.md", "report.md"],
+      "limitations": ["Real LLM/TTS, 20 cloud samples and first-audio latency deferred by DESKTOP-PRIORITIES.md."]
+    },
+    {
+      "id": "UA07",
+      "status": "awaiting_external",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "UI/history owner; integration owner",
+      "environment": "environment.json",
+      "method": "32 history checks for bounds, corruption, interruption recovery, atomic failure, stale write deletion and export; actual Player restart/export/delete; final playback-close record marked Interrupted after queue flush.",
+      "evidence": ["ui-history.md", "session-audio.md", "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-b94af81-close/", "C:/Users/Link/Dev/ai-companion-dev-tools/builds/desktop-checks-08-evidence/Check.log"],
+      "subcheck_status": {"history_32_checks": "passed", "manual_restore_export_delete": "passed", "normal_playback_quit_persistence": "passed", "full_independent_acceptance": "awaiting_external"},
+      "limitations": ["Current local fixture-history development check; does not complete U-G1 or long-term memory.", "Abrupt termination cannot guarantee that not-yet-flushed content survives; persisted incomplete messages recover as Interrupted.", "A0 final acceptance remains separate."]
+    },
+    {
+      "id": "UA08",
+      "status": "awaiting_external",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Backend and Session owners; independent fault reviewer",
+      "environment": "environment.json",
+      "method": "75 API/launcher checks, 41 Session/Transport/Audio checks; nine actual fixture failure scenarios with correct failed-history states and zero audio starts; process lifecycle and per-launch config inspection.",
+      "evidence": ["backend.md", "session-audio.md", "qa-faults.md", "portable-package.md", "C:/Users/Link/Dev/ai-companion-dev-tools/evidence/desktop-final-check.log"],
+      "limitations": ["Actual fault batch ran dev04; newer shutdown/UI/Avatar fixes validated separately.", "Real cloud provider status, billing and credential paths are not exercised by fixture fault injection.", "No microphone or private conversation was used."]
+    },
+    {
+      "id": "UA09",
+      "status": "not_run",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner",
+      "environment": "environment.json",
+      "method": "Current product does not acquire the microphone.",
+      "evidence": ["report.md"],
+      "limitations": ["Real recording lifecycle is deferred to the existing U-G2 task."]
+    },
+    {
+      "id": "UA10",
+      "status": "not_run",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner",
+      "environment": "environment.json",
+      "method": "No ASR integration or simulated transcript presented as real ASR.",
+      "evidence": ["report.md"],
+      "limitations": ["Twenty genuine microphone samples and editable ASR confirmation are deferred to U-G2."]
+    },
+    {
+      "id": "UA11",
+      "status": "not_run",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner",
+      "environment": "environment.json",
+      "method": "The 600-second fixture/Avatar workload is reported separately.",
+      "evidence": ["qa-memory.md"],
+      "limitations": ["It is not the required 30-minute mixed voice/text session and does not verify microphone release."]
+    },
+    {
+      "id": "UA12",
+      "status": "awaiting_external",
+      "tested_commit": "b94af81d73101d684b856bd0942de778ea74074a",
+      "tester": "Integration owner; independent package reviewer",
+      "environment": "environment.json",
+      "method": "Full runnable ZIP, bundled Python/backend, configuration and startup instructions, exact source/package manifests, independent member hash review, final actual Player run, module/fault/reproduction reports.",
+      "evidence": ["report.md", "build-manifest.json", "portable-package.md", "qa-package.md", "defects.md", "../../../../apps/unity/README.md"],
+      "limitations": ["A0 has not issued final acceptance for this candidate.", "U01-F04 second-machine reproduction is pending.", "Some specialized manual/fault evidence belongs to recorded earlier candidates; no claim all checks ran on the exact final SHA."]
+    }
+  ]
+}
