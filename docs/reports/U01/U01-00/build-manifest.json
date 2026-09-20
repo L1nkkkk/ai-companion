@@ -13,5 +13,7 @@
     "environment-install.md",
     "environment-evidence/hub-global-install-redacted.jsonl",
     "build-preflight.txt"
-  ]
+  ],
+  "prepared_source_sha": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
+  "built_source_sha": null
 }

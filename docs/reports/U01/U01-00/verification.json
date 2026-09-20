@@ -14,7 +14,10 @@
         "native-assets-verification.json",
         "build-preflight.txt"
       ],
-      "limitations": "No Unity import, compiler, Player build or packaged binary."
+      "limitations": "No Unity import, compiler, Player build or packaged binary.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA02",
@@ -23,77 +26,110 @@
       "evidence": [
         "native-assets-verification.json"
       ],
-      "limitations": "No URP rendered material, mask, sorting or Player stability validation."
+      "limitations": "No URP rendered material, mask, sorting or Player stability validation.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA03",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA04",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA05",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA06",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA07",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA08",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA09",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA10",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA11",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     },
     {
       "id": "UA12",
       "status": "not_run",
       "method": "Outside the completed foundation preparation",
       "evidence": [],
-      "limitations": "No acceptance claim."
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
     }
   ],
   "preparation_checks": [
@@ -112,6 +148,18 @@
         "report.md"
       ],
       "limitations": "No Unity6 C# compile evidence."
+    },
+    {
+      "name": "Fresh Git worktree official resource restoration and native model probe",
+      "status": "passed",
+      "tested_commit": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
+      "evidence": [
+        "clean-reproduction.json",
+        "native-reproduction.json"
+      ],
+      "limitations": "No Unity Editor import, C# compile, URP appearance or Windows Player."
     }
-  ]
+  ],
+  "prepared_commit": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
+  "tested_commit_scope": "No Unity acceptance test ran. Prepared source was used for the independent native/assets reproduction below."
 }

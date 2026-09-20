@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "tested_commit": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
+  "method": "Detached Git worktree, fresh download cache, official network restore, native Core probe, asset/meta verification and rejection probes",
+  "sdk_entries_restored": 1582,
+  "model_files_hashed": 106,
+  "unique_asset_guids": 1614,
+  "checks": [
+    "official SDK and font download hashes",
+    "all Mao source/meta hashes",
+    "source meta completeness",
+    "unique restored GUIDs",
+    "scene GUID references resolve",
+    "modified archive rejection",
+    "path traversal rejection",
+    "frozen contracts unchanged"
+  ],
+  "native_result": "native-reproduction.json",
+  "unity_import_build_player": "not_run: Editor download blocked",
+  "tracked_worktree_changes": ""
+}

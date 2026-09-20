@@ -7,7 +7,7 @@
 - 远端：`https://github.com/L1nkkkk/ai-companion.git`。
 - 实际起点：`design/unity-desktop-taskbook` 的 `765c635327685b413c7f930558711db7d88df60c`。该提交包含 ADR15 与完整 U01 任务书；当时 main 仍为 `0bfc133f1bd4c7b95a48e14e045101cb4fb38fda`。
 - 独立分支：`agent/U01-00-unity-foundation`；工作树为仓库同级 `U01-00-unity-foundation`。原始本地目录为空，先克隆正式仓库到 `repository`，再由上述设计提交建立独立 worktree。
-- 最终 PR 提交 SHA 以 PR head 为准；可复核代码提交和各项测试在 [verification.json](verification.json) 中记录，报告更新提交不冒充 Unity 已测提交。
+- 代码与干净目录复核提交：`f64596ebcf7f372848915e01e27bf752ae3dc4e9`。最终 PR 提交 SHA 以 PR head 为准；可复核代码提交和各项测试在 [verification.json](verification.json) 中记录，报告更新提交不冒充 Unity 已测提交。
 - 修改仅限 `apps/unity` 初始骨架、`assets/manifest`、`tools/unity`、必要 `.gitignore` 和本报告目录。历史 React/RN、根依赖锁、CI、冻结 `contracts/` 及设计台账未修改。
 
 ## 已实际完成
@@ -64,3 +64,9 @@
 - 没有可交付 Windows 程序，因此版本组合不能提交为最终兼容结论。
 - 未测中文实际渲染、IME、DPI、完整角色交互、音频、停止延迟或任意云闭环。
 - 尚未执行 A0 验收或更改设计台账；本 PR 保持草稿，恢复环境后由开发 owner 续作。
+
+## 干净目录复核结果
+
+在独立 detached worktree 和空下载缓存中重新从官方获取 SDK、字体及 OFL，恢复 1,582 个 SDK 资产条目，逐一复核 Mao 的 106 个源文件/`.meta`，核对 1,614 个唯一 GUID 与场景引用，原生模型探针再次通过；恢复后 Git 工作树保持干净。修改包哈希和路径穿越输入均被拒绝。见 [复现记录](clean-reproduction.json) 与 [原生复测](native-reproduction.json)。初次复核发现官方资源站拒绝 urllib 默认 User-Agent，已给下载器添加明确工具标识，并在空缓存完整下载复测通过。
+
+仓库完整检查中的现存警告包括 Starlette/httpx、AnyIO 弃用提示，以及 RN feature flags exports 回退；均未修改冻结依赖来消除警告。
