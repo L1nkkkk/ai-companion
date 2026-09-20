@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.jar binary
+*.moc3 filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+*.cmo3 filter=lfs diff=lfs merge=lfs -text
+assets/models/** filter=lfs diff=lfs merge=lfs -text

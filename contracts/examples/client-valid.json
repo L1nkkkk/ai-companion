@@ -1,0 +1,161 @@
+[
+  {
+    "schema_version": "1.0",
+    "type": "input.text.submit",
+    "event_id": "a2a9453c-49ff-51c7-9e7c-399d3a8339ad",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "text": "你好，今天一起聊聊吧。",
+      "source": "user"
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 1
+  },
+  {
+    "schema_version": "1.0",
+    "type": "input.audio.start",
+    "event_id": "2bfae93b-0877-5666-b474-3a003920a867",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "stream_id": "44444444-4444-4444-8444-444444444444",
+      "sample_rate": 16000,
+      "channels": 1,
+      "codec": "pcm_s16le"
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 2
+  },
+  {
+    "schema_version": "1.0",
+    "type": "input.audio.end",
+    "event_id": "b5a3a94b-8289-5730-a55b-d13b945d38be",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "stream_id": "44444444-4444-4444-8444-444444444444",
+      "reason": "silence",
+      "last_frame_seq": 9,
+      "total_samples": 16000
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 3
+  },
+  {
+    "schema_version": "1.0",
+    "type": "turn.cancel",
+    "event_id": "2af7a745-cae4-526f-9e74-72be7a06ae7e",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "turn_id": "33333333-3333-4333-8333-333333333333",
+      "reason": "user_stop"
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 4
+  },
+  {
+    "schema_version": "1.0",
+    "type": "session.mute",
+    "event_id": "d82d07f2-4a2e-5038-9c70-ba7f6fa8acc3",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "muted": true
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 5
+  },
+  {
+    "schema_version": "1.0",
+    "type": "session.end",
+    "event_id": "cce61415-52cb-5045-b312-627a67ee046e",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "reason": "user_request"
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 6
+  },
+  {
+    "schema_version": "1.0",
+    "type": "playback.progress",
+    "event_id": "cb4cd4c6-05c4-540d-a2ff-fd2fd18b2eda",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "turn_id": "33333333-3333-4333-8333-333333333333",
+      "stream_id": "44444444-4444-4444-8444-444444444444",
+      "segment_index": 0,
+      "played_samples": 24000,
+      "status": "completed"
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 7
+  },
+  {
+    "schema_version": "1.0",
+    "type": "lease.renew",
+    "event_id": "80ee8889-0674-5db5-9a9d-4c811f52170e",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "roles": [
+        "input",
+        "speaker"
+      ]
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 8
+  },
+  {
+    "schema_version": "1.0",
+    "type": "session.resync",
+    "event_id": "00f9679e-1d57-5ff5-8f3d-46db3333773b",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "last_epoch": 1,
+      "last_seq": 0
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 9
+  },
+  {
+    "schema_version": "1.0",
+    "type": "live.select",
+    "event_id": "a5baee3d-e1d4-5253-b857-39c8aa341681",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "live_event_id": "fixture-comment-001"
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 10
+  },
+  {
+    "schema_version": "1.0",
+    "type": "live.auto_reply",
+    "event_id": "bf13a739-88ec-5572-b59d-8746fd2f1054",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "enabled": false
+    },
+    "device_id": "22222222-2222-4222-8222-222222222222",
+    "client_seq": 11
+  }
+]

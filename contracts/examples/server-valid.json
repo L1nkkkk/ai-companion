@@ -1,0 +1,243 @@
+[
+  {
+    "schema_version": "1.0",
+    "type": "session.snapshot",
+    "event_id": "c07bfecc-38e0-5c83-a1af-62f8fd47c4c0",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "state": "listening",
+      "mode": "personal",
+      "muted": false,
+      "active_turn_id": null,
+      "input_device_id": "22222222-2222-4222-8222-222222222222",
+      "speaker_device_id": "22222222-2222-4222-8222-222222222222"
+    },
+    "turn_id": null,
+    "seq": 1
+  },
+  {
+    "schema_version": "1.0",
+    "type": "input.audio.accepted",
+    "event_id": "de638527-d402-55ed-948e-39a06c39693f",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "stream_id": "44444444-4444-4444-8444-444444444444"
+    },
+    "turn_id": null,
+    "seq": 2
+  },
+  {
+    "schema_version": "1.0",
+    "type": "input.transcript",
+    "event_id": "887d4dfc-05b3-5c26-9ce9-ac3acf0d5123",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "text": "你好",
+      "is_final": true,
+      "stream_id": "44444444-4444-4444-8444-444444444444"
+    },
+    "turn_id": null,
+    "seq": 3
+  },
+  {
+    "schema_version": "1.0",
+    "type": "turn.started",
+    "event_id": "8b021c4e-b492-5b94-a343-f6e8bd746f4a",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "source": "user",
+      "input_text": "你好"
+    },
+    "turn_id": "33333333-3333-4333-8333-333333333333",
+    "seq": 4
+  },
+  {
+    "schema_version": "1.0",
+    "type": "assistant.text.delta",
+    "event_id": "c9eabc94-66d0-5664-92dc-3bf107440d64",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "text": "你好呀！"
+    },
+    "turn_id": "33333333-3333-4333-8333-333333333333",
+    "seq": 5
+  },
+  {
+    "schema_version": "1.0",
+    "type": "assistant.segment",
+    "event_id": "88ed604c-04c7-542b-90d1-e6de689eead7",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "segment_index": 0,
+      "stream_id": "44444444-4444-4444-8444-444444444444",
+      "text": "你好呀！",
+      "emotion": "happy",
+      "gesture": "wave",
+      "sample_rate": 24000,
+      "channels": 1,
+      "codec": "pcm_s16le"
+    },
+    "turn_id": "33333333-3333-4333-8333-333333333333",
+    "seq": 6
+  },
+  {
+    "schema_version": "1.0",
+    "type": "assistant.audio.end",
+    "event_id": "3a731208-b14d-5213-bfad-6e84fd3f6453",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "stream_id": "44444444-4444-4444-8444-444444444444",
+      "segment_index": 0,
+      "total_samples": 24000
+    },
+    "turn_id": "33333333-3333-4333-8333-333333333333",
+    "seq": 7
+  },
+  {
+    "schema_version": "1.0",
+    "type": "turn.generation.completed",
+    "event_id": "2e1a290d-3dff-5046-ab53-110aa30892a0",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "finish_reason": "stop"
+    },
+    "turn_id": "33333333-3333-4333-8333-333333333333",
+    "seq": 8
+  },
+  {
+    "schema_version": "1.0",
+    "type": "turn.completed",
+    "event_id": "3aba38b3-df1b-5855-b4a0-ca73d687c7c2",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "spoken_text": "你好呀！",
+      "completion_reason": "played"
+    },
+    "turn_id": "33333333-3333-4333-8333-333333333333",
+    "seq": 9
+  },
+  {
+    "schema_version": "1.0",
+    "type": "turn.cancelled",
+    "event_id": "c79495a4-272a-5da1-bd55-192cb94c0973",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "reason": "user_stop",
+      "spoken_text": ""
+    },
+    "turn_id": "33333333-3333-4333-8333-333333333333",
+    "seq": 10
+  },
+  {
+    "schema_version": "1.0",
+    "type": "avatar.state",
+    "event_id": "f78be481-0de0-5384-a3d4-09820755a86c",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "emotion": "happy",
+      "gesture": "wave",
+      "segment_index": 0
+    },
+    "turn_id": "33333333-3333-4333-8333-333333333333",
+    "seq": 11
+  },
+  {
+    "schema_version": "1.0",
+    "type": "live.queue",
+    "event_id": "be2ea37f-0d25-5915-b8e0-47962b0b6056",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "size": 1,
+      "dropped_total": 0,
+      "selected_event_id": "fixture-comment-001"
+    },
+    "turn_id": null,
+    "seq": 12
+  },
+  {
+    "schema_version": "1.0",
+    "type": "connection.state",
+    "event_id": "5d6c956b-b78d-5702-aad3-576b6b854597",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "state": "reconnecting",
+      "reason": "network_unavailable"
+    },
+    "turn_id": null,
+    "seq": 13
+  },
+  {
+    "schema_version": "1.0",
+    "type": "error",
+    "event_id": "b69de2a3-d319-54ae-bfc6-a5e3b3b9df1a",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "code": "provider_timeout",
+      "message": "语音服务暂时未响应。",
+      "retryable": true,
+      "related_event_id": null
+    },
+    "turn_id": null,
+    "seq": 14
+  },
+  {
+    "schema_version": "1.0",
+    "type": "command.ack",
+    "event_id": "acb66678-e8f4-5d75-b28d-9d2931cf0fca",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "related_event_id": "a2a9453c-49ff-51c7-9e7c-399d3a8339ad",
+      "status": "accepted",
+      "result_turn_id": "33333333-3333-4333-8333-333333333333",
+      "lease_expires_at": null
+    },
+    "turn_id": null,
+    "seq": 15
+  },
+  {
+    "schema_version": "1.0",
+    "type": "turn.failed",
+    "event_id": "ddd85e49-999d-5516-b9a6-a85d49824a4f",
+    "session_id": "11111111-1111-4111-8111-111111111111",
+    "session_epoch": 1,
+    "timestamp": "2026-09-20T08:00:00Z",
+    "payload": {
+      "code": "provider_unavailable",
+      "message": "服务暂不可用。",
+      "spoken_text": "",
+      "retryable": true
+    },
+    "turn_id": "33333333-3333-4333-8333-333333333333",
+    "seq": 16
+  }
+]

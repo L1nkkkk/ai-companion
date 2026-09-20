@@ -1,0 +1,8 @@
+packages:
+  - apps/*
+  - packages/*
+nodeLinker: hoisted
+engineStrict: true
+saveExact: true
+packageManagerStrictVersion: true
+allowBuilds: {}

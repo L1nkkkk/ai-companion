@@ -1,0 +1,422 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "input.text.submit",
+        "input.audio.start",
+        "input.audio.end",
+        "turn.cancel",
+        "session.mute",
+        "session.end",
+        "playback.progress",
+        "lease.renew",
+        "session.resync",
+        "live.select",
+        "live.auto_reply"
+      ]
+    },
+    "event_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "session_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "session_epoch": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "device_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "client_seq": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "type",
+    "event_id",
+    "session_id",
+    "session_epoch",
+    "timestamp",
+    "payload",
+    "device_id",
+    "client_seq"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "client control event 1.0",
+  "$defs": {
+    "input_text_submit": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "user",
+            "host"
+          ]
+        }
+      },
+      "required": [
+        "text",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "input_audio_start": {
+      "type": "object",
+      "properties": {
+        "stream_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sample_rate": {
+          "const": 16000
+        },
+        "channels": {
+          "const": 1
+        },
+        "codec": {
+          "const": "pcm_s16le"
+        }
+      },
+      "required": [
+        "stream_id",
+        "sample_rate",
+        "channels",
+        "codec"
+      ],
+      "additionalProperties": false
+    },
+    "input_audio_end": {
+      "type": "object",
+      "properties": {
+        "stream_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "silence",
+            "user_stop",
+            "max_duration"
+          ]
+        },
+        "last_frame_seq": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "total_samples": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "stream_id",
+        "reason",
+        "last_frame_seq",
+        "total_samples"
+      ],
+      "additionalProperties": false
+    },
+    "turn_cancel": {
+      "type": "object",
+      "properties": {
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "user_stop",
+            "barge_in",
+            "device_takeover"
+          ]
+        }
+      },
+      "required": [
+        "turn_id",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "session_mute": {
+      "type": "object",
+      "properties": {
+        "muted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "muted"
+      ],
+      "additionalProperties": false
+    },
+    "session_end": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "enum": [
+            "user_request",
+            "logout",
+            "permission_revoked"
+          ]
+        }
+      },
+      "required": [
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "playback_progress": {
+      "type": "object",
+      "properties": {
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "stream_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "segment_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "played_samples": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "started",
+            "playing",
+            "completed",
+            "stopped"
+          ]
+        }
+      },
+      "required": [
+        "turn_id",
+        "stream_id",
+        "segment_index",
+        "played_samples",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "lease_renew": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "input",
+              "speaker"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 2,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "roles"
+      ],
+      "additionalProperties": false
+    },
+    "session_resync": {
+      "type": "object",
+      "properties": {
+        "last_epoch": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967295
+        },
+        "last_seq": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "last_epoch",
+        "last_seq"
+      ],
+      "additionalProperties": false
+    },
+    "live_select": {
+      "type": "object",
+      "properties": {
+        "live_event_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "live_event_id"
+      ],
+      "additionalProperties": false
+    },
+    "live_auto_reply": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "enabled"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "type": {
+          "const": "input.text.submit"
+        },
+        "payload": {
+          "$ref": "#/$defs/input_text_submit"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "input.audio.start"
+        },
+        "payload": {
+          "$ref": "#/$defs/input_audio_start"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "input.audio.end"
+        },
+        "payload": {
+          "$ref": "#/$defs/input_audio_end"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "turn.cancel"
+        },
+        "payload": {
+          "$ref": "#/$defs/turn_cancel"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "session.mute"
+        },
+        "payload": {
+          "$ref": "#/$defs/session_mute"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "session.end"
+        },
+        "payload": {
+          "$ref": "#/$defs/session_end"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "playback.progress"
+        },
+        "payload": {
+          "$ref": "#/$defs/playback_progress"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "lease.renew"
+        },
+        "payload": {
+          "$ref": "#/$defs/lease_renew"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "session.resync"
+        },
+        "payload": {
+          "$ref": "#/$defs/session_resync"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "live.select"
+        },
+        "payload": {
+          "$ref": "#/$defs/live_select"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "live.auto_reply"
+        },
+        "payload": {
+          "$ref": "#/$defs/live_auto_reply"
+        }
+      }
+    }
+  ]
+}

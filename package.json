@@ -1,0 +1,21 @@
+{
+  "name": "ai-companion",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": "24.19.0",
+    "pnpm": "11.19.0"
+  },
+  "scripts": {
+    "dev:web": "pnpm --filter @ai-companion/web dev",
+    "dev:mobile": "pnpm --filter @ai-companion/mobile start",
+    "typecheck": "pnpm -r typecheck",
+    "build:web": "pnpm --filter @ai-companion/web build",
+    "bundle:mobile": "node tools/bundle-mobile.mjs"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "@types/node": "24.12.0"
+  }
+}

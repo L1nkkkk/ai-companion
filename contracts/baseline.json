@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "frozen_by": "A0",
+  "date": "2026-09-20",
+  "normalization": "UTF-8 bytes with CRLF converted to LF",
+  "decision": "docs/adr/0013-foundation-toolchain.md",
+  "sha256": {
+    "contracts/client-event.schema.json": "2d1968348752d7cf18fc786169101ccc23b34e866a074d077964879b1a308bf5",
+    "contracts/examples/audio-header.json": "7f4c692021ec78a840dccdefa503a5d16d74454721cabf86aabec1741494d943",
+    "contracts/examples/client-valid.json": "0b4edfcc19539143fc23628d03638fc93f5b50d3b0edc56f02c33f49a7808404",
+    "contracts/examples/invalid-events.json": "07f000f15658c5b1712e87739dc3af9898ae2e4d8ffab27cc4c836e3c9800874",
+    "contracts/examples/rest-valid.json": "c5f3f9816cc082a2175176f0801bd40a0dcebe23a6deb9e718093af307d90591",
+    "contracts/examples/server-valid.json": "53a8adc35ca228b7e5b8a4f01ca9aad0755945fbbc7fb722f98effa578376d3b",
+    "contracts/openapi.json": "015b324d9d4262e5cfee6a365f441ca6e0662819a46c29dd88675fbd05b17231",
+    "contracts/server-event.schema.json": "22e37fdf2c56cc8c4cee34545e88a3de1ea064994056acb3d61a2e42bb7e8720",
+    "docs/blueprint/CONTRACTS.md": "e50b72e28e517df7d22a7b609aae109024ca23882f4c636d744240550c633d21"
+  }
+}

@@ -1,0 +1,822 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "session.snapshot",
+        "input.audio.accepted",
+        "input.transcript",
+        "turn.started",
+        "assistant.text.delta",
+        "assistant.segment",
+        "assistant.audio.end",
+        "turn.generation.completed",
+        "turn.completed",
+        "turn.cancelled",
+        "avatar.state",
+        "live.queue",
+        "connection.state",
+        "error",
+        "command.ack",
+        "turn.failed"
+      ]
+    },
+    "event_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "session_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "session_epoch": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4294967295
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "turn_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "uuid"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "type",
+    "event_id",
+    "session_id",
+    "session_epoch",
+    "timestamp",
+    "payload",
+    "turn_id",
+    "seq"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "server control event 1.0",
+  "$defs": {
+    "session_snapshot": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "idle",
+            "listening",
+            "thinking",
+            "speaking",
+            "muted",
+            "interrupted",
+            "reconnecting",
+            "ended"
+          ]
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "personal",
+            "broadcast"
+          ]
+        },
+        "muted": {
+          "type": "boolean"
+        },
+        "active_turn_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "input_device_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "speaker_device_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "state",
+        "mode",
+        "muted",
+        "active_turn_id",
+        "input_device_id",
+        "speaker_device_id"
+      ],
+      "additionalProperties": false
+    },
+    "input_audio_accepted": {
+      "type": "object",
+      "properties": {
+        "stream_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "stream_id"
+      ],
+      "additionalProperties": false
+    },
+    "input_transcript": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 4000
+        },
+        "is_final": {
+          "type": "boolean"
+        },
+        "stream_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "text",
+        "is_final",
+        "stream_id"
+      ],
+      "additionalProperties": false
+    },
+    "turn_started": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": [
+            "user",
+            "host",
+            "live",
+            "idle"
+          ]
+        },
+        "input_text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "source",
+        "input_text"
+      ],
+      "additionalProperties": false
+    },
+    "assistant_text_delta": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "assistant_segment": {
+      "type": "object",
+      "properties": {
+        "segment_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stream_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "emotion": {
+          "type": "string",
+          "enum": [
+            "neutral",
+            "happy",
+            "sad",
+            "surprised",
+            "thinking"
+          ]
+        },
+        "gesture": {
+          "type": "string",
+          "enum": [
+            "none",
+            "nod",
+            "shake_head",
+            "wave"
+          ]
+        },
+        "sample_rate": {
+          "const": 24000
+        },
+        "channels": {
+          "const": 1
+        },
+        "codec": {
+          "const": "pcm_s16le"
+        }
+      },
+      "required": [
+        "segment_index",
+        "stream_id",
+        "text",
+        "emotion",
+        "gesture",
+        "sample_rate",
+        "channels",
+        "codec"
+      ],
+      "additionalProperties": false
+    },
+    "assistant_audio_end": {
+      "type": "object",
+      "properties": {
+        "stream_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "segment_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_samples": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "stream_id",
+        "segment_index",
+        "total_samples"
+      ],
+      "additionalProperties": false
+    },
+    "turn_generation_completed": {
+      "type": "object",
+      "properties": {
+        "finish_reason": {
+          "type": "string",
+          "enum": [
+            "stop",
+            "length"
+          ]
+        }
+      },
+      "required": [
+        "finish_reason"
+      ],
+      "additionalProperties": false
+    },
+    "turn_completed": {
+      "type": "object",
+      "properties": {
+        "spoken_text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 4000
+        },
+        "completion_reason": {
+          "type": "string",
+          "enum": [
+            "played",
+            "text_only"
+          ]
+        }
+      },
+      "required": [
+        "spoken_text",
+        "completion_reason"
+      ],
+      "additionalProperties": false
+    },
+    "turn_cancelled": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "enum": [
+            "user_stop",
+            "barge_in",
+            "device_takeover",
+            "disconnected",
+            "session_end",
+            "failure"
+          ]
+        },
+        "spoken_text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "reason",
+        "spoken_text"
+      ],
+      "additionalProperties": false
+    },
+    "avatar_state": {
+      "type": "object",
+      "properties": {
+        "emotion": {
+          "type": "string",
+          "enum": [
+            "neutral",
+            "happy",
+            "sad",
+            "surprised",
+            "thinking"
+          ]
+        },
+        "gesture": {
+          "type": "string",
+          "enum": [
+            "none",
+            "nod",
+            "shake_head",
+            "wave"
+          ]
+        },
+        "segment_index": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "emotion",
+        "gesture",
+        "segment_index"
+      ],
+      "additionalProperties": false
+    },
+    "live_queue": {
+      "type": "object",
+      "properties": {
+        "size": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50
+        },
+        "dropped_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "selected_event_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "size",
+        "dropped_total",
+        "selected_event_id"
+      ],
+      "additionalProperties": false
+    },
+    "connection_state": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "connected",
+            "degraded",
+            "reconnecting",
+            "disconnected"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "state",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "unauthorized",
+            "forbidden",
+            "lease_expired",
+            "lease_conflict",
+            "invalid_state",
+            "idempotency_conflict",
+            "stale_epoch",
+            "invalid_event",
+            "invalid_audio",
+            "stream_unknown",
+            "provider_timeout",
+            "provider_unavailable",
+            "provider_rate_limited",
+            "budget_exceeded",
+            "rate_limited",
+            "session_ended",
+            "internal_error"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "retryable": {
+          "type": "boolean"
+        },
+        "related_event_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "retryable",
+        "related_event_id"
+      ],
+      "additionalProperties": false
+    },
+    "command_ack": {
+      "type": "object",
+      "properties": {
+        "related_event_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "accepted",
+            "duplicate"
+          ]
+        },
+        "result_turn_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "lease_expires_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "related_event_id",
+        "status",
+        "result_turn_id",
+        "lease_expires_at"
+      ],
+      "additionalProperties": false
+    },
+    "turn_failed": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "unauthorized",
+            "forbidden",
+            "lease_expired",
+            "lease_conflict",
+            "invalid_state",
+            "idempotency_conflict",
+            "stale_epoch",
+            "invalid_event",
+            "invalid_audio",
+            "stream_unknown",
+            "provider_timeout",
+            "provider_unavailable",
+            "provider_rate_limited",
+            "budget_exceeded",
+            "rate_limited",
+            "session_ended",
+            "internal_error"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "spoken_text": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 4000
+        },
+        "retryable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "spoken_text",
+        "retryable"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "type": {
+          "const": "session.snapshot"
+        },
+        "payload": {
+          "$ref": "#/$defs/session_snapshot"
+        },
+        "turn_id": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "input.audio.accepted"
+        },
+        "payload": {
+          "$ref": "#/$defs/input_audio_accepted"
+        },
+        "turn_id": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "input.transcript"
+        },
+        "payload": {
+          "$ref": "#/$defs/input_transcript"
+        },
+        "turn_id": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "turn.started"
+        },
+        "payload": {
+          "$ref": "#/$defs/turn_started"
+        },
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "assistant.text.delta"
+        },
+        "payload": {
+          "$ref": "#/$defs/assistant_text_delta"
+        },
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "assistant.segment"
+        },
+        "payload": {
+          "$ref": "#/$defs/assistant_segment"
+        },
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "assistant.audio.end"
+        },
+        "payload": {
+          "$ref": "#/$defs/assistant_audio_end"
+        },
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "turn.generation.completed"
+        },
+        "payload": {
+          "$ref": "#/$defs/turn_generation_completed"
+        },
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "turn.completed"
+        },
+        "payload": {
+          "$ref": "#/$defs/turn_completed"
+        },
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "turn.cancelled"
+        },
+        "payload": {
+          "$ref": "#/$defs/turn_cancelled"
+        },
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "avatar.state"
+        },
+        "payload": {
+          "$ref": "#/$defs/avatar_state"
+        },
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "live.queue"
+        },
+        "payload": {
+          "$ref": "#/$defs/live_queue"
+        },
+        "turn_id": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "connection.state"
+        },
+        "payload": {
+          "$ref": "#/$defs/connection_state"
+        },
+        "turn_id": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "error"
+        },
+        "payload": {
+          "$ref": "#/$defs/error"
+        },
+        "turn_id": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "command.ack"
+        },
+        "payload": {
+          "$ref": "#/$defs/command_ack"
+        },
+        "turn_id": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "turn.failed"
+        },
+        "payload": {
+          "$ref": "#/$defs/turn_failed"
+        },
+        "turn_id": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+"""AI Companion service boundary."""
