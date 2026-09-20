@@ -7,15 +7,13 @@ using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 namespace Companion.Foundation.Editor
 {
     public static class FoundationBuild
     {
-        public const string UnityVersion = "6000.3.11f1";
+        public const string UnityVersion = "2022.3.62f3c1";
         public const string ScenePath = "Assets/Companion/Scenes/Foundation.unity";
-        private const string PipelinePath = "Assets/Companion/Settings/FoundationURP.asset";
         private const string ModelPath = "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.prefab";
         private const string FontPath = "Assets/ThirdParty/Fonts/NotoSansCJKsc-Regular.otf";
 
@@ -40,30 +38,19 @@ namespace Companion.Foundation.Editor
                 new[] { GraphicsDeviceType.Direct3D11 });
             var settings = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath(
                 "ProjectSettings/ProjectSettings.asset")[0]);
-            settings.FindProperty("activeInputHandler").intValue = 1;
+            settings.FindProperty("activeInputHandler").intValue = 0;
             settings.ApplyModifiedPropertiesWithoutUndo();
 
             Directory.CreateDirectory("Assets/Companion/Settings");
             Directory.CreateDirectory("Assets/Companion/Scenes");
             AssetDatabase.Refresh();
-            var renderer = RequiredAsset<UniversalRendererData>(
-                "Assets/Live2D/Cubism/Rendering/URP/CubismURPRenderer.asset");
-            var pipeline = AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(PipelinePath);
-            if (pipeline == null)
-            {
-                pipeline = UniversalRenderPipelineAsset.Create(renderer);
-                AssetDatabase.CreateAsset(pipeline, PipelinePath);
-            }
-            pipeline.supportsHDR = false;
-            pipeline.msaaSampleCount = 1;
-            GraphicsSettings.defaultRenderPipeline = pipeline;
+            GraphicsSettings.defaultRenderPipeline = null;
             for (int i = 0; i < QualitySettings.names.Length; i++)
             {
                 QualitySettings.SetQualityLevel(i, false);
-                QualitySettings.renderPipeline = pipeline;
+                QualitySettings.renderPipeline = null;
             }
             QualitySettings.vSyncCount = 1;
-            EditorUtility.SetDirty(pipeline);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             var bootstrap = new GameObject("U01-00 Rendering Fixture").AddComponent<FoundationBootstrap>();
@@ -71,6 +58,10 @@ namespace Companion.Foundation.Editor
             bootstrap.LabelFont = RequiredAsset<Font>(FontPath);
             bootstrap.IdleClip = RequiredAsset<AnimationClip>(
                 "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.anim");
+            bootstrap.GreetingClip = RequiredAsset<AnimationClip>(
+                "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.anim");
+            bootstrap.MaskStressClip = RequiredAsset<AnimationClip>(
+                "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.anim");
             EditorSceneManager.SaveScene(scene, ScenePath);
             EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(ScenePath, true) };
             AssetDatabase.SaveAssets();
@@ -88,9 +79,10 @@ namespace Companion.Foundation.Editor
                 throw new BuildFailedException("Windows Standalone build support is missing.");
             RequiredAsset<GameObject>(ModelPath);
             RequiredAsset<Font>(FontPath);
-            var pipeline = RequiredAsset<UniversalRenderPipelineAsset>(PipelinePath);
-            if (GraphicsSettings.defaultRenderPipeline != pipeline || pipeline.supportsHDR)
-                throw new BuildFailedException("Expected Foundation URP pipeline with HDR disabled.");
+            if (GraphicsSettings.defaultRenderPipeline != null || QualitySettings.renderPipeline != null)
+                throw new BuildFailedException("Expected the approved Built-in pipeline candidate.");
+            Debug.Log("U01-00_CONTRACTS_COMPILED " +
+                typeof(AICompanion.Preview.Contracts.ISessionController).Assembly.FullName);
             var output = Environment.GetEnvironmentVariable("COMPANION_BUILD_OUTPUT");
             if (string.IsNullOrEmpty(output)) output = Path.GetFullPath("Builds/Windows-x64");
             Directory.CreateDirectory(output);
@@ -103,8 +95,32 @@ namespace Companion.Foundation.Editor
             });
             Debug.Log($"U01-00_BUILD_RESULT {report.summary.result}, errors={report.summary.totalErrors}, " +
                 $"warnings={report.summary.totalWarnings}, bytes={report.summary.totalSize}");
+            var warnings = new System.Collections.Generic.List<string>();
+            foreach (var step in report.steps)
+                foreach (var message in step.messages)
+                    if (message.type == LogType.Warning || message.type == LogType.Error)
+                        warnings.Add(message.type + ": " + message.content);
+            File.WriteAllText(Path.Combine(output, "unity-build-result.json"),
+                JsonUtility.ToJson(new BuildEvidence {
+                    unity = Application.unityVersion, result = report.summary.result.ToString(),
+                    errors = report.summary.totalErrors, warnings = report.summary.totalWarnings,
+                    messages = warnings.ToArray(), sizeBytes = report.summary.totalSize,
+                    elapsedSeconds = report.summary.totalTime.TotalSeconds
+                }, true));
             if (report.summary.result != BuildResult.Succeeded)
                 throw new BuildFailedException("Windows build failed; see full Unity log.");
+        }
+
+        [Serializable]
+        private sealed class BuildEvidence
+        {
+            public string unity;
+            public string result;
+            public int errors;
+            public int warnings;
+            public string[] messages;
+            public ulong sizeBytes;
+            public double elapsedSeconds;
         }
 
         private static T RequiredAsset<T>(string path) where T : UnityEngine.Object

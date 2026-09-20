@@ -1,0 +1,7 @@
+{
+  "name": "Companion.Contracts",
+  "rootNamespace": "AICompanion.Preview.Contracts",
+  "references": [],
+  "autoReferenced": true,
+  "noEngineReferences": true
+}

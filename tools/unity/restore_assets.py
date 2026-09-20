@@ -11,8 +11,10 @@ import urllib.request
 from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[2]
-SDK_URL = "https://cubism.live2d.com/sdk-unity/bin/CubismSdkForUnity-5-r.5.unitypackage"
-SDK_SHA256 = "c9ac920b3a7359dc9ebe4ec0e9ad3c50367d615bdaeba3fc028141e90d45a0a1"
+SDK_VERSION = "5-r.4.1"
+SDK_FILE = f"CubismSdkForUnity-{SDK_VERSION}.unitypackage"
+SDK_URL = f"https://cubism.live2d.com/sdk-unity/bin/{SDK_FILE}"
+SDK_SHA256 = "2777b69d4cd02fecd48dc0fe9871700c95943f6d141c18758027bd9aa2ed1de6"
 
 
 def digest(path: Path) -> str:
@@ -37,7 +39,22 @@ def acquire(url: str, destination: Path, expected: str) -> Path:
     return destination
 
 
+def require_clean_sdk(project: Path) -> None:
+    # Never overlay SDK generations: even a same-version import can contain generated
+    # or locally modified assets. The caller must choose a clean directory explicitly.
+    for target in (project / "Assets/Live2D", project / "Assets/Live2D.meta"):
+        if target.exists() or target.is_symlink():
+            raise ValueError(
+                f"SDK destination already exists: {target}. Restore into a clean project; "
+                "back up and remove the old Assets/Live2D and Assets/Live2D.meta first. "
+                "This tool never overlays or deletes an existing SDK."
+            )
+
+
 def restore_sdk(archive: Path, project: Path) -> int:
+    require_clean_sdk(project)
+    if digest(archive) != SDK_SHA256:
+        raise ValueError("SDK archive hash mismatch")
     # Unitypackage records are not ordered for pathname lookup. Decompress once so seeks
     # do not repeatedly inflate the complete 200 MB archive for thousands of assets.
     with tempfile.TemporaryFile() as unpacked:
@@ -49,9 +66,12 @@ def restore_sdk(archive: Path, project: Path) -> int:
 
 
 def restore_entries(package: tarfile.TarFile, project: Path) -> int:
+    require_clean_sdk(project)
     count = 0
     if package:
         entries = {item.name.removeprefix("./"): item for item in package.getmembers()}
+        validated = []
+        paths = set()
         for key, member in entries.items():
             if not key.endswith("/pathname"):
                 continue
@@ -66,7 +86,13 @@ def restore_entries(package: tarfile.TarFile, project: Path) -> int:
             target = project.joinpath(*relative.parts).resolve()
             if not target.is_relative_to((project / "Assets" / "Live2D").resolve()):
                 raise ValueError(f"Package path escapes SDK directory: {relative}")
+            if target in paths:
+                raise ValueError(f"Duplicate package path: {relative}")
+            paths.add(target)
             guid = key.rsplit("/", 1)[0]
+            validated.append((target, guid))
+        # Validate all destinations before writing any package payload.
+        for target, guid in validated:
             payload = entries.get(guid + "/asset")
             if payload is not None and payload.isfile():
                 target.parent.mkdir(parents=True, exist_ok=True)
@@ -107,6 +133,7 @@ def restore_font(cache: Path, project: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cache", type=Path, default=ROOT / ".bootstrap" / "unity")
+    parser.add_argument("--project", type=Path, default=ROOT / "apps" / "unity")
     parser.add_argument("--sdk-package", type=Path)
     parser.add_argument("--accept-live2d-terms", action="store_true")
     args = parser.parse_args()
@@ -115,14 +142,12 @@ def main() -> None:
             "Read assets/manifest/unity-foundation-resources.md and the linked Live2D terms, "
             "then pass --accept-live2d-terms. Download/use constitutes acceptance."
         )
-    archive = args.sdk_package or acquire(
-        SDK_URL, args.cache / "CubismSdkForUnity-5-r.5.unitypackage", SDK_SHA256
-    )
-    if digest(archive) != SDK_SHA256:
-        raise ValueError("SDK archive hash mismatch")
-    count = restore_sdk(archive, ROOT / "apps" / "unity")
-    restore_font(args.cache, ROOT / "apps" / "unity")
-    print(json.dumps({"sdk": "Cubism 5 R5", "sha256": SDK_SHA256, "assets_restored": count}))
+    project = args.project.resolve()
+    require_clean_sdk(project)
+    archive = args.sdk_package or acquire(SDK_URL, args.cache / SDK_FILE, SDK_SHA256)
+    count = restore_sdk(archive, project)
+    restore_font(args.cache, project)
+    print(json.dumps({"sdk": SDK_VERSION, "sha256": SDK_SHA256, "assets_restored": count}))
 
 
 if __name__ == "__main__":

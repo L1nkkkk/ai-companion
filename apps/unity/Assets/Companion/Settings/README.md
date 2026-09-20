@@ -1,3 +1,1 @@
-# Settings
-
-U01-00 foundation slot. See apps/unity/README.md for ownership and preparation.
+Built-in rendering is selected in ProjectSettings. No URP pipeline asset is required. Integration owner controls shared settings.

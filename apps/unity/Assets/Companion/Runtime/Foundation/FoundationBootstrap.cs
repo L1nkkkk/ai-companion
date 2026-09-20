@@ -8,8 +8,6 @@ using Live2D.Cubism.Core.Unmanaged;
 using Live2D.Cubism.Framework.Motion;
 using Live2D.Cubism.Rendering;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace Companion.Foundation
 {
@@ -19,6 +17,12 @@ namespace Companion.Foundation
         public GameObject ModelPrefab;
         public Font LabelFont;
         public AnimationClip IdleClip;
+        public AnimationClip GreetingClip;
+        public AnimationClip MaskStressClip;
+        private FoundationBehaviourProbe behaviour;
+        private double lastFrame;
+        private double nextMemorySample;
+        private long baselineWorkingSet;
 
         private Camera view;
         private CubismModel model;
@@ -48,10 +52,22 @@ namespace Companion.Foundation
             public int errors;
             public int warnings;
             public int sampledFrames;
+            public bool frameSamplesTruncated;
             public double elapsedSeconds;
             public float p95FrameMs;
             public float maxFrameMs;
-            public string scope = "U01-00 rendering fixture; no cloud, chat, recording or playback";
+            public float framesAtMost33_3MsPercent;
+            public int framesAtLeast1000Ms;
+            public string memoryMethod = "Windows GetProcessMemoryInfo: OS peak working set, 5-second private/Unity allocation samples, baseline after 30 seconds";
+            public long memoryBaselineAt30sBytes;
+            public long peakWorkingSetBytes;
+            public long finalWorkingSetBytes;
+            public long workingSetIncreaseFrom30sBytes;
+            public long peakPrivateBytes;
+            public long peakUnityAllocatedBytes;
+            public bool behaviourProbeFailed;
+            public string contractsAssembly;
+            public string scope = "U01-00 rendering fixture; direct parameter tests, no audio-driven lip sync, cloud, chat or recording";
         }
 
         private void Awake()
@@ -61,6 +77,7 @@ namespace Companion.Foundation
             Application.targetFrameRate = 60;
             QualitySettings.vSyncCount = 1;
             started = Time.realtimeSinceStartupAsDouble;
+            lastFrame = started;
             evidenceDirectory = Argument("-evidenceDirectory");
             if (!string.IsNullOrEmpty(evidenceDirectory))
                 Directory.CreateDirectory(evidenceDirectory);
@@ -85,21 +102,25 @@ namespace Companion.Foundation
             if (model == null)
                 throw new InvalidOperationException("Mao prefab has no CubismModel.");
             yield return null;
+            yield return null;
             FitCamera();
-            CreateLabel();
             var motion = model.GetComponent<CubismMotionController>();
             if (motion == null) motion = model.gameObject.AddComponent<CubismMotionController>();
             yield return null;
             if (IdleClip == null) throw new InvalidOperationException("The fixture idle clip is missing.");
             motion.PlayAnimation(IdleClip, isLoop: true);
             result.idleClipPlaying = motion.IsPlayingAnimation();
+            behaviour = model.gameObject.AddComponent<FoundationBehaviourProbe>();
+            behaviour.Initialize(model, motion, IdleClip, GreetingClip, MaskStressClip,
+                evidenceDirectory, started);
+            result.contractsAssembly = typeof(AICompanion.Preview.Contracts.ISessionController).Assembly.GetName().Name;
             if (!result.idleClipPlaying) Debug.LogError("The SDK idle animation did not start.");
 
             result.unity = Application.unityVersion;
             result.core = "0x" + CubismCoreDll.GetVersion().ToString("X8");
             result.graphicsDevice = SystemInfo.graphicsDeviceName;
             result.graphicsApi = SystemInfo.graphicsDeviceType.ToString();
-            result.renderPipeline = UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline?.name;
+            result.renderPipeline = UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline == null ? "Built-in" : UnityEngine.Rendering.GraphicsSettings.currentRenderPipeline.name;
             result.width = Screen.width;
             result.height = Screen.height;
             result.drawables = model.Drawables.Length;
@@ -108,11 +129,11 @@ namespace Companion.Foundation
                 if (drawable.IsMasked) result.maskedDrawables++;
                 if (drawable.IsInverted) result.invertedMasks++;
                 var renderer = drawable.GetComponent<CubismRenderer>();
-                var material = renderer == null ? null : renderer.DrawMaterial ?? renderer.Material;
+                var material = renderer == null ? null : renderer.Material;
                 if (material == null || material.shader == null || !material.shader.isSupported)
                     result.unsupportedMaterials++;
             }
-            Debug.Log("U01-00 model initialized: " + JsonUtility.ToJson(result));
+            Debug.Log("U01-00_MODEL_INITIALIZED: " + JsonUtility.ToJson(result));
             yield return new WaitForSecondsRealtime(3);
             yield return Capture("player-03s.png");
             yield return new WaitForSecondsRealtime(7);
@@ -121,36 +142,44 @@ namespace Companion.Foundation
 
         private void FitCamera()
         {
-            var bounds = new Bounds(model.transform.position, Vector3.zero);
+            var bounds = new Bounds();
+            bool found = false;
+            int visible = 0;
             foreach (var drawable in model.Drawables)
-                foreach (var vertex in drawable.VertexPositions)
-                    bounds.Encapsulate(drawable.transform.TransformPoint(vertex));
+            {
+                var renderer = drawable.GetComponent<MeshRenderer>();
+                if (renderer == null || !renderer.enabled) continue;
+                var filter = drawable.GetComponent<MeshFilter>();
+                if (filter == null || filter.sharedMesh == null) continue;
+                var colors = filter.sharedMesh.colors32;
+                bool opaque = colors.Length == 0;
+                foreach (var color in colors) if (color.a > 2) { opaque = true; break; }
+                if (!opaque) continue;
+                if (!found) { bounds = renderer.bounds; found = true; }
+                else bounds.Encapsulate(renderer.bounds);
+                visible++;
+            }
+            if (!found) throw new InvalidOperationException("No visible drawable bounds.");
             view.transform.position = new Vector3(bounds.center.x, bounds.center.y, -10);
-            view.orthographicSize = Mathf.Max(bounds.extents.y * 1.20f,
-                bounds.extents.x / view.aspect * 1.20f, 0.5f);
+            view.orthographicSize = Mathf.Max(bounds.extents.y * 1.25f,
+                bounds.extents.x / view.aspect * 1.25f, 0.5f);
+            Debug.Log("U01-00_CAMERA_VISIBLE_BOUNDS count=" + visible + " bounds=" + bounds +
+                " orthographicSize=" + view.orthographicSize);
         }
 
-        private void CreateLabel()
+        private GUIStyle labelStyle;
+        private void OnGUI()
         {
-            var canvas = new GameObject("Foundation Status", typeof(Canvas), typeof(CanvasScaler));
-            canvas.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
-            var scaler = canvas.GetComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution = new Vector2(1280, 800);
-            var label = new GameObject("Scope Label", typeof(RectTransform), typeof(Text));
-            label.transform.SetParent(canvas.transform, false);
-            var text = label.GetComponent<Text>();
-            text.font = LabelFont;
-            text.fontSize = 22;
-            text.color = Color.white;
-            text.alignment = TextAnchor.UpperLeft;
-            text.text = "U01-00 · 渲染验证 / 演示模型 Mao\nUnity 6.3 + Cubism R5 / URP\nEsc 退出 · 本场景无聊天、录音或云调用";
-            var rect = label.GetComponent<RectTransform>();
-            rect.anchorMin = new Vector2(0, 1);
-            rect.anchorMax = new Vector2(1, 1);
-            rect.pivot = new Vector2(0, 1);
-            rect.anchoredPosition = new Vector2(24, -20);
-            rect.sizeDelta = new Vector2(-48, 110);
+            if (LabelFont == null) return;
+            if (labelStyle == null)
+            {
+                labelStyle = new GUIStyle(GUI.skin.label);
+                labelStyle.font = LabelFont;
+                labelStyle.fontSize = 22;
+                labelStyle.normal.textColor = Color.white;
+            }
+            GUI.Label(new Rect(24, 16, 1000, 110),
+                "U01-00 渲染验证 / Mao\nUnity 2022.3 + Cubism R4_1 / Built-in\n仅工程与渲染验证 · 无聊天/录音/云调用 · Esc 退出", labelStyle);
         }
 
         private IEnumerator Capture(string name)
@@ -164,16 +193,39 @@ namespace Companion.Foundation
 
         private void Update()
         {
-            if (Time.realtimeSinceStartupAsDouble - started > 3 && frameTimes.Count < 120000)
-                frameTimes.Add(Time.unscaledDeltaTime * 1000);
-            if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+            double now = Time.realtimeSinceStartupAsDouble;
+            if (now - started > 3)
+            {
+                if (frameTimes.Count < 120000)
+                    frameTimes.Add((float)((now - lastFrame) * 1000));
+                else if (!result.frameSamplesTruncated)
+                {
+                    result.frameSamplesTruncated = true;
+                    Debug.LogError("Frame evidence capacity exceeded; this run cannot establish full-duration performance.");
+                }
+            }
+            lastFrame = now;
+            if (now >= nextMemorySample)
+            {
+                nextMemorySample = now + 5;
+                var memory = FoundationMemoryProbe.Read();
+                long working = memory.WorkingSetBytes;
+                result.peakWorkingSetBytes = Math.Max(result.peakWorkingSetBytes, memory.PeakWorkingSetBytes);
+                result.peakPrivateBytes = Math.Max(result.peakPrivateBytes, memory.PrivateBytes);
+                result.peakUnityAllocatedBytes = Math.Max(result.peakUnityAllocatedBytes,
+                    UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong());
+                if (baselineWorkingSet == 0 && now - started >= 30) baselineWorkingSet = working;
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
                 Application.Quit();
             if (!finished && duration > 0 && Time.realtimeSinceStartupAsDouble - started >= duration)
             {
                 finished = true;
+                if (behaviour != null) behaviour.Finish();
+                result.behaviourProbeFailed = behaviour == null || behaviour.HasFailures;
                 SaveResult();
                 Application.Quit(result.errors == 0 && result.unsupportedMaterials == 0 &&
-                    result.drawables > 0 ? 0 : 1);
+                    result.drawables > 0 && !result.behaviourProbeFailed ? 0 : 1);
             }
         }
 
@@ -191,10 +243,22 @@ namespace Companion.Foundation
             result.sampledFrames = frameTimes.Count;
             using (var writer = new StreamWriter(Path.Combine(evidenceDirectory, "frame-times.csv")))
             {
-                writer.WriteLine("frame,unscaled_delta_ms");
+                writer.WriteLine("frame,monotonic_frame_gap_ms");
                 for (int i = 0; i < frameTimes.Count; i++)
                     writer.WriteLine(i + "," + frameTimes[i].ToString("F4", CultureInfo.InvariantCulture));
             }
+            int within = 0;
+            foreach (float frame in frameTimes)
+            {
+                if (frame <= 33.3f) within++;
+                if (frame >= 1000f) result.framesAtLeast1000Ms++;
+            }
+            result.framesAtMost33_3MsPercent = frameTimes.Count == 0 ? 0 : 100f * within / frameTimes.Count;
+            var finalMemory = FoundationMemoryProbe.Read();
+            result.peakWorkingSetBytes = Math.Max(result.peakWorkingSetBytes, finalMemory.PeakWorkingSetBytes);
+            result.memoryBaselineAt30sBytes = baselineWorkingSet;
+            result.finalWorkingSetBytes = finalMemory.WorkingSetBytes;
+            result.workingSetIncreaseFrom30sBytes = baselineWorkingSet == 0 ? 0 : result.finalWorkingSetBytes - baselineWorkingSet;
             frameTimes.Sort();
             if (frameTimes.Count > 0)
             {
@@ -210,7 +274,10 @@ namespace Companion.Foundation
             if (!finished) SaveResult();
         }
 
-        private void OnDestroy() => Application.logMessageReceived -= RecordLog;
+        private void OnDestroy()
+        {
+            Application.logMessageReceived -= RecordLog;
+        }
 
         private static string Argument(string name)
         {

@@ -150,7 +150,11 @@ def inspect(project: Path, manifest: dict) -> dict:
         "invertedMaskDrawableCount": sum(bool(flags[index] & 8) for index in range(drawable_count)),
         "deformationProbes": deformations,
         "parameters": parameters,
-        "notVerified": ["Unity compilation", "URP material or mask appearance", "Windows Player"],
+        "notVerified": [
+            "Unity compilation",
+            "Built-in material or mask appearance",
+            "Windows Player",
+        ],
     }
 
 
