@@ -84,6 +84,16 @@ public interface ISessionController : IDisposable
     CommandReceipt SubmitText(SubmitTextCommand command);
     CommandReceipt BeginRecording(string deviceId);
     CommandReceipt EndRecording();
+    LocalCommandResult SetVolume(float volume01);
+    LocalCommandResult UpdateSettings(UpdateSettingsCommand command);
+    Task<LocalResult<VoiceOptionsSnapshot>> RefreshVoiceOptionsAsync(
+        CancellationToken cancellationToken);
+    Task<LocalResult<MicrophoneDeviceList>> GetMicrophoneDevicesAsync(
+        CancellationToken cancellationToken);
+    Task<LocalResult<ConversationPage>> ListConversationsAsync(
+        ConversationListQuery query, CancellationToken cancellationToken);
+    Task<LocalResult<HistoryExport>> ExportConversationAsync(
+        Guid conversationId, CancellationToken cancellationToken);
     void NotifyDraftEdited(string text);
     void Cancel(StopReason reason);
     Task NewConversationAsync(CancellationToken cancellationToken);
@@ -97,7 +107,7 @@ public interface ISessionController : IDisposable
 
 `SubmitTextCommand` 只含用户文字、角色 ID、已公布音色 ID 和是否生成音频，不允许任意 endpoint、system prompt、文件路径或密钥。`CommandReceipt` 包含是否接受、OperationKey 和可选错误；同步命令完成校验和操作登记即返回，后台执行通过快照发布结果。连续双击同一尚未变更的发送操作不能各发一次 POST；用户明确的新发送才建立新操作并先停止旧操作。
 
-`SessionSnapshot` 至少包含 Phase、可空 Operation/Turn、Mode、Error、ConversationId、DraftRevision，以及供 UI 显示的完整/临时文字和音频状态。Mode 来自 capabilities / `turn.accepted`，不能由假服务或 UI 宣称为 cloud；chat/tts/asr 模式分别展示，避免系统 TTS 被标为云端 TTS。UI 不再维护另一个 Thinking/Speaking 状态机。
+`SessionSnapshot` 至少包含 Phase、可空 Operation/Turn、Mode、Error、ConversationId、DraftRevision，以及供 UI 显示的完整/临时文字和音频状态；新增非空 `ClientSettingsSnapshot Settings`、`VoiceOptionsSnapshot VoiceOptions` 和 `HistoryCapacitySnapshot HistoryCapacity`。当前音量从 `Snapshot.Settings.Volume01` 读取，不能从滑块位置反推；设置、音色选项与容量变化沿用 SnapshotChanged。Mode 来自 capabilities / `turn.accepted`，不能由假服务或 UI 宣称为 cloud；chat/tts/asr 模式分别展示，避免系统 TTS 被标为云端 TTS。UI 不再维护另一个 Thinking/Speaking 状态机。
 
 `DraftUpdate` 携带 DraftKey 与识别文本，只有仍有效的结果可进入编辑框；不会直接调用 SubmitText。Draft 更新仍须通过 Session 提交，不能由网络回调直接改输入框。
 
@@ -109,6 +119,147 @@ public interface ISessionController : IDisposable
 4. 使用捕获的旧 OperationKey，以新的短时限 CancellationToken 尽力发送后台 cancel。不能复用已取消的业务 token，否则取消 HTTP 请求可能根本不发送。
 
 失焦、鼠标移出按住说话按钮、Esc 和关闭窗口均不依赖 key-up 才释放录音。失焦后的播放策略可由桌面设置决定；关闭窗口的本地清理同步完成，不能依赖退出后某个异步 continuation 才停止设备。
+
+### 3.1 R1 补齐：UI 入口与完整新增类型映射
+
+以下对应 A0 的 U01-00-R1。它们是客户端本地类型，不增加 HTTP 字段；类型均位于同一 Contracts 命名空间，DTO 不引用 Unity、存储实现或平台设备句柄。表中列出本次新增/补全类型的全部公开数据成员，属性只读，构造时校验并复制集合/字节；构造参数按表中顺序采用同名 camelCase。`?` 表示可空引用或 Nullable 值；列表不可通过 DTO 反向修改。
+
+| 类型 | 完整公开成员（C# 类型） | 生产者 → 消费者 / 约束 |
+|---|---|---|
+| `LocalCommandResult` | `bool Accepted`; `PreviewError? Error` | Session → UI；接受时 Error=null，拒绝时必须有 Error；本地命令不分配 OperationKey |
+| `LocalResult<T>` | `bool Succeeded`; `T? Value`; `PreviewError? Error` | History/Session → 调用方；成功仅有非空 Value，失败仅有 Error；T 限引用类型，禁止同时有值和错误 |
+| `UpdateSettingsCommand` | `bool AutoRead`; `string? VoiceId`; `bool ContinuePlaybackOnFocusLost`; `string? MicrophoneDeviceId` | UI → Session；整体替换这四项，音量独立经 SetVolume；null 麦克风表示尚未选择，禁止自动录音；VoiceId=null 表示后台默认音色 |
+| `ClientSettingsSnapshot` | `int SchemaVersion`; `ulong Revision`; `float Volume01`; `bool AutoRead`; `string? VoiceId`; `bool ContinuePlaybackOnFocusLost`; `string? MicrophoneDeviceId`; `string PlaybackDeviceLabel`; `bool CanSelectPlaybackDevice`; `SettingsSaveState SaveState`; `PreviewError? SaveError` | Session → UI；SchemaVersion=1；Revision 在接受的设置变更后递增；SaveError 只在 Failed 时非空；运行值与是否已落盘分别表达 |
+| `SettingsSaveState` | `Saved`, `Pending`, `Failed` | 设置持久化状态枚举；不冒充 SessionPhase 或网络错误 |
+| `VoiceOption` | `string Id`; `string DisplayName` | Session 从 capabilities 公布音色映射 → UI；Id 非空且不透明，最多 256 Unicode 标量；DisplayName 最多 256，没有公布名称时显示原 ID，不编造音色 |
+| `VoiceOptionsState` | `NotLoaded`, `Loading`, `Ready`, `Unavailable`, `Failed` | Ready 表示能力获取成功且 TTS configured/available；Unavailable 表示能力获取成功但 TTS 未配置或不可用；Failed 表示查询或校验失败 |
+| `VoiceOptionsSnapshot` | `ulong Revision`; `VoiceOptionsState State`; `IReadOnlyList<VoiceOption> Items`; `PreviewError? Error` | Session → UI；最多 128 项且 ID 唯一，超限拒绝而非截断；仅 Ready 有可选项（允许空列表、仅默认音色），其余状态 Items 为空；Unavailable/Failed 必须有脱敏 Error，其余 Error=null；初始 NotLoaded；每次发布递增 Revision，不回绕 |
+| `MicrophoneDevice` | `string Id`; `string DisplayName`; `bool IsDefault` | Capture → Session → UI；不透明 ID ≤256 Unicode 标量，名称 ≤128；仅代表枚举到的设备，不保证当前权限、连接或可录音 |
+| `MicrophoneDeviceList` | `IReadOnlyList<MicrophoneDevice> Items`; `DateTimeOffset EnumeratedAtUtc` | Capture → Session → UI；最多 64 项，ID 唯一，默认标记最多一项；无设备为成功的空列表，枚举失败为 LocalResult 错误 |
+| `ConversationListQuery` | `int PageSize`; `string? Cursor` | UI → Session → History；PageSize 为 1..20，Cursor=null 请求首页；游标是不透明本机分页标识，UTF-8 ≤512 字节 |
+| `ConversationSummary` | `Guid ConversationId`; `string Title`; `DateTimeOffset CreatedAtUtc`; `DateTimeOffset UpdatedAtUtc`; `int MessageCount` | History → Session → UI；只包含索引摘要，无完整聊天/音频；Title ≤80 Unicode 标量，MessageCount 为当前保留消息数 0..80 |
+| `ConversationPage` | `IReadOnlyList<ConversationSummary> Items`; `string? NextCursor`; `ulong StoreRevision` | History → Session → UI；Items.Count≤请求 PageSize，末页 NextCursor=null；空库为成功空页；StoreRevision 标识本页读取的索引修订 |
+| `HistoryCapacitySnapshot` | `int ConversationCount`; `int MaxConversations`; `int MaxMessagesPerConversation`; `HistoryRetentionPolicy RetentionPolicy`; `ulong StoreRevision` | History 的索引/容量信息由 Session 汇入快照 → UI；初始提案上限 20 会话、每会话 80 条消息；不由 UI 遍历所有历史统计 |
+| `HistoryRetentionPolicy` | `EvictOldestInactive` | 初始唯一策略：达到上限时删除最旧的非当前会话；单会话删除最旧完整消息组，避免保留孤立 assistant 回复；UI 明示清理策略 |
+| `HistoryExport` | `int SchemaVersion`; `Guid ConversationId`; `ulong StoreRevision`; `DateTimeOffset ExportedAtUtc`; `string SuggestedFileName`; `string MediaType`; `ReadOnlyMemory<byte> Utf8Json` | History → Session → UI 本机另存为；SchemaVersion=1；MediaType=`application/json`；文件名只含安全 basename，例如 `conversation-{id:N}.json`；UTF-8 JSON ≤2 MiB，超限失败而非截断 |
+
+`PreviewError` 沿用第 2 节的 `Code:string`、`Message:string`、`Retryable:bool`、`Operation:OperationKey?`；这些本地查询/设置错误的 Operation=null。代码段中的泛型接口不要求 Unity 序列化泛型 DTO；持久化适配由对应 owner 实现。
+
+类型与入口的使用约束如下：
+
+- **即时音量。** `SetVolume` 在主线程同步校验 0..1（拒绝 NaN/Infinity，拒绝越界而非悄悄钳制），调用 Audio.SetVolume，然后更新设置快照再返回 Accepted。离线和播放期间均可调用；不取消/重发当前 turn，不等待磁盘或网络。最新增益供下个输出块读取，口型仍使用增益后的真实振幅；设为 0 时覆盖尚未消费的非零振幅。每次调用不排队积累一个异步写入，设置保存只保留最新修订。
+- **设置与暂不可用选择。** `UpdateSettings` 全量校验结构后一次接受或拒绝，不部分应用；设备/音色的选项成员校验只对与当前快照相比**实际变更的 ID**执行。新非空 VoiceId 必须在 VoiceOptions.State=Ready 的已公布列表中；新非空 MicrophoneDeviceId 必须在最近一次成功枚举中；null 始终允许表示默认音色/不选择麦克风。未变更的原 ID 可以保留，即使重启尚未枚举、设备拔出或音色暂不可用；这只保留偏好，不证明其可用，也不静默替换成其他 ID。因此只改 AutoRead 或失焦策略不会被原设备/音色阻塞。正在录音时改变 MicrophoneDeviceId（包括清空）仍返回 `device_busy`，原样保留则不拒绝。
+- **使用时复核。** `BeginRecording(deviceId)` 必须等于快照已选 ID，并在实际开启时重新检查设备与权限；从未选择返回 `device_not_selected`，已选但拔出返回 `device_unavailable`。AutoRead/VoiceId 只影响后续提交，关 AutoRead 不代表当前播放已停止；当前静音/打断仍用 SetVolume(0)/Cancel。SubmitTextCommand 的 generate_audio 必须等于 Settings.AutoRead；有效 voice_id 为 AutoRead=true 时的 Settings.VoiceId，否则为 null，陈旧字段返回 `settings_changed`。需要朗读的提交还需 VoiceOptions=Ready 且非空 VoiceId 仍在选项中，否则返回 `voice_unavailable`，不发收费请求或自动回退；纯文字提交不被保留的失效音色阻塞。
+- **音色入口。** UI 仅调用 Session.RefreshVoiceOptionsAsync 并订阅 Snapshot.VoiceOptions；Session 调用 Gateway.GetCapabilitiesAsync，将既有能力中的音色及 TTS 配置/可用信息映射为上述有界 DTO，不增加 HTTP 字段。刷新先发布 Loading；查询成功发布 Ready/Unavailable 并返回成功 LocalResult（不可用是已读到的能力状态），查询/格式错误发布 Failed 并返回失败 LocalResult。未就绪时禁用新音色选择，但可以显示 Settings.VoiceId 为“已保存、待确认/暂不可用”，允许用户保留或清空；默认音色 UI 项对应 null，不伪造服务端 ID。取消刷新时恢复刷新前的数据状态并发布新的 Revision，Task 按取消结束；销毁 Session 后不再发事件，迟到结果按本次刷新身份丢弃。启动检查和手工刷新共用同一有界入口，不生成对话或 TTS，也不让 UI 获取 Gateway 实例。
+- **输出设备。** U01 当前提案使用系统默认播放设备，`PlaybackDeviceLabel` 显示实际可获知名称或明确“系统默认输出”，`CanSelectPlaybackDevice=false`。UI 不显示不可用的输出设备选择器，也不把字符串当作可选设备 ID。输入设备有上述明确枚举入口；若后续要求应用内选择输出设备，应另提对称枚举/切换 API 并实测后审阅，不暗中调用 Unity 或 Windows 设备服务绕过 Session。
+- **持久化。** 音量/设置接受即改变运行值，设置文件与对话文件分开。Session 所有者负责设置保存适配和修订串行化，可合并尚未写出的修订；异步保存失败保留实际运行值并发布 SaveState=Failed/SaveError，不伪称已保存，不回滚成与实际输出不同的值。重新修改触发新保存；成功/失败仅在回报修订仍等于当前 Revision 时更新 SaveState，更旧结果不覆盖新状态。Revision 耗尽前拒绝继续变更并要求重建运行态，不能回绕。启动用已验证设置或显式默认值，首次运行不录音、不发送；具体默认音量及失焦策略由 A0 冻结时确认。
+- **有界历史。** ListConversations 按 UpdatedAtUtc 降序、同时间按 ConversationId 固定次序排序，只读取有界索引摘要。第一页与后续页同一 StoreRevision；游标绑定版本、PageSize、最后排序键，任何索引变更使后续旧游标返回 `history_cursor_expired`，UI 清除旧列表后重查首页，不能合并不同版本。非法页长或游标为 `invalid_request`，不提供“0=全部”。列表读取和导出不切换当前会话、不修改草稿、不停止播放，也不触发云请求。
+- **容量与清理。** 20/80 为满足任务书最低数量的初始上限提案，非已经实现的容量测试结论。新建会话到达上限时，由 Session 根据有界列表和自己的当前 ConversationId 选择最旧非当前项，先调用 History.DeleteConversationAsync，再 CreateAsync；Store 自身到达上限则拒绝 Create，不自行猜测当前会话。容量淘汰与手工删除复用第 7 节写入资格撤销，当前会话不被隐式淘汰；无法安全腾出容量返回 `history_capacity_exceeded`，底层 I/O 失败仍返回 `storage_unavailable`。HistoryTurn 的 user/assistant 为各一条消息，80 计消息而非 80 对；正在生成的组不得拆开淘汰。容量变化通过同一历史变更事件进入 Snapshot.HistoryCapacity。
+- **导出。** ExportConversationAsync 接受明确的 ID（“当前会话”按钮在点击时捕获 Snapshot.ConversationId），输出一致修订的单会话记录，包含真实交付状态与格式版本；不包含 token、原录音、provider 密钥或设备私人句柄。已有活动请求无需停播；导出可以含 Generating/Interrupted 等当时真实状态。删除/清空与导出串行建立读取点：删除先完成则 `history_not_found`；导出先完成则已交付的副本不会被后续删除召回。上限超出返回 `export_too_large`，坏数据返回 `history_corrupt`，不生成貌似完整的部分文件。UI 的本机保存对话框只负责将该有界内容另存为用户选择的位置，不直接访问 HistoryStore，也不接收内部存储路径。
+- **线程、取消、错误。** 所有新增 Session 入口从主线程调用；读取/保存工作不长期阻塞主线程，事件仍回到主线程。查询 Task 不承诺 continuation 线程，UI await 保留 Unity SynchronizationContext；退出/销毁页面时取消其 token 并丢弃迟到结果。取消以 Task 取消和 OperationCanceledException 表达，不返回“成功空列表”，不写入 SessionPhase.Error；检查启动前、读取中和结果发布前的取消。每个 Session 最多同时 1 次音色刷新、1 次设备枚举、1 次列表读取、1 次导出，多余同类调用返回 `local_busy`，不无界排队、不覆盖已有查询的加载状态；这不阻塞 SetVolume/Cancel。预期本地错误用 LocalResult/LocalCommandResult 的 PreviewError 表达，I/O 失败为 `storage_unavailable`，无权限为 `permission_denied`；未知程序缺陷才使 Task fault，记录脱敏诊断。设备拔出在 Begin 时返回 `device_unavailable`，不自动选其他输入录音。
+
+### 3.2 UI 与模块调用样例（接线草案）
+
+下例中的 UI 只持有 ISessionController。`ShowError`、`RenderSettings`、`RenderVoiceOptions`、`RenderConversationRows`、`ReplaceDeviceOptions`、`OfferLocalSaveDialog` 是 UI 自身显示/本机另存为函数，不是新的共享服务接口；后者收到 HistoryExport 才允许用户选择导出目的地。DTO 构造遵守上表字段顺序；代码说明调用关系，不表示已落地的 Unity 组件。
+
+```csharp
+// Composition 仅把 session 注入 UI；订阅后立即绘制当前权威值。
+void Bind(ISessionController session)
+{
+    session.SnapshotChanged += OnSnapshot; // 页面销毁时解除订阅
+    OnSnapshot(session.Snapshot);
+}
+void OnSnapshot(SessionSnapshot snapshot)
+{
+    RenderSettings(snapshot.Settings, snapshot.HistoryCapacity);
+    RenderVoiceOptions(snapshot.VoiceOptions, snapshot.Settings.VoiceId);
+    // 更新滑块使用 SetValueWithoutNotify，避免事件反馈循环。
+}
+void OnVolumeChanged(ISessionController session, float value)
+{
+    LocalCommandResult result = session.SetVolume(value);
+    if (!result.Accepted) ShowError(result.Error);
+    RenderSettings(session.Snapshot.Settings, session.Snapshot.HistoryCapacity);
+}
+
+async Task RefreshVoicesAsync(ISessionController session, CancellationToken pageToken)
+{
+    LocalResult<VoiceOptionsSnapshot> result =
+        await session.RefreshVoiceOptionsAsync(pageToken);
+    pageToken.ThrowIfCancellationRequested();
+    if (!result.Succeeded) ShowError(result.Error);
+    // Loading/Ready/Unavailable/Failed 都由 OnSnapshot 绘制；不调用 Gateway。
+}
+void ChooseVoice(ISessionController session, string? chosenId)
+{
+    ClientSettingsSnapshot s = session.Snapshot.Settings;
+    LocalCommandResult result = session.UpdateSettings(new UpdateSettingsCommand(
+        s.AutoRead, chosenId, s.ContinuePlaybackOnFocusLost, s.MicrophoneDeviceId));
+    if (!result.Accepted) ShowError(result.Error);
+}
+void SetAutoRead(ISessionController session, bool enabled)
+{
+    ClientSettingsSnapshot s = session.Snapshot.Settings;
+    LocalCommandResult result = session.UpdateSettings(new UpdateSettingsCommand(
+        enabled, s.VoiceId, s.ContinuePlaybackOnFocusLost, s.MicrophoneDeviceId));
+    if (!result.Accepted) ShowError(result.Error);
+    // 原麦克风/音色 ID 未改变：即使暂不可用，也可接受本次开关修改。
+}
+
+async Task RefreshDevicesAsync(ISessionController session, CancellationToken pageToken)
+{
+    LocalResult<MicrophoneDeviceList> result =
+        await session.GetMicrophoneDevicesAsync(pageToken);
+    pageToken.ThrowIfCancellationRequested();
+    if (!result.Succeeded) { ShowError(result.Error); return; }
+    ReplaceDeviceOptions(result.Value.Items); // 不自动开始采集
+}
+void ChooseMicrophone(ISessionController session, string chosenId)
+{
+    ClientSettingsSnapshot s = session.Snapshot.Settings;
+    LocalCommandResult result = session.UpdateSettings(new UpdateSettingsCommand(
+        s.AutoRead, s.VoiceId, s.ContinuePlaybackOnFocusLost, chosenId));
+    if (!result.Accepted) ShowError(result.Error);
+    // 随后的按住说话用 session.BeginRecording(session.Snapshot.Settings.MicrophoneDeviceId)。
+}
+
+// 返回 NextCursor 交给“下一页”；首次传 null，不无限循环加载全量历史。
+async Task<string?> LoadConversationPageAsync(ISessionController session,
+    string? cursor, CancellationToken pageToken)
+{
+    LocalResult<ConversationPage> result = await session.ListConversationsAsync(
+        new ConversationListQuery(20, cursor), pageToken);
+    pageToken.ThrowIfCancellationRequested();
+    if (!result.Succeeded)
+    {
+        ShowError(result.Error); // history_cursor_expired 时丢弃旧页，用户刷新传 null
+        return null;
+    }
+    RenderConversationRows(result.Value.Items, result.Value.StoreRevision);
+    return result.Value.NextCursor;
+}
+async Task ExportCurrentAsync(ISessionController session, CancellationToken pageToken)
+{
+    Guid target = session.Snapshot.ConversationId; // 点击时捕获，不在 await 后重新取
+    LocalResult<HistoryExport> result =
+        await session.ExportConversationAsync(target, pageToken);
+    pageToken.ThrowIfCancellationRequested();
+    if (!result.Succeeded) { ShowError(result.Error); return; }
+    OfferLocalSaveDialog(result.Value); // 文件名、MIME、有界 UTF-8 内容来自导出 DTO
+}
+```
+
+页面事件处理器统一捕获其生命周期 token 造成的 OperationCanceledException，不对已销毁页面显示错误；其他异常经 UI 的统一脱敏错误入口显示。本例省略该宿主事件处理器，不建议 async void 无异常处理。下一页、切换和删除用行中的 ConversationId；切换与删除仍调用本节已有 Session API。
+
+| UI 入口 | Session 内部调用 | 返回/通知路径 |
+|---|---|---|
+| SetVolume(v) | 校验 → IAudioPlayer.SetVolume(v) → 更新设置修订、异步保存 | LocalCommandResult；SnapshotChanged.Settings；PostVolumeLevel 仍驱动 Avatar |
+| UpdateSettings(command) | 校验能力/设备/录音状态 → 应用本机偏好 → 异步保存 | LocalCommandResult；SnapshotChanged.Settings |
+| RefreshVoiceOptionsAsync(ct) | IConversationGateway.GetCapabilitiesAsync(ct) → 校验有界音色列表/可用状态 | LocalResult&lt;VoiceOptionsSnapshot&gt;；SnapshotChanged.VoiceOptions；UI 不直接查询 Gateway |
+| GetMicrophoneDevicesAsync(ct) | IMicrophoneCapture.GetDevicesAsync(ct) → 校验上限并保存本次有效 ID 集合 | 相同 LocalResult&lt;MicrophoneDeviceList&gt;；不隐式录音 |
+| ListConversationsAsync(query, ct) | IHistoryStore.ListAsync(query, ct) | 相同 LocalResult&lt;ConversationPage&gt;；不绕经 UI 自行读取历史目录 |
+| ExportConversationAsync(id, ct) | IHistoryStore.ExportAsync(id, ct) | 相同 LocalResult&lt;HistoryExport&gt; → UI 本机另存为 |
+| 初始化/历史变更 | IHistoryStore.Capacity + CapacityChanged | Session 在主线程汇入 Snapshot.HistoryCapacity；不让 UI 订阅 HistoryStore |
 
 ## 4. Transport：带取消的 typed 结果
 
@@ -164,7 +315,7 @@ public interface IAudioPlayer : IDisposable
 
 public interface IMicrophoneCapture : IDisposable
 {
-    Task<IReadOnlyList<MicrophoneDevice>> GetDevicesAsync(
+    Task<LocalResult<MicrophoneDeviceList>> GetDevicesAsync(
         CancellationToken cancellationToken);
     Task<CaptureStarted> BeginAsync(DraftKey draft, string deviceId,
         CancellationToken cancellationToken);
@@ -185,6 +336,8 @@ AudioLevelSample 建议包含 TurnKey、Level01、SampleStart、SampleCount、Mo
 上述测量边界位于应用输出路径，操作系统音量、混音和设备缓冲仍可能改变最终可听结果。UA03 要用带系统输出的录屏核对，UA05 要用同一单调时钟记录停止输入与最后非零输出块，注明系统缓冲；具备 loopback 时另测可听尾音。调用 Stop 的日志本身不证明 P95≤200 ms。
 
 Begin / End / Abort 覆盖设备拔出、权限、空录音和超时。End 在成功、失败或取消时都释放麦克风；Abort 同步阻止后续采集并释放，默认不写原始音频到磁盘。CaptureResult 携带 DraftKey 和真实格式，供 Session 在 ASR 前后复核身份。最多一个输入设备、一个播放设备；更换设备需显式动作。
+
+GetDevicesAsync 不启动采集，也不以“没有授权”为由触发录音。Capture 对返回的 MicrophoneDevice 数量、ID/名称长度施加第 3.1 节上限；超过上限返回明确 `device_limit_exceeded`，不悄悄截去设备。该底层方法与 Session 入口共用 LocalResult、MicrophoneDeviceList 及 Task 取消语义；预期设备错误用失败结果，未知异常不能冒充空列表。Session 保留最后一次成功枚举的有效 ID 集合并转交结果；枚举失败不清空实际选中的设置，但开始采集仍需重新验证。UI 不持有 IMicrophoneCapture 实例。
 
 ## 6. Avatar：只呈现，不拥有 AI 或音频
 
@@ -217,6 +370,10 @@ AvatarCapabilities 列明模型实际参数、是否支持口型/眨眼/呼吸/�
 ```csharp
 public interface IHistoryStore : IDisposable
 {
+    HistoryCapacitySnapshot Capacity { get; }
+    event Action<HistoryCapacitySnapshot> CapacityChanged;
+    Task<LocalResult<ConversationPage>> ListAsync(
+        ConversationListQuery query, CancellationToken cancellationToken);
     Task<ConversationHistory> CreateAsync(Guid conversationId,
         CancellationToken cancellationToken);
     Task<ConversationHistory> LoadAsync(Guid conversationId,
@@ -224,7 +381,7 @@ public interface IHistoryStore : IDisposable
     Task<HistoryWriteResult> AppendOrUpdateAsync(
         HistoryWriteToken writeToken, HistoryTurn turn,
         CancellationToken cancellationToken);
-    Task<HistoryExport> ExportAsync(Guid conversationId,
+    Task<LocalResult<HistoryExport>> ExportAsync(Guid conversationId,
         CancellationToken cancellationToken);
     Task DeleteConversationAsync(Guid conversationId,
         CancellationToken cancellationToken);
@@ -234,6 +391,10 @@ public interface IHistoryStore : IDisposable
 
 ConversationHistory 含 SchemaVersion、本机会话 ID、HistoryWriteToken 和版本化记录。HistoryTurn 保留 OperationKey / 可空 TurnId、角色、文本、DeliveryKind、DeliveryState、PlayedSamples/TotalSamples、更新时间及必要模式信息；不存原始录音、Bearer 令牌或 provider 密钥。历史配置与对话分文件存于应用数据目录，支持原子写、损坏恢复和既定容量。
 
+ListAsync / ExportAsync 使用第 3.1 节完整 DTO 与取消/错误规则，Store 自身也校验页长、游标、输出字节数，不能只相信 Session 已校验。Capacity 是初始化完成后的不可变索引快照；Composition 在接通 UI 前完成 History 初始化（失败交 Session 显示 storage_unavailable），不能以未读取磁盘的“空库”覆盖已有历史。每次建立新索引修订后更新 Capacity 并发送 CapacityChanged；Store 可以在工作线程通知，Session 只通过有界主线程调度合并最新修订后发布 SnapshotChanged。UI 不订阅 Store 事件。
+
+读取分页、导出、删除和写入通过有界存储执行器建立明确的先后顺序，读取采用同一修订快照，不长时间占用主线程。History 索引修订在任一影响列表排序/摘要/容量的变更后递增；StoreRevision 耗尽前拒绝继续使用旧实例，不能回绕。List/Export 的排队也支持取消，失败保留有效文件；页面 token 取消不撤销已经提交的历史写入，不改变 HistoryWriteToken。DTO 是读取点的快照，UI 在手工删除/清空成功后丢弃旧列表再取首页，已取得的旧 DTO 不构成重建会话或重新写入的资格。
+
 HistoryWriteToken 是本地存储修订号（会话 ID + 存储代数）的封装，不是 R1 的设备租约。Delete/Clear 先撤销旧写入资格，再排队执行持久化删除；AppendOrUpdate 在真正提交写入时仍检查 token，防止“检查通过 → 异步删除 → 旧写回”复活数据。只有 CreateAsync 能显式新建会话；对已删除 ID 的迟到 upsert 拒绝，不隐式重建。所有写操作串行化，Session 也先停止当前操作。
 
 生成、显示、下载、播放分别登记：generation.completed 仅表示生成结束；音频只有实际 Completed 才标记 Played；中途停止是 Interrupted。文字模式完整显示且收到 generation.completed 才标记 Displayed。TTS 失败保留已生成文字并记为 Failed，附语音失败原因，不能写成 AudioSkipped 或 Played。上下文只选择音频 Played 或文字 Displayed 的完整 assistant 回复；Interrupted 不整篇回送到下一轮。
@@ -241,7 +402,7 @@ HistoryWriteToken 是本地存储修订号（会话 ID + 存储代数）的封�
 ## 8. 组合入口与接线顺序
 
 1. Composition 加载资源清单与角色 prefab，建立明确的演示/fixture 标记。首次启动不录音、不发付费调用。
-2. 注入 IHistoryStore、IMicrophoneCapture、IAudioPlayer、IConversationGateway、IAvatarPresenter 到 Session；UI 只拿 ISessionController。
+2. 注入 IHistoryStore、IMicrophoneCapture、IAudioPlayer、IConversationGateway、IAvatarPresenter 到 Session，完成设置/历史初始化后向 UI 提供初始快照；UI 只拿 ISessionController。音量、设备枚举、列表与导出接线见第 3.2 节；设置持久化适配由 Session owner 管理，对话存储归 History owner，两者不形成程序集互相引用。
 3. Session 接受新操作时停止旧操作，分配新 OperationKey，Arm Audio 并 BindOperation Avatar。网络事件回到主线程后再次验 ID、generation、会话和终态。
 4. text.completed 缓存完整文字和 emotion；audio.ready 完成下载和严格校验后，由 Session 再次验资格并调用 Play。下载器不直接播放。
 5. PlaybackStarted → Session 更新 Speaking → Avatar 表情与讲话动作；PostVolumeLevel → Session/组合层校验身份 → Avatar.SetAudioLevel；PlaybackEnded → Session 决定 Ready/错误及 History 终态。
@@ -251,6 +412,8 @@ HistoryWriteToken 是本地存储修订号（会话 ID + 存储代数）的封�
 ## 9. A0 需审阅的提案与验收边界
 
 请求 A0 确认上述 API 形状、PCM 所有权、事件线程、HistoryWriteToken、主线程有界调度以及本机运行配置候选路径。它们是实现层提案，不要求变更 U01 HTTP 字段；如审阅认为需要新增线协议字段，必须另行同步 INTERFACES、U01-03 schema/fixtures 和消费者测试后再实施。
+
+U01-00-R1 本次文档自查覆盖：SetVolume → Audio → 设置快照/增益后口型；音色刷新 → Gateway.capabilities → Session.VoiceOptions → UI 选择；ListConversations → History.List → 有界摘要页；ExportConversation → History.Export → 有界导出 DTO；设备枚举 → Capture → Session 选择校验；History.CapacityChanged → Session 快照。补充核对重启未枚举/拔出设备/音色失效时，只改 AutoRead 仍可保留原 ID，而真正录音/朗读前重新校验。新增类型的成员、生产者/消费者、线程、取消、容量和错误见第 3.1 节，具体 UI 调用见第 3.2 节。这是接口连通性审阅，不声称已编译共享 Contracts 或实现上述业务；仍须 A0 设计复核后由集成 owner 落地。
 
 | 验证点 | U01-00 可以提供的证据 | 后续仍需完成 |
 |---|---|---|

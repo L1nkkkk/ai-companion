@@ -44,6 +44,16 @@ pwsh -File tools/unity/Build-Windows.ps1 -UnityEditor '<official-editor>/Editor/
 pwsh -File tools/unity/Test-Player.ps1 -Player '<build-folder>/AICompanion.Foundation.exe' -EvidenceDirectory '<new-evidence-folder>' -Seconds 600
 ```
 
+`Test-Player.ps1` enforces a separate host-clock deadline of `Seconds + GraceSeconds` (default 600 + 30 seconds). If the Player hangs or ignores its duration argument, the wrapper terminates only the process it launched, waits at most another 5 seconds for termination, records `status=timeout`, and exits 124. Other failures exit 1. Both failed and successful runs retain a runtime manifest and hashes of available logs/results; missing captures are never synthesized. The deadline covers process startup and execution, while file hashing and evidence serialization happen outside that wait.
+
+The watchdog has a separate Windows regression test requiring Python 3.12, PowerShell 7 on PATH, and the Windows .NET Framework x64 C# compiler:
+
+```powershell
+python tools/unity/tests/test_player_harness.py --report .tmp/player-harness-result.json
+```
+
+It compiles a controlled executable and checks normal exit, indefinite hanging, missing screenshot, invalid result, evidence hashes, and survival of an unrelated process running the same executable. Its small synthetic outputs remain under ignored `.tmp`; they are harness fixtures and provide no Unity rendering or UA acceptance evidence.
+
 The build script rejects missing or different Editor versions. It creates a new Windows folder, ZIP, build log and SHA-256 receipt only after Unity returns its explicit success marker. A dirty-source receipt is not accepted as exact-commit evidence. Raw Unity logs may contain machine/licensing identifiers; inspect and redact before publishing.
 
 The Player probe is a real graphical launch, not headless rendering. The candidate fixture instantiates the official Mao prefab, adds the SDK motion controller for a single sample idle clip, fits its camera, and displays a read-only Chinese scope label using the pinned font. It does not call a backend or activate a microphone. Esc closes the application. Captures at 3 and 10 seconds and a bounded frame-time CSV are produced only when an evidence directory is requested. Inspect the captures for missing/pink materials, normal and inverted masks and draw order. Counters and clean logs alone do not prove correct appearance. The supplied runtime and editor C# have not yet compiled in Unity 6.
