@@ -1,0 +1,62 @@
+{
+  "description": "Literal R1 AIC1 vectors transcribed from the frozen offset table. Scalars little-endian, UUIDs RFC 4122 network bytes. These are not WAV files or U01 generation frames.",
+  "vectors": [
+    {
+      "name": "input-short-tail",
+      "header": {
+        "kind": 1,
+        "session_epoch": 1,
+        "frame_seq": 0,
+        "sample_rate": 16000,
+        "stream_id": "00112233-4455-4677-8899-aabbccddeeff",
+        "turn_id": "00000000-0000-0000-0000-000000000000",
+        "segment_index": 0,
+        "offset_samples": 0,
+        "channels": 1,
+        "flags": 0,
+        "version": 1
+      },
+      "payload_hex": "0000",
+      "pcm_s16": [0],
+      "frame_hex": "41494331010101000100000000000000803e00000200000000112233445546778899aabbccddeeff0000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "output-endian-and-signed-pcm",
+      "header": {
+        "kind": 2,
+        "session_epoch": 16909060,
+        "frame_seq": 16909060,
+        "sample_rate": 24000,
+        "stream_id": "00112233-4455-4677-8899-aabbccddeeff",
+        "turn_id": "fedcba98-7654-4321-9abc-0123456789ab",
+        "segment_index": 16909060,
+        "offset_samples": 287454020,
+        "channels": 1,
+        "flags": 0,
+        "version": 1
+      },
+      "payload_hex": "0080ff7f",
+      "pcm_s16": [-32768, 32767],
+      "frame_hex": "41494331010201000403020104030201c05d00000400000000112233445546778899aabbccddeefffedcba98765443219abc0123456789ab04030201443322110080ff7f"
+    },
+    {
+      "name": "output-unsigned-upper-bound",
+      "header": {
+        "kind": 2,
+        "session_epoch": 4294967295,
+        "frame_seq": 4294967295,
+        "sample_rate": 24000,
+        "stream_id": "00112233-4455-4677-8899-aabbccddeeff",
+        "turn_id": "fedcba98-7654-4321-9abc-0123456789ab",
+        "segment_index": 4294967295,
+        "offset_samples": 4294967294,
+        "channels": 1,
+        "flags": 0,
+        "version": 1
+      },
+      "payload_hex": "ff7f",
+      "pcm_s16": [32767],
+      "frame_hex": "4149433101020100ffffffffffffffffc05d00000200000000112233445546778899aabbccddeefffedcba98765443219abc0123456789abfffffffffeffffffff7f"
+    }
+  ]
+}

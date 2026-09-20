@@ -1,6 +1,6 @@
 # AI Companion
 
-桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。**U01-00 基础工程已通过 A0 验收**：干净目录构建、同包 600 秒基础渲染与共享接口已验证，版本已冻结；角色、UI、后台和音频四个模块可以领取。完整角色交互与 U-G0 尚未完成，内存增长、遮罩覆盖和取景仍有后续项，见 [A0 最新验收与下一步](docs/reports/U01/acceptance/PR-003-round3-review.md)。本分支维护设计与验收文档；现有 React / React Native 文件是 T00 历史工程起点。
+桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。**U01-00 基础工程已通过 A0 验收**：干净目录构建、同包 600 秒基础渲染与共享接口已验证，版本已冻结；角色、UI、后台和音频四个模块可以领取。完整角色交互与 U-G0 尚未完成，内存增长、遮罩覆盖和取景仍有后续项，见 [A0 最新验收与下一步](docs/reports/U01/acceptance/PR-003-round3-review.md)。本分支增加 T04 离线 mock 与自动测试；现有 React / React Native 文件是 T00 历史工程起点。
 
 [ADR16](docs/adr/0016-unity-2022-r41-fallback-validation.md)固定 Unity 2022.3.62f3c1 / Cubism R4_1 / BiRP；[C# 边界](docs/tasks/U01/CSHARP-BASELINE.md)明确后续模块接线。代码起点为 PR #3 的 cfffbf6，再合入最新验收设计提交并登记 SHA。
 
@@ -10,6 +10,8 @@
 
 ## 从这里开始
 
+- [桌面个人陪伴的体验顺序](docs/development/DESKTOP-PRIORITIES.md)、[T00 外部余项与并行条件](docs/reports/T00/parallel-readiness.md)
+- [T04 离线 mock 使用说明](tests/mocks/README.md)、[派发记录](docs/tasks/T04/DISPATCH.md)
 - [Unity 原型任务书](docs/tasks/U01/TASKBOOK.md)、[接口](docs/tasks/U01/INTERFACES.md)、[验收](docs/tasks/U01/ACCEPTANCE.md)、[派工提示](docs/tasks/U01/DISPATCH.md)
 
 - [总架构](docs/blueprint/ARCHITECTURE.md)、[任务卡](docs/blueprint/TASKS.md)、[任务台账](docs/blueprint/planning/tasks.json)
@@ -32,6 +34,17 @@ uv run python tools/check.py
 ```
 
 上述命令从仓库根目录运行。uv 若不在 PATH，可用 `python -m uv` 代替 `uv`。依赖下载不需要云端 AI 密钥。全部 Python 运行依赖由根 pyproject.toml 和 uv.lock 管理；tools/requirements-validation.txt 仅用于单独校验设计包。
+
+## 运行 T04 离线 mock
+
+完成冻结依赖安装后，在仓库根运行：
+
+```text
+uv run python tools/run_mock.py
+uv run python tools/check_contract.py
+```
+
+第一个命令在 `127.0.0.1:8765` 提供独立模拟服务；第二个命令在另一终端运行契约、故障和真实本机连接测试，并自动清理其临时服务。服务不需要云账号，测试数据、模拟音频和角色占位均明确标为 mock。它消费 R1 `/v1` 契约，不是 U01 `unity-preview/1` 后台，也不代表正式业务 API 或真实平台已实现。详见 [完整操作说明](tests/mocks/README.md)。
 
 ## 运行历史 T00 工程预览
 

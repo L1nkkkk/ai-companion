@@ -20,6 +20,7 @@ def main() -> None:
     run(sys.executable, "-m", "ruff", "check", "services/api", "tools")
     run(sys.executable, "-m", "ruff", "format", "--check", "services/api", "tools")
     run(sys.executable, "-m", "pytest")
+    run(sys.executable, "tools/check_contract.py")
     run(pnpm, "typecheck")
     run(pnpm, "build:web")
     run(pnpm, "bundle:mobile")

@@ -54,7 +54,7 @@
       "title": "验证 iOS 后台音频与实时活动",
       "owner_role": "A5",
       "gate": "G0",
-      "status": "planned",
+      "status": "awaiting_external",
       "depends_on": [
         "T00"
       ],
@@ -84,14 +84,21 @@
         "后台与灵动岛接口建议"
       ],
       "external_resources": "Mac/Xcode、真实 iPhone、可安装签名；没有真机时只能提交待验证状态。",
-      "dispatch_prompt": "你负责 T01 验证 iOS 后台音频与实时活动，角色 A5。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：spikes/ios-audio/；docs/reports/T01/。前置任务：T00。目标：确认 iOS 的真实可行路径和系统边界。验收：AC10、AC12、AC13。外部条件：Mac/Xcode、真实 iPhone、可安装签名；没有真机时只能提交待验证状态。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "你负责 T01 验证 iOS 后台音频与实时活动，角色 A5。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：spikes/ios-audio/；docs/reports/T01/。前置任务：T00。目标：确认 iOS 的真实可行路径和系统边界。验收：AC10、AC12、AC13。外部条件：Mac/Xcode、真实 iPhone、可安装签名；没有真机时只能提交待验证状态。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。",
+      "preparation_report": "docs/reports/T00/feasibility-readiness.md",
+      "preparation_scope": "resource inventory and test matrix only; native/platform spike and real acceptance not run",
+      "parallel_authorization": "docs/reports/T00/parallel-readiness.md",
+      "pending": [
+        "Measured Mac/Xcode and installable signing",
+        "Connected real iPhone and target OS record"
+      ]
     },
     {
       "id": "T02",
       "title": "验证 Android 后台音频",
       "owner_role": "A6",
       "gate": "G0",
-      "status": "planned",
+      "status": "awaiting_external",
       "depends_on": [
         "T00"
       ],
@@ -120,14 +127,21 @@
         "生产音频引擎建议"
       ],
       "external_resources": "Android SDK、主力真机；额外厂商或系统版本用于后续回归。",
-      "dispatch_prompt": "你负责 T02 验证 Android 后台音频，角色 A6。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：spikes/android-audio/；docs/reports/T02/。前置任务：T00。目标：确认前台服务、系统通知和录音生命周期。验收：AC11、AC12、AC13。外部条件：Android SDK、主力真机；额外厂商或系统版本用于后续回归。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "你负责 T02 验证 Android 后台音频，角色 A6。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：spikes/android-audio/；docs/reports/T02/。前置任务：T00。目标：确认前台服务、系统通知和录音生命周期。验收：AC11、AC12、AC13。外部条件：Android SDK、主力真机；额外厂商或系统版本用于后续回归。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。",
+      "preparation_report": "docs/reports/T00/feasibility-readiness.md",
+      "preparation_scope": "resource inventory and test matrix only; native/platform spike and real acceptance not run",
+      "parallel_authorization": "docs/reports/T00/parallel-readiness.md",
+      "pending": [
+        "Validated native Android toolchain for the assigned spike",
+        "Connected authorized physical Android device"
+      ]
     },
     {
       "id": "T03",
       "title": "验证直播平台权限和真实弹幕",
       "owner_role": "A7",
       "gate": "G0",
-      "status": "planned",
+      "status": "awaiting_external",
       "depends_on": [
         "T00"
       ],
@@ -154,14 +168,21 @@
         "建议的首发平台及替代路径"
       ],
       "external_resources": "开发者账号、直播账号授权及可测试直播间；文档可读性和权限均需实际核实。",
-      "dispatch_prompt": "你负责 T03 验证直播平台权限和真实弹幕，角色 A7。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：spikes/live-access/；docs/reports/T03/。前置任务：T00。目标：先证明有可用权限和真实事件，再确定首发平台。验收：AC15。外部条件：开发者账号、直播账号授权及可测试直播间；文档可读性和权限均需实际核实。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "你负责 T03 验证直播平台权限和真实弹幕，角色 A7。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：spikes/live-access/；docs/reports/T03/。前置任务：T00。目标：先证明有可用权限和真实事件，再确定首发平台。验收：AC15。外部条件：开发者账号、直播账号授权及可测试直播间；文档可读性和权限均需实际核实。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。",
+      "preparation_report": "docs/reports/T00/feasibility-readiness.md",
+      "preparation_scope": "resource inventory and test matrix only; native/platform spike and real acceptance not run",
+      "parallel_authorization": "docs/reports/T00/parallel-readiness.md",
+      "pending": [
+        "Official application and broadcaster authorization",
+        "Approved test room and real event capability evidence"
+      ]
     },
     {
       "id": "T04",
       "title": "建立契约测试与离线模拟",
       "owner_role": "A8",
       "gate": "G0",
-      "status": "planned",
+      "status": "in_progress",
       "depends_on": [
         "T00"
       ],
@@ -191,7 +212,11 @@
         "固定测试向量与使用文档"
       ],
       "external_resources": "无需真实账号；使用 mock。",
-      "dispatch_prompt": "你负责 T04 建立契约测试与离线模拟，角色 A8。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：tests/contract/；tests/mocks/；tools/；.github/workflows/contract.yml。前置任务：T00。目标：让其他 agent 不依赖云账号即可开发。验收：AC02、AC07。外部条件：无需真实账号；使用 mock。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。"
+      "dispatch_prompt": "你负责 T04 建立契约测试与离线模拟，角色 A8。请阅读 docs/blueprint/README.md、ARCHITECTURE.md、CONTRACTS.md、自己的任务卡及 ACCEPTANCE.md。允许修改：tests/contract/；tests/mocks/；tools/；.github/workflows/contract.yml。前置任务：T00。目标：让其他 agent 不依赖云账号即可开发。验收：AC02、AC07。外部条件：无需真实账号；使用 mock。在独立分支或worktree实现并测试，共享契约变更交A0协调。提交复现步骤、真实测试证据、限制和交接报告。",
+      "branch": "agent/T04-contract-mocks",
+      "start_commit": "66b0e541a91aa727b33b3997b39bce178bbaee6a",
+      "dispatch_record": "docs/tasks/T04/DISPATCH.md",
+      "parallel_authorization": "docs/reports/T00/parallel-readiness.md"
     },
     {
       "id": "T05",

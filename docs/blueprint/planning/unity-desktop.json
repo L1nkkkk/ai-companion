@@ -10,6 +10,7 @@
   "interfaces": "docs/tasks/U01/INTERFACES.md",
   "acceptance": "docs/tasks/U01/ACCEPTANCE.md",
   "dispatch": "docs/tasks/U01/DISPATCH.md",
+  "product_priority_document": "docs/development/DESKTOP-PRIORITIES.md",
   "design_branch": "design/unity-desktop-taskbook",
   "foundation_commit": "0bfc133f1bd4c7b95a48e14e045101cb4fb38fda",
   "development_base_rule": "Start from cfffbf6b307e58421d0316cda67d027a5f39be7d and merge the exact design commit containing round3 acceptance and CSHARP-BASELINE; record both SHAs.",
