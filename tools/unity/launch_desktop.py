@@ -17,6 +17,7 @@ import tempfile
 import time
 import urllib.error
 import urllib.request
+from ctypes import wintypes
 from pathlib import Path
 
 
@@ -28,6 +29,321 @@ class LaunchError(Exception):
 
 def hidden_flags() -> int:
     return subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
+
+
+class _StartupInfo(ctypes.Structure):
+    _fields_ = [
+        ("cb", wintypes.DWORD),
+        ("lpReserved", wintypes.LPWSTR),
+        ("lpDesktop", wintypes.LPWSTR),
+        ("lpTitle", wintypes.LPWSTR),
+        *[
+            (name, wintypes.DWORD)
+            for name in (
+                "dwX",
+                "dwY",
+                "dwXSize",
+                "dwYSize",
+                "dwXCountChars",
+                "dwYCountChars",
+                "dwFillAttribute",
+                "dwFlags",
+            )
+        ],
+        ("wShowWindow", wintypes.WORD),
+        ("cbReserved2", wintypes.WORD),
+        ("lpReserved2", ctypes.c_void_p),
+        ("hStdInput", wintypes.HANDLE),
+        ("hStdOutput", wintypes.HANDLE),
+        ("hStdError", wintypes.HANDLE),
+    ]
+
+
+class _StartupInfoEx(ctypes.Structure):
+    _fields_ = [("StartupInfo", _StartupInfo), ("lpAttributeList", ctypes.c_void_p)]
+
+
+class _ProcessInfo(ctypes.Structure):
+    _fields_ = [
+        ("hProcess", wintypes.HANDLE),
+        ("hThread", wintypes.HANDLE),
+        ("dwProcessId", wintypes.DWORD),
+        ("dwThreadId", wintypes.DWORD),
+    ]
+
+
+class _BasicJobLimits(ctypes.Structure):
+    _fields_ = [
+        ("PerProcessUserTimeLimit", ctypes.c_longlong),
+        ("PerJobUserTimeLimit", ctypes.c_longlong),
+        ("LimitFlags", wintypes.DWORD),
+        ("MinimumWorkingSetSize", ctypes.c_size_t),
+        ("MaximumWorkingSetSize", ctypes.c_size_t),
+        ("ActiveProcessLimit", wintypes.DWORD),
+        ("Affinity", ctypes.c_size_t),
+        ("PriorityClass", wintypes.DWORD),
+        ("SchedulingClass", wintypes.DWORD),
+    ]
+
+
+class _ExtendedJobLimits(ctypes.Structure):
+    _fields_ = [
+        ("BasicLimitInformation", _BasicJobLimits),
+        ("IoInfo", ctypes.c_ulonglong * 6),
+        ("ProcessMemoryLimit", ctypes.c_size_t),
+        ("JobMemoryLimit", ctypes.c_size_t),
+        ("PeakProcessMemoryUsed", ctypes.c_size_t),
+        ("PeakJobMemoryUsed", ctypes.c_size_t),
+    ]
+
+
+def _supervision_error() -> LaunchError:
+    return LaunchError(
+        "process_supervision_unavailable",
+        "无法建立 Windows 子进程托管，已停止启动。请使用 Windows 10 或更新系统并检查运行权限。",
+    )
+
+
+class _WindowsProcess:
+    """Retain our own process handle; never look up or terminate a process by PID."""
+
+    def __init__(self, kernel, handle, pid, command):
+        self.kernel, self.handle, self.pid, self.args = kernel, handle, pid, command
+        self.returncode = None
+
+    def poll(self):
+        if self.returncode is None:
+            state = self.kernel.WaitForSingleObject(self.handle, 0)
+            if state == 0:
+                code = wintypes.DWORD()
+                if not self.kernel.GetExitCodeProcess(self.handle, ctypes.byref(code)):
+                    raise _supervision_error()
+                self.returncode = code.value
+            elif state != 258:  # WAIT_TIMEOUT
+                raise _supervision_error()
+        return self.returncode
+
+    def wait(self, timeout=None):
+        milliseconds = 0xFFFFFFFF if timeout is None else max(0, int(timeout * 1000))
+        state = self.kernel.WaitForSingleObject(self.handle, milliseconds)
+        if state == 258:
+            raise subprocess.TimeoutExpired(self.args, timeout)
+        if state != 0:
+            raise _supervision_error()
+        return self.poll()
+
+    def terminate(self):
+        if self.poll() is None and not self.kernel.TerminateProcess(self.handle, 1):
+            if self.poll() is None:
+                raise _supervision_error()
+
+    kill = terminate
+
+    def close(self):
+        if self.handle:
+            self.kernel.CloseHandle(self.handle)
+            self.handle = None
+
+
+class OwnedProcesses:
+    """Windows 10+ atomic job assignment, with no unsupervised fallback.
+
+    JOB_LIST associates the child during CreateProcess itself. Unlike creating a
+    suspended child and assigning it afterward, even launcher termination in the
+    creation interval cannot leave an unassigned child. The unnamed job handle is
+    non-inheritable and held only here; Windows closes it on forced launcher exit.
+    https://learn.microsoft.com/windows/win32/procthread/job-objects
+    https://learn.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-updateprocthreadattribute
+    """
+
+    def __init__(self):
+        self.children = []
+        self.job = None
+        if os.name != "nt":
+            return
+        try:
+            self.kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+            signatures = {
+                "CreateJobObjectW": ([ctypes.c_void_p, wintypes.LPCWSTR], wintypes.HANDLE),
+                "SetInformationJobObject": (
+                    [wintypes.HANDLE, ctypes.c_int, ctypes.c_void_p, wintypes.DWORD],
+                    wintypes.BOOL,
+                ),
+                "CloseHandle": ([wintypes.HANDLE], wintypes.BOOL),
+                "CreateFileW": (
+                    [
+                        wintypes.LPCWSTR,
+                        wintypes.DWORD,
+                        wintypes.DWORD,
+                        ctypes.c_void_p,
+                        wintypes.DWORD,
+                        wintypes.DWORD,
+                        wintypes.HANDLE,
+                    ],
+                    wintypes.HANDLE,
+                ),
+                "SetHandleInformation": (
+                    [wintypes.HANDLE, wintypes.DWORD, wintypes.DWORD],
+                    wintypes.BOOL,
+                ),
+                "InitializeProcThreadAttributeList": (
+                    [
+                        ctypes.c_void_p,
+                        wintypes.DWORD,
+                        wintypes.DWORD,
+                        ctypes.POINTER(ctypes.c_size_t),
+                    ],
+                    wintypes.BOOL,
+                ),
+                "UpdateProcThreadAttribute": (
+                    [
+                        ctypes.c_void_p,
+                        wintypes.DWORD,
+                        ctypes.c_size_t,
+                        ctypes.c_void_p,
+                        ctypes.c_size_t,
+                        ctypes.c_void_p,
+                        ctypes.c_void_p,
+                    ],
+                    wintypes.BOOL,
+                ),
+                "DeleteProcThreadAttributeList": ([ctypes.c_void_p], None),
+                "CreateProcessW": (
+                    [
+                        wintypes.LPCWSTR,
+                        wintypes.LPWSTR,
+                        ctypes.c_void_p,
+                        ctypes.c_void_p,
+                        wintypes.BOOL,
+                        wintypes.DWORD,
+                        ctypes.c_void_p,
+                        wintypes.LPCWSTR,
+                        ctypes.POINTER(_StartupInfoEx),
+                        ctypes.POINTER(_ProcessInfo),
+                    ],
+                    wintypes.BOOL,
+                ),
+                "WaitForSingleObject": ([wintypes.HANDLE, wintypes.DWORD], wintypes.DWORD),
+                "GetExitCodeProcess": (
+                    [wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD)],
+                    wintypes.BOOL,
+                ),
+                "TerminateProcess": ([wintypes.HANDLE, wintypes.UINT], wintypes.BOOL),
+            }
+            for name, (arguments, result) in signatures.items():
+                function = getattr(self.kernel, name)
+                function.argtypes, function.restype = arguments, result
+            self.job = self.kernel.CreateJobObjectW(None, None)
+            if not self.job:
+                raise _supervision_error()
+            limits = _ExtendedJobLimits()
+            limits.BasicLimitInformation.LimitFlags = 0x00002000  # KILL_ON_JOB_CLOSE
+            if not self.kernel.SetInformationJobObject(
+                self.job, 9, ctypes.byref(limits), ctypes.sizeof(limits)
+            ):
+                raise _supervision_error()
+        except Exception:
+            if self.job:
+                self.kernel.CloseHandle(self.job)
+                self.job = None
+            raise _supervision_error() from None
+
+    def __enter__(self):
+        return self
+
+    def start(self, command: list[str], *, cwd: Path, env: dict[str, str]):
+        if os.name != "nt":
+            child = subprocess.Popen(
+                command,
+                cwd=cwd,
+                env=env,
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            self.children.append(child)
+            return child
+        size = ctypes.c_size_t()
+        # The first call intentionally returns ERROR_INSUFFICIENT_BUFFER.
+        self.kernel.InitializeProcThreadAttributeList(None, 2, 0, ctypes.byref(size))
+        if not size.value:
+            raise _supervision_error()
+        attributes = ctypes.create_string_buffer(size.value)
+        if not self.kernel.InitializeProcThreadAttributeList(attributes, 2, 0, ctypes.byref(size)):
+            raise _supervision_error()
+        null_handle = None
+        try:
+            jobs = (wintypes.HANDLE * 1)(self.job)
+            if not self.kernel.UpdateProcThreadAttribute(
+                attributes, 0, 0x0002000D, jobs, ctypes.sizeof(jobs), None, None
+            ):
+                raise _supervision_error()
+            # Only this NUL handle is inherited. The job handle must never escape.
+            null_handle = self.kernel.CreateFileW("NUL", 0xC0000000, 3, None, 3, 0, None)
+            if null_handle == ctypes.c_void_p(-1).value:
+                null_handle = None
+                raise _supervision_error()
+            if not self.kernel.SetHandleInformation(null_handle, 1, 1):
+                raise _supervision_error()
+            inherited = (wintypes.HANDLE * 1)(null_handle)
+            if not self.kernel.UpdateProcThreadAttribute(
+                attributes, 0, 0x00020002, inherited, ctypes.sizeof(inherited), None, None
+            ):
+                raise _supervision_error()
+            startup = _StartupInfoEx()
+            startup.StartupInfo.cb = ctypes.sizeof(startup)
+            startup.StartupInfo.dwFlags = 0x00000100  # STARTF_USESTDHANDLES
+            startup.StartupInfo.hStdInput = null_handle
+            startup.StartupInfo.hStdOutput = null_handle
+            startup.StartupInfo.hStdError = null_handle
+            startup.lpAttributeList = ctypes.cast(attributes, ctypes.c_void_p)
+            information = _ProcessInfo()
+            command_line = ctypes.create_unicode_buffer(subprocess.list2cmdline(command))
+            environment = ctypes.create_unicode_buffer(
+                "\0".join(
+                    f"{key}={value}"
+                    for key, value in sorted(env.items(), key=lambda item: item[0].upper())
+                )
+                + "\0"
+            )
+            flags = (
+                0x08000000 | 0x00000400 | 0x00080000
+            )  # NO_WINDOW | UNICODE_ENVIRONMENT | EXTENDED_STARTUPINFO_PRESENT
+            if not self.kernel.CreateProcessW(
+                command[0],
+                command_line,
+                None,
+                None,
+                True,
+                flags,
+                environment,
+                str(cwd),
+                ctypes.byref(startup),
+                ctypes.byref(information),
+            ):
+                raise _supervision_error()
+            self.kernel.CloseHandle(information.hThread)
+            child = _WindowsProcess(
+                self.kernel, information.hProcess, information.dwProcessId, command
+            )
+            self.children.append(child)
+            return child
+        finally:
+            self.kernel.DeleteProcThreadAttributeList(attributes)
+            if null_handle:
+                self.kernel.CloseHandle(null_handle)
+
+    def __exit__(self, *_):
+        # Closing the job first also catches descendants or a failed direct-child cleanup.
+        if self.job:
+            self.kernel.CloseHandle(self.job)
+            self.job = None
+        for child in self.children:
+            try:
+                stop_owned(child)
+            finally:
+                if isinstance(child, _WindowsProcess):
+                    child.close()
 
 
 def private_directory(path: Path) -> None:
@@ -146,7 +462,7 @@ def log_event(directory: Path, event: str) -> None:
         output.write(f"{datetime.datetime.now(datetime.UTC).isoformat()} {event}\n")
 
 
-def stop_owned(process: subprocess.Popen | None) -> None:
+def stop_owned(process: subprocess.Popen | _WindowsProcess | None) -> None:
     if process is not None and process.poll() is None:
         process.terminate()
         try:
@@ -156,7 +472,9 @@ def stop_owned(process: subprocess.Popen | None) -> None:
             process.wait(timeout=5)
 
 
-def wait_ready(process: subprocess.Popen, token: str, port: int, timeout: float) -> None:
+def wait_ready(
+    process: subprocess.Popen | _WindowsProcess, token: str, port: int, timeout: float
+) -> None:
     # Environment proxy settings must not route the local token off this computer.
     class NoRedirect(urllib.request.HTTPRedirectHandler):
         def redirect_request(self, request, fp, code, message, headers, newurl):
@@ -209,7 +527,7 @@ def run_desktop(
     if player_command is None and not (package / "NeuroSaki.exe").is_file():
         raise LaunchError("incomplete_package", "桌面程序缺失，请重新完整解压桌面预览包。")
     private_directory(runtime)
-    with startup_lock(runtime):
+    with startup_lock(runtime), OwnedProcesses() as owned:
         ensure_port_free(port)
         config, token = write_private_config(runtime)
         backend = player = None
@@ -222,18 +540,14 @@ def run_desktop(
             environment["U01_PREVIEW_CONFIG"] = str(config)
             environment["U01_PREVIEW_MODE"] = "fixture"
             environment["U01_PREVIEW_SCENARIO"] = "normal"
-            backend = subprocess.Popen(
+            backend = owned.start(
                 backend_command or [sys.executable, "-B", "-m", "app.unity_preview"],
                 cwd=package,
                 env=environment,
-                stdin=subprocess.DEVNULL,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                creationflags=hidden_flags(),
             )
             log_event(runtime, "backend_started")
             wait_ready(backend, token, port, readiness_timeout)
-            player = subprocess.Popen(
+            player = owned.start(
                 player_command
                 or [
                     str(package / "NeuroSaki.exe"),
@@ -246,10 +560,6 @@ def run_desktop(
                 ],
                 cwd=package,
                 env=environment,
-                stdin=subprocess.DEVNULL,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                creationflags=hidden_flags(),
             )
             log_event(runtime, "player_started")
             while player.poll() is None:
@@ -262,10 +572,14 @@ def run_desktop(
             log_event(runtime, "player_closed")
             return code
         finally:
-            stop_owned(player)
-            stop_owned(backend)
-            config.unlink(missing_ok=True)
-            log_event(runtime, "owned_processes_stopped")
+            try:
+                stop_owned(player)
+            finally:
+                try:
+                    stop_owned(backend)
+                finally:
+                    config.unlink(missing_ok=True)
+                    log_event(runtime, "owned_processes_stopped")
 
 
 def main() -> int:

@@ -1,5 +1,6 @@
 """Controlled process and dependency tests; these do not pretend to execute Unity."""
 
+import ctypes
 import importlib.util
 import json
 import os
@@ -7,6 +8,8 @@ import re
 import socket
 import subprocess
 import sys
+import time
+from ctypes import wintypes
 from pathlib import Path
 
 import pytest
@@ -189,3 +192,133 @@ def test_token_file_inherits_only_current_user_acl(tmp_path):
     assert sddl.count("(A;") == 1
     assert "S-1-" in sddl
     assert ";;;WD" not in sddl and ";;;BU" not in sddl and ";;;AU" not in sddl
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows native job lifetime")
+@pytest.mark.parametrize("child_count", [1, 2])
+def test_forced_launcher_exit_reaps_owned_tree_without_ending_other_processes(
+    tmp_path, child_count
+):
+    """Use real dummy processes and retained handles, never Unity or a PID-wide kill."""
+    port = free_port()
+    dummy = tmp_path / "dummy.py"
+    dummy.write_text(
+        """import os, socket, subprocess, sys, time
+from pathlib import Path
+name = sys.argv[1]
+listener = None
+if name == "backend":
+    listener = socket.socket()
+    listener.bind(("127.0.0.1", int(sys.argv[2])))
+    listener.listen(1)
+    subprocess.Popen([sys.executable, __file__, "grandchild"], creationflags=0x08000000)
+Path(name + ".pid").write_text(str(os.getpid()))
+time.sleep(60)
+""",
+        encoding="utf-8",
+    )
+    helper = tmp_path / "launcher_helper.py"
+    helper.write_text(
+        f"""import os, sys, time
+from pathlib import Path
+sys.path.insert(0, {str(REPOSITORY / "tools/unity")!r})
+from launch_desktop import OwnedProcesses
+with OwnedProcesses() as owned:
+    owned.start([sys.executable, {str(dummy)!r}, "backend", {str(port)!r}], cwd=Path.cwd(), env=dict(os.environ))
+    if {child_count} == 2:
+        owned.start([sys.executable, {str(dummy)!r}, "player"], cwd=Path.cwd(), env=dict(os.environ))
+    Path("launcher.pid").write_text(str(os.getpid()))
+    time.sleep(60)
+""",
+        encoding="utf-8",
+    )
+    # Use the base interpreter directly, avoiding the venv redirector as the
+    # process under test. TerminateProcess must target the launcher, not its wrapper.
+    interpreter = getattr(sys, "_base_executable", sys.executable)
+    launcher = subprocess.Popen(
+        [interpreter, str(helper)], cwd=tmp_path, creationflags=launch.hidden_flags()
+    )
+    unrelated = subprocess.Popen(
+        [interpreter, "-c", "import time; time.sleep(60)"], creationflags=launch.hidden_flags()
+    )
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    kernel.OpenProcess.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+    kernel.OpenProcess.restype = wintypes.HANDLE
+    kernel.WaitForSingleObject.argtypes = [wintypes.HANDLE, wintypes.DWORD]
+    kernel.WaitForSingleObject.restype = wintypes.DWORD
+    kernel.TerminateProcess.argtypes = [wintypes.HANDLE, wintypes.UINT]
+    kernel.TerminateProcess.restype = wintypes.BOOL
+    kernel.CloseHandle.argtypes = [wintypes.HANDLE]
+    kernel.CloseHandle.restype = wintypes.BOOL
+    handles = []
+    names = ["backend", "grandchild"] + (["player"] if child_count == 2 else [])
+    try:
+        deadline = time.monotonic() + 10
+        while not all((tmp_path / (name + ".pid")).is_file() for name in names + ["launcher"]):
+            assert launcher.poll() is None, (
+                "Controlled launcher exited before creating its children"
+            )
+            assert time.monotonic() < deadline, "Controlled children did not become ready"
+            time.sleep(0.025)
+        assert int((tmp_path / "launcher.pid").read_text()) == launcher.pid
+        for name in names:
+            pid = int((tmp_path / (name + ".pid")).read_text())
+            handle = kernel.OpenProcess(0x00100000 | 0x0001, False, pid)  # SYNCHRONIZE | TERMINATE
+            assert handle
+            handles.append(handle)
+            assert kernel.WaitForSingleObject(handle, 0) == 258
+        with socket.create_connection(("127.0.0.1", port), timeout=1):
+            pass
+        launcher.kill()  # No Python finally runs in the tested launcher.
+        launcher.wait(timeout=5)
+        for handle in handles:
+            assert kernel.WaitForSingleObject(handle, 5000) == 0, (
+                "Owned process survived launcher termination"
+            )
+        assert unrelated.poll() is None
+        launch.ensure_port_free(port)
+    finally:
+        launch.stop_owned(launcher)
+        launch.stop_owned(unrelated)
+        for handle in handles:
+            if kernel.WaitForSingleObject(handle, 0) == 258:
+                kernel.TerminateProcess(handle, 1)
+                kernel.WaitForSingleObject(handle, 5000)
+            kernel.CloseHandle(handle)
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows fail-closed job setup")
+@pytest.mark.parametrize("failed_function", ["UpdateProcThreadAttribute", "CreateProcessW"])
+def test_job_attribute_or_process_creation_failure_does_not_run_unsupervised(
+    tmp_path, monkeypatch, failed_function
+):
+    marker = tmp_path / "must-not-run.txt"
+    command = [sys.executable, "-c", f"from pathlib import Path; Path({str(marker)!r}).touch()"]
+    with launch.OwnedProcesses() as owned:
+        monkeypatch.setattr(owned.kernel, failed_function, lambda *arguments: 0)
+        with pytest.raises(launch.LaunchError) as error:
+            owned.start(command, cwd=tmp_path, env=dict(os.environ))
+        assert error.value.code == "process_supervision_unavailable"
+        assert owned.children == []
+    assert not marker.exists()
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows fail-closed job limits")
+def test_job_limit_configuration_failure_closes_job_before_any_child(tmp_path, monkeypatch):
+    kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+    close = kernel.CloseHandle
+    close.argtypes = [wintypes.HANDLE]
+    close.restype = wintypes.BOOL
+    closed = []
+
+    def track_close(handle):
+        closed.append(handle)
+        return close(handle)
+
+    monkeypatch.setattr(kernel, "CloseHandle", track_close)
+    monkeypatch.setattr(kernel, "SetInformationJobObject", lambda *arguments: 0)
+    monkeypatch.setattr(launch.ctypes, "WinDLL", lambda *arguments, **keywords: kernel)
+    with pytest.raises(launch.LaunchError) as error:
+        launch.OwnedProcesses()
+    assert error.value.code == "process_supervision_unavailable"
+    assert len(closed) == 1
