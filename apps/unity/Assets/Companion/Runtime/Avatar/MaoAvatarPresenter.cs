@@ -8,6 +8,7 @@ using Live2D.Cubism.Framework;
 using Live2D.Cubism.Framework.Motion;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Playables;
 
 namespace AICompanion.Preview.Avatar
 {
@@ -49,6 +50,17 @@ namespace AICompanion.Preview.Avatar
         public Vector2 GazeValue => gaze;
         public int GreetingCount { get; private set; }
         public int BlinkCount { get; private set; }
+        public int MotionPlayableCount
+        {
+            get
+            {
+                var layers = motion != null ? motion.GetFadeStates() : null;
+                var layer = layers != null && layers.Length > 0 ? layers[0] as CubismMotionLayer : null;
+                if (layer == null || !layer.PlayableOutput.IsValid()) return 0;
+                var graph = layer.PlayableOutput.GetGraph();
+                return graph.IsValid() ? graph.GetPlayableCount() : 0;
+            }
+        }
 
         public void Initialize(Camera camera, AnimationClip idleClip, AnimationClip greetingClip)
         {
@@ -168,6 +180,11 @@ namespace AICompanion.Preview.Avatar
         public void Greet()
         {
             if (!initialized || disposed || suspended || greeting == null || Time.unscaledTimeAsDouble < greetingEnds) return;
+            // R4_1 disconnects old motion playables without destroying their graph nodes.
+            // Rebuild its own graph between greetings so repeated interaction stays bounded.
+            // OnEnable reuses the layer array observed by CubismFadeController.
+            motion.enabled = false;
+            motion.enabled = true;
             motion.PlayAnimation(greeting, priority: CubismMotionPriority.PriorityForce, isLoop: false);
             greetingEnds = Time.unscaledTimeAsDouble + greeting.length;
             GreetingCount++;

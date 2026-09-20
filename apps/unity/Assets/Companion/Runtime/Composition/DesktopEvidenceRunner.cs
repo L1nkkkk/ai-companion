@@ -70,6 +70,7 @@ namespace AICompanion.Preview.Composition
             public int warnings;
             public int blinks;
             public int greetings;
+            public int maximumMotionPlayables;
             public bool scriptedChecksCompleted;
             public string[] failures;
         }
@@ -97,7 +98,7 @@ namespace AICompanion.Preview.Composition
             if (scripted && (string.IsNullOrEmpty(DesktopBootstrap.Argument("-userDataPath")) || app.Session.Snapshot.Mode != PreviewMode.Fixture))
             { scripted = false; failures.Add("Scripted checks require an explicit isolated userDataPath and fixture capability."); }
             frames = Writer("frame-times.csv", "seconds,frame_ms");
-            samples = Writer("memory-avatar.csv", "seconds,working_bytes,private_bytes,unity_bytes,mouth,blink,breath,gaze_x,gaze_y,phase");
+            samples = Writer("memory-avatar.csv", "seconds,working_bytes,private_bytes,unity_bytes,mouth,blink,breath,gaze_x,gaze_y,phase,motion_playables");
             levels = Writer("output-levels.csv", "monotonic_ticks,request_id,generation,turn_id,sample_start,sample_count,post_volume_rms,volume");
             events = Writer("events.csv", "monotonic_ticks,event,request_id,generation,played_samples,total_samples");
             stops = Writer("stop-measurements.csv", "sample,request_id,generation,stop_ticks,last_nonzero_before_ticks,last_nonzero_after_ticks,return_ticks,clock_frequency,output_block_frames,output_sample_rate,stop_qpc_ticks,qpc_frequency");
@@ -132,6 +133,7 @@ namespace AICompanion.Preview.Composition
             if (finished || app == null) return;
             double now = Time.realtimeSinceStartupAsDouble;
             double elapsed = now - started; double gap = (now - lastFrame) * 1000; lastFrame = now;
+            result.maximumMotionPlayables = Math.Max(result.maximumMotionPlayables, app.Avatar.MotionPlayableCount);
             if (elapsed > 3)
             {
                 frameCount++; histogram[Math.Min(10001, (int)Math.Ceiling(gap * 10))]++;
@@ -152,7 +154,7 @@ namespace AICompanion.Preview.Composition
                     if (elapsed >= 30 && baselineWorking == 0) baselineWorking = working;
                     var avatar = app.Avatar;
                     samples.WriteLine(F(elapsed) + "," + working + "," + privateBytes + "," + UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong() +
-                        "," + F(avatar.MouthValue) + "," + F(avatar.BlinkValue) + "," + F(avatar.BreathValue) + "," + F(avatar.GazeValue.x) + "," + F(avatar.GazeValue.y) + "," + app.Session.Snapshot.Phase);
+                        "," + F(avatar.MouthValue) + "," + F(avatar.BlinkValue) + "," + F(avatar.BreathValue) + "," + F(avatar.GazeValue.x) + "," + F(avatar.GazeValue.y) + "," + app.Session.Snapshot.Phase + "," + avatar.MotionPlayableCount);
                 }
                 frames.Flush(); samples.Flush(); levels.Flush(); events.Flush(); stops.Flush();
             }
@@ -170,6 +172,16 @@ namespace AICompanion.Preview.Composition
             app.Avatar.Greet();
             yield return new WaitForSecondsRealtime(2);
             app.Session.SubmitText(new SubmitTextCommand("你好，请演示桌面聊天。", "mao", "fixture-tone", true));
+            if (DesktopBootstrap.Argument("-quitDuringPlayback") == "true")
+            {
+                double deadline = Time.realtimeSinceStartupAsDouble + 15;
+                while (app.Player.LastNonzeroOutputTicks == 0 && Time.realtimeSinceStartupAsDouble < deadline) yield return null;
+                if (app.Player.LastNonzeroOutputTicks == 0) failures.Add("Quit test never reached actual output.");
+                Mark("window-close-during-playback");
+                result.scriptedChecksCompleted = true;
+                Application.Quit();
+                yield break;
+            }
             yield return WaitReady(20);
             if (result.actualPlaybackCompletions == 0) failures.Add("Fixture audio did not finish through the real output path.");
             yield return Capture("desktop-chat.png");
@@ -341,6 +353,7 @@ namespace AICompanion.Preview.Composition
             }
             result.framesWithin33_3Percent = frameCount > 0 ? within * 100d / frameCount : 0;
             result.blinks = app.Avatar.BlinkCount; result.greetings = app.Avatar.GreetingCount;
+            if (result.maximumMotionPlayables < 4 || result.maximumMotionPlayables > 6) failures.Add("Published motion graph was unavailable or exceeded its six-node bound.");
             if (scripted && !result.scriptedChecksCompleted) failures.Add("Scripted checks did not finish within the run.");
             result.failures = failures.ToArray();
             frames?.Dispose(); samples?.Dispose(); levels?.Dispose(); events?.Dispose(); stops?.Dispose();
