@@ -6,7 +6,10 @@ param(
     [string]$UserDataDirectory,
     [string]$EvidenceDirectory,
     [int]$TestSeconds = 0,
-    [ValidateSet('fixture','fault','late-audio','generation')][string]$TestMode = 'fixture',
+    [ValidateSet('fixture','fault','late-audio','generation','export-stage','audiovisual')][string]$TestMode = 'fixture',
+    [ValidateSet('idle','generation','playback')][string]$ExportPhase = 'idle',
+    [double]$ExportDelay = -1,
+    [string]$EvidenceSourceSha,
     [string]$ExpectedError,
     [int]$Width = 1280,
     [int]$Height = 800,
@@ -95,6 +98,13 @@ try {
         if (-not $EvidenceDirectory -or -not $UserDataDirectory) { throw 'Tests require separate evidence and user-data directories.' }
         foreach ($item in @('-desktopTest',$TestMode,'-smokeSeconds',"$TestSeconds")) { $launch.ArgumentList.Add($item) }
         if ($ExpectedError) { $launch.ArgumentList.Add('-expectedError'); $launch.ArgumentList.Add($ExpectedError) }
+        if ($TestMode -eq 'export-stage') {
+            foreach ($item in @('-exportPhase',$ExportPhase,'-exportDelay',$ExportDelay.ToString([Globalization.CultureInfo]::InvariantCulture))) { $launch.ArgumentList.Add($item) }
+        }
+        if ($TestMode -eq 'audiovisual') {
+            if ($EvidenceSourceSha -notmatch '^[0-9a-fA-F]{40}$') { throw 'Audiovisual evidence requires the exact source SHA.' }
+            $launch.ArgumentList.Add('-evidenceSourceSha'); $launch.ArgumentList.Add($EvidenceSourceSha)
+        }
     }
     if ($NoScreenshots) { $launch.ArgumentList.Add('-noScreenshots'); $launch.ArgumentList.Add('true') }
     Write-Output 'Desktop preview ready. Replies and sound are labelled demonstrations. Closing the Player stops this local service.'

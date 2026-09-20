@@ -27,6 +27,7 @@ namespace AICompanion.Preview.Tests
                 CheckWire(root);
                 CheckWav(root).GetAwaiter().GetResult();
                 CheckSession().GetAwaiter().GetResult();
+                CheckExportWriteBarrier().GetAwaiter().GetResult();
                 string output = Environment.GetEnvironmentVariable("COMPANION_TEST_OUTPUT") ?? Path.Combine(root, ".bootstrap/desktop/session-audio-checks");
                 Directory.CreateDirectory(output);
                 File.WriteAllText(Path.Combine(output, "session-audio-checks.json"), "{\"passed\":" + Passed.Count + ",\"checks\":[" + string.Join(",", Passed.Select(name => "\"" + name + "\"")) + "]}");
@@ -152,6 +153,79 @@ namespace AICompanion.Preview.Tests
             var end = DateTime.UtcNow.AddSeconds(5);
             while (!condition()) { if (DateTime.UtcNow > end) throw new Exception("Check timed out."); await Task.Delay(1); }
         }
+
+        private static async Task CheckExportWriteBarrier()
+        {
+            foreach (string failure in new[] { "none", "rejected", "exception" })
+            {
+                var history = new MemoryHistory(); var gateway = new FakeGateway(); var player = new FakePlayer();
+                string settings = Path.Combine(Path.GetTempPath(), "u01-export-check-" + Guid.NewGuid().ToString("N"), "settings.json");
+                using (var session = new DesktopSessionController(gateway, player, new UnavailableMicrophoneCapture(), history, settings))
+                {
+                    await session.InitializeAsync(CancellationToken.None);
+                    Guid conversation = session.Snapshot.ConversationId;
+                    session.SubmitText(new SubmitTextCommand("导出前停止", "mao", null, true));
+                    await gateway.EmitText("已经生成、尚未完整播放", true); gateway.Complete();
+                    await Until(() => player.Owned != null); player.Start();
+                    history.PauseWrites = true;
+                    if (failure == "rejected") history.RejectState = DeliveryState.Interrupted;
+                    if (failure == "exception") history.ThrowState = DeliveryState.Interrupted;
+                    session.Cancel(StopReason.User);
+                    var export = session.ExportConversationAsync(conversation, CancellationToken.None);
+                    Assert(!export.IsCompleted && history.ExportCalls == 0 && history.LastRecord.DeliveryState == DeliveryState.Generated,
+                        "export_waits_for_suspended_terminal_write_" + failure);
+                    history.ResumeWrites();
+                    var result = await export;
+                    if (failure == "none")
+                    {
+                        Assert(result.Succeeded && history.ExportCalls == 1 && history.ExportedRecords.Last().DeliveryState == DeliveryState.Interrupted,
+                            "export_contains_durable_terminal_not_generated");
+                    }
+                    else
+                    {
+                        Assert(!result.Succeeded && result.Value == null && result.Error.Code == "history_write_failed" && history.ExportCalls == 0,
+                            "export_rejects_stale_disk_after_write_" + failure);
+                        await session.RefreshVoiceOptionsAsync(CancellationToken.None);
+                        result = await session.ExportConversationAsync(conversation, CancellationToken.None);
+                        Assert(session.Snapshot.Error == null && !result.Succeeded && history.ExportCalls == 0,
+                            "export_write_failure_survives_cleared_ui_error_" + failure);
+                        await session.NewConversationAsync(CancellationToken.None);
+                        result = await session.ExportConversationAsync(session.Snapshot.ConversationId, CancellationToken.None);
+                        Assert(result.Succeeded && history.ExportCalls == 1,
+                            "export_failure_does_not_poison_other_conversation_" + failure);
+                    }
+                }
+            }
+
+            var recovering = new MemoryHistory(); var recoveringGateway = new FakeGateway();
+            using (var session = new DesktopSessionController(recoveringGateway, new FakePlayer(), new UnavailableMicrophoneCapture(), recovering,
+                Path.Combine(Path.GetTempPath(), "u01-export-check-" + Guid.NewGuid().ToString("N"), "settings.json")))
+            {
+                await session.InitializeAsync(CancellationToken.None);
+                session.SubmitText(new SubmitTextCommand("中间写入失败随后同条终态保存", "mao", null, false));
+                recovering.RejectState = DeliveryState.Generated;
+                await recoveringGateway.EmitText("最终可保存文字", false);
+                session.Cancel(StopReason.User);
+                var recovered = await session.ExportConversationAsync(session.Snapshot.ConversationId, CancellationToken.None);
+                Assert(recovered.Succeeded && recovering.ExportedRecords.Last().DeliveryState == DeliveryState.Interrupted,
+                    "export_recovers_only_after_same_record_write_succeeds");
+            }
+
+            var queued = new MemoryHistory();
+            using (var session = new DesktopSessionController(new FakeGateway(), new FakePlayer(), new UnavailableMicrophoneCapture(), queued,
+                Path.Combine(Path.GetTempPath(), "u01-export-check-" + Guid.NewGuid().ToString("N"), "settings.json")))
+            {
+                await session.InitializeAsync(CancellationToken.None);
+                queued.PauseWrites = true;
+                session.SubmitText(new SubmitTextCommand("等待期间加入终态", "mao", null, false));
+                var export = session.ExportConversationAsync(session.Snapshot.ConversationId, CancellationToken.None);
+                session.Cancel(StopReason.User); // Appends a write after Export captured its first barrier.
+                queued.ResumeWrites();
+                var result = await export;
+                Assert(result.Succeeded && queued.ExportedRecords.Last().DeliveryState == DeliveryState.Interrupted,
+                    "export_drains_terminal_write_added_during_wait");
+            }
+        }
         private static void Assert(bool result, string name) { if (!result) throw new Exception("Failed: " + name); Passed.Add(name); }
         private static void Throws(Action action, string name) { try { action(); } catch { Passed.Add(name); return; } throw new Exception("Expected rejection: " + name); }
         private static async Task ThrowsAsync(Func<Task> action, string name) { try { await action(); } catch { Passed.Add(name); return; } throw new Exception("Expected rejection: " + name); }
@@ -212,7 +286,10 @@ namespace AICompanion.Preview.Tests
             private readonly Dictionary<Guid, ConversationHistory> _items = new Dictionary<Guid, ConversationHistory>();
             private ulong _generation = 1;
             internal bool PauseWrites;
+            internal DeliveryState? RejectState, ThrowState;
             internal HistoryTurn LastRecord;
+            internal IReadOnlyList<HistoryTurn> ExportedRecords;
+            internal int ExportCalls;
             private TaskCompletionSource<bool> _writeGate;
             internal void ResumeWrites() { PauseWrites = false; _writeGate?.TrySetResult(true); }
             public HistoryCapacitySnapshot Capacity => new HistoryCapacitySnapshot(_items.Count, 20, 80, HistoryRetentionPolicy.EvictOldestInactive, 1);
@@ -229,10 +306,23 @@ namespace AICompanion.Preview.Tests
                 }
                 if (!_items.TryGetValue(token.ConversationId, out var existing) || existing.WriteToken != token)
                     return new HistoryWriteResult(false, 1, new PreviewError("deleted", "已删除", false, row.Operation));
+                if (row.DeliveryState == ThrowState) throw new IOException("Controlled history write failure.");
+                if (row.DeliveryState == RejectState)
+                    return new HistoryWriteResult(false, 1, new PreviewError("storage_unavailable", "测试写入被拒绝", true, row.Operation));
                 LastRecord = row;
+                var records = existing.Records.ToList();
+                int index = records.FindIndex(item => item.Operation == row.Operation && item.Role == row.Role);
+                if (index < 0) records.Add(row); else records[index] = row;
+                _items[token.ConversationId] = new ConversationHistory(1, existing.ConversationId, existing.WriteToken, existing.Title,
+                    existing.CreatedAtUtc, row.UpdatedAtUtc, records);
                 return new HistoryWriteResult(true, 1, null);
             }
-            public Task<LocalResult<HistoryExport>> ExportAsync(Guid id, CancellationToken token) => throw new NotSupportedException();
+            public Task<LocalResult<HistoryExport>> ExportAsync(Guid id, CancellationToken token)
+            {
+                ExportCalls++; ExportedRecords = _items[id].Records;
+                var export = new HistoryExport(1, id, 1, DateTimeOffset.UtcNow, "test.json", "application/json", new byte[] { 123, 125 });
+                return Task.FromResult(new LocalResult<HistoryExport>(true, export, null));
+            }
             public Task DeleteConversationAsync(Guid id, CancellationToken token) { _items.Remove(id); return Task.CompletedTask; }
             public Task ClearAllAsync(CancellationToken token) { _items.Clear(); return Task.CompletedTask; }
             public void Dispose() { }

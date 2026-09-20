@@ -7,6 +7,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using AICompanion.Preview.Contracts;
+using AICompanion.Preview.UI;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -27,6 +28,9 @@ namespace AICompanion.Preview.Composition
         private StreamWriter levels;
         private StreamWriter events;
         private StreamWriter stops;
+        private StreamWriter exports;
+        private string exportPhase;
+        private bool exportReady;
         private int downloadGeneration = -1;
         private bool finished;
         private bool scripted;
@@ -37,6 +41,7 @@ namespace AICompanion.Preview.Composition
         private long baselineWorking;
         private long lastLevelTick;
         private double nextScreenshot;
+        private int manualScreenshot;
 
         [Serializable] private sealed class Result
         {
@@ -71,6 +76,12 @@ namespace AICompanion.Preview.Composition
             public int blinks;
             public int greetings;
             public int maximumMotionPlayables;
+            public int screenWidth;
+            public int screenHeight;
+            public uint windowDpi;
+            public int monitorScalePercent;
+            public int monitorScaleHresult;
+            public long stopwatchFrequency;
             public bool scriptedChecksCompleted;
             public string[] failures;
         }
@@ -85,6 +96,9 @@ namespace AICompanion.Preview.Composition
         [DllImport("kernel32.dll")] private static extern bool QueryPerformanceCounter(out long counter);
         [DllImport("kernel32.dll")] private static extern bool QueryPerformanceFrequency(out long frequency);
         [DllImport("psapi.dll")] private static extern bool GetProcessMemoryInfo(IntPtr handle, ref MemoryCounters memory, uint size);
+        [DllImport("user32.dll")] private static extern uint GetDpiForWindow(IntPtr window);
+        [DllImport("user32.dll")] private static extern IntPtr MonitorFromWindow(IntPtr window, uint flags);
+        [DllImport("shcore.dll")] private static extern int GetScaleFactorForMonitor(IntPtr monitor, out int scale);
 
         public void Initialize(DesktopBootstrap bootstrap, string path)
         {
@@ -94,16 +108,26 @@ namespace AICompanion.Preview.Composition
             if (duration <= 0) duration = 600;
             duration = Math.Min(duration, 1800);
             string testMode = DesktopBootstrap.Argument("-desktopTest");
-            scripted = testMode == "fixture" || testMode == "fault" || testMode == "late-audio" || testMode == "generation";
+            scripted = testMode == "fixture" || testMode == "fault" || testMode == "late-audio" || testMode == "generation" || testMode == "audiovisual" || testMode == "export-stage";
             if (scripted && (string.IsNullOrEmpty(DesktopBootstrap.Argument("-userDataPath")) || app.Session.Snapshot.Mode != PreviewMode.Fixture))
             { scripted = false; failures.Add("Scripted checks require an explicit isolated userDataPath and fixture capability."); }
             frames = Writer("frame-times.csv", "seconds,frame_ms");
             samples = Writer("memory-avatar.csv", "seconds,working_bytes,private_bytes,unity_bytes,mouth,blink,breath,gaze_x,gaze_y,phase,motion_playables");
-            levels = Writer("output-levels.csv", "monotonic_ticks,request_id,generation,turn_id,sample_start,sample_count,post_volume_rms,volume");
-            events = Writer("events.csv", "monotonic_ticks,event,request_id,generation,played_samples,total_samples");
+            levels = Writer("output-levels.csv", "monotonic_ticks,request_id,generation,turn_id,sample_start,sample_count,post_volume_rms,volume,native_qpc_ticks,qpc_frequency");
+            events = Writer("events.csv", "monotonic_ticks,event,request_id,generation,played_samples,total_samples,native_qpc_ticks,qpc_frequency");
             stops = Writer("stop-measurements.csv", "sample,request_id,generation,stop_ticks,last_nonzero_before_ticks,last_nonzero_after_ticks,return_ticks,clock_frequency,output_block_frames,output_sample_rate,stop_qpc_ticks,qpc_frequency");
+            exports = Writer("export-events.csv", "stage,stage_monotonic_ticks,observed_native_qpc_ticks,qpc_frequency,trigger_phase,conversation_id,request_id,generation,current_phase,played_samples,total_samples,mouth,observed_seconds");
+            app.Ui.ExportProgressChanged += OnExportProgress;
             app.Gateway.AudioDownloadStarted += OnDownloadStarted;
             result.unity = Application.unityVersion; result.graphics = SystemInfo.graphicsDeviceName;
+            result.stopwatchFrequency = Stopwatch.Frequency;
+            result.screenWidth = Screen.width; result.screenHeight = Screen.height;
+            using (var process = Process.GetCurrentProcess())
+            {
+                IntPtr window = process.MainWindowHandle;
+                result.windowDpi = GetDpiForWindow(window);
+                result.monitorScaleHresult = GetScaleFactorForMonitor(MonitorFromWindow(window, 2), out result.monitorScalePercent);
+            }
             result.audioDriver = AudioSettings.driverCapabilities.ToString(); result.outputSampleRate = AudioSettings.outputSampleRate;
             AudioSettings.GetDSPBufferSize(out result.dspBufferFrames, out result.dspBufferCount);
             app.Player.PostVolumeLevel += OnLevel;
@@ -118,6 +142,12 @@ namespace AICompanion.Preview.Composition
                 if (testMode == "fault") StartCoroutine(ExerciseFault());
                 else if (testMode == "late-audio") StartCoroutine(ExerciseLateAudio());
                 else if (testMode == "generation") StartCoroutine(ExerciseGenerating());
+                else if (testMode == "audiovisual")
+                {
+                    gameObject.AddComponent<DesktopVideoEvidence>().Initialize(app, directory);
+                    StartCoroutine(ExerciseAudioVisual());
+                }
+                else if (testMode == "export-stage") StartCoroutine(PrepareExportStage());
                 else StartCoroutine(Exercise());
             }
         }
@@ -156,13 +186,16 @@ namespace AICompanion.Preview.Composition
                     samples.WriteLine(F(elapsed) + "," + working + "," + privateBytes + "," + UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong() +
                         "," + F(avatar.MouthValue) + "," + F(avatar.BlinkValue) + "," + F(avatar.BreathValue) + "," + F(avatar.GazeValue.x) + "," + F(avatar.GazeValue.y) + "," + app.Session.Snapshot.Phase + "," + avatar.MotionPlayableCount);
                 }
-                frames.Flush(); samples.Flush(); levels.Flush(); events.Flush(); stops.Flush();
+                frames.Flush(); samples.Flush(); levels.Flush(); events.Flush(); stops.Flush(); exports.Flush();
             }
             if (nextScreenshot > 0 && elapsed >= nextScreenshot)
             {
                 nextScreenshot = -1;
                 StartCoroutine(Capture("desktop-start.png"));
             }
+            if (Input.GetKeyDown(KeyCode.F8) && app.Session.Snapshot.Mode == PreviewMode.Fixture &&
+                !string.IsNullOrEmpty(DesktopBootstrap.Argument("-userDataPath")))
+                StartCoroutine(Capture("desktop-manual-" + (++manualScreenshot).ToString("D2", CultureInfo.InvariantCulture) + ".png"));
             if (elapsed >= duration) { Finish(); Application.Quit(failures.Count == 0 && result.errors == 0 ? 0 : 1); }
         }
 
@@ -254,6 +287,93 @@ namespace AICompanion.Preview.Composition
             if (app.Session.Snapshot.Phase != SessionPhase.Ready) failures.Add("Request did not return Ready: " + app.Session.Snapshot.Phase);
         }
 
+        private IEnumerator ExerciseAudioVisual()
+        {
+            // Leave a bounded setup interval for a separate, PID-verified WASAPI recorder.
+            yield return new WaitForSecondsRealtime(15);
+            app.Avatar.Greet();
+            app.Session.SetVolume(.8f);
+            Mark("av-full-fixture-submit");
+            app.Session.SubmitText(new SubmitTextCommand("完整播放演示：请对照有声和静音片段观察口型。", "mao", "fixture-tone", true));
+            yield return WaitReady(20);
+            if (result.actualPlaybackCompletions != 1) failures.Add("AV fixture did not complete its first actual playback.");
+            yield return new WaitForSecondsRealtime(2);
+            Mark("av-volume-fixture-submit");
+            app.Session.SubmitText(new SubmitTextCommand("音量演示：从80%降到20%，静音后再恢复。", "mao", "fixture-tone", true));
+            double deadline = Time.realtimeSinceStartupAsDouble + 15;
+            while (!app.Player.Snapshot.IsPlaying && Time.realtimeSinceStartupAsDouble < deadline) yield return null;
+            if (!app.Player.Snapshot.IsPlaying) { failures.Add("AV volume sequence never started."); yield break; }
+            yield return new WaitForSecondsRealtime(.8f);
+            app.Session.SetVolume(.2f); Mark("av-volume-20");
+            yield return new WaitForSecondsRealtime(.7f);
+            app.Session.SetVolume(0); Mark("av-mute");
+            if (app.Avatar.MouthValue != 0) failures.Add("AV mute did not close mouth synchronously.");
+            yield return new WaitForSecondsRealtime(1.8f);
+            app.Session.SetVolume(.8f); Mark("av-volume-80-restored");
+            yield return new WaitForSecondsRealtime(.7f);
+            Mark("av-stop-command"); app.Session.Cancel(StopReason.User);
+            if (app.Player.Snapshot.IsPlaying || app.Avatar.MouthValue != 0) failures.Add("AV stop did not synchronously silence playback and mouth.");
+            result.playbackStops++;
+            yield return new WaitForSecondsRealtime(3);
+            if (app.Player.Snapshot.IsPlaying) failures.Add("AV old playback revived after stop.");
+            result.scriptedChecksCompleted = true;
+            Mark("av-sequence-complete");
+        }
+
+        private IEnumerator PrepareExportStage()
+        {
+            exportPhase = DesktopBootstrap.Argument("-exportPhase");
+            if (exportPhase != "idle" && exportPhase != "generation" && exportPhase != "playback")
+            { failures.Add("Export QA requires idle/generation/playback."); yield break; }
+            double delay = 15;
+            if (double.TryParse(DesktopBootstrap.Argument("-exportDelay"), NumberStyles.Float, CultureInfo.InvariantCulture, out double selected)) delay = selected;
+            if (delay < 0)
+            {
+                app.Ui.ShowNotice("导出验证已准备：打开本机历史后，按 F9 准备本轮测试。", false);
+                while (!Input.GetKeyDown(KeyCode.F9)) yield return null;
+            }
+            else yield return new WaitForSecondsRealtime((float)Math.Min(delay, 60));
+            app.Avatar.Greet();
+            long submittedAt = Stopwatch.GetTimestamp();
+            app.Session.SubmitText(new SubmitTextCommand("导出验证：" + exportPhase, "mao", "fixture-tone", true));
+            double deadline = Time.realtimeSinceStartupAsDouble + 20;
+            if (exportPhase == "idle") yield return WaitReady(20);
+            else if (exportPhase == "generation")
+            {
+                while (!app.Session.Snapshot.Turn.HasValue && Time.realtimeSinceStartupAsDouble < deadline) yield return null;
+                if (app.Session.Snapshot.Phase != SessionPhase.Thinking || app.Session.Snapshot.FullText.Length != 0)
+                { failures.Add("Export QA did not reach accepted generation."); yield break; }
+            }
+            else
+            {
+                while (app.Player.LastNonzeroOutputTicks <= submittedAt && Time.realtimeSinceStartupAsDouble < deadline) yield return null;
+                if (!app.Player.Snapshot.IsPlaying || app.Player.LastNonzeroOutputTicks <= submittedAt)
+                { failures.Add("Export QA did not reach actual audible output."); yield break; }
+            }
+            exportReady = true;
+            Mark("export-stage-ready-" + exportPhase);
+            File.WriteAllText(Path.Combine(directory, "export-ready.json"), "{\"expected_phase\":\"" + exportPhase + "\",\"phase\":\"" + app.Session.Snapshot.Phase + "\"}");
+        }
+
+        private void OnExportProgress(HistoryExportProgress progress)
+        {
+            if (finished) return;
+            QueryPerformanceCounter(out long tick); QueryPerformanceFrequency(out long frequency);
+            var snapshot = app.Player.Snapshot;
+            exports.WriteLine(progress.Stage + "," + progress.TimestampTicks + "," + tick + "," + frequency + "," + progress.TriggerPhase + "," + progress.ConversationId + "," +
+                progress.TriggerOperation?.RequestId + "," + progress.TriggerOperation?.Generation + "," + app.Session.Snapshot.Phase + "," + snapshot.PlayedSamples + "," + snapshot.TotalSamples + "," + F(app.Avatar.MouthValue) + "," + F(Time.realtimeSinceStartupAsDouble - started));
+            exports.Flush();
+            if (progress.Stage == HistoryExportStage.Stopping && exportPhase != null)
+            {
+                var expected = exportPhase == "idle" ? SessionPhase.Ready : exportPhase == "generation" ? SessionPhase.Thinking : SessionPhase.Speaking;
+                if (!exportReady || progress.TriggerPhase != expected) failures.Add("Export was not triggered during the requested actual phase: " + progress.TriggerPhase);
+            }
+            if (progress.Stage == HistoryExportStage.Stopped && (app.Player.Snapshot.IsPlaying || app.Avatar.MouthValue != 0))
+                failures.Add("Export did not stop local playback and mouth before opening the dialog.");
+            if (progress.Stage == HistoryExportStage.Failed) failures.Add("Export reported failure.");
+            if (progress.Stage == HistoryExportStage.Finished && exportPhase != null) result.scriptedChecksCompleted = true;
+        }
+
         private IEnumerator ExerciseFault()
         {
             yield return new WaitForSecondsRealtime(2);
@@ -326,7 +446,8 @@ namespace AICompanion.Preview.Composition
             if (finished) return;
             if (sample.Level01 > 0) result.nonzeroLevelSamples++; else result.zeroLevelSamples++;
             lastLevelTick = sample.MonotonicTicks;
-            levels.WriteLine(sample.MonotonicTicks + "," + sample.Turn.Operation.RequestId + "," + sample.Turn.Operation.Generation + "," + sample.Turn.TurnId + "," + sample.SampleStart + "," + sample.SampleCount + "," + F(sample.Level01) + "," + F(app.Player.Snapshot.Volume01));
+            QueryPerformanceCounter(out long tick); QueryPerformanceFrequency(out long frequency);
+            levels.WriteLine(sample.MonotonicTicks + "," + sample.Turn.Operation.RequestId + "," + sample.Turn.Operation.Generation + "," + sample.Turn.TurnId + "," + sample.SampleStart + "," + sample.SampleCount + "," + F(sample.Level01) + "," + F(app.Player.Snapshot.Volume01) + "," + tick + "," + frequency);
         }
         private void OnStarted(PlaybackStarted item) { result.actualPlaybackStarts++; Mark("playback-started"); }
         private void OnEnded(PlaybackEnded item) { if (item.Reason == PlaybackEndReason.Completed) result.actualPlaybackCompletions++; Mark("playback-ended-" + item.Reason); }
@@ -335,7 +456,8 @@ namespace AICompanion.Preview.Composition
             if (finished) return;
             var snapshot = app.Player.Snapshot;
             var operation = app.Session.Snapshot.Operation ?? snapshot.Turn?.Operation;
-            events.WriteLine(Stopwatch.GetTimestamp() + "," + name + "," + operation?.RequestId + "," + operation?.Generation + "," + snapshot.PlayedSamples + "," + snapshot.TotalSamples);
+            QueryPerformanceCounter(out long tick); QueryPerformanceFrequency(out long frequency);
+            events.WriteLine(Stopwatch.GetTimestamp() + "," + name + "," + operation?.RequestId + "," + operation?.Generation + "," + snapshot.PlayedSamples + "," + snapshot.TotalSamples + "," + tick + "," + frequency);
         }
         private void OnLog(string message, string stack, LogType type)
         { if (type == LogType.Error || type == LogType.Exception || type == LogType.Assert) result.errors++; if (type == LogType.Warning) result.warnings++; }
@@ -356,7 +478,8 @@ namespace AICompanion.Preview.Composition
             if (result.maximumMotionPlayables < 4 || result.maximumMotionPlayables > 6) failures.Add("Published motion graph was unavailable or exceeded its six-node bound.");
             if (scripted && !result.scriptedChecksCompleted) failures.Add("Scripted checks did not finish within the run.");
             result.failures = failures.ToArray();
-            frames?.Dispose(); samples?.Dispose(); levels?.Dispose(); events?.Dispose(); stops?.Dispose();
+            frames?.Dispose(); samples?.Dispose(); levels?.Dispose(); events?.Dispose(); stops?.Dispose(); exports?.Dispose();
+            app.Ui.ExportProgressChanged -= OnExportProgress;
             app.Gateway.AudioDownloadStarted -= OnDownloadStarted;
             File.WriteAllText(Path.Combine(directory, "player-result.json"), JsonUtility.ToJson(result, true));
             Application.logMessageReceived -= OnLog;

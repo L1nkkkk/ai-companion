@@ -22,6 +22,8 @@ namespace AICompanion.Preview.Session
         private readonly CancellationTokenSource _lifetime = new CancellationTokenSource();
         private readonly List<HistoryTurn> _messages = new List<HistoryTurn>();
         private Task _pendingWrites = Task.CompletedTask;
+        private readonly Dictionary<(OperationKey operation, MessageRole role), PreviewError> _historyWriteFailures =
+            new Dictionary<(OperationKey operation, MessageRole role), PreviewError>();
         private readonly object _settingsTimerGate = new object();
         private CancellationTokenSource _settingsDelay;
         private ConversationHistory _conversation;
@@ -229,13 +231,21 @@ namespace AICompanion.Preview.Session
             {
                 await previous;
                 var result = await _history.AppendOrUpdateAsync(token, record, CancellationToken.None);
-                if (!result.Accepted && !_disposed && _conversation?.WriteToken == token)
-                { _error = result.Error ?? Error("history_write_failed", "历史记录保存失败。", record.Operation); Publish(); }
+                var key = (record.Operation, record.Role);
+                if (result.Accepted) _historyWriteFailures.Remove(key);
+                else
+                {
+                    var error = result.Error ?? Error("history_write_failed", "历史记录保存失败。", record.Operation);
+                    _historyWriteFailures[key] = error;
+                    if (!_disposed && _conversation?.WriteToken == token) { _error = error; Publish(); }
+                }
             }
             catch (Exception e)
             {
+                var error = SafeError(e, "history_write_failed", "历史记录保存失败，请检查磁盘空间。", record.Operation);
+                _historyWriteFailures[(record.Operation, record.Role)] = error;
                 if (!_disposed && _conversation?.WriteToken == token)
-                { _error = SafeError(e, "history_write_failed", "历史记录保存失败，请检查磁盘空间。", record.Operation); Publish(); }
+                { _error = error; Publish(); }
             }
         }
         private void UpdateVisible(Operation op, DeliveryState state)
@@ -304,7 +314,20 @@ namespace AICompanion.Preview.Session
         public Task<LocalResult<MicrophoneDeviceList>> GetMicrophoneDevicesAsync(CancellationToken token) => _microphone.GetDevicesAsync(token);
         public void NotifyDraftEdited(string text) { _draft = text ?? ""; _draftRevision++; Publish(); }
         public Task<LocalResult<ConversationPage>> ListConversationsAsync(ConversationListQuery query, CancellationToken token) => _history.ListAsync(query, token);
-        public async Task<LocalResult<HistoryExport>> ExportConversationAsync(Guid id, CancellationToken token) { await _pendingWrites; return await _history.ExportAsync(id, token); }
+        public async Task<LocalResult<HistoryExport>> ExportConversationAsync(Guid id, CancellationToken token)
+        {
+            // A successful store read cannot make a failed terminal write durable. Keep
+            // failures separate from the UI error, which another command may clear.
+            Task pending;
+            do { pending = _pendingWrites; await pending; token.ThrowIfCancellationRequested(); }
+            while (!ReferenceEquals(pending, _pendingWrites));
+            if (_disposed) throw new ObjectDisposedException(nameof(DesktopSessionController));
+            foreach (var failure in _historyWriteFailures)
+                if (failure.Key.operation.ConversationId == id)
+                    return new LocalResult<HistoryExport>(false, null, Error("history_write_failed",
+                        "会话尚有未保存的记录，暂时无法导出。请检查本机存储后重试。", failure.Key.operation, true));
+            return await _history.ExportAsync(id, token);
+        }
         /// <summary>
         /// Await after Cancel(WindowClosing), before Dispose. Drains every already queued history
         /// update without blocking Unity's synchronization context; Composition owns the quit deadline.
@@ -338,6 +361,7 @@ namespace AICompanion.Preview.Session
             try
             {
                 await _pendingWrites; await _history.DeleteConversationAsync(id, token);
+                RemoveHistoryWriteFailures(id);
                 if (active) { _conversation = null; _messages.Clear(); await NewConversationAsync(token); }
                 Publish();
             }
@@ -349,9 +373,18 @@ namespace AICompanion.Preview.Session
             try
             {
                 await _pendingWrites; await _history.ClearAllAsync(token);
+                _historyWriteFailures.Clear();
                 _conversation = null; _messages.Clear(); await NewConversationAsync(token);
             }
             finally { _navigating = false; Publish(); }
+        }
+
+        private void RemoveHistoryWriteFailures(Guid conversationId)
+        {
+            var removed = new List<(OperationKey operation, MessageRole role)>();
+            foreach (var key in _historyWriteFailures.Keys)
+                if (key.operation.ConversationId == conversationId) removed.Add(key);
+            foreach (var key in removed) _historyWriteFailures.Remove(key);
         }
 
         public LocalCommandResult SetVolume(float volume)

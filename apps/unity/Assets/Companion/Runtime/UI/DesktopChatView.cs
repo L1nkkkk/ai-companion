@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,12 +26,17 @@ namespace AICompanion.Preview.UI
         private TMP_FontAsset font;
         private string characterId;
         private Action<HistoryExport> exportSink;
+        private CancellationTokenSource exportCancellation;
+        private Task pendingExport = Task.CompletedTask;
+        private readonly ConcurrentQueue<HistoryExportProgress> exportProgress = new ConcurrentQueue<HistoryExportProgress>();
+        public bool IsExporting => exportCancellation != null;
+        public event Action<HistoryExportProgress> ExportProgressChanged;
         private RectTransform canvas, messageContent, modal, modalContent;
         private ScrollRect scroll;
         private ChatInputField input;
         private TextMeshProUGUI state, mode, footer, counter, volumeLabel, autoReadLabel, muteLabel, emptyLabel, speechMode;
         private Slider volume;
-        private Button send, stop, mute, autoRead;
+        private Button send, cancelExport, stop, mute, autoRead, newConversation;
         private SessionSnapshot snapshot;
         private Guid shownConversation;
         private bool localBusy, initialized, syncing;
@@ -96,7 +102,7 @@ namespace AICompanion.Preview.UI
             state.enableWordWrapping = false;
             state.overflowMode = TextOverflowModes.Ellipsis;
 
-            var newConversation = ButtonAt(chat, "＋ 新会话", () => RunLocal(() => session.NewConversationAsync(lifetime.Token), "已开始新的会话。"), 1, 1, -168, -53, 141, 38);
+            newConversation = ButtonAt(chat, "＋ 新会话", () => RunLocal(() => session.NewConversationAsync(lifetime.Token), "已开始新的会话。"), 1, 1, -168, -53, 141, 38);
             var scrollHost = Panel("Messages", chat, new Color(0, 0, 0, 0));
             Place(scrollHost, 0, 0, 1, 1, 25, 230, -25, -150);
             scroll = Scroll(scrollHost, out messageContent);
@@ -140,8 +146,10 @@ namespace AICompanion.Preview.UI
             counter = Label("Length", composer, "0 / 2000", 12, Muted, 0, 15, 95, 23);
             Place(counter.rectTransform, 1, 0, 1, 0, -226, 15, -131, 38);
             send = ButtonAt(composer, "发送", Submit, 1, 0, -118, 12, 104, 32, true);
+            cancelExport = ButtonAt(composer, "取消导出", CancelPendingExport, 1, 0, -118, 12, 104, 32);
+            cancelExport.gameObject.SetActive(false);
 
-            stop = ButtonAt(chat, "停止 / Esc", () => session.Cancel(StopReason.User), 0, 0, 26, 21, 136, 38);
+            stop = ButtonAt(chat, "停止 / Esc", Stop, 0, 0, 26, 21, 136, 38);
             autoRead = ButtonAt(chat, "自动朗读：开", ToggleAutoRead, 0, 0, 173, 21, 148, 38);
             autoReadLabel = autoRead.GetComponentInChildren<TextMeshProUGUI>();
             speechMode = Label("Speech mode", chat, "语音输入后续开放", 12, Muted, 335, 26, 320, 28);
@@ -190,10 +198,10 @@ namespace AICompanion.Preview.UI
             autoReadLabel.text = value.Settings.AutoRead ? "自动朗读：开" : "自动朗读：关";
             mode.text = ModeText(value.Mode) + "  ·  声音：" + SpeechText(value.TtsMode);
             mode.color = value.Mode == PreviewMode.Cloud ? Accent : Warning;
-            state.text = PhaseText(value.Phase);
+            state.text = IsExporting ? "导出中 · 回复已停止，可切回窗口取消导出" : PhaseText(value.Phase);
             if (value.Error != null) state.text += "  ·  " + value.Error.Message;
             state.color = value.Error == null ? Accent : Warning;
-            stop.interactable = value.Operation.HasValue || value.Phase == SessionPhase.Recording || value.Phase == SessionPhase.Transcribing;
+            stop.interactable = IsExporting || value.Operation.HasValue || value.Phase == SessionPhase.Recording || value.Phase == SessionPhase.Transcribing;
             speechMode.text = !value.Settings.AutoRead ? "纯文字模式 · 不请求声音" :
                 value.TtsMode == SpeechMode.Fixture ? "测试音频不对应回复正文" :
                 value.TtsMode == SpeechMode.System ? "使用系统语音朗读下次回复" :
@@ -269,6 +277,9 @@ namespace AICompanion.Preview.UI
             counter.text = count <= 4000 ? count + " / 2000" : "无效字符";
             counter.color = count > 2000 ? Warning : Muted;
             send.interactable = !localBusy && count > 0 && count <= 2000 && !string.IsNullOrWhiteSpace(input.text) && snapshot != null && snapshot.Mode != PreviewMode.Unknown;
+            send.gameObject.SetActive(!IsExporting);
+            cancelExport.gameObject.SetActive(IsExporting);
+            newConversation.interactable = !localBusy;
         }
         private void Submit()
         {
@@ -293,8 +304,9 @@ namespace AICompanion.Preview.UI
         private void Update()
         {
             if (!initialized) return;
+            DrainExportProgress();
             if (Input.GetKeyDown(KeyCode.Escape))
-            { session.Cancel(StopReason.User); if (modal != null) CloseModal(); }
+            { Stop(); if (modal != null) CloseModal(); }
             if (Input.GetKeyDown(KeyCode.Tab) && string.IsNullOrEmpty(Input.compositionString))
             {
                 var options = new List<Selectable>();
@@ -314,6 +326,7 @@ namespace AICompanion.Preview.UI
 
         private void OpenHistory()
         {
+            if (IsExporting) { Feedback("请先完成或取消导出。", false); return; }
             OpenModal("本机历史", "history");
             Label("Retention", modal, "最多 20 个会话，每个 80 条消息；满额清理最旧的非当前会话。", 13, Muted, 28, -87, 650, 38, false, true);
             var list = Rect("History list", modal); Place(list, 0, 0, 1, 1, 25, 82, -25, -135);
@@ -369,32 +382,82 @@ namespace AICompanion.Preview.UI
         private async void Export(Guid id)
         {
             if (localBusy) return;
-            localBusy = true; UpdateCounter();
+            localBusy = true;
+            var cancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
+            exportCancellation = cancellation;
+            var settled = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+            pendingExport = settled.Task;
+            var trigger = session.Snapshot;
+            Action<HistoryExportStage> publish = stage => PublishExport(new HistoryExportProgress(stage, id, trigger.Phase,
+                trigger.Operation, System.Diagnostics.Stopwatch.GetTimestamp()));
             try
             {
-                var result = await session.ExportConversationAsync(id, lifetime.Token);
+                CloseModal(); UpdateCounter();
+                publish(HistoryExportStage.Stopping);
+                session.Cancel(StopReason.User);
+                publish(HistoryExportStage.Stopped);
+                Feedback("回复已停止；选择文件期间可切回窗口取消导出。", false);
+                publish(HistoryExportStage.Capturing);
+                // Session awaits all queued terminal history writes and propagates save failures.
+                var result = await session.ExportConversationAsync(id, cancellation.Token);
                 if (!this || lifetime.IsCancellationRequested) return;
-                if (!result.Succeeded) { Feedback(result.Error.Message, true); return; }
-                if (exportSink != null) { exportSink(result.Value); Feedback("会话已导出。", false); }
+                cancellation.Token.ThrowIfCancellationRequested();
+                if (!result.Succeeded) { publish(HistoryExportStage.Failed); Feedback(result.Error.Message, true); return; }
+                if (exportSink != null)
+                { exportSink(result.Value); publish(HistoryExportStage.Saved); Feedback("会话已导出。", false); }
                 else
                 {
-                    string path = HistoryFileExport.Save(result.Value);
-                    if (path != null) Feedback("会话已导出到所选文件。", false);
+                    // Native stages are queued without touching Unity from the dedicated STA.
+                    string path = await HistoryFileExport.SaveAsync(result.Value, cancellation.Token, stage =>
+                        exportProgress.Enqueue(new HistoryExportProgress(stage, id, trigger.Phase, trigger.Operation,
+                            System.Diagnostics.Stopwatch.GetTimestamp())));
+                    if (!this || lifetime.IsCancellationRequested) return;
+                    DrainExportProgress();
+                    publish(path == null ? HistoryExportStage.Cancelled : HistoryExportStage.Saved);
+                    Feedback(path == null ? "已取消导出。" : "会话已导出到所选文件。", false);
                 }
             }
-            catch (OperationCanceledException) { }
+            catch (OperationCanceledException)
+            {
+                if (this && !lifetime.IsCancellationRequested)
+                { DrainExportProgress(); publish(HistoryExportStage.Cancelled); Feedback("已取消导出。", false); }
+            }
             catch (Exception ex)
             {
                 // Never log the selected path, conversation content, or an exception message
                 // that could contain either; type and numeric HRESULT are enough to diagnose ABI failures.
                 Debug.LogWarning("HISTORY_EXPORT_FAILED type=" + ex.GetType().Name + " hresult=" + ex.HResult);
-                if (this) Feedback("无法导出，请检查目标目录与磁盘空间。", true);
+                if (this && !lifetime.IsCancellationRequested)
+                { DrainExportProgress(); publish(HistoryExportStage.Failed); Feedback("无法导出，请检查目标目录与磁盘空间。", true); }
             }
-            finally { localBusy = false; if (this && input != null) UpdateCounter(); }
+            finally
+            {
+                try
+                {
+                    exportCancellation = null; cancellation.Dispose(); localBusy = false;
+                    if (this && input != null && !lifetime.IsCancellationRequested)
+                    { DrainExportProgress(); publish(HistoryExportStage.Finished); Render(session.Snapshot); }
+                }
+                finally { settled.TrySetResult(true); }
+            }
+        }
+
+        /// <summary>Call on Unity's thread when normal shutdown begins; never waits for a native window.</summary>
+        public void CancelPendingExport() { exportCancellation?.Cancel(); }
+        /// <summary>Completion means export/native cleanup settled, not that a file was saved.</summary>
+        public Task WaitForPendingExportAsync() => pendingExport;
+        private void Stop() { session.Cancel(StopReason.User); CancelPendingExport(); }
+        private void DrainExportProgress()
+        { while (exportProgress.TryDequeue(out var progress)) PublishExport(progress); }
+        private void PublishExport(HistoryExportProgress progress)
+        {
+            try { ExportProgressChanged?.Invoke(progress); }
+            catch (Exception ex) { Debug.LogWarning("HISTORY_EXPORT_OBSERVER_FAILED type=" + ex.GetType().Name); }
         }
 
         private void OpenSettings()
         {
+            if (IsExporting) { Feedback("请先完成或取消导出；音量仍可直接调整。", false); return; }
             OpenModal("声音与本机设置", "settings");
             var s = session.Snapshot.Settings;
             Label("Output", modal, "播放设备：" + s.PlaybackDeviceLabel, 18, Ink, 28, -127, 640, 36, false, true);
@@ -587,8 +650,10 @@ namespace AICompanion.Preview.UI
                 default: return "后台未连接 · 在设置中刷新状态";
             }
         }
+        private void OnApplicationQuit() { CancelPendingExport(); }
         private void OnDestroy()
         {
+            CancelPendingExport();
             lifetime.Cancel();
             if (session != null) { session.SnapshotChanged -= Render; session.DraftUpdated -= ApplyDraft; }
             if (input != null) input.SendRequested -= Submit;

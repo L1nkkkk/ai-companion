@@ -28,6 +28,7 @@ namespace AICompanion.Preview.Composition
         public HttpConversationGateway Gateway { get; private set; }
         public MaoAvatarPresenter Avatar { get; private set; }
         public Camera AvatarCamera { get; private set; }
+        public DesktopChatView Ui { get; private set; }
         public string UserDataDirectory { get; private set; }
         private readonly CancellationTokenSource lifetime = new CancellationTokenSource();
         private CubismModel model;
@@ -92,10 +93,10 @@ namespace AICompanion.Preview.Composition
                 Session = new DesktopSessionController(Gateway, Player, new UnavailableMicrophoneCapture(), history, Path.Combine(UserDataDirectory, "settings.json"));
                 Session.SnapshotChanged += OnSnapshot;
                 Session.SpeechExpression += OnExpression;
-                var ui = gameObject.AddComponent<DesktopChatView>();
-                ui.Initialize(Session, UiFont, "mao");
+                Ui = gameObject.AddComponent<DesktopChatView>();
+                Ui.Initialize(Session, UiFont, "mao");
                 await Session.InitializeAsync(lifetime.Token);
-                if (!string.IsNullOrEmpty(history.RecoveryMessage)) ui.ShowNotice(history.RecoveryMessage, true);
+                if (!string.IsNullOrEmpty(history.RecoveryMessage)) Ui.ShowNotice(history.RecoveryMessage, true);
                 if (!stopped && !string.IsNullOrEmpty(Argument("-evidenceDirectory")))
                     gameObject.AddComponent<DesktopEvidenceRunner>().Initialize(this, Argument("-evidenceDirectory"));
             }
@@ -197,12 +198,13 @@ namespace AICompanion.Preview.Composition
             // Keep Unity's synchronization context alive until queued terminal records
             // reach disk. The first action still silences local playback synchronously.
             Session.Cancel(StopReason.WindowClosing);
+            Ui?.CancelPendingExport();
             await Task.Yield(); // Let the first wantsToQuit callback return before retrying.
             try
             {
-                var flush = Session.FlushHistoryAsync();
+                var flush = Task.WhenAll(Session.FlushHistoryAsync(), Ui != null ? Ui.WaitForPendingExportAsync() : Task.CompletedTask);
                 if (await Task.WhenAny(flush, Task.Delay(2000)) == flush) await flush;
-                else Debug.LogWarning("DESKTOP_HISTORY_CLOSE_TIMEOUT: terminal write did not finish within two seconds.");
+                else Debug.LogWarning("DESKTOP_CLOSE_TIMEOUT: local history or export cleanup did not finish within two seconds.");
                 if (Session.Snapshot.Error?.Code == "history_write_failed")
                     Debug.LogWarning("DESKTOP_HISTORY_CLOSE_FAILED: queued write reported a local storage error.");
             }

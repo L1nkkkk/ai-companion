@@ -10,7 +10,7 @@
 2. 双击 `Start-NeuroSaki.cmd`。包内提供固定 Python 运行环境，使用者无需另装 Python、PowerShell 或 Unity。
 3. 输入文字后 Enter 发送，Shift+Enter 换行；点击“停止 / Esc”或按 Esc 停止当前操作。关闭窗口退出应用及本次启动的后台。
 4. 点击角色打招呼；音量、静音、自动朗读和“设置”用于控制下一次回复。关闭自动朗读后只请求文字。
-5. “本机历史”可打开、导出和删除会话，也可清除全部。删除需要界面确认；导出使用 Windows 另存为窗口。
+5. “本机历史”可打开、导出和删除会话，也可清除全部。删除需要界面确认；导出先停止当前回复并保存历史终态，再打开 Windows 另存为窗口。选择文件时可切回主窗口调整音量，按“取消导出”、停止或 Esc 取消，取消后不会补播旧回复。
 
 最终包的位置、源版本与 SHA-256 以交付报告及 ZIP 旁的 `*-package-manifest.json` 为准；中间开发包不能替代最终包。启动失败会显示原因和本机日志位置。若已有另一实例或 8000 端口被占用，先关闭占用它的程序，再重新启动。
 
@@ -109,7 +109,9 @@ pwsh -File tools/unity/Start-Desktop.ps1 -Player (Join-Path $desktopOutput 'Neur
 
 源码自检、固定回复流程、实际 Windows 操作、真实音频输出和 OS DPI 是不同证据。通过内部停止回调不能直接宣称扬声器停止延迟已通过。中文 IME 候选、长按快捷键、125% / 150% DPI、设备切换、长时间运行及完整 U-G0/U-G1/U-G2 仍以逐项验收报告为准。
 
-当前交接证据见 [UI 与历史](../../docs/reports/U01/desktop-basics/ui-history.md)、[Session 与音频](../../docs/reports/U01/desktop-basics/session-audio.md)、[后台](../../docs/reports/U01/desktop-basics/backend.md) 及同目录总报告；本 README 不宣告完整桌面门禁通过。
+当前交接证据见 [UI 与历史](../../docs/reports/U01/desktop-basics/ui-history.md)、[Session 与音频](../../docs/reports/U01/desktop-basics/session-audio.md)、[后台](../../docs/reports/U01/desktop-basics/backend.md) 及同目录总报告；第二轮返工记录见 [返工登记](../../docs/reports/U01/desktop-basics-round2/WORK-ORDER.md)。本 README 不宣告完整桌面门禁通过。
+
+第二轮 QA 仅在显式指定隔离数据与证据目录时使用：`export-stage` 配合 `-ExportPhase` 和 `-ExportDelay -1`，打开历史后按 F9 准备真实阶段，再手工点击导出；便携包入口为 `tools/unity/qa/run_export_qa.py`。F8 保存当前 Player 自身渲染截图，不捕获其他应用或系统输入法窗口。`audiovisual` 配合最终 `-EvidenceSourceSha` 记录 60 秒实际渲染帧及原生 QPC，使用明确指定 PID 的进程回环另采同次声音，离线封装见 `tools/unity/qa/mux_qpc_evidence.py`。这些入口不在日常启动时运行。
 
 ## 模块边界
 
