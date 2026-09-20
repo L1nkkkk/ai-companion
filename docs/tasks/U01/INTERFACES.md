@@ -1,5 +1,7 @@
 # U01 接口与取消约定
 
+C# 协作起点已由 [CSHARP-BASELINE](CSHARP-BASELINE.md)冻结，包含 Transport→Audio 验证器注入。本文的预览协议、取消和数据约束保持有效；C# 成员名不自动定义 JSON 拓扑。
+
 版本：`unity-preview/1`。设计 owner：A0。适用：U01 本机 Windows 原型。本文定义语义；实际 C# 类型、schema、服务实现由独立开发会话提交。
 
 ## 1. 与正式契约的关系

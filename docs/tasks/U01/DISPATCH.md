@@ -1,75 +1,60 @@
-# U01 开发会话派工提示
+# U01 当前开发派工入口
 
-本文件用于用户在另一个开发会话发出指令。设计会话只编写与审阅，不因生成提示自动创建任务或执行开发。
+U01-00 已按 [A0 第三轮验收](../../reports/U01/acceptance/PR-003-round3-review.md)通过基础工程范围，版本与共享接口已冻结。以下四项可领取，尚未因本文自动启动。A0 会话继续只设计、审阅和验收；用户在独立开发会话执行实现。
 
-当前 U01-00 已启动并提交 PR #3，回退实验后恢复 `in_progress`。首轮两项返工已关闭。以下首个会话段落保留为历史初始模板；当前由原开发会话按 [ADR16 迁移步骤](../../adr/0016-unity-2022-r41-fallback-validation.md) 继续，不重复创建 U01-00。
+## 共同起点
 
-用户允许更换版本后，A0 已接受 Unity 2022.3 / R4_1 / BiRP 进入正式工程迁移。下列历史模板中的 Unity 6 / R5 由 ADR16 覆盖。原 owner 可修改工程、资源和锁文件，并提交固定 SHA 的干净构建及 600 秒验证；版本冻结和后续模块派工仍等待正式复核。
+- 代码/报告起点：`cfffbf6b307e58421d0316cda67d027a5f39be7d`，位于 `agent/U01-00-unity-foundation`；实际构建源码是 `849c6c982d875f477d88933af4abea5a163d0fa6`，两者产品文件相同。
+- 从该提交建立各自分支/worktree，再合入 `design/unity-desktop-taskbook` 中包含第三轮验收与 CSHARP-BASELINE 的精确提交，记录两个 SHA。PR 尚未合并不妨碍按此起点开发；不要从旧 main 或 P01 起步。
+- 先读 AGENTS.md、ADR15/16、[任务书](TASKBOOK.md)、[预览接口](INTERFACES.md)、[C# 冻结边界](CSHARP-BASELINE.md)、[验收表](ACCEPTANCE.md)和本任务允许目录。
+- 统一 Unity `2022.3.62f3c1 / 1623fc0bbb97`、R4_1 / Core 5.1.0 / BiRP。U01-00 已完成，不重做版本试验或 R1/R2。共享 Contracts、Packages、ProjectSettings、总场景和 Composition 仅由集成 owner 按统一决定修改。
 
-## 第一个会话：U01-00
+## 四个可领取工作包
 
-复制以下内容到新的开发会话，关联 `ai-companion` 仓库：
+| 任务 | 首阶段交付 | 必须保留的边界与后续项 |
+|---|---|---|
+| U01-01 角色呈现 | 在 Avatar 自有目录实现真实 AvatarPresenter：自然眨眼/呼吸、鼠标视线、点击招呼、能力降级；接收真实音频振幅 | 处理 U01-F01 内存定位、F02 未覆盖遮罩、F03 动作取景；不在角色模块实现云请求、音频播放或另一套会话状态 |
+| U01-02 桌面 UI 与历史 | 中文聊天输入与状态控件、设置/音色/设备入口、历史列表与导出删除；先接 typed 假 Session | UI 只走 ISessionController；历史位于独立 History 程序集。G0 先交可操作控件与 IME/DPI，G1 再完成历史业务；与角色 owner 处理 F03 |
+| U01-03 本机后台与云适配 | 先固定预览 schema、正常/故障/迟到/取消样例并供 A0/U01-04 核对，再实现隔离后台、fixture 和 provider 适配 | C# DTO 不定义新的 wire 字段；根正式 R1 契约不改。无密钥先做 fixture/错误路径，真实云调用与费用按已提供配置执行，不静默伪装 |
+| U01-04 会话、传输与音频 | Session 状态机、身份隔离、WAV 校验与播放、音量/停止、增益后真实振幅；先对固定 fixture 打通 G0 | 按 CSHARP-BASELINE 注入 Audio 验证器，严格 PCM 所有权；不吞掉迟到结果，不从假参数曲线声称实际音频口型；录音与 ASR 确认流程按 G2 补齐 |
+
+四模块按任务书的目录分开工作；U01-03/04 使用同一预览样例，UI/Avatar 先用 typed 假服务可并行。模块达到 G0 所需范围后，由 U01-05 集成 owner 统一接线打包，QA/A0 验收。U01-F01/F03 必须在 G0 交付前处理；完整 UA02 必须处理 F02 与真实角色交互。第二机器缺口 F04 单独推进，不冒充已经验证。
+
+## 可复制的开发会话提示
 
 ```text
-你负责 U01-00「Unity 工程与版本验证」，角色为 Unity 集成开发 owner。
-这是实现会话；A0 所在会话只负责设计和验收，发现设计问题向 A0 提案。
+你负责 {U01-01 / U01-02 / U01-03 / U01-04}，角色和允许目录以当前 U01 任务书、台账为准。
+这是实现会话；A0 会话只负责设计与验收。
 
-先同步 origin，找到包含 docs/adr/0015-unity-client-and-design-only-a0.md 的
-design/unity-desktop-taskbook 分支（若已合并则使用包含相同决定的 main），
-记录实际起点 SHA，再创建独立 worktree 和 agent/U01-00-unity-foundation 分支。
-不要从 P01 网页实现分支起步，也不要修改其他开发任务的目录。
+同步 ai-companion 仓库，以 cfffbf6b307e58421d0316cda67d027a5f39be7d
+建立独立分支/worktree，合入包含 PR-003-round3-review 与 CSHARP-BASELINE 的
+设计提交并记录双方精确 SHA。阅读 AGENTS.md、ADR15/16、U01 任务书、
+INTERFACES、CSHARP-BASELINE、ACCEPTANCE，以及最新验收的 U01-F01 至 F04。
 
-阅读 AGENTS.md、docs/blueprint/README.md、docs/blueprint/ARCHITECTURE.md、
-docs/tasks/U01/TASKBOOK.md、INTERFACES.md、ACCEPTANCE.md、SOURCES.md，
-以及 docs/blueprint/planning/unity-desktop.json。
+U01-00 已通过，不重复处理版本试验和已关闭 R1/R2。
+保持冻结的 Unity 2022.3.62f3c1 / R4_1 / Core 5.1.0 / Built-in 组合。
+只修改本模块允许目录；总场景、共享类型、依赖锁与 Composition 交集成 owner。
+发现共享接口缺口向 A0 提交具体提案，不自行分叉协议或复制另一份 Contracts。
 
-目标：验证 Unity 6.3 LTS 候选版本与官方 Cubism Unity 正式 R5/URP 组合，
-选择合法适用的 Live2D 演示模型，建立可供后续模块协作的 Unity 工程，
-实际构建并启动最小 Windows x64 Player。已有 Unity 2022.3 不代表 SDK 兼容。
-冻结确切 Unity/URP/SDK/Core/包版本、模型和字体来源及哈希，保留 .meta，
-配置缓存忽略规则；提交 C# 模块边界建议，不擅自改变预览协议或 R1 契约。
-
-允许：apps/unity 的初始骨架、ProjectSettings、Packages、共享 Contracts 类型、
-assets/manifest、tools/unity、必要 .gitignore，以及 docs/reports/U01/U01-00。
-共享配置写入由你单独负责；不得删除旧 React/RN 工程、重写云服务或修改 contracts。
-本任务只做工程、示例导入与构建验证；完整 UI、音频、云适配留给后续子任务。
-
-不要调用付费云服务。本任务没有云密钥也可以完成。
-缺少 Editor、构建模块、有效许可或可用样例时先检查资源与兼容性，
-完成能独立推进的准备，准确记录缺口；不要伪造包版本、模型或构建成功。
-
-交付：分支/起点/最终 SHA、固定版本建议、最小 Player 及 SHA-256、
-构建原始日志、Player 实际启动证据、资源获取说明、C# 接口映射、
-新工作目录复现步骤、已知限制、给后续 agent 的接线和目录说明。
-UA01/UA02 对应范围的结果写入 docs/reports/U01/U01-00/。
-完成后提交可审阅的 PR，交 A0 评审；不要把 U01 或 R1 整体标成完成。
+优先完成任务中 U-G0 所需部分，并处理本 owner 对应后续项。
+后台与网络模块先对齐预览 schema/固定样例；没有云资源时继续 fixture 与故障路径。
+不要把 mock、参数扫动或生成完成当成真实云调用、真实声音口型或播放结束。
+每个交付记录源码 SHA、范围、相关测试、实际设备/Player 或接口证据、已知缺口。
+提交可审阅 PR，交 A0 按对应 UA 验收；不要自行宣布整个 U01/G0/移动路线完成。
 ```
 
-## 后续模块会话模板
+不需要每个角色都新开任务；一个用户启动的开发会话也可按依赖顺序承担多个模块。上述放行只表示工程准备就绪，不代表本设计会话已经启动它们。
+
+## 返回 A0 验收
 
 ```text
-你负责 {U01 子任务 ID}，角色 {owner}，在独立开发会话完成实现和自测。
-设计依据：ADR15、docs/tasks/U01/ 下的任务书、接口与验收表。
-精确起点 SHA：{已通过 U01-00 的提交，或指定集成提交}。
-依赖与证据：{前置子任务、提交和报告}。
-允许目录：{只填写本子任务路径}。
-共享文件 owner：{集成开发 owner}；接口变更向 A0 提案后再统一实施。
-本次阶段：{U-G0 / U-G1 / U-G2}；必须覆盖的 UA：{编号}。
-可用资源与费用限制：{真实已提供的模型、设备、provider 和预算}。
-无外部资源时继续 fixture/错误处理，真实阶段保留待验证状态。
-交付实现、相关测试、实际 Player 或接口证据、复现、限制和交接报告。
-不得修改他人总场景、锁文件或借用旧网页实现来声称 Unity 已完成。
-```
-
-## 返回设计会话进行验收
-
-```text
-请以 A0 身份验收 U01-{子任务/门槛}，只评审、运行已有产物和提出返工项。
+请验收 U01-{子任务/门槛}，只评审、核验已有产物并登记返工。
 PR：{URL}
-提交：{SHA}
-Windows 包与 SHA-256：{位置 / 校验值}
-报告：{路径}
-本次声明通过的 UA：{编号}
-缺口：{外部资源、未执行项和已知失败}
-如发现问题，请给对应开发 owner 写明复现和修复验收条件，不在本会话代写实现。
+实际构建/测试源码：{SHA}；报告 HEAD：{SHA}
+设计与共享边界起点：{SHA}
+Windows 包 / 完整文件清单 / SHA-256：{位置}
+报告、原始结果与限制：{位置}
+声明通过的 UA 或明确子项：{编号与范围}
+本 owner 后续项 F01-F04 的处理：{证据与剩余缺口}
+如有问题，请给开发 owner 写明复现与通过条件，不在设计会话代写产品实现。
 ```

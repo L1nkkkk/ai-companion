@@ -1,0 +1,137 @@
+{
+  "reviewer": "A0",
+  "method": "Read-only source/artifact review; no rebuild or Player rerun",
+  "reviewed_head": "cfffbf6b307e58421d0316cda67d027a5f39be7d",
+  "tested_source": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "report_only_changes_after_tested_source": 40,
+  "hash_verification": {
+    "build_runtime_directory_zip_files": 210,
+    "raw_evidence_files": 27,
+    "published_zip_entries": 39,
+    "matching_committed_copies": 26,
+    "runtime_zip_sha256": "8c59e9c54cb89e5dafac2027fc8bdfa1ce53bd0c5a93f889435d15361bd8a6db",
+    "evidence_zip_sha256": "47ad4ef2863297772b21334a4a11dc0306ee376e89a93ba3c7600ace5510fc7f"
+  },
+  "runtime": {
+    "seconds": 600.0253533,
+    "errors": 0,
+    "warnings": 0,
+    "frames": 35811,
+    "p95_ms": 17.4517,
+    "max_ms": 64.1001,
+    "percent_le_33_3ms": 99.98603780961157,
+    "ge_1000ms": 0,
+    "cycles": 10,
+    "unique_stages": 190,
+    "completed_nonloop_motions": 20,
+    "working_set_baseline_bytes": 264126464,
+    "working_set_final_bytes": 485359616,
+    "working_set_growth_bytes": 221233152,
+    "memory_curve_available": false
+  },
+  "source_clean_workdir_evidence": true,
+  "screenshots_reviewed": [
+    "behavior-01-neutral.png",
+    "behavior-02-mouth-open.png",
+    "behavior-04-left-eye-closed.png",
+    "behavior-05-right-eye-closed.png",
+    "behavior-06-both-eyes-closed.png",
+    "behavior-11-look-left.png",
+    "behavior-12-look-right.png",
+    "behavior-16-greeting-tapbody-0.png",
+    "behavior-17-mask-stress-special-01.png"
+  ],
+  "coverage_limits": {
+    "unobserved_masked": [
+      "ArtMesh274",
+      "ArtMesh273",
+      "ArtMesh256",
+      "ArtMesh193",
+      "ArtMesh192"
+    ],
+    "unobserved_inverted": [
+      "ArtMesh193",
+      "ArtMesh192"
+    ],
+    "full_UA02_passed": false,
+    "U_G0_passed": false
+  },
+  "task": "U01-00",
+  "date": "2026-09-20",
+  "verdict": "accepted_foundation",
+  "task_completed": true,
+  "version_frozen": true,
+  "shared_api_frozen": true,
+  "release_dependents": [
+    "U01-01",
+    "U01-02",
+    "U01-03",
+    "U01-04"
+  ],
+  "resolved_findings": [
+    "U01-00-R1",
+    "U01-00-R2"
+  ],
+  "open_followups": [
+    {
+      "id": "U01-F01",
+      "title": "Explain memory growth using time series and controlled runs",
+      "status": "open",
+      "owners": [
+        "U01-01",
+        "U01-05",
+        "QA"
+      ],
+      "due": "before U-G0; repeat with business load for UA11",
+      "report": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-F02",
+      "title": "Resolve unobserved mask paths or explicit capability exclusions",
+      "status": "open",
+      "owners": [
+        "U01-01",
+        "QA"
+      ],
+      "due": "full UA02",
+      "report": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-F03",
+      "title": "Validate product framing and UI against enabled motion/effect bounds",
+      "status": "open",
+      "owners": [
+        "U01-01",
+        "U01-02",
+        "U01-05"
+      ],
+      "due": "before U-G0",
+      "report": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    },
+    {
+      "id": "U01-F04",
+      "title": "Exact Editor acquisition and second-machine reproduction",
+      "status": "open",
+      "owners": [
+        "T00 second-machine owner",
+        "QA"
+      ],
+      "due": "before formal multi-machine handoff; not required for current same-machine U01-00",
+      "report": "docs/reports/U01/acceptance/PR-003-round3-review.md"
+    }
+  ],
+  "acceptance": {
+    "UA01": "passed",
+    "UA02": "not_run",
+    "UA02_foundation_subchecks": "passed",
+    "UA03-UA12": "not_run"
+  },
+  "gate_status": {
+    "U-G0": "in_progress",
+    "U-G1": "not_started",
+    "U-G2": "not_started"
+  },
+  "csharp_baseline": "docs/tasks/U01/CSHARP-BASELINE.md",
+  "product_execution_by_A0": false,
+  "merge_performed": false
+}
