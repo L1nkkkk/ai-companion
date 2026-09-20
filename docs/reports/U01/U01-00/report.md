@@ -2,6 +2,8 @@
 
 日期：2026-09-20。角色：Unity 开发与集成 owner。建议状态：**awaiting_external**。此 PR 可审阅工程准备与资源证据；**U01-00 尚未完成，不放行依赖任务，不声明 UA01、UA02、U-G0 或 U01 通过。**
 
+A0 首轮审阅后的 R1/R2 修复已提交至 `7f905b5d0a027844cf45d554558cc6440e21a2a7`，仍在原分支与 PR #3。见 [审阅修复与实测](review-fixes.md)；该提交的脚本测试不改变上述 Unity 验收状态。
+
 ## 起点与范围
 
 - 远端：`https://github.com/L1nkkkk/ai-companion.git`。

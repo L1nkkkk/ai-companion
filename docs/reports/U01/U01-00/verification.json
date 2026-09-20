@@ -158,8 +158,60 @@
         "native-reproduction.json"
       ],
       "limitations": "No Unity Editor import, C# compile, URP appearance or Windows Player."
+    },
+    {
+      "name": "Review fix controlled-process regression and full repository checks",
+      "status": "passed",
+      "tested_commit": "7f905b5d0a027844cf45d554558cc6440e21a2a7",
+      "source_dirty_at_start": false,
+      "evidence": [
+        "review-fixes/player-harness.json",
+        "review-fixes/foundation-check.txt"
+      ],
+      "limitations": "No Unity acceptance tests; synthetic fixture outputs excluded from graphics evidence."
     }
   ],
   "prepared_commit": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
-  "tested_commit_scope": "No Unity acceptance test ran. Prepared source was used for the independent native/assets reproduction below."
+  "tested_commit_scope": "No Unity acceptance test ran. Prepared source was used for the independent native/assets reproduction below.",
+  "review_fixes": {
+    "review_source_commit": "b397e7dccac0b1699387e7f1e59f0ca7040fb2fa",
+    "implementation_commit": "7f905b5d0a027844cf45d554558cc6440e21a2a7",
+    "a0_rereview_status": "pending",
+    "items": [
+      {
+        "id": "U01-00-R1",
+        "development_status": "proposal_updated",
+        "method": "Session-only UI boundary traced through complete DTO mappings, bounded history/export/device/voice APIs and examples",
+        "evidence": [
+          "interfaces-proposal.md",
+          "review-fixes.md"
+        ],
+        "limitations": "Proposal only; not a compiled implementation or A0 freeze."
+      },
+      {
+        "id": "U01-00-R2",
+        "development_status": "tests_passed",
+        "method": "Four real controlled Windows process cases: normal, hang with same-image sentinel, missing screenshot, invalid result; all evidence hashes checked",
+        "evidence": [
+          "review-fixes/player-harness.json",
+          "review-fixes.md"
+        ],
+        "limitations": "Synthetic fixture outputs test process supervision and evidence validation; no Unity import, graphics, build, UA01 or UA02 acceptance evidence."
+      }
+    ]
+  },
+  "environment_followup": {
+    "status": "awaiting_external",
+    "local_unity_63_found": false,
+    "additional_official_version_checked": "6000.3.21f1",
+    "official_head_status_chain": [
+      302,
+      404
+    ],
+    "evidence": [
+      "environment-install.md",
+      "review-fixes/unity-6000.3.21f1-official-head.txt",
+      "review-fixes/unity-6000.3.21f1-metadata-excerpt.json"
+    ]
+  }
 }

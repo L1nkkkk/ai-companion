@@ -95,3 +95,11 @@ Start-Process -FilePath $editor -ArgumentList ('-batchmode -nographics -quit -cr
 - `license-probe-2022.private.log`、`license-probe-2022-build.private.log`：原始本机日志，可能包含机器/账户标识，**不入 Git、不附公开分发包**。
 
 本报告未安装 Unity 6，未更换许可证，也没有验证 Unity 6 的 Windows Mono 构建模块。后续安装成功后，应补充新编辑器精确路径、安装器 SHA-256、实际许可探针和正式项目构建证据，保留这次失败尝试供排障。
+
+## 首轮审阅后的补充核查
+
+2026-09-20 再次检查本机已知 Unity 安装目录、隔离工具目录和下载目录，没有发现新增官方 Unity 6.3 Editor 或安装器。Hub 还登记了一个现有自定义 `2022.2.8f1_e73d2c1eec46` 编辑器；实读其文件版本确认属于 Unity 2022，未启动或用于 U01 工程。原有官方 `2022.3.62f3c1` 同样不能替代所需环境。
+
+父任务于 09:00–09:02 UTC 读取官方发布 API 的最近五个 6.3 版本，新增一次此前未试的 `6000.3.21f1` / `c02631ffc030` Windows x64 Editor HEAD 核查。该官方 EXE 仍从 `download.unity3d.com` 以 302 重定向至 `download.unitychina.cn` 后返回 404；该版本元数据没有提供第二个 Windows x64 Editor 下载项。未重复已失败的补丁请求，也未更改系统网络。此范围内仍没有可用安装来源，不能推断所有官方分发渠道都不可用。
+
+公开证据为 [筛选后的官方元数据](review-fixes/unity-6000.3.21f1-metadata-excerpt.json) 与 [完整筛选响应头](review-fixes/unity-6000.3.21f1-official-head.txt)。元数据摘录记录原始完整 API 文件哈希，原文件保存在仓库同级 `U01-00-evidence/parent-continuation/`。其他平台 Editor 和构建模块没有被当作 Windows x64 Editor 使用。工程候选版本保持原样，未因一次失败的补丁查询改成未经测试的新版本。
