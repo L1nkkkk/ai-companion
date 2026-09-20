@@ -4,6 +4,8 @@
 
 每个任务卡都包含可复制的派工提示。机器可读台账在 [planning/tasks.json](planning/tasks.json)。真实资源不足时按协作规则记录 awaiting_external，并继续不受影响的工作。
 
+**ADR15 执行覆盖**：新的客户端使用 Unity。T09、T10、T11、T12、T13、T18、T19 的原客户端目录与实现提示作为历史记录保留，台账标为 `changed` 且禁用原派工，必须重写后再领取；不能执行下面旧的 WebView / React / RN 提示。近期独立开发请使用 [U01 任务书](../tasks/U01/TASKBOOK.md)、[U01 台账](planning/unity-desktop.json) 和 [U01-00 派工提示](../tasks/U01/DISPATCH.md)。其他任务的业务目标和 AC 编号继续保留。A0 本会话仅设计与验收，实际实现/集成由独立开发会话承担。
+
 | 任务 | 负责人 | 阶段 | 前置任务 |
 |---|---|---|---|
 | T00 建立正式仓库与冻结契约 | A0 | G0 | 无 |
