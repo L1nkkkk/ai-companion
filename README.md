@@ -1,6 +1,6 @@
 # AI Companion
 
-桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。U01-00 已在独立开发分支提交候选工程，因目标 Editor 下载失败暂未完成，尚无通过验收的 Windows Unity 程序；进度见 [A0 审阅记录](docs/reports/U01/acceptance/PR-003-review.md)。本分支维护设计与验收文档；现有 React / React Native 文件是 T00 历史工程起点。
+桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。U01-00 已在独立开发分支提交候选工程，因目标 Editor 下载失败暂未完成，尚无通过验收的 Windows Unity 程序；首轮两项返工已关闭，进度见 [A0 最新复核](docs/reports/U01/acceptance/PR-003-round2-review.md)。本分支维护设计与验收文档；现有 React / React Native 文件是 T00 历史工程起点。
 
 从 [U01 Unity 桌面原型任务书](docs/tasks/U01/TASKBOOK.md) 开始，当前先由原开发会话续作 U01-00；[派工提示](docs/tasks/U01/DISPATCH.md) 随验收状态使用。A0 当前会话只负责设计和验收，编码与打包由其他开发会话承担，规则见 [ADR15](docs/adr/0015-unity-client-and-design-only-a0.md)。历史 [P01 网页草稿](https://github.com/L1nkkkk/ai-companion/pull/1) 仅作交互参考，不是 Unity 交付。
 
