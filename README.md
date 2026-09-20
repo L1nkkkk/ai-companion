@@ -1,6 +1,6 @@
 # AI Companion
 
-桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前为 **T00 工程起点**，包含可运行的网页入口、后台存活检查、手机初始工程及冻结的接口。聊天、语音、Live2D 和后台陪伴将由后续任务实现。
+桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前可体验 **P01「伴星」桌面原型**：演示角色、预设文字聊天、系统语音、口型与打断、本机历史。保留服务端云模型接入口；真实 Live2D、直播和手机后台仍按原任务书推进。
 
 正式私有仓库：[L1nkkkk/ai-companion](https://github.com/L1nkkkk/ai-companion)，主分支 `main`。其他机器通过 Git 克隆后按下方步骤安装。
 
@@ -10,6 +10,7 @@
 - [协作规则](AGENTS.md)、[接口说明](docs/blueprint/CONTRACTS.md)、[唯一契约目录](contracts/README.md)
 - [T00 交接与验证](docs/reports/T00/README.md)、[工具与资源清单](docs/development/ENVIRONMENT.md)
 - [第二台机器接手](docs/development/SECOND_MACHINE.md)、[GitHub 与并行开发](docs/development/COLLABORATION.md)
+- [桌面原型使用说明](docs/development/DESKTOP_PROTOTYPE.md)、[桌面优先决策](docs/adr/0014-desktop-prototype-first.md)、[P01 交接](docs/reports/P01/README.md)
 
 ## 安装
 
@@ -27,19 +28,15 @@ uv run python tools/check.py
 
 ## 运行开发预览
 
-在第一个终端启动后台：
+同时启动本机后台与桌面网页：
 
 ```text
-uv run uvicorn app.main:app --app-dir services/api --host 127.0.0.1 --port 8000
+pnpm dev:desktop
 ```
 
-在第二个终端启动网页：
+打开 [伴星桌面原型](http://127.0.0.1:5173)。Windows 也可双击 `start-desktop.cmd`。默认无需云端密钥，聊天使用明确标注的预设回应，角色为原创 SVG 演示形象。系统语音与云端配置见[使用说明](docs/development/DESKTOP_PROTOTYPE.md)。
 
-```text
-pnpm dev:web
-```
-
-打开终端显示的本地地址。网页显示基础服务连接状态。后台目前只提供 `/health/live`；`/health/ready` 和 `/v1/*` 尚未实现，不会假装业务已就绪。开发入口仅绑定本机，跨网手机测试由 T16 配置 HTTPS。
+后台提供 `/health/live` 与本机限定的 `/prototype/*`。`/health/ready`、`/v1/*`、账号和设备租约尚未实现；临时接口不是 R1 冻结契约。开发入口仅绑定本机，跨网手机测试由 T16 配置 HTTPS。
 
 ## 手机工程
 

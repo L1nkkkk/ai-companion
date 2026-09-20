@@ -1,8 +1,52 @@
-:root { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; color: #1d3141; background: #f5f4ee; }
-body { margin: 0; min-height: 100vh; display: grid; place-items: center; }
-main { max-width: 740px; margin: 24px; padding: clamp(28px, 5vw, 60px); border: 1px solid #d9ded6; border-radius: 24px; background: #fffef9; }
-h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.3; font-weight: 600; }
-p { line-height: 1.8; }
-.eyebrow { letter-spacing: .12em; font-size: 12px; color: #496252; }
-.connection { display: inline-block; padding: 8px 18px; background: #e8f0e5; border-radius: 12px; }
-.note { color: #62716c; font-size: 14px; }
+@charset "UTF-8";
+:root {
+  font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: #43513e;
+  background: #f5f6f2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+}
+button:disabled {
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #76966d;
+  outline-offset: 4px;
+}
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+svg {
+  flex-shrink: 0;
+}
+::selection {
+  background: #d8e7cc;
+  color: #405936;
+}

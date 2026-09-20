@@ -1,0 +1,18 @@
+{
+  "id": "P01",
+  "title": "本机桌面聊天与演示角色原型",
+  "owner_role": "A0",
+  "date": "2026-09-20",
+  "status": "implemented_local_verification",
+  "branch": "agent/P01-desktop-prototype",
+  "decision": "docs/adr/0014-desktop-prototype-first.md",
+  "report": "docs/reports/P01/README.md",
+  "changes_r1_acceptance": false,
+  "character": "original_svg_demo",
+  "chat_default": "explicit_preset_demo",
+  "real_cloud_provider_verified": false,
+  "real_microphone_verified": false,
+  "mobile_native_verified": false,
+  "shared_file_owner": "A0",
+  "reusable_by": ["T05", "T07", "T08", "T09", "T10", "T17"]
+}

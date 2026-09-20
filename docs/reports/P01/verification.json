@@ -1,0 +1,20 @@
+{
+  "task": "P01",
+  "date": "2026-09-20",
+  "scope": "local Windows desktop prototype",
+  "foundation_check": "passed",
+  "python_tests": { "passed": 24, "failed": 0 },
+  "browser_tests": { "passed": 7, "failed": 0, "skipped": 0 },
+  "browser": "Playwright Chromium 153.0.8010.12",
+  "visual_review": ["1440x960", "390x844"],
+  "system_voice": "Microsoft Huihui Desktop (zh-CN)",
+  "speech_sample": { "wave_bytes": 199516, "sample_rate": 22050, "channels": 1, "seconds": 4.52 },
+  "native_wave_playback_and_mouth": "passed",
+  "stop_and_late_text_isolation": "passed",
+  "cloud_provider": "mock_transport_only",
+  "real_microphone": "not_tested",
+  "physical_mac": "not_tested",
+  "native_mobile": "not_tested",
+  "live2d": "not_implemented",
+  "r1_acceptance_changed": false
+}
