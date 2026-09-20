@@ -1,0 +1,127 @@
+{
+  "recorded_at": "2026-09-20T15:39:41.872496+00:00",
+  "task": "T04",
+  "status": "review",
+  "start_commit": "66b0e541a91aa727b33b3997b39bce178bbaee6a",
+  "implementation_commit": "345fd5db9175b69270b6112da16e62a14fefb841",
+  "branch": "agent/T04-contract-mocks",
+  "workspace": "C:\\Users\\Link\\Dev\\Neuro-Saki-T04",
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "python_executable": "C:\\Users\\Link\\Dev\\Neuro-Saki-T04\\.venv\\Scripts\\python.exe",
+    "node": "v24.19.0",
+    "pnpm": "11.19.0",
+    "uv": "uv 0.12.17 (635500036 2026-09-18 x86_64-pc-windows-msvc)",
+    "powershell": "7.6.5"
+  },
+  "full_check": {
+    "command": "uv run python tools/check.py",
+    "exit_code": 0,
+    "log_path": ".tmp/t04-full-check.log",
+    "log_sha256": "bdca63b8455b98d9ce1c54faaece8f24248fbb3db61399b30dd6a77d6ff9d2ec",
+    "legacy_api_tests": 2,
+    "t04_tests": {
+      "tests": 161,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time": 7.344
+    }
+  },
+  "clean_reproduction": {
+    "workspace": "C:\\Users\\Link\\Dev\\Neuro-Saki-T04-verify",
+    "source_commit": "345fd5db9175b69270b6112da16e62a14fefb841",
+    "tracked_worktree_clean": true,
+    "fresh_virtual_environment": true,
+    "download_cache_reused": true,
+    "copied_virtual_environment": false,
+    "copied_node_modules": false,
+    "command": "uv sync --locked; uv run python tools/check_contract.py",
+    "exit_code": 0,
+    "tests": {
+      "tests": 161,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time": 8.112
+    },
+    "second_physical_machine": false
+  },
+  "cross_language": {
+    "python": "passed",
+    "node": "passed",
+    "csharp_via_powershell": "passed",
+    "fixed_vectors": 3,
+    "node_invalid_frames_rejected": 10,
+    "csharp_invalid_frames_rejected": 10
+  },
+  "contract_change": "none; all nine frozen hashes pass; contracts/baseline.json unchanged",
+  "shared_dependency_change": {
+    "group": "dev",
+    "name": "websockets",
+    "version": "16.0",
+    "prior_versions_changed": false,
+    "source": {
+      "registry": "https://pypi.org/simple"
+    },
+    "windows_cp312_wheel": {
+      "url": "https://files.pythonhosted.org/packages/c3/f0/f3a17365441ed1c27f850a80b2bc680a0fa9505d733fe152fdf5e98c1c0b/websockets-16.0-cp312-cp312-win_amd64.whl",
+      "hash": "sha256:5569417dc80977fc8c2d43a86f78e0a5a22fee17565d78621b6bb264a115d4ea",
+      "size": 178693,
+      "upload-time": "2026-01-10T09:22:57.478Z"
+    }
+  },
+  "review": {
+    "report": "docs/reports/T04/review.md",
+    "scope": "offline mock and reference consumers",
+    "findings_resolved": 6,
+    "independent_tests": {
+      "tests": 161,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "time": 7.329
+    }
+  },
+  "remote_ci": "not_run; local branch not pushed",
+  "production_integration": "not_run",
+  "T00": "awaiting_external; not closed",
+  "mobile_and_live": "resource readiness only; external device/authorization evidence missing",
+  "not_proven": [
+    "Unity production R1 client integration",
+    "physical speaker or microphone behavior",
+    "real ASR/LLM/TTS",
+    "iOS/Android native and background behavior",
+    "authorized live platform access",
+    "full AC02/AC07 across production consumers",
+    "G0/G1/R1 completion"
+  ],
+  "candidate_files_sha256_lf": {
+    ".github/workflows/contract.yml": "6adfb6aaa7e26bc288ee62de6451b020c58417e2b5e98355738f2b50b4048569",
+    "pyproject.toml": "99ae20c6c5e174be0d40172c43cf3b79756211b92f3d801cbf548274302ccf54",
+    "tests/contract/README.md": "cf23f7dc2ba5da2b911a01df7e59fc7a1a8c267076b23208db452cc0e3acff8a",
+    "tests/contract/conftest.py": "568ef42bc6edfa6b7fceaf51628cd8acdc95fd3d1e538c5baa5b0a1ba7befe93",
+    "tests/contract/test_protocol.py": "fe37a881e4edb9ca05db9dce8928a1d711180bd7b61266f781057ce013a5babc",
+    "tests/contract/test_receiver.py": "aa9d89bbab787805121091cc1d65b241c8f98a35c0e2d5d59c9c773726270985",
+    "tests/contract/test_schema.py": "8e7fc01b5bd2bf5fa7ab73b9cbe32699031dd0b5cf48eaf8d198a1d14ebd924d",
+    "tests/contract/test_vectors.py": "a8391be9f8d7a2202dcbeebdb027c137ede51cbc3e121dc3571d379388ae5c88",
+    "tests/contract/vectors/Verify-Aic1.ps1": "91b5b5d831ed2b4ca25455efe9f1a331b0875b4ee6a84881e0791c237097a385",
+    "tests/contract/vectors/audio-vectors.json": "57ac1855a4ff68136883ac4d7939d11f875a427d598219e0e74709387be6b326",
+    "tests/contract/vectors/verify-node.mjs": "18c14cfef918a66f05aeb35be1a8b61f083d1aa7105d824b8ceeb8acab46e3b0",
+    "tests/mocks/README.md": "5944ec90ded5d2f3f95536a800a921bc06db4a9b3d72385a8afbe0958d1aed78",
+    "tests/mocks/__init__.py": "c23f544bde6109c90a969a17116bbdfaf0c8fbde2d23d19971f5f654bf9673be",
+    "tests/mocks/assets/character-placeholder.svg": "f4bc0c6284e508a3c9af2e537ba46dc6ac7b00abb90d5bcda513ce315d478049",
+    "tests/mocks/live.py": "ce19532b13bcc600a60ec97ca8c6fdd891c51093533e3e2bee57e502b697f249",
+    "tests/mocks/protocol.py": "93678691f73d622235f027848ab0a67505f1dbb86d57629d35dbe7c7c09c2c97",
+    "tests/mocks/receiver.py": "fc49555b1016969d2a2e475ecada477d425fc7da16ccf3ce52ea1838de29db1b",
+    "tests/mocks/server.py": "5e1a8fa63fb5760f4cedd35fcbaf301e21c47b7579db126e0c11fb191f13742d",
+    "tests/mocks/test_server.py": "dd5e20c3ca4886b6ca81d7c8e68227396cc5bb557f07af4523ae2aef7807d05a",
+    "tests/mocks/test_server_edges.py": "1982bb85ae186d1f43805b5cedd0931a39b4ad3bfaf31c7728681f979a8e3c5f",
+    "tools/check.py": "1c2f0c784cd0813dcdf977baa5e3003ae531b8b9074a39d64c2de3c79f9e67b2",
+    "tools/check_contract.py": "3b435de61b7842bec800fcca57ec9beafcb3bb1e742ea3a7bef918b9d13efdfe",
+    "tools/run_mock.py": "f942f47870ec25806e81f17bba7943004686b171c1d7de08c05958f45426d10e",
+    "tools/smoke_mock.py": "512a91e9853a5d76686215d840c11e46a4ede1c98fb3416f58fcfcbcb41a7a27",
+    "uv.lock": "33b1589cf26524c445ef9b026b4d2dee55f514c1c9860b16e3c13670c89bb371"
+  }
+}

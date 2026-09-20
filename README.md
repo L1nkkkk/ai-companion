@@ -11,7 +11,7 @@
 ## 从这里开始
 
 - [桌面个人陪伴的体验顺序](docs/development/DESKTOP-PRIORITIES.md)、[T00 外部余项与并行条件](docs/reports/T00/parallel-readiness.md)
-- [T04 离线 mock 使用说明](tests/mocks/README.md)、[派发记录](docs/tasks/T04/DISPATCH.md)
+- [T04 离线 mock 使用说明](tests/mocks/README.md)、[交接与实测证据](docs/reports/T04/README.md)、[派发记录](docs/tasks/T04/DISPATCH.md)
 - [Unity 原型任务书](docs/tasks/U01/TASKBOOK.md)、[接口](docs/tasks/U01/INTERFACES.md)、[验收](docs/tasks/U01/ACCEPTANCE.md)、[派工提示](docs/tasks/U01/DISPATCH.md)
 
 - [总架构](docs/blueprint/ARCHITECTURE.md)、[任务卡](docs/blueprint/TASKS.md)、[任务台账](docs/blueprint/planning/tasks.json)

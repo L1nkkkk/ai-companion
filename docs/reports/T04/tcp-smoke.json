@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "mode": "mock",
+  "transport": "real loopback TCP HTTP + separate control/audio WebSockets",
+  "health": {
+    "status": "ok",
+    "mode": "mock",
+    "scope": "T04 offline R1 fixtures"
+  },
+  "control_event_types": [
+    "turn.started",
+    "command.ack",
+    "assistant.text.delta",
+    "assistant.segment",
+    "avatar.state",
+    "assistant.audio.end",
+    "turn.generation.completed"
+  ],
+  "audio_frames": 3,
+  "audio_samples": 7200,
+  "audio_payload_bytes": 14400,
+  "duplicate_command": "same turn, duplicate acknowledgement",
+  "cancel_with_generation_delay_ms": 1000,
+  "cancel_ack_elapsed_ms": 2.653,
+  "live_duplicate_queue_size": 1,
+  "injected_disconnect_new_epoch": 2,
+  "new_connection_client_seq_one": "accepted",
+  "playback_report": "synthetic test consumer acknowledgement; no physical audio playback",
+  "started_at": "2026-09-20T15:35:24.619453+00:00",
+  "finished_at": "2026-09-20T15:35:25.817498+00:00",
+  "server_log_ticket_values": "absent"
+}

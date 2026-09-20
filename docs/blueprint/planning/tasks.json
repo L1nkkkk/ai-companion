@@ -47,7 +47,8 @@
         "AC01 second physical development machine",
         "Mac native dependency locks and Xcode/signing record",
         "Android JDK distribution and patch inventory"
-      ]
+      ],
+      "readiness_review": "docs/reports/T00/parallel-readiness.md"
     },
     {
       "id": "T01",
@@ -182,7 +183,7 @@
       "title": "建立契约测试与离线模拟",
       "owner_role": "A8",
       "gate": "G0",
-      "status": "in_progress",
+      "status": "review",
       "depends_on": [
         "T00"
       ],
@@ -216,7 +217,11 @@
       "branch": "agent/T04-contract-mocks",
       "start_commit": "66b0e541a91aa727b33b3997b39bce178bbaee6a",
       "dispatch_record": "docs/tasks/T04/DISPATCH.md",
-      "parallel_authorization": "docs/reports/T00/parallel-readiness.md"
+      "parallel_authorization": "docs/reports/T00/parallel-readiness.md",
+      "report": "docs/reports/T04/README.md",
+      "implementation_commit": "345fd5db9175b69270b6112da16e62a14fefb841",
+      "local_validation": "161 offline tests passed with Python/Node/C# and real loopback HTTP/WebSockets; clean-worktree reproduction passed",
+      "acceptance_boundary": "Offline deliverable reviewed; awaiting task acceptance and integration. T00, full production AC02/AC07 and G0 remain open; remote CI not run."
     },
     {
       "id": "T05",
