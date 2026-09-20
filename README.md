@@ -1,10 +1,10 @@
 # AI Companion
 
-桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。U01-00 的回退实验已真实构建并运行角色，A0 已接受进入正式工程迁移，尚未完成版本冻结与完整验收。首轮两项返工保持关闭，进度见 [A0 回退初评与下一步](docs/reports/U01/acceptance/R4_1-initial-assessment.md)。本分支维护设计与验收文档；现有 React / React Native 文件是 T00 历史工程起点。
+桌面语音聊天、直播弹幕互动，以及 Android / iOS 随身陪伴项目。当前客户端方向为 **Unity / C# + Live2D，先做 Windows 原型**。**U01-00 基础工程已通过 A0 验收**：干净目录构建、同包 600 秒基础渲染与共享接口已验证，版本已冻结；角色、UI、后台和音频四个模块可以领取。完整角色交互与 U-G0 尚未完成，内存增长、遮罩覆盖和取景仍有后续项，见 [A0 最新验收与下一步](docs/reports/U01/acceptance/PR-003-round3-review.md)。本分支维护设计与验收文档；现有 React / React Native 文件是 T00 历史工程起点。
 
-用户已允许更换版本，[ADR16](docs/adr/0016-unity-2022-r41-fallback-validation.md)选择 Unity 2022.3 / Cubism R4_1 / BiRP。原开发 owner 下一步迁移正式工程、从干净提交构建并完成 600 秒及角色基础行为验证；后续模块实现尚未放行。
+[ADR16](docs/adr/0016-unity-2022-r41-fallback-validation.md)固定 Unity 2022.3.62f3c1 / Cubism R4_1 / BiRP；[C# 边界](docs/tasks/U01/CSHARP-BASELINE.md)明确后续模块接线。代码起点为 PR #3 的 cfffbf6，再合入最新验收设计提交并登记 SHA。
 
-从 [U01 Unity 桌面原型任务书](docs/tasks/U01/TASKBOOK.md) 开始，当前先由原开发会话续作 U01-00；[派工提示](docs/tasks/U01/DISPATCH.md) 随验收状态使用。A0 当前会话只负责设计和验收，编码与打包由其他开发会话承担，规则见 [ADR15](docs/adr/0015-unity-client-and-design-only-a0.md)。历史 [P01 网页草稿](https://github.com/L1nkkkk/ai-companion/pull/1) 仅作交互参考，不是 Unity 交付。
+从 [U01 Unity 桌面原型任务书](docs/tasks/U01/TASKBOOK.md) 开始，当前按 U01-01 至 U01-04 分工推进 U-G0；[派工提示](docs/tasks/U01/DISPATCH.md) 随验收状态使用。A0 当前会话只负责设计和验收，编码与打包由其他开发会话承担，规则见 [ADR15](docs/adr/0015-unity-client-and-design-only-a0.md)。历史 [P01 网页草稿](https://github.com/L1nkkkk/ai-companion/pull/1) 仅作交互参考，不是 Unity 交付。
 
 正式私有仓库：[L1nkkkk/ai-companion](https://github.com/L1nkkkk/ai-companion)，主分支 `main`。其他机器通过 Git 克隆后按下方步骤安装。
 
