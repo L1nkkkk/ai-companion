@@ -1,0 +1,46 @@
+{
+  "scope": "R4_1 resource restoration and native Core tests; not Unity import/build/render acceptance",
+  "testedAtUtc": "2026-09-20T09:34:54.283819+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "status": "passed",
+  "sourceFiles": [
+    {
+      "path": "tools/unity/restore_assets.py",
+      "sha256": "ede7d6c6327ce56267de9526595cd21896cd682d98a64e7aef70918a0dd4113b"
+    },
+    {
+      "path": "tools/unity/verify_native_assets.py",
+      "sha256": "cebee35c866a3b9e6e781106cd2cf48ded3239f62235314789f4f39b54529b57"
+    },
+    {
+      "path": "assets/manifest/unity-foundation.json",
+      "sha256": "29e49f7b356ef6e8767733e024cbba715cf76fbecc51d39e59ea9a727549aefe"
+    }
+  ],
+  "cases": [
+    {
+      "case": "empty_cache_official_network_restore",
+      "status": "passed",
+      "packageEntries": 561,
+      "verifiedOriginalSdkFiles": 1022,
+      "verifiedMaoFiles": 108,
+      "fontHashVerified": true,
+      "licenseHashVerified": true
+    },
+    {
+      "case": "existing_sdk_refused_before_write",
+      "status": "passed",
+      "oldSdkSentinelUnchanged": true
+    },
+    {
+      "case": "corrupt_package_refused_before_write",
+      "status": "passed"
+    },
+    {
+      "case": "traversal_absolute_and_backslash_paths_refused_before_any_write",
+      "status": "passed",
+      "variants": 3
+    }
+  ],
+  "nativeReport": "native-verification.json"
+}

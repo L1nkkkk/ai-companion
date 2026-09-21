@@ -1,0 +1,97 @@
+{
+  "experiment": "U01-00 isolated Unity2022 R4_1 fallback",
+  "status": "feasible_short_graphical_run",
+  "formal_baseline_changed": false,
+  "ua01_passed": false,
+  "ua02_passed": false,
+  "editor": "2022.3.62f3c1",
+  "revision": "1623fc0bbb97",
+  "sdk": "5-r.4.1",
+  "components_commit": "ca8babb42333a2e4407aa72a78a12d7268294455",
+  "core_version": "5.1.0 / 0x05010000",
+  "render_pipeline": "Built-in",
+  "ugui": "1.0.0 (builtin)",
+  "build_attempt": "import-build-04",
+  "build": {
+    "exit_code": 0,
+    "result": "Succeeded",
+    "wall_seconds": 22.391,
+    "errors": 0,
+    "warnings": 1
+  },
+  "runtime": {
+    "unity": "2022.3.62f3c1",
+    "core": "0x05010000",
+    "model": "Mao",
+    "graphicsDevice": "NVIDIA GeForce RTX 5060",
+    "graphicsApi": "Direct3D11",
+    "renderPipeline": "Built-in",
+    "width": 1280,
+    "height": 800,
+    "drawables": 262,
+    "maskedDrawables": 37,
+    "invertedMasks": 10,
+    "unsupportedMaterials": 0,
+    "idleClipPlaying": true,
+    "errors": 0,
+    "warnings": 0,
+    "sampledFrames": 1620,
+    "elapsedSeconds": 30.0100156,
+    "p95FrameMs": 16.681699752807617,
+    "maxFrameMs": 33.3474006652832,
+    "scope": "Isolated 2022/R4_1 Built-in feasibility probe; no formal baseline switch; no cloud, chat, recording or playback"
+  },
+  "runtime_evidence": "player-framed-30s",
+  "screenshots": [
+    {
+      "file": "player-framed-30s/player-03s.png",
+      "sha256": "2a3cba858ed448f6eb40a38281f4641566c749fae23d40a5eea9eac9460c1de9"
+    },
+    {
+      "file": "player-framed-30s/player-10s.png",
+      "sha256": "4ae33a63fb993886b7691b29b7bb4cbe6ed7a10441bdf6eaa93dcdf0a77211b0"
+    }
+  ],
+  "visual_review": {
+    "reviewers": [
+      "development agent",
+      "parent task independent read-only review"
+    ],
+    "observed": "Two actual Player frames show clear full-body Mao and Chinese text; no obvious missing magenta material, broad clipping spill or layering intersection in hat/hair/face/eyes/jacket/arms/legs. Small idle pose differences are visible.",
+    "limitations": "Two idle frames do not cover all clipping paths, closed eyes, expressions or motion transitions."
+  },
+  "artifacts": [
+    {
+      "path": "artifacts/MaoFallback-Windows-x64.zip",
+      "bytes": 48975571,
+      "sha256": "2d79efe4f59fec93fe8228c4a03cb9540b225d0190f381d1ce055e3da305e899"
+    },
+    {
+      "path": "artifacts/MaoFallback-source.zip",
+      "bytes": 29930209,
+      "sha256": "5c2c5f2b946c3918ba7948513f2673baab0e15a229cabd3f698a1c026d170448"
+    }
+  ],
+  "zip_runtime_files_match_test_manifest": true,
+  "tested_source_commit": null,
+  "tested_source_binding": "build-04-source-manifest.json; local isolated imported source archive, not a Git acceptance commit",
+  "known_setup_corrections": [
+    "Removed unsupported com.unity.modules.textrendering for Unity2022.",
+    "Added builtin com.unity.ugui1.0.0 for bundled SDK sample references.",
+    "Used R4 Material API, not R5 DrawMaterial.",
+    "Fitted camera using enabled nontransparent drawable bounds."
+  ],
+  "sdk_import_notes": [
+    "R4_1 full package restored except root csc.rsp/mcs.rsp and meta, since SDK assembly already permits unsafe.",
+    "Editor reserialized prefab/animation/fade assets; not all imported asset bytes equal original archive.",
+    "No R5 code, Core, shader, material or prefab was mixed in."
+  ],
+  "remaining": [
+    "A0 design decision and recorded formal baseline change.",
+    "Formal branch migration with pinned versions and reproducible clean source commit.",
+    "Clean-directory import/build and independent package reproduction.",
+    "10-minute Player stability and explicit blink/breath/gaze/greeting/expression/motion clipping tests.",
+    "Audio, UI, IME, history, microphone, cloud and full U01 acceptance remain separate tasks."
+  ],
+  "ten_minute_plan": "After approved formal baseline migration, run the committed tools/unity/Test-Player.ps1 against its Windows package with -Seconds 600 -GraceSeconds 30 and inspect logs, captures and frame data; do not use this short experiment as completion."
+}

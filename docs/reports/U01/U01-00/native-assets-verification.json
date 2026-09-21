@@ -1,0 +1,838 @@
+{
+  "status": "passed",
+  "testedAtUtc": "2026-09-20T08:38:39.738768+00:00",
+  "scope": "Official Core/model public API and deformations; no Unity/Player rendering",
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "coreVersion": 100663297,
+  "coreVersionHex": "0x06000001",
+  "coreVersionFormatted": "06.00.0001",
+  "coreSha256": "d883c00d114fdf6cef61f439feb23e02d000fdf683e092803010470b80dfaf09",
+  "mocSha256": "ad5195b39e35e0da8ba0c825ad9cc2d60571502007f6f7d4f00963b768bb90d8",
+  "mocConsistency": 1,
+  "parameterCount": 132,
+  "drawableCount": 262,
+  "maskedDrawableCount": 37,
+  "invertedMaskDrawableCount": 10,
+  "deformationProbes": [
+    {
+      "parameter": "ParamA",
+      "value": 1.0,
+      "changedDrawableCount": 13
+    },
+    {
+      "parameter": "ParamEyeLOpen",
+      "value": 0.0,
+      "changedDrawableCount": 13
+    },
+    {
+      "parameter": "ParamEyeROpen",
+      "value": 0.0,
+      "changedDrawableCount": 13
+    },
+    {
+      "parameter": "ParamBreath",
+      "value": 1.0,
+      "changedDrawableCount": 156
+    }
+  ],
+  "parameters": [
+    {
+      "id": "ParamAngleX",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAngleY",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAngleZ",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamCheek",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamFaceInkOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamEyeLOpen",
+      "min": 0.0,
+      "max": 1.2000000476837158,
+      "default": 1.0
+    },
+    {
+      "id": "ParamEyeLSmile",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamEyeLForm",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamEyeROpen",
+      "min": 0.0,
+      "max": 1.2000000476837158,
+      "default": 1.0
+    },
+    {
+      "id": "ParamEyeRSmile",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamEyeRForm",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamEyeBallX",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamEyeBallY",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamEyeBallForm",
+      "min": -1.0,
+      "max": 0.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamEyeEffect",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBrowLY",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBrowRY",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBrowLX",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBrowRX",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBrowLAngle",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBrowRAngle",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBrowLForm",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBrowRForm",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamA",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamI",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamU",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamE",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamO",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamMouthUp",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0
+    },
+    {
+      "id": "ParamMouthDown",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamMouthAngry",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamMouthAngryLine",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBodyAngleX",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBodyAngleY",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBodyAngleZ",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamBreath",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamLeftShoulderUp",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRightShoulderUp",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmLA01",
+      "min": -10.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmLA02",
+      "min": -20.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmLA03",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHandLA",
+      "min": -10.0,
+      "max": 0.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmRA01",
+      "min": -10.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmRA02",
+      "min": -20.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmRA03",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamWandRotate",
+      "min": 0.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHandRA",
+      "min": -10.0,
+      "max": 0.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamInkDrop",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamInkDropRotate",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamInkDropOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmLB01",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmLB02",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmLB03",
+      "min": -30.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHandLB",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHatForm",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmRB01",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmRB02",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmRB02Y",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamArmRB03",
+      "min": -20.0,
+      "max": 20.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHandRB",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAllX",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAllY",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAllRotate",
+      "min": -10.0,
+      "max": 10.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHairFront",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHairSideL",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHairSideR",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHairBack",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHairBackR",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHairBackL",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamoHairMesh",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHairFrontFuwa",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHairSideFuwa",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHairBackFuwa",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamWing",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRibbon",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHatBrim",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHatTop",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAccessory1",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAccessory2",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamString",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRobeL",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRobeR",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRobeFuwa",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartMissOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartBackMissOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartColorRainbow",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartHealOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartBackHealOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartColorHeal",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartDrow",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartSize",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartColorLight",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamWandInkColorRainbow",
+      "min": 0.0,
+      "max": 35.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamWandInkColorHeal",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamWandInk",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamSmokeOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamSmoke",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamExplosionChargeOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamExplosionLightCharge",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamExplosionOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamExplosion",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitElimination",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitAppearance",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitSize",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitDraworder",
+      "min": -1.0,
+      "max": 0.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitEar",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitDirection",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitLight",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitLightSize",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitX",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamRabbitY",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 1.0
+    },
+    {
+      "id": "ParamRabbitRotate",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAuraOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAura",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAuraColor1",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAuraColor2",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartLightOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartLight",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHeartLightColor",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHealLightOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamHealLight",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamStrengthenLightOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamStrengthenLight",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamStrengthenLightMove",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamMagicPositionX",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamMagicPositionY",
+      "min": -30.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAllColor1",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamAllColor2",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamSphereOn",
+      "min": 0.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamSphereMove",
+      "min": -1.0,
+      "max": 1.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamSphereMultiplyColor",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    },
+    {
+      "id": "ParamSphereScreenColor",
+      "min": 0.0,
+      "max": 30.0,
+      "default": 0.0
+    }
+  ],
+  "notVerified": [
+    "Unity compilation",
+    "URP material or mask appearance",
+    "Windows Player"
+  ]
+}

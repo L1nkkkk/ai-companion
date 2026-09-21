@@ -1,0 +1,9 @@
+probe_utc=2026-09-20T09:00:39.3882361Z curl_exit=0 request_method=HEAD original_url=https://download.unity3d.com/download_unity/c02631ffc030/Windows64EditorInstaller/UnitySetup64-6000.3.21f1.exe
+HTTP/1.1 302 Moved Temporarily
+Content-Length: 0
+Location: https://download.unitychina.cn/download_unity/c02631ffc030/Windows64EditorInstaller/UnitySetup64-6000.3.21f1.exe
+Date: Sun, 20 Sep 2026 09:00:40 GMT
+HTTP/1.1 404 Not Found
+Date: Sun, 20 Sep 2026 09:00:40 GMT
+Content-Type: application/xml
+Content-Length: 458

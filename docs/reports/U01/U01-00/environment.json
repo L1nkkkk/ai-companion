@@ -1,0 +1,49 @@
+{
+  "task": "U01-00",
+  "status": "formal_player_validated_pending_a0",
+  "tested_source_sha": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "host": {
+    "os": "Microsoft Windows 11 Pro",
+    "os_version": "10.0.26200",
+    "architecture": "x86_64",
+    "cpu": "Intel Core Ultra 7 265",
+    "physical_cores": 20,
+    "logical_processors": 20,
+    "physical_memory_gib": 63.19,
+    "gpu": [
+      {
+        "name": "NVIDIA GeForce RTX 5060",
+        "driver": "32.0.15.9571"
+      },
+      {
+        "name": "Intel Graphics",
+        "driver": "32.0.101.6629"
+      }
+    ]
+  },
+  "unity": {
+    "version": "2022.3.62f3c1",
+    "revision": "1623fc0bbb97",
+    "backend": "Mono",
+    "architecture": "x86_64",
+    "render_pipeline": "Built-in",
+    "graphics_api": "Direct3D11"
+  },
+  "sdk": "5-r.4.1",
+  "core": "5.1.0",
+  "model": "Official SDK Mao",
+  "window": "1280x800",
+  "font": "Noto Sans CJK SC static 2.004",
+  "packages": {
+    "com.unity.textmeshpro": "3.0.6",
+    "com.unity.ugui": "1.0.0"
+  },
+  "audio_devices": "Not used or tested; no audio/recording/ASR/cloud behavior",
+  "resource_manifest": "../../../../assets/manifest/unity-foundation.json",
+  "editor_acquisition": "fallback-r41/formal/editor-acquisition.json",
+  "historical_unity6_installation_attempts": "fallback-r41/history-r5/environment.json",
+  "limitations": [
+    "Same-machine clean worktree reproduction only",
+    "No complete installer download SHA or second-machine installation"
+  ]
+}

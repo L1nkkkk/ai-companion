@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "assembly_sha256": "05d310fc7e34c8c55b36f419ee45277e35f9377b0c2813f130fbdc01a1629832",
+  "compiler": "Unity 2022.3.62f3c1 Roslyn 4.3.1",
+  "references": "Editor NetStandard/ref/2.1.0",
+  "options": "C#9 warnings-as-errors",
+  "checks": [
+    "All six R1 Session entries exist",
+    "Eight sealed typed wire-event classes",
+    "Operation key equality includes generation and preserves hash equality",
+    "Snapshot collection is detached from mutable input",
+    "Captured PCM clones input and permits idempotent disposal",
+    "Validated PCM has no public constructor",
+    "No Unity, Cubism or HTTP assembly references",
+    "All C# and asmdef metadata present with distinct stable GUIDs"
+  ],
+  "referenced_assemblies": [
+    "netstandard"
+  ],
+  "scope": "standalone contracts compilation and data-boundary smoke check; not a Unity or business integration test"
+}

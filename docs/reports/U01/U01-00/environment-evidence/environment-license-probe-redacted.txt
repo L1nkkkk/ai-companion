@@ -1,0 +1,15 @@
+SOURCE: license-probe-2022.private.log
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Successfully updated license
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0
+SOURCE: license-probe-2022-build.private.log
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Successfully updated license
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+DisplayProgressNotification: Build Failed
+'' is an incorrect path for a scene file. BuildPlayer expects paths relative to the project folder.
+'' is an incorrect path for a scene file. BuildPlayer expects paths relative to the project folder.
+Failed to build player.
+Exiting without the bug reporter. Application will terminate with return code 1

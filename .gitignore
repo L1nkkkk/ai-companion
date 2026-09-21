@@ -37,3 +37,23 @@ assets/sdk/
 *.ipa
 *.apk
 *.aab
+
+# Unity: retain project assets and .meta files; regenerate caches and acquired SDK assets.
+apps/unity/[Ll]ibrary/
+apps/unity/[Tt]emp/
+apps/unity/[Oo]bj/
+apps/unity/[Ll]ogs/
+apps/unity/[Uu]ser[Ss]ettings/
+apps/unity/[Bb]uilds/
+apps/unity/[Mm]emoryCaptures/
+apps/unity/[Rr]ecordings/
+apps/unity/.vs/
+apps/unity/*.csproj
+apps/unity/*.sln
+apps/unity/*.slnx
+apps/unity/*.pidb
+apps/unity/*.unitypackage
+apps/unity/Assets/Live2D/
+apps/unity/Assets/Live2D.meta
+apps/unity/Assets/ThirdParty/
+apps/unity/Assets/ThirdParty.meta

@@ -1,0 +1,108 @@
+{
+  "task": "U01-00",
+  "tested_source_sha": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "design_sha": "000f2b7776abb9a87e63337eb6df4b7b0fcd5fa7",
+  "source_sha_at_start": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "source_sha_at_end": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "source_dirty_at_start": false,
+  "source_dirty_after_build": false,
+  "source_dirty_at_end": false,
+  "clean_worktree": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-reproduction",
+  "validation_root": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation",
+  "scope": "Same machine, fresh Git worktree, empty acquisition cache and no Library; actual Windows development Player, 1280x800, 600 seconds",
+  "runtime_status": "passed",
+  "runtime_elapsed_wall_seconds": 604.076,
+  "player_result": {
+    "unity": "2022.3.62f3c1",
+    "core": "0x05010000",
+    "model": "Mao",
+    "graphicsDevice": "NVIDIA GeForce RTX 5060",
+    "graphicsApi": "Direct3D11",
+    "renderPipeline": "Built-in",
+    "width": 1280,
+    "height": 800,
+    "drawables": 262,
+    "maskedDrawables": 37,
+    "invertedMasks": 10,
+    "unsupportedMaterials": 0,
+    "idleClipPlaying": true,
+    "errors": 0,
+    "warnings": 0,
+    "sampledFrames": 35811,
+    "frameSamplesTruncated": false,
+    "elapsedSeconds": 600.0253533,
+    "p95FrameMs": 17.45170021057129,
+    "maxFrameMs": 64.10009765625,
+    "framesAtMost33_3MsPercent": 99.98603820800781,
+    "framesAtLeast1000Ms": 0,
+    "memoryMethod": "Windows GetProcessMemoryInfo: OS peak working set, 5-second private/Unity allocation samples, baseline after 30 seconds",
+    "memoryBaselineAt30sBytes": 264126464,
+    "peakWorkingSetBytes": 485359616,
+    "finalWorkingSetBytes": 485359616,
+    "workingSetIncreaseFrom30sBytes": 221233152,
+    "peakPrivateBytes": 479244288,
+    "peakUnityAllocatedBytes": 71154984,
+    "behaviourProbeFailed": false,
+    "contractsAssembly": "Companion.Contracts",
+    "scope": "U01-00 rendering fixture; direct parameter tests, no audio-driven lip sync, cloud, chat or recording"
+  },
+  "full_behavior_cycles": 10,
+  "behavior_samples": 190,
+  "behavior_failures": [],
+  "screenshots": {
+    "count": 21,
+    "first_cycle_stage_screenshots": 19,
+    "committed_selection": [
+      "player-03s.png",
+      "player-10s.png",
+      "behavior-02-mouth-open.png",
+      "behavior-06-both-eyes-closed.png",
+      "behavior-11-look-left.png",
+      "behavior-12-look-right.png",
+      "behavior-16-greeting-tapbody-0.png",
+      "behavior-17-mask-stress-special-01.png"
+    ]
+  },
+  "unobserved_masked_ids": [
+    "ArtMesh274",
+    "ArtMesh273",
+    "ArtMesh256",
+    "ArtMesh193",
+    "ArtMesh192"
+  ],
+  "unobserved_inverted_ids": [
+    "ArtMesh193",
+    "ArtMesh192"
+  ],
+  "package_hash_verified_after_run": true,
+  "build_runtime_file_lists_equal": true,
+  "runtime_evidence_hashes_verified": true,
+  "frame_csv_independently_counted": 35811,
+  "frame_csv_percent_at_most_33_3_ms": 99.98603780961157,
+  "frame_csv_max_ms": 64.1001,
+  "raw_private_log_hashes": [
+    {
+      "local_path": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation\\Windows-x64-evidence\\build-windows.log",
+      "bytes": 656692,
+      "sha256": "0b7f0de4ffd879ba2b85871f2e449e7cf5fe431d9a672f87eba22b1f9eda66c3",
+      "published_excerpt": "build-windows-filtered.txt",
+      "raw_log_published": false
+    },
+    {
+      "local_path": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation\\player-600s\\player.log",
+      "bytes": 16825,
+      "sha256": "0aa92090671c4d370fcfa79785ea22774a0f0549313453078bae25deef186fb7",
+      "published_excerpt": "player-filtered.txt",
+      "raw_log_published": false
+    }
+  ],
+  "measurement_limits": [
+    "First 3 seconds excluded from monotonic Unity Update frame-gap samples; no sample truncation. Not GPU timing or an OS/UI input-latency test.",
+    "OS peak working set from GetProcessMemoryInfo; private and Unity allocated peaks sampled every 5 seconds. Working-set growth uses a baseline near 30 seconds.",
+    "Core visibility plus opacity is not proof of on-screen contribution or every mask path. Only first-cycle screenshots were captured.",
+    "Direct parameter sweeps and SDK clips are a rendering fixture, not natural blinking, pointer following, user greeting interaction, actual audio-driven lip sync or missing-parameter fallback.",
+    "One Mao model and one Windows machine. No second-machine install/build, no installer SHA-256, no full UA02 or U-G0 acceptance."
+  ],
+  "a0_status": "Pending final version/shared-boundary freeze and acceptance; R1/R2 already closed by design 5286a56",
+  "verified_at_utc": "2026-09-20T10:01:25.088086+00:00"
+}

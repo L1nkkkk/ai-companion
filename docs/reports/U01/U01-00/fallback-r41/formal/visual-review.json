@@ -1,0 +1,22 @@
+{
+  "tested_source_sha": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "actual_player_image_directory": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation\\player-600s",
+  "reviewers": [
+    "U01-00 integration agent",
+    "Parent task independent read-only review",
+    "r1_interfaces independent read-only image review"
+  ],
+  "images_modified_or_synthesized": false,
+  "observations": [
+    "Full Mao character, texture and Chinese static label visible in actual 1280x800 Player captures.",
+    "Mouth open/closed, single-eye closure, both-eye closure/reopening, left/right head and gaze changes visible.",
+    "Up/down pose and breathing differences are subtle at the captured scale; static images alone do not quantify continuity.",
+    "TapBody[0], special_01 effect and return-to-idle poses visibly differ.",
+    "No obvious pink missing material, iris leakage during eye closure, transparent rectangle or gross component sorting defect in inspected images."
+  ],
+  "limitations": [
+    "special_01 glow reaches the upper image edge and overlaps the test label; full effect extent without clipping is not established.",
+    "Static selected poses do not prove every mask path, continuous transitions, no flicker, natural blink, pointer response or business UI behavior.",
+    "The 600-second conclusion comes from runtime/behavior records, not screenshots alone."
+  ]
+}

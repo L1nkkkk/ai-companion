@@ -1,0 +1,12 @@
+{
+  "name": "Companion.Foundation.Editor",
+  "rootNamespace": "Companion.Foundation.Editor",
+  "references": [
+    "Companion.Foundation",
+    "Companion.Contracts",
+    "Live2D.Cubism"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}

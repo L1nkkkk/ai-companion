@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 1,
+  "scope": "Read-only post-import Assets audit; one file-hash pass, no Editor execution, no compilation and no Library scan. This is not a Player/graphics acceptance result.",
+  "auditedAtUtc": "2026-09-20T09:52:50.877034+00:00",
+  "sourceCommit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "manifestSha256": "29e49f7b356ef6e8767733e024cbba715cf76fbecc51d39e59ea9a727549aefe",
+  "sdkVersion": "5-r.4.1",
+  "sdkPackageSha256": "2777b69d4cd02fecd48dc0fe9871700c95943f6d141c18758027bd9aa2ed1de6",
+  "status": "passed",
+  "officialPackageFileCount": 1026,
+  "excludedFiles": [
+    {
+      "path": "Assets/csc.rsp",
+      "expectedSourceSha256": "90c766ae8407da69817bbe35fc9ef37c67f92d4247619bcad05dfd96125cc4d8",
+      "present": false
+    },
+    {
+      "path": "Assets/csc.rsp.meta",
+      "expectedSourceSha256": "b3e1b3c15d630c3eff5314c819d7c8cb0e4930d99dfaac39cc20859d6d082df1",
+      "present": false
+    },
+    {
+      "path": "Assets/mcs.rsp",
+      "expectedSourceSha256": "90c766ae8407da69817bbe35fc9ef37c67f92d4247619bcad05dfd96125cc4d8",
+      "present": false
+    },
+    {
+      "path": "Assets/mcs.rsp.meta",
+      "expectedSourceSha256": "9f317a8e92eaaf1c5795d01094b24fd17f43d4b968af28f55133b8eede061f5f",
+      "present": false
+    }
+  ],
+  "unchangedOriginalFileCount": 988,
+  "changedOriginalFileCount": 34,
+  "changedOriginalFiles": [
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.fadeMotionList.asset",
+      "originalBytes": 1096,
+      "originalSha256": "c0189a9deb3613f4268540b316d88053d4dfb4e3a825c98dd70f1057ed493fb5",
+      "importedBytes": 1096,
+      "importedSha256": "ca611a5e4e4085f17ae6328439207876ae8634805c49282df7c587963afa4a64"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.prefab",
+      "originalBytes": 1341299,
+      "originalSha256": "f7ab85b7c4165c4edbda7533c448e3bc3f008ca2858242e8dab635b030635da6",
+      "importedBytes": 1341295,
+      "importedSha256": "bec171730a4ace5277377368c51ec99638b878b7383b37da52a00ef18fc51c92"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.anim",
+      "originalBytes": 273184,
+      "originalSha256": "a47d36980af1f908df18fece1b386fde95dfb2693606f7cc3d6b96114ccc80b1",
+      "importedBytes": 273184,
+      "importedSha256": "f34e42ddf26896a1da3f2b5f3daad71b461bcc918e187222c9bc8196f82f0f6d"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.fade.asset",
+      "originalBytes": 80143,
+      "originalSha256": "a40e80c30dd104d7a984007cadcbd1d90dc50fb17adfe49ccbecffbd8accf6dc",
+      "importedBytes": 80143,
+      "importedSha256": "bee89d5c7a5e9ef8f707b90b67cc7b27db5d247138b682bc3b6dc1c2a62df315"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.anim",
+      "originalBytes": 288122,
+      "originalSha256": "7baac2f44155d414c9c1fcb770365e8dca2d8246a682d4f80fe07cf16383662f",
+      "importedBytes": 288122,
+      "importedSha256": "2f2b627f959bf49db4a08b6929d54e3b232c6eacaddd9b7d7325581fdbdbdf64"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.fade.asset",
+      "originalBytes": 87116,
+      "originalSha256": "910b575a044df563fc523224c7101b1f890755d51887a206f35d15fbe6b00b2e",
+      "importedBytes": 87116,
+      "importedSha256": "5947879f6121abef7d04c6042dea2baf367e5cb582d859619069d1caa936de62"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.anim",
+      "originalBytes": 280871,
+      "originalSha256": "4b58575c44b85dbb4eff51f845a28edc8bbd66acd1375aeafd3d9bda1fa014c6",
+      "importedBytes": 280871,
+      "importedSha256": "3d073e6a38d939e764d879fe45a6848e70c93c7213c27f31238ae2a70ebda83d"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_03.fade.asset",
+      "originalBytes": 83830,
+      "originalSha256": "fc05f3f724247b0f2648e1a87ae8cb651bdd505b3f1fe65e4c5fa3141b43df4c",
+      "importedBytes": 83830,
+      "importedSha256": "c8e5b38dbdf5b6f469fd4a5184453a681882fa4be62d0702980ca18059062f4e"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_04.anim",
+      "originalBytes": 306767,
+      "originalSha256": "3dcfa24e67d2092964f0608acf7ad308178ef27252bf85cf4e7c9285cd686166",
+      "importedBytes": 306767,
+      "importedSha256": "24ff5969fbe08f76ec19341c5658a89e3c3dd3cab8e7e3283337f6105a337bab"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.anim",
+      "originalBytes": 267832,
+      "originalSha256": "42ee2b0f7cdfe608814414fa7695cf649cf84207adcb25483c651fdaf679706e",
+      "importedBytes": 267832,
+      "importedSha256": "228816908f985aa0cf19f424a770a52c779f43b469828f770edfb812a770a646"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/sample_01.fade.asset",
+      "originalBytes": 83806,
+      "originalSha256": "1462a3c35b9c0434ea3bea2f3c498a46835e230e53144ef3550932d0a453686c",
+      "importedBytes": 83806,
+      "importedSha256": "e45179c0b703e03506a568f8774d04fed5eb7b8d15328358f197adba7396c454"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.anim",
+      "originalBytes": 356737,
+      "originalSha256": "0b2b6789f9862ed59d361cf7c9c3ff6132447ee92d84ce06b27508f26ff67eb6",
+      "importedBytes": 356737,
+      "importedSha256": "1b2c0aa21803c34980e22088bbc9ccb5266aa51cde32956222967b9cf325dc50"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.fade.asset",
+      "originalBytes": 115459,
+      "originalSha256": "b62fc4effe86754f8c65517179f1c4986c349d711577ba48f86695053f493bc2",
+      "importedBytes": 115459,
+      "importedSha256": "ef3c0a5c8c784a3b6349b6bc9c112facd71bfdfcbf415d678bc98574b61a2abd"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.anim",
+      "originalBytes": 402536,
+      "originalSha256": "700ad7510e758afb34ccc900c86aa3410693e709654d53cc4753510fa594e6fb",
+      "importedBytes": 402536,
+      "importedSha256": "8f73f3a9c2a216f8ce51968e5d6e9303e40fc0c8b9251ca396b92a2d5f03a37f"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_02.fade.asset",
+      "originalBytes": 137703,
+      "originalSha256": "47ea75bf25940e5c9d7c51054807426b3c3472ec2441568f10cdf0761af8c80e",
+      "importedBytes": 137703,
+      "importedSha256": "0f5277e36c94e40ccafdc595cf69989edef89a86e2a3f2df4d482644e6d84a2c"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_03.anim",
+      "originalBytes": 418772,
+      "originalSha256": "96eb88e8bc2e3723afee1d78ed8bdfcc996e4bfe26466f2e5da0ff02e9d2f39d",
+      "importedBytes": 418772,
+      "importedSha256": "38c4c066c50f6152a1526ff50204c30d7ce261ea4e0c0f04a98eb70009702522"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.fadeMotionList.asset",
+      "originalBytes": 1179,
+      "originalSha256": "b9b5139f313aeb3cb67e1e88c23862bad95ada6f85057621a1f243226703eef0",
+      "importedBytes": 1179,
+      "importedSha256": "b657103785865e9df05bd1770e8d5b4889a04efbfb4c1820f6e22eb5f047ae82"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/Natori.prefab",
+      "originalBytes": 877286,
+      "originalSha256": "bf947effb31b244423e52f37461bf8c285744da695448ce28fee98c95bdaf9ca",
+      "importedBytes": 877282,
+      "importedSha256": "1775ddb7e2d95590f0c6321959af22816f91c027c150274950b823c851c60efd"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_00.anim",
+      "originalBytes": 17553,
+      "originalSha256": "430310f9741ad86e7cd951313bcab04a8b4a37f40eba7c7b602d4e11a6827fbf",
+      "importedBytes": 17553,
+      "importedSha256": "dc75967ac138839b8e35202f6c85248a2e82eb92ca6c077fef912566e8c5cca0"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_01.anim",
+      "originalBytes": 165637,
+      "originalSha256": "543e1df9ad05b0214e90a2eba04d12eed95eced199d2056a8a5cf98127ac70b2",
+      "importedBytes": 165637,
+      "importedSha256": "5ced3f72dc7208510554c3f0083fcd22e1a104ed1a180825acbfb3136fd7b07e"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_01.fade.asset",
+      "originalBytes": 48660,
+      "originalSha256": "187a0b8bd1539b10d33c47fa1a9d55cbd07c5a339e986ffc02f34e8537cac5bd",
+      "importedBytes": 48660,
+      "importedSha256": "0d186a74c4f7e8b7e2aab5d565403de62a00ec84191e2aabbf855cafe39db444"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_02.anim",
+      "originalBytes": 213774,
+      "originalSha256": "dceb6e30958d2fac5e10ebcb7fe77f97b944babb196569f8426170b89e22ae78",
+      "importedBytes": 213774,
+      "importedSha256": "43f01571e0d1dcab6f6c28a52434c9c050e795739edeb4b14fdb859ed03dfad0"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_02.fade.asset",
+      "originalBytes": 70179,
+      "originalSha256": "87094f4c53e624764ccce4ef455471b0057e7803d6144b3e43147c8b233d1815",
+      "importedBytes": 70179,
+      "importedSha256": "cda60f3efccfd963cf3ee12d9b0139f498dc1220e27d922273d78588a79210f7"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_03.anim",
+      "originalBytes": 225996,
+      "originalSha256": "640b95f64b73d521e98725526fcaadebeae33b54f5215842a3cbd8263d44cfbf",
+      "importedBytes": 225996,
+      "importedSha256": "1b5535e47127130c76d02f2eb8cd0171808ad9cbf68a7a8dc4a6a583596e2ae1"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_04.anim",
+      "originalBytes": 253820,
+      "originalSha256": "11ae1a583fdea8c07e1de9bab70bdf2c01d53c0c21d8faad73da24889964ae52",
+      "importedBytes": 253820,
+      "importedSha256": "871c533f89049a3befe537c1e930a3c0a58ab5666afb1d3ff56b02aafdf43f62"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_05.anim",
+      "originalBytes": 239056,
+      "originalSha256": "a8166364635b28e60fbdf743668133bf863a0eb0490b208157aa93f1d47d9d42",
+      "importedBytes": 239056,
+      "importedSha256": "d106572dd9531627722c0b08b968ee0548030b340035cfc6dd52d0bf98ee7397"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_05.fade.asset",
+      "originalBytes": 80578,
+      "originalSha256": "f3e43e13b5eacca955db0f5379609c3e70fd75f917ca4a3ec66fdd633c3fe24d",
+      "importedBytes": 80578,
+      "importedSha256": "41b2331177614765dc3d86eb92ccfc906a9771ad81c9abd7e1408e126ff3d784"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_06.anim",
+      "originalBytes": 237932,
+      "originalSha256": "313902e6ebd4a347214d3154ef1f21a5285bdeff2a358ceca5e2af6df938ad35",
+      "importedBytes": 237932,
+      "importedSha256": "3107437fef7270bafeacc39a0853dd5d5f0415b5f5e8039268675f9c493f5e93"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_06.fade.asset",
+      "originalBytes": 80594,
+      "originalSha256": "b788680b182ee8dd362902a0c35b1db9b7300a60c3be40c864f081e71cbc68da",
+      "importedBytes": 80594,
+      "importedSha256": "409e09472ccaf8aab94cefa9f130daa0ccfe8ee9ff326c0a94340608543b3311"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_07.anim",
+      "originalBytes": 224296,
+      "originalSha256": "feb7872c99e670aff5383b1fbee2abe11768dde32c7aa55ceb43aaebb48f29af",
+      "importedBytes": 224296,
+      "importedSha256": "25d20a3e83c9041c7a7b4367af0e47c302d56177fb5eec3f0b7f985df54b741f"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_08.anim",
+      "originalBytes": 213438,
+      "originalSha256": "f4fc32bd01f57ae8ae1ba5247704242be1d59d63fc8627a879da94d6c10f7129",
+      "importedBytes": 213438,
+      "importedSha256": "dcb585df81e79b66ebd5fb9e79c334d84069e7a415bf238cf6d13fec2e61e705"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Natori/motions/mtn_08.fade.asset",
+      "originalBytes": 69463,
+      "originalSha256": "4bb0db3debe57dafff3454831f0dd01fabc46cf35e86a1371679c30ad8f226b8",
+      "importedBytes": 69463,
+      "importedSha256": "3c2c92eca6f827af594143c2cd017b7380c6bf8a4b200a36af7490966f7d74b7"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/Rice.prefab",
+      "originalBytes": 943846,
+      "originalSha256": "1d5d39262a780f1034d94d489569b4c5c76ca204305a7c961af53010016a8305",
+      "importedBytes": 943842,
+      "importedSha256": "5021df704ecb901b6749c3050976933326f4a69cd1729d2bba1e0d70024ac11c"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Rice/motions/mtn_01.fade.asset",
+      "originalBytes": 74329,
+      "originalSha256": "6780e1b6473eda1977b72660e4ced6d95d55a9fa2f63d2bb112d205dd935b844",
+      "importedBytes": 74329,
+      "importedSha256": "b137f609c0a8b98d2b5851dc882487b8ce8592bc24327fec574c0e13d7a65658"
+    }
+  ],
+  "allChangesAreSerializedPrefabAnimationFadeAssets": true,
+  "classificationNote": "These assets were restored from the pinned package into a clean worktree and subsequently imported by Unity. Classification identifies Unity-serialized asset types; individual semantic equivalence is not inferred from their hashes.",
+  "missingUnexpectedOriginalFiles": [],
+  "extraSdkFiles": [],
+  "protectedSourceGroups": {
+    "csharp": {
+      "originalFileCount": 186,
+      "unchanged": true,
+      "changedOrMissing": []
+    },
+    "shader": {
+      "originalFileCount": 3,
+      "unchanged": true,
+      "changedOrMissing": []
+    },
+    "coreLibraries": {
+      "originalFileCount": 18,
+      "unchanged": true,
+      "changedOrMissing": []
+    }
+  },
+  "coreWindowsX64": {
+    "path": "Assets/Live2D/Cubism/Plugins/Windows/x86_64/Live2DCubismCore.dll",
+    "bytes": 240656,
+    "sha256": "c4599835b0349fcae774cedc6dbd0057743fa503d4cc0af8f9022ca3dd845634"
+  },
+  "guidAudit": {
+    "metaFileCount": 606,
+    "uniqueGuidCount": 606,
+    "malformedMetas": [],
+    "duplicateGuids": [],
+    "status": "passed"
+  },
+  "ownedSceneAudit": [
+    {
+      "scene": "Assets/Companion/Scenes/Foundation.unity",
+      "sha256": "a501e0cdeedebd6dea7ee975cd8bec7c5367686e42a539186b6cd75302bc032b",
+      "externalReferences": [
+        {
+          "fileId": 10304,
+          "guid": "0000000000000000f000000000000000",
+          "type": 0,
+          "resolution": "unity_builtin"
+        },
+        {
+          "fileId": 10001,
+          "guid": "0000000000000000e000000000000000",
+          "type": 0,
+          "resolution": "unity_builtin"
+        },
+        {
+          "fileId": 11500000,
+          "guid": "aa7df0e06569feb07a37e471b1241eef",
+          "type": 3,
+          "path": "Assets/Companion/Runtime/Foundation/FoundationBootstrap.cs",
+          "resolution": "mono_script_importer"
+        },
+        {
+          "fileId": 8890699974960601345,
+          "guid": "ddaf1f178a5098c4ab9b99312a774975",
+          "type": 3,
+          "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.prefab",
+          "resolution": "serialized_object_anchor"
+        },
+        {
+          "fileId": 12800000,
+          "guid": "ce3da31f32f0bc3cdc2f680f589266ba",
+          "type": 3,
+          "path": "Assets/ThirdParty/Fonts/NotoSansCJKsc-Regular.otf",
+          "resolution": "font_importer"
+        },
+        {
+          "fileId": 7400000,
+          "guid": "49fbef81965b33d43b09d4aaec84ba1b",
+          "type": 2,
+          "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_01.anim",
+          "resolution": "serialized_object_anchor"
+        },
+        {
+          "fileId": 7400000,
+          "guid": "909ca38b27c164849a774917359f4cdb",
+          "type": 2,
+          "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/mtn_02.anim",
+          "resolution": "serialized_object_anchor"
+        },
+        {
+          "fileId": 7400000,
+          "guid": "e3b4edce3b7937f43ae503295496f3fa",
+          "type": 2,
+          "path": "Assets/Live2D/Cubism/Samples/Models/Mao/motions/special_01.anim",
+          "resolution": "serialized_object_anchor"
+        }
+      ],
+      "unresolvedExternalReferences": [],
+      "missingInternalFileIds": [],
+      "status": "passed"
+    }
+  ]
+}

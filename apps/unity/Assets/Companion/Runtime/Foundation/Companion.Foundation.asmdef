@@ -1,0 +1,9 @@
+{
+  "name": "Companion.Foundation",
+  "rootNamespace": "Companion.Foundation",
+  "references": [
+    "Live2D.Cubism",
+    "Companion.Contracts"
+  ],
+  "autoReferenced": false
+}

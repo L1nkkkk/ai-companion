@@ -1,0 +1,31 @@
+{
+  "scope": "Independent read-only review by r2_review after the actual 600-second run; no second Player run or source edits",
+  "tested_source_sha": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "reviewed_at_utc": "2026-09-20T10:02:00Z",
+  "status": "passed",
+  "source_clean_at_review": true,
+  "program_directory_files_checked": 210,
+  "program_zip_entries_checked": 210,
+  "all_program_file_hashes_match_build_and_runtime_receipts": true,
+  "program_zip_sha256": "8c59e9c54cb89e5dafac2027fc8bdfa1ce53bd0c5a93f889435d15361bd8a6db",
+  "original_evidence_files_checked_excluding_hash_inventory": 27,
+  "original_evidence_file_set_and_hashes_match": true,
+  "png_count": 21,
+  "unique_cycle_stage_pairs": 190,
+  "complete_cycles": 10,
+  "non_loop_motion_runs_with_begin_end_and_completion": 20,
+  "independent_csv": {
+    "frames": 35811,
+    "p95_ms": 17.4517,
+    "max_ms": 64.1001,
+    "percent_at_most_33_3_ms": 99.9860378096,
+    "gaps_at_least_1000_ms": 0
+  },
+  "report_and_verification_match_actual_results": true,
+  "major_findings": [],
+  "limitations": [
+    "Evidence ZIP was being finalized during this review, so this reviewer did not attest its final ZIP SHA. Root separately verified its published-copy inventory and contents.",
+    "The approximately 211 MiB working-set increase remains visible in the report; no long-term leak-free claim.",
+    "Full UA02, audio/UI/cloud behavior, unobserved mask paths and A0 final acceptance remain outside this review's pass."
+  ]
+}

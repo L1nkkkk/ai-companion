@@ -1,0 +1,44 @@
+{
+  "url": "https://cubism.live2d.com/sdk-unity/bin/CubismSdkForUnity-5-r.4.1.unitypackage",
+  "bytes": 16266045,
+  "sha256": "2777b69d4cd02fecd48dc0fe9871700c95943f6d141c18758027bd9aa2ed1de6",
+  "scope": "isolated Unity2022 R4_1 feasibility experiment; does not modify R5 baseline",
+  "components_tag": "5-r.4.1",
+  "components_commit": "ca8babb42333a2e4407aa72a78a12d7268294455",
+  "components_readme": "https://github.com/Live2D/CubismUnityComponents/blob/ca8babb42333a2e4407aa72a78a12d7268294455/README.md",
+  "sdk_readme_editor_versions": [
+    "2022.3.61f1",
+    "6000.0.49f1"
+  ],
+  "actual_editor": "2022.3.62f3c1",
+  "actual_editor_revision": "1623fc0bbb97",
+  "render_pipeline": "Built-in",
+  "restored_sdk_entries": 561,
+  "source_files": [
+    {
+      "path": "Assets/Live2D/Cubism/Plugins/Windows/x86_64/Live2DCubismCore.dll",
+      "bytes": 240656,
+      "sha256": "c4599835b0349fcae774cedc6dbd0057743fa503d4cc0af8f9022ca3dd845634"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.prefab",
+      "bytes": 1341295,
+      "sha256": "bec171730a4ace5277377368c51ec99638b878b7383b37da52a00ef18fc51c92"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.moc3",
+      "bytes": 879680,
+      "sha256": "ad5195b39e35e0da8ba0c825ad9cc2d60571502007f6f7d4f00963b768bb90d8"
+    },
+    {
+      "path": "Assets/Live2D/Cubism/Samples/Models/Mao/Mao.model3.json",
+      "bytes": 1699,
+      "sha256": "d5fb29f93ef3cf3eba96b5aa9538eca063abbebee81a8d2dbeecea0cef4fecba"
+    },
+    {
+      "path": "Assets/ThirdParty/Fonts/NotoSansCJKsc-Regular.otf",
+      "bytes": 16437364,
+      "sha256": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "task": "U01-00",
+  "status": "awaiting_external",
+  "development_status": "foundation_validation_complete",
+  "awaiting": "A0 final review/version and shared-boundary freeze",
+  "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "environment": "environment.json",
+  "results": [
+    {
+      "id": "UA01",
+      "status": "passed",
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Fresh directory official asset restoration, actual Unity import/compile/build and packaged Windows Player run",
+      "evidence": [
+        "fallback-r41/formal/verification-summary.json"
+      ],
+      "limitations": "Development verification; final A0 acceptance pending. Same-machine fresh worktree, not a second-machine reproduction."
+    },
+    {
+      "id": "UA02",
+      "status": "not_run",
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Foundation rendering subchecks completed; full role acceptance not run",
+      "evidence": [
+        "fallback-r41/formal/verification-summary.json"
+      ],
+      "limitations": "600-second render fixture passed, but natural blinking, pointer follow, user greeting entry, missing-parameter fallback and production AvatarPresenter remain untested/unimplemented."
+    },
+    {
+      "id": "UA03",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA04",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA05",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA06",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA07",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA08",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA09",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA10",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA11",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    },
+    {
+      "id": "UA12",
+      "status": "not_run",
+      "tested_commit": null,
+      "tester": "U01-00 development/integration agent",
+      "environment": "environment.json",
+      "method": "Outside this foundation task",
+      "evidence": [],
+      "limitations": "No acceptance claim."
+    }
+  ],
+  "preparation_checks": [
+    {
+      "name": "Repository foundation suite",
+      "status": "passed",
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+      "evidence": [
+        "fallback-r41/formal/foundation-check.txt"
+      ]
+    },
+    {
+      "name": "Pure Contracts compile in actual Editor and build",
+      "status": "passed",
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+      "limitations": "Interfaces and data shapes, no module business implementation"
+    },
+    {
+      "name": "600-second deterministic Live2D rendering fixture",
+      "status": "passed",
+      "tested_commit": "849c6c982d875f477d88933af4abea5a163d0fa6",
+      "evidence": [
+        "fallback-r41/formal/behavior-summary.json",
+        "fallback-r41/formal/player-result.json"
+      ],
+      "limitations": [
+        "First 3 seconds excluded from monotonic Unity Update frame-gap samples; no sample truncation. Not GPU timing or an OS/UI input-latency test.",
+        "OS peak working set from GetProcessMemoryInfo; private and Unity allocated peaks sampled every 5 seconds. Working-set growth uses a baseline near 30 seconds.",
+        "Core visibility plus opacity is not proof of on-screen contribution or every mask path. Only first-cycle screenshots were captured.",
+        "Direct parameter sweeps and SDK clips are a rendering fixture, not natural blinking, pointer following, user greeting interaction, actual audio-driven lip sync or missing-parameter fallback.",
+        "One Mao model and one Windows machine. No second-machine install/build, no installer SHA-256, no full UA02 or U-G0 acceptance."
+      ]
+    }
+  ],
+  "review_fixes": {
+    "R1": "closed",
+    "R2": "closed",
+    "a0_design_commit": "5286a56",
+    "harness_changed_by_migration": false
+  },
+  "historical_r5_record": "fallback-r41/history-r5/verification.json",
+  "gate_status": "U-G0 and complete UA02/UA03-12 are not accepted by this task"
+}

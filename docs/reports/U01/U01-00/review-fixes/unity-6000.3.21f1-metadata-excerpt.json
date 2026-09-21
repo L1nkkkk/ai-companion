@@ -1,0 +1,36 @@
+{
+  "source_url": "https://services.api.unity.com/unity/editor/release/v1/releases?version=6000.3&limit=5",
+  "observed_at_utc": "2026-09-20T09:00:00Z/2026-09-20T09:02:00Z",
+  "source_file_sha256": "c6ac9274c43b31c876c9201cbfa94aa37ef1605f0e6560d0dbda52d32380072e",
+  "returned_versions": [
+    "6000.3.24f1",
+    "6000.3.23f1",
+    "6000.3.22f1",
+    "6000.3.21f1",
+    "6000.3.20f1"
+  ],
+  "excerpt_fields": {
+    "version": "6000.3.21f1",
+    "releaseDate": "2026-07-29T07:10:05.487Z",
+    "shortRevision": "c02631ffc030",
+    "stream": "LTS"
+  },
+  "windows_x64_editor_downloads": [
+    {
+      "url": "https://download.unity3d.com/download_unity/c02631ffc030/Windows64EditorInstaller/UnitySetup64-6000.3.21f1.exe",
+      "type": "EXE",
+      "platform": "WINDOWS",
+      "architecture": "X86_64",
+      "downloadSize": {
+        "value": 4092408560,
+        "unit": "BYTE"
+      },
+      "installedSize": {
+        "value": 8240209720,
+        "unit": "BYTE"
+      },
+      "integrity": "md5-C35FdP06zAa1MG7WzHIHig=="
+    }
+  ],
+  "selection_note": "Selected original release fields and Windows x64 Editor downloads; omitted other platforms, modules and legal-notice links. No alternate Windows x64 Editor entry was present."
+}

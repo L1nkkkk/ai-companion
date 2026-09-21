@@ -1,0 +1,31 @@
+{
+  "tested_source_sha": "849c6c982d875f477d88933af4abea5a163d0fa6",
+  "windows_package": {
+    "path": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation\\Windows-x64.zip",
+    "bytes": 50352471,
+    "sha256": "8c59e9c54cb89e5dafac2027fc8bdfa1ce53bd0c5a93f889435d15361bd8a6db"
+  },
+  "portable_evidence": {
+    "path": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation\\U01-00-r41-evidence.zip",
+    "bytes": 4504655,
+    "sha256": "47ad4ef2863297772b21334a4a11dc0306ee376e89a93ba3c7600ace5510fc7f"
+  },
+  "raw_evidence": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation",
+  "private_raw_log_hashes": [
+    {
+      "local_path": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation\\Windows-x64-evidence\\build-windows.log",
+      "bytes": 656692,
+      "sha256": "0b7f0de4ffd879ba2b85871f2e449e7cf5fe431d9a672f87eba22b1f9eda66c3",
+      "published_excerpt": "build-windows-filtered.txt",
+      "raw_log_published": false
+    },
+    {
+      "local_path": "C:\\Users\\linkkzhu\\Desktop\\Projs\\Neuro-Saki\\U01-00-r41-validation\\player-600s\\player.log",
+      "bytes": 16825,
+      "sha256": "0aa92090671c4d370fcfa79785ea22774a0f0549313453078bae25deef186fb7",
+      "published_excerpt": "player-filtered.txt",
+      "raw_log_published": false
+    }
+  ],
+  "note": "These are local distribution paths, not GitHub release attachments. Evidence ZIP includes every screenshot, CSV, JSON and filtered diagnostics; raw logs stay local. JSON/text copies are UTF-8 LF normalized; original runtime hashes describe raw local files."
+}

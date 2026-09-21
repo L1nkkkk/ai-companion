@@ -1,0 +1,217 @@
+{
+  "task": "U01-00",
+  "status": "awaiting_external",
+  "tested_commit": null,
+  "tester": "U01-00 development/integration agent; independent static and native resource review by subagents",
+  "environment": "environment.json",
+  "results": [
+    {
+      "id": "UA01",
+      "status": "awaiting_external",
+      "method": "Official asset acquisition and native resource restoration; Unity6 installation and build preflight attempted",
+      "evidence": [
+        "environment-install.md",
+        "native-assets-verification.json",
+        "build-preflight.txt"
+      ],
+      "limitations": "No Unity import, compiler, Player build or packaged binary.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA02",
+      "status": "awaiting_external",
+      "method": "Official Windows x64 Core C API model consistency, masked drawable inventory and actual parameter deformation",
+      "evidence": [
+        "native-assets-verification.json"
+      ],
+      "limitations": "No URP rendered material, mask, sorting or Player stability validation.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA03",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA04",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA05",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA06",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA07",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA08",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA09",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA10",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA11",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    },
+    {
+      "id": "UA12",
+      "status": "not_run",
+      "method": "Outside the completed foundation preparation",
+      "evidence": [],
+      "limitations": "No acceptance claim.",
+      "tested_commit": null,
+      "tester": "U01-00 integration agent",
+      "environment": "environment.json"
+    }
+  ],
+  "preparation_checks": [
+    {
+      "name": "Repository foundation suite",
+      "status": "passed",
+      "evidence": [
+        "foundation-check.txt"
+      ],
+      "limitations": "Does not test Unity or native mobile builds."
+    },
+    {
+      "name": "Source review and script syntax",
+      "status": "passed",
+      "evidence": [
+        "report.md"
+      ],
+      "limitations": "No Unity6 C# compile evidence."
+    },
+    {
+      "name": "Fresh Git worktree official resource restoration and native model probe",
+      "status": "passed",
+      "tested_commit": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
+      "evidence": [
+        "clean-reproduction.json",
+        "native-reproduction.json"
+      ],
+      "limitations": "No Unity Editor import, C# compile, URP appearance or Windows Player."
+    },
+    {
+      "name": "Review fix controlled-process regression and full repository checks",
+      "status": "passed",
+      "tested_commit": "7f905b5d0a027844cf45d554558cc6440e21a2a7",
+      "source_dirty_at_start": false,
+      "evidence": [
+        "review-fixes/player-harness.json",
+        "review-fixes/foundation-check.txt"
+      ],
+      "limitations": "No Unity acceptance tests; synthetic fixture outputs excluded from graphics evidence."
+    }
+  ],
+  "prepared_commit": "f64596ebcf7f372848915e01e27bf752ae3dc4e9",
+  "tested_commit_scope": "No Unity acceptance test ran. Prepared source was used for the independent native/assets reproduction below.",
+  "review_fixes": {
+    "review_source_commit": "b397e7dccac0b1699387e7f1e59f0ca7040fb2fa",
+    "implementation_commit": "7f905b5d0a027844cf45d554558cc6440e21a2a7",
+    "a0_rereview_status": "pending",
+    "items": [
+      {
+        "id": "U01-00-R1",
+        "development_status": "proposal_updated",
+        "method": "Session-only UI boundary traced through complete DTO mappings, bounded history/export/device/voice APIs and examples",
+        "evidence": [
+          "interfaces-proposal.md",
+          "review-fixes.md"
+        ],
+        "limitations": "Proposal only; not a compiled implementation or A0 freeze."
+      },
+      {
+        "id": "U01-00-R2",
+        "development_status": "tests_passed",
+        "method": "Four real controlled Windows process cases: normal, hang with same-image sentinel, missing screenshot, invalid result; all evidence hashes checked",
+        "evidence": [
+          "review-fixes/player-harness.json",
+          "review-fixes.md"
+        ],
+        "limitations": "Synthetic fixture outputs test process supervision and evidence validation; no Unity import, graphics, build, UA01 or UA02 acceptance evidence."
+      }
+    ]
+  },
+  "environment_followup": {
+    "status": "awaiting_external",
+    "local_unity_63_found": false,
+    "additional_official_version_checked": "6000.3.21f1",
+    "official_head_status_chain": [
+      302,
+      404
+    ],
+    "evidence": [
+      "environment-install.md",
+      "review-fixes/unity-6000.3.21f1-official-head.txt",
+      "review-fixes/unity-6000.3.21f1-metadata-excerpt.json"
+    ]
+  }
+}
